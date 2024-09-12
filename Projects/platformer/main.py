@@ -1,7 +1,7 @@
 import sys
 import pygame
 from scripts.beings import physicsBeing
-from scripts.util import loadImage
+from scripts.util import loadImage, loadImages
 
 class game:
 
@@ -23,11 +23,17 @@ class game:
         # up is bound to [0] down is bound to [1] 
         self.movement = [False, False]
 
-        # dictionary for player's stuff
+        # dictionary for assets
         self.assets = {
+            
+            'decor' : loadImages('tiles/decor'),
+            'grass' : loadImages('tiles/grass'),
+            'large_decor' : loadImages('tiles/large_decor'),
+            'stone' : loadImages('tiles/stone'),
             # uses function from util script
             'player': loadImage('entities/player.png')
         }
+        print(self.assets)
 
         self.player = physicsBeing(self, 'player', (300,20), (10, 14))
 

@@ -1,4 +1,6 @@
 import pygame
+#gives access to file explore
+import os
 
 imagePath = 'Projects/platformer/data/images/'
 
@@ -7,3 +9,14 @@ def loadImage(path):
     img = pygame.image.load(imagePath + path).convert()
     img.set_colorkey((0,0,0))
     return img
+
+def loadImages(path):
+    images = []
+
+    # goes through all of the files based on the directory passed
+    # into the function
+    for imgName in os.listdir(imagePath + path):
+        #addes each image to images list
+        images.append(loadImage(path + '/' +imgName))
+
+    return images
