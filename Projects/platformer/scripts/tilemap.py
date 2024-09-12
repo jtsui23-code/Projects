@@ -13,13 +13,13 @@ class tilemap:
             self.tilemap[str(3 + i) + ';10'] = {'type': 'grass', 'variant': 1, 'pos':(3 + i, 10)}  
             self.tilemap['10;' + str(5 + i)] = {'type': 'stone', 'variant':1,'pos':(10, 5 + i)}
     
-    def render(self,banan):
+    def render(self,surf):
         for tile in self.offGridT:
             
             # self.offGridT is a list so will be interpeted as a 
             # pixals not a grid litterally in the name
             # so no need to multiply by tileSize
-            banan.blit(self.game.assets[tile['type']][tile['variant']], (tile['pos'[0]], tile['pos'[1]]))
+            surf.blit(self.game.assets[tile['type']][tile['variant']], (tile['pos'][0], tile['pos'][1]))
 
         for loc in self.tilemap:
             tile = self.tilemap[loc]
@@ -35,6 +35,6 @@ class tilemap:
             # tile['pos'] is multiplied by self.tileSize because the postion value is in
             # terms of the grid but we want the tile to be the size of the asset
             # to make pixal art
-            banan.blit(self.game.assets[tile['type']][tile['variant']], (tile['pos'[0]] * self.tileSize, tile['pos'] * self.tileSize))
+            surf.blit(self.game.assets[tile['type']][tile['variant']], (tile['pos'][0] * self.tileSize, tile['pos'][1] * self.tileSize))
 
         

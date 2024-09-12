@@ -37,7 +37,7 @@ class game:
 
         self.player = physicsBeing(self, 'player', (300,20), (10, 14))
 
-        self.tilemap = tilemap(self, tileSize=16)
+        self.tilemap = tilemap(self, tilesize=16)
 
     def run(self):
         while True:

@@ -20,6 +20,6 @@ class physicsBeing:
         #movement for y
         self.pos[1] += framerMovement[1]
     
-    def render(self, banana):
-        banana.blit(self.game.assets['player'], self.pos)
+    def render(self, surf):
+        surf.blit(self.game.assets['player'], self.pos)
         
