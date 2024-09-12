@@ -17,6 +17,9 @@ class game:
         # used for fps
         self.clock = pygame.time.Clock()
 
+        # makes a small display ontop of the screen 
+        self.display = pygame.Surface((320, 200))
+
         # up is bound to [0] down is bound to [1] 
         self.movement = [False, False]
 
@@ -31,12 +34,12 @@ class game:
     def run(self):
         while True:
 
-            self.screen.fill((40,120,88))
+            self.display.fill((40,120,88))
             # this updates the player's movement on the x axis
             self.player.update((self.movement[1] - self.movement[0],0))
 
             # updates the screen
-            self.player.render(self.screen)
+            self.player.render(self.display)
             # pygame.event.get() gets the user's input
             for event in pygame.event.get():
                 #checks if the user pressed x button on top right
@@ -68,6 +71,11 @@ class game:
                     if event.key == pygame.K_RIGHT:
                         self.movement[1] = False
 
+            # rendering the display(small sreen) at 0,0
+            # rescales the screen so like zooms in so player is not tiny
+            # pygame.transform.scale([thing want to scale], [how much 
+            # want to scale])
+            self.screen.blit(pygame.transform.scale(self.display,self.screen.get_size()), (0,0))
             # Updates the screen
             pygame.display.update()
             # forces loop to run at 60 fphs
