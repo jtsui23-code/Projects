@@ -2,6 +2,7 @@ import sys
 import pygame
 from scripts.beings import physicsBeing
 from scripts.util import loadImage, loadImages
+from scripts.tilemap import tilemap
 
 class game:
 
@@ -33,14 +34,17 @@ class game:
             # uses function from util script
             'player': loadImage('entities/player.png')
         }
-        print(self.assets)
 
         self.player = physicsBeing(self, 'player', (300,20), (10, 14))
+
+        self.tilemap = tilemap(self, tileSize=16)
 
     def run(self):
         while True:
 
             self.display.fill((40,120,88))
+
+            self.tilemap.render(self.display)
             # this updates the player's movement on the x axis
             self.player.update((self.movement[1] - self.movement[0],0))
 
