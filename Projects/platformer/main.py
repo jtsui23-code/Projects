@@ -21,15 +21,28 @@ class game:
 
         self.imgPos = [300,200]
 
+        # for the image it will look for the color (0,0,0) or black
+        # and make it transparent so the image will match the background
+        self.img.set_colorkey((0,0,0))
+
         # up is bound to [0] down is bound to [1] 
-        self.movement = [False, False]
+        self.movement = [False, False, False, False]
 
     def run(self):
         while True:
 
-            # sets the y coordinates of cloud accordinging to the 
-            # movement array
-            self.imgPos[1] += self.movement[1] - self.movement[0]
+            self.screen.fill((40,120,88))
+
+            # sets the x and y coordinates of cloud accordinging to the 
+            # movement array. Treats bool as int false is 0
+            # true is 1
+
+            # self.movement[1] or pressing s goes first because
+            # if you want to move down you have to add to y - coordinates
+            # since (0,0) starts on the top left of the screen
+            self.imgPos[1] += (self.movement[1] - self.movement[0])* 10
+
+            self.imgPos[0] += (self.movement[3] - self.movement[2])* 10
             # blit renders/draws the img on the coordinates
             # (0,0) starts on top left like reading english
             self.screen.blit(self.img, self.imgPos)
@@ -56,17 +69,26 @@ class game:
                 if event.type == pygame.KEYUP:
                     # if you let go of the w or s key set movement
                     # stops movement
-                    # to false. movement contains a bool that can 
-                    # be converted to an int 0 for false 1 for true
                     if event.key == pygame.K_w:
                         self.movement[0] = False
                     if event.key == pygame.K_s:
                         self.movement[1] = False
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_a:
+                        self.movement[2] = True
+                    if event.key == pygame.K_d:
+                        self.movement[3] = True
+                if event.type == pygame.KEYUP:
+                    if event.key == pygame.K_a:
+                        self.movement[2] = False
+                    if event.key == pygame.K_d:
+                        self.movement[3] = False
 
             # Updates the screen
             pygame.display.update()
             # forces loop to run at 60 fphs
             self.clock.tick(60)
+
 
 # creates game object and uses run method
 game().run()
