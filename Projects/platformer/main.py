@@ -61,6 +61,10 @@ class game:
             self.scroll[0] += (self.player.rect().centerx - self.display.get_width() /2 - self.scroll[0])/30
             self.scroll[1] += (self.player.rect().centery - self.display.get_height() /2 - self.scroll[1])/30
 
+            # since the scroll and player position are floats
+            # the camera centering is inconsistant because of rounding
+            # therefore need to turn camera positioning into int
+
             self.display.fill((40,120,88))
 
             self.tilemap.render(self.display,offset=self.scroll)
