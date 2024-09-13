@@ -44,6 +44,8 @@ class game:
     def run(self):
         while True:
 
+            self.scroll[0] += 1
+
             self.display.fill((40,120,88))
 
             self.tilemap.render(self.display,offset=self.scroll)
