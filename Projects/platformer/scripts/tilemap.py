@@ -1,3 +1,12 @@
+
+# this list contains all the possible offset of coordinates
+# around a pixal
+neighborOffSet = [(-1,0), (-1,-1), (0,-1), (1,-1), (1,0),(0,0), (-1,1),(0,1),(1,1)]
+
+# This is a set since there is no labling
+# sets are faster than list and ordering doesn't matter
+physicTiles = {'grass','stone'}
+
 class tilemap:
     def __init__ (self, game, tilesize=16):
         self.game = game
@@ -12,6 +21,34 @@ class tilemap:
             # self.tilemap[index of dictionary] = [contents that is being stored at index]
             self.tilemap[str(3 + i) + ';10'] = {'type': 'grass', 'variant': 1, 'pos':(3 + i, 10)}  
             self.tilemap['10;' + str(5 + i)] = {'type': 'stone', 'variant':1,'pos':(10, 5 + i)}
+    
+    def tilesAround(self, pos):
+        tile = []
+        #This converts pixal postion to grid
+        # requires integer conversion AND integer devision
+        # because if only use one number will be unconsistant 
+        # with negative numbers
+        tileLoc = [int(pos[0]//self.tileSize), int(pos[1]//self.tileSize)]
+
+        for offset in neighborOffSet:
+
+            #checks the surround pixal that was passed in using the
+            # neighborOffSet array so 9 pixals
+            # checkLoc is a string because 
+            # self.tilemap's index is a string
+            # ex) self.tilemap['10;5]
+            checkLoc = str(tileLoc[0]+offset[0]) + ';' + str(tileLoc[1]+offset[1])
+            #if the pixal that is being checked exists in the tilemap object
+            # as in the pixal is not just empty space
+            # then add the checked pixal to the tile list
+            if checkLoc in self.tilemap:
+                tile.append(checkLoc)
+
+            return tile
+    def physicsRectAround(self,pos):
+        rect = []
+        for tTiles in self.tilesAround:
+            pass
     
     def render(self,surf):
         for tile in self.offGridT:
