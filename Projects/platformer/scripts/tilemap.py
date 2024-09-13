@@ -46,7 +46,7 @@ class tilemap:
             if checkLoc in self.tilemap:
                 tile.append(checkLoc)
 
-            return tile
+        return tile
     # this function returns all of the tiles near the player 
     # that need collision physics
     def physicsRectAround(self, pos):
@@ -57,9 +57,10 @@ class tilemap:
         # pygame.Rect(x,y,width,height) makes a rectangle object using pygame
         # so every single tile can have collision will be 
         # created as an object
-        for tTiles in self.tilesAround(pos):
-            if tTiles in physicTiles:
-                rect.append(pygame.Rect(tTiles['pos'][0]*self.tileSize, tTiles['pos']*self.tileSize,self.tileSize,self.tileSize))
+        for tTilekey in self.tilesAround(pos):
+            tTiles = self.tilemap[tTilekey]
+            if tTiles['type'] in physicTiles:
+                rect.append(pygame.Rect(tTiles['pos'][0]*self.tileSize, tTiles['pos'][1]*self.tileSize,self.tileSize,self.tileSize))
         return rect
     
     def render(self,surf):

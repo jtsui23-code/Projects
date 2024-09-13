@@ -25,7 +25,7 @@ class physicsBeing:
         self.pos[0] += framerMovement[0]
 
         #creates rect object
-        beingRect = self.rect
+        beingRect = self.rect()
 
         # if the rect object is colliding with a physicsTile
         # register collision
@@ -44,7 +44,7 @@ class physicsBeing:
 
         #movement for y
         self.pos[1] += framerMovement[1]
-
+        beingRect = self.rect()
         for rect in tilemap.physicsRectAround(self.pos):
             if beingRect.colliderect(rect):
                 if framerMovement[1] > 0:
