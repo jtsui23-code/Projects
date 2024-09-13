@@ -11,7 +11,7 @@ class physicsBeing:
         # dealing with pointers
         self.pos = list(pos)
         self.size = size
-        self.velocity = [0,0]
+        self.velocity = [10,0]
 
     def rect(self):
         #self.pos[0] and self.pos[1] are the top left of the rectangle
