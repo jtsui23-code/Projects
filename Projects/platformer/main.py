@@ -46,7 +46,7 @@ class game:
 
             self.tilemap.render(self.display)
             # this updates the player's movement on the x axis
-            self.player.update((self.movement[1] - self.movement[0],0))
+            self.player.update(self.tilemap,(self.movement[1] - self.movement[0],0))
 
             # updates the screen
             self.player.render(self.display)

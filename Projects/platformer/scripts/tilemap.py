@@ -1,3 +1,4 @@
+import pygame
 
 # this list contains all the possible offset of coordinates
 # around a pixal
@@ -22,6 +23,7 @@ class tilemap:
             self.tilemap[str(3 + i) + ';10'] = {'type': 'grass', 'variant': 1, 'pos':(3 + i, 10)}  
             self.tilemap['10;' + str(5 + i)] = {'type': 'stone', 'variant':1,'pos':(10, 5 + i)}
     
+    # this function returns all of the tiles that are around the player
     def tilesAround(self, pos):
         tile = []
         #This converts pixal postion to grid
@@ -45,13 +47,24 @@ class tilemap:
                 tile.append(checkLoc)
 
             return tile
-    def physicsRectAround(self,pos):
+    # this function returns all of the tiles near the player 
+    # that need collision physics
+    def physicsRectAround(self, pos):
         rect = []
-        for tTiles in self.tilesAround:
-            pass
+        # this checks every single tile around the player
+        # if any of these tiles are the classifed physics tiles
+        # then add then to the rect list
+        # pygame.Rect(x,y,width,height) makes a rectangle object using pygame
+        # so every single tile can have collision will be 
+        # created as an object
+        for tTiles in self.tilesAround(pos):
+            if tTiles in physicTiles:
+                rect.append(pygame.Rect(tTiles['pos'][0]*self.tileSize, tTiles['pos']*self.tileSize,self.tileSize,self.tileSize))
+        return rect
     
     def render(self,surf):
         for tile in self.offGridT:
+        
             
             # self.offGridT is a list so will be interpeted as a 
             # pixals not a grid litterally in the name
