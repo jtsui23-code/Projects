@@ -57,22 +57,23 @@ class game:
             # where how far away we want the camera is to where we want it to be
             # we get a moving camera that is centered at the player's position
             # the /30 at the end makes the camera move faster as the player is farther 
-            # away
+            # away because the larger the distance between player and camera
+            # the greater the quiotient making the camera movement faster
             self.scroll[0] += (self.player.rect().centerx - self.display.get_width() /2 - self.scroll[0])/30
             self.scroll[1] += (self.player.rect().centery - self.display.get_height() /2 - self.scroll[1])/30
 
             # since the scroll and player position are floats
             # the camera centering is inconsistant because of rounding
             # therefore need to turn camera positioning into int
+            renderScroll = (int(self.scroll[0]), int(self.scroll[1]))
 
             self.display.fill((40,120,88))
-
-            self.tilemap.render(self.display,offset=self.scroll)
+            self.tilemap.render(self.display,offset=renderScroll)
             # this updates the player's movement on the x axis
             self.player.update(self.tilemap,(self.movement[1] - self.movement[0],0))
 
             # updates the screen
-            self.player.render(self.display, offset=self.scroll)
+            self.player.render(self.display, offset=renderScroll)
             # pygame.event.get() gets the user's input
             for event in pygame.event.get():
                 #checks if the user pressed x button on top right
