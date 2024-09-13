@@ -43,8 +43,23 @@ class game:
 
     def run(self):
         while True:
-
-            self.scroll[0] += 1
+            
+            # if you set scroll to just the player's center
+            # then the player will be set to the top left 
+            # since the scroll is initially at the top left corner
+            # if you only subtract with the width/heigh of display 
+            # then the player will be stuck on the right instead
+            # (self.player.rect().centerx - self.display.get_width()/2) is 
+            # essentially the location where we want the camera to be and 
+            # the - self.scroll[0] in
+            # (self.player.rect().centerx - self.display.get_width()/2 - self.scroll[0])
+            # is where the camera is currently located so by adding the distance of 
+            # where how far away we want the camera is to where we want it to be
+            # we get a moving camera that is centered at the player's position
+            # the /30 at the end makes the camera move faster as the player is farther 
+            # away
+            self.scroll[0] += (self.player.rect().centerx - self.display.get_width() /2 - self.scroll[0])/30
+            self.scroll[1] += (self.player.rect().centery - self.display.get_height() /2 - self.scroll[1])/30
 
             self.display.fill((40,120,88))
 
