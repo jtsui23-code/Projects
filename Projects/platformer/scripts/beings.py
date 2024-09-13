@@ -37,8 +37,10 @@ class physicsBeing:
             if beingRect.colliderect(rect):
                 if framerMovement[0] >0:    # if collision coming from right
                     beingRect.right = rect.left
+                    self.collision['right'] = True
                 if framerMovement[0] < 0:
                     beingRect.left = rect.right #if collision coming from leftside
+                    self.collision['left'] = True
                 #sets postion of rect
                 # using pos[0] because Rect()
                 # only works with int
@@ -51,12 +53,18 @@ class physicsBeing:
             if beingRect.colliderect(rect):
                 if framerMovement[1] > 0:
                     beingRect.bottom = rect.top
+                    self.collision['down'] = True
                 if framerMovement[1] <0:
                     beingRect.top = rect.bottom
+                    self.collision['top'] = True
                 self.pos[1] = beingRect.y
 
         # This creates gravity, the max value for velocity will be 5
         self.velocity[1] = min(5, self.velocity[1] + 0.1) 
+
+        # rests the velocity of falling when touch ground or platform
+        if self.collision['down'] or self.collision['up']:
+            self.velocity[1] = 0
     
     def render(self, surf):
         surf.blit(self.game.assets['player'], self.pos)
