@@ -63,14 +63,14 @@ class tilemap:
                 rect.append(pygame.Rect(tTiles['pos'][0]*self.tileSize, tTiles['pos'][1]*self.tileSize,self.tileSize,self.tileSize))
         return rect
     
-    def render(self,surf):
+    def render(self,surf, offset=(0,0)):
         for tile in self.offGridT:
         
             
             # self.offGridT is a list so will be interpeted as a 
             # pixals not a grid litterally in the name
             # so no need to multiply by tileSize
-            surf.blit(self.game.assets[tile['type']][tile['variant']], (tile['pos'][0], tile['pos'][1]))
+            surf.blit(self.game.assets[tile['type']][tile['variant']], (tile['pos'][0]- offset[0], tile['pos'][1]- offset[1]))
 
         for loc in self.tilemap:
             tile = self.tilemap[loc]
@@ -86,6 +86,6 @@ class tilemap:
             # tile['pos'] is multiplied by self.tileSize because the postion value is in
             # terms of the grid but we want the tile to be the size of the asset
             # to make pixal art
-            surf.blit(self.game.assets[tile['type']][tile['variant']], (tile['pos'][0] * self.tileSize, tile['pos'][1] * self.tileSize))
+            surf.blit(self.game.assets[tile['type']][tile['variant']], (tile['pos'][0] * self.tileSize - offset[0], tile['pos'][1] * self.tileSize - offset[1]))
 
         

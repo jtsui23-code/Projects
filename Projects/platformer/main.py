@@ -39,17 +39,19 @@ class game:
 
         self.tilemap = tilemap(self, tilesize=16)
 
+        self.scroll = [0,0]
+
     def run(self):
         while True:
 
             self.display.fill((40,120,88))
 
-            self.tilemap.render(self.display)
+            self.tilemap.render(self.display,offset=self.scroll)
             # this updates the player's movement on the x axis
             self.player.update(self.tilemap,(self.movement[1] - self.movement[0],0))
 
             # updates the screen
-            self.player.render(self.display)
+            self.player.render(self.display, offset=self.scroll)
             # pygame.event.get() gets the user's input
             for event in pygame.event.get():
                 #checks if the user pressed x button on top right
