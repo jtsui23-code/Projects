@@ -51,12 +51,12 @@ class tilemap:
     # that need collision physics
     def physicsRectAround(self, pos):
         rect = []
-        # this checks every single tile around the player
-        # if any of these tiles are the classifed physics tiles
-        # then add then to the rect list
-        # pygame.Rect(x,y,width,height) makes a rectangle object using pygame
-        # so every single tile can have collision will be 
-        # created as an object
+        
+        #this checks the coordinates of every single tile that is
+        # near to the player. tTiles then stores the tile type of
+        # each of the tiles at the coordinates stored in tTilekey
+        # if the type stored in tTiles is one that needs collision
+        # add a rectangle object at that coordinate for collision
         for tTilekey in self.tilesAround(pos):
             tTiles = self.tilemap[tTilekey]
             if tTiles['type'] in physicTiles:
