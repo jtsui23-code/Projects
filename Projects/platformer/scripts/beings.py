@@ -11,7 +11,8 @@ class physicsBeing:
         # dealing with pointers
         self.pos = list(pos)
         self.size = size
-        self.velocity = [10,0]
+        self.velocity = [0,0]
+        self.collision = {'up': False, 'down': False, 'right':False, 'left': False}
 
     def rect(self):
         #self.pos[0] and self.pos[1] are the top left of the rectangle
@@ -19,6 +20,7 @@ class physicsBeing:
         return pygame.Rect(self.pos[0], self.pos[1], self.size[0], self.size[1])
 
     def update(self, tilemap,movement=(0,0)):
+        self.collision ={'up': False, 'down': False, 'right':False, 'left':False}
         framerMovement = (movement[0] + self.velocity[0], movement[1] + self.velocity[1])
 
         # movement for x
