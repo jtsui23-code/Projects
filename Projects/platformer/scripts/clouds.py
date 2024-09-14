@@ -18,7 +18,7 @@ class cloud:
         # change how much the cloud has to move 
         # to keep up with the camera
         renderPos = (self.pos[0] - offset[0] * self.dept, self.pos[1] - offset[1] * self.dept)
-        surf.blit(self.img,(renderPos[0] % (surf.get_width + self.img.get_width) - self.img.get_width, renderPos[1] % (surf.get_height + self.img.get_height) - self.img.get_height))
+        surf.blit(self.img,(renderPos[0] % (surf.get_width() + self.img.get_width()) - self.img.get_width(), renderPos[1] % (surf.get_height() + self.img.get_height()) - self.img.get_height()))
 
 class cloudz:
     def __init__(self, cloudImg, count=16):
@@ -33,11 +33,12 @@ class cloudz:
         # lambda is temp function
         # for every cloud x in the list 
         # sort by the depth
-        self.clouds.sort(key=lambda x: x.depth)
+        self.clouds.sort(key=lambda x: x.dept)
 
     def update(self):
         for cloud in self.clouds:
             cloud.update()
+
     def render(self, surf, offset=(0,0)):
         for cloud in self.clouds:
             cloud.render(surf, offset=offset)

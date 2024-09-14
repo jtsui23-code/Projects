@@ -72,8 +72,9 @@ class game:
             # therefore need to turn camera positioning into int
             renderScroll = (int(self.scroll[0]), int(self.scroll[1]))
 
-            self.clouds.update(self.display, renderScroll)
+            self.clouds.update()
             self.clouds.render(self.display, renderScroll)
+
             self.tilemap.render(self.display,offset=renderScroll)
             # this updates the player's movement on the x axis
             self.player.update(self.tilemap,(self.movement[1] - self.movement[0],0))
