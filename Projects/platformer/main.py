@@ -32,7 +32,8 @@ class game:
             'large_decor' : loadImages('tiles/large_decor'),
             'stone' : loadImages('tiles/stone'),
             # uses function from util script
-            'player': loadImage('entities/player.png')
+            'player': loadImage('entities/player.png'),
+            'background': loadImage('background.png')
         }
 
         self.player = physicsBeing(self, 'player', (100,20), (10, 14))
@@ -67,7 +68,7 @@ class game:
             # therefore need to turn camera positioning into int
             renderScroll = (int(self.scroll[0]), int(self.scroll[1]))
 
-            self.display.fill((40,120,88))
+            self.display.blit(self.assets['background'], (0,0))
             self.tilemap.render(self.display,offset=renderScroll)
             # this updates the player's movement on the x axis
             self.player.update(self.tilemap,(self.movement[1] - self.movement[0],0))
