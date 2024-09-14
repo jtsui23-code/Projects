@@ -3,6 +3,7 @@ import pygame
 from scripts.beings import physicsBeing
 from scripts.util import loadImage, loadImages
 from scripts.tilemap import tilemap
+from scripts.clouds import cloudz
 
 class game:
 
@@ -33,9 +34,11 @@ class game:
             'stone' : loadImages('tiles/stone'),
             # uses function from util script
             'player': loadImage('entities/player.png'),
-            'background': loadImage('background.png')
+            'background': loadImage('background.png'),
+            'clouds': loadImages('clouds/')
         }
 
+        self.clouds = cloudz(self.assets['clouds'], count=16)
         self.player = physicsBeing(self, 'player', (100,20), (10, 14))
 
         self.tilemap = tilemap(self, tilesize=16)
@@ -44,7 +47,8 @@ class game:
 
     def run(self):
         while True:
-            
+            self.display.blit(self.assets['background'], (0,0))
+
             # if you set scroll to just the player's center
             # then the player will be set to the top left 
             # since the scroll is initially at the top left corner
@@ -68,7 +72,8 @@ class game:
             # therefore need to turn camera positioning into int
             renderScroll = (int(self.scroll[0]), int(self.scroll[1]))
 
-            self.display.blit(self.assets['background'], (0,0))
+            self.clouds.update(self.display, renderScroll)
+            self.clouds.render(self.display, renderScroll)
             self.tilemap.render(self.display,offset=renderScroll)
             # this updates the player's movement on the x axis
             self.player.update(self.tilemap,(self.movement[1] - self.movement[0],0))
