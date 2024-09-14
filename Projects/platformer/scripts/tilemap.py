@@ -64,28 +64,32 @@ class tilemap:
         return rect
     
     def render(self,surf, offset=(0,0)):
+
         for tile in self.offGridT:
-        
-            
             # self.offGridT is a list so will be interpeted as a 
-            # pixals not a grid litterally in the name
+            # pixals not in the grid litterally in the name
             # so no need to multiply by tileSize
             surf.blit(self.game.assets[tile['type']][tile['variant']], (tile['pos'][0]- offset[0], tile['pos'][1]- offset[1]))
 
-        for loc in self.tilemap:
-            tile = self.tilemap[loc]
+        # this will check the screen starting from the top left (offset[0]//self.tileSize)
+        # to the top right (offset[0] + surf.get_width)//self.tileSize + 1)
+        # the plus one is there because this will be 1 tile off if not aded
 
-            # .blit([thing want to render], [location of render])
-            # self.game.assets[] refers to the dictionary in main 
-            # that contains all of the different types of tiles and
-            # player assets
-            # tile varible refers to the object created in this current for loop
-            # use ['pos'] in tile['pos'] to navagate the dictionary created in the 
-            # constructor in this tilemap Class
-            # the postion contained two values which is why ther is an addition (())
-            # tile['pos'] is multiplied by self.tileSize because the postion value is in
-            # terms of the grid but we want the tile to be the size of the asset
-            # to make pixal art
-            surf.blit(self.game.assets[tile['type']][tile['variant']], (tile['pos'][0] * self.tileSize - offset[0], tile['pos'][1] * self.tileSize - offset[1]))
-
-        
+        # the nested for loop will check from top to bottom of the screen
+        for x in range(offset[0] // self.tileSize, (offset[0] + surf.get_width()) // self.tileSize +1):
+            for y in range(offset[1] // self.tileSize, (offset[1] + surf.get_height()) // self.tileSize + 1):
+                loc = str(x) + ';' + str(y)
+                if loc in self.tilemap:
+                    tile = self.tilemap[loc]
+                    # .blit([thing want to render], [location of render])
+                    # self.game.assets[] refers to the dictionary in main 
+                    # that contains all of the different types of tiles and
+                    # player assets
+                    # tile varible refers to the object created in this current for loop
+                    # use ['pos'] in tile['pos'] to navagate the dictionary created in the 
+                    # constructor in this tilemap Class
+                    # the postion contained two values which is why ther is an addition (())
+                    # tile['pos'] is multiplied by self.tileSize because the postion value is in
+                    # terms of the grid but we want the tile to be the size of the asset
+                    # to make pixal art
+                    surf.blit(self.game.assets[tile['type']][tile['variant']], (tile['pos'][0] * self.tileSize - offset[0], tile['pos'][1] * self.tileSize - offset[1]))           
