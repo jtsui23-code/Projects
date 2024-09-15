@@ -37,9 +37,9 @@ class game:
             'background': loadImage('background.png'),
             'clouds': loadImages('clouds/'),
             'player/idle': animation(loadImages('entities/player/idle'), imgDur=6),
-            'player/run': animation(loadImages('entities/player/run'),imDur=4),
+            'player/run': animation(loadImages('entities/player/run'),imgDur=4),
             'player/jump': animation(loadImages('entities/player/jump')),
-            'player/slide': animation(loadImages('entites/player/slide')),
+            'player/slide': animation(loadImages('entities/player/slide')),
             'player/wallSlide':animation(loadImages("entities/player/wall_slide"))
         }
 
