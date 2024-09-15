@@ -1,7 +1,7 @@
 import sys
 import pygame
 from scripts.beings import physicsBeing
-from scripts.util import loadImage, loadImages
+from scripts.util import loadImage, loadImages, animation
 from scripts.tilemap import tilemap
 from scripts.clouds import cloudz
 
@@ -35,7 +35,12 @@ class game:
             # uses function from util script
             'player': loadImage('entities/player.png'),
             'background': loadImage('background.png'),
-            'clouds': loadImages('clouds/')
+            'clouds': loadImages('clouds/'),
+            'player/idle': animation(loadImages('entities/player/idle'), imgDur=6),
+            'player/run': animation(loadImages('entities/player/run'),imDur=4),
+            'player/jump': animation(loadImages('entities/player/jump')),
+            'player/slide': animation(loadImages('entites/player/slide')),
+            'player/wallSlide':animation(loadImages("entities/player/wall_slide"))
         }
 
         self.clouds = cloudz(self.assets['clouds'], count=16)
