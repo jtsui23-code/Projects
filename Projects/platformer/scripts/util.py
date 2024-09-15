@@ -29,3 +29,4 @@ class animation():
 
         # checks if animation is finished
         self.done = False
+        self.frame = 0
