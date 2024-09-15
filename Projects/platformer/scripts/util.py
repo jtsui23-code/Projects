@@ -37,3 +37,15 @@ class animation():
     def copy(self):
         return animation(self.images, self.imageDur,self.loop)
     
+    def update(self):
+        if self.loop:
+            self.frame = (self.frame + 1) % (self.imgDur * len(self.images))
+        else:
+            self.frame = min(self.frame+1, self.imgDur * len(self.images) -1)
+            if self.frame >= (self.imgDur * len(self.imgDur)-1):
+                self.done = True
+    
+    def img(self):
+        # self.frame refers to frame of the game
+        return self.images[int(self.frame/self.imgDur)]
+    
