@@ -20,3 +20,12 @@ def loadImages(path):
         images.append(loadImage(path + '/' +imgName))
 
     return images
+
+class animation():
+    def __init__(self, images, imgDur=5, loop=True):
+        self.images = images
+        self.imgDur = imgDur
+        self.loop = loop
+
+        # checks if animation is finished
+        self.done = False
