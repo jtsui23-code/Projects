@@ -13,8 +13,27 @@ class physicsBeing:
         self.size = size
         self.velocity = [0,0]
         self.collision = {'up': False, 'down': False, 'right':False, 'left': False}
-        
 
+        self.action = ''
+        # there needs to be a player offset because 
+        # when the player is rendered into the world
+        # the player's outline is cut off
+        self.animOffset = (-3,-3)
+        # lets player look left or right
+        self.flip = False
+        self.setAction('idle')
+        
+    def setAction(self,action):
+        #checks if the current action is up to date
+        if action != self.action:
+            self.action = action
+            # this holds the frame/image of the character that is being 
+            # animated. self.e_type refers to which character sprite that 
+            # is being animated the '/' is for directory with 
+            # self.action which is a string that will specifty which 
+            # image/animation to choose 
+            self.animation = self.assets[self.e_type + '/' + self.action].copy()
+            
     def rect(self):
         #self.pos[0] and self.pos[1] are the top left of the rectangle
         # not the center of the rectangle
