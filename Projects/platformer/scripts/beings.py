@@ -13,6 +13,7 @@ class physicsBeing:
         self.size = size
         self.velocity = [0,0]
         self.collision = {'up': False, 'down': False, 'right':False, 'left': False}
+        
 
     def rect(self):
         #self.pos[0] and self.pos[1] are the top left of the rectangle
