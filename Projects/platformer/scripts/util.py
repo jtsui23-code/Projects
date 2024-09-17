@@ -2,7 +2,7 @@ import pygame
 #gives access to file explore
 import os
 
-imagePath = 'platformer/data/images/'
+imagePath = 'data/images/'
 
 def loadImage(path):
     # .convert() optimizes the image for faster performance
