@@ -134,3 +134,8 @@ class player(physicsBeing):
         # for the player
         if self.airTime == 4:
             self.setAction('jump')
+        
+        # if the player is not standing still
+        # horizontally, then toggle running animation
+        elif self.movement[0] != 0:
+            self.setAction('run')
