@@ -116,3 +116,8 @@ class player(physicsBeing):
     def __init__(self, game, pos, size):
         # does init for physicsBeing class
         super().__init__(game, 'player', pos, size)
+
+    def update(self, tilemap, movement=(0,0)):
+        # uses movement method from physicsBeing 
+        # but uses the values specific to the player
+        super().movement(tilemap, movement=movement)
