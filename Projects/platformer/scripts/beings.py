@@ -120,7 +120,7 @@ class player(physicsBeing):
     def update(self, tilemap, movement=(0,0)):
         # uses movement method from physicsBeing 
         # but uses the values specific to the player
-        super().movement(tilemap, movement=movement)
+        super().update(tilemap, movement=movement)
 
         # counts how long player has been in the 
         # air to see if the player needs to be in
