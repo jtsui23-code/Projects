@@ -121,3 +121,16 @@ class player(physicsBeing):
         # uses movement method from physicsBeing 
         # but uses the values specific to the player
         super().movement(tilemap, movement=movement)
+
+        # counts how long player has been in the 
+        # air to see if the player needs to be in
+        # jump animation
+        self.airTime += 1
+
+        if self.colision['down']:
+            self.airTime = 0
+        # if the player is in the air for 
+        # 4 frames then go into the jump animatino
+        # for the player
+        if self.airTime == 4:
+            self.setAction('jump')
