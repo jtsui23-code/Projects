@@ -32,6 +32,8 @@ class physicsBeing:
             # is being animated the '/' is for directory with 
             # self.action which is a string that will specifty which 
             # image/animation to choose 
+            # .copy() makes sure each entity has their own animation
+            # and are not just sharing the same frame
             self.animation = self.assets[self.e_type + '/' + self.action].copy()
             
     def rect(self):
@@ -87,5 +89,16 @@ class physicsBeing:
             self.velocity[1] = 0
     
     def render(self, surf, offset=(0,0)):
-        surf.blit(self.game.assets['player'], (self.pos[0] - offset[0], self.pos[1] - offset[1]))
+        # pygame.transform.flip([thing want to flip], flip on x, flip on y)
+        surf.blit(pygame.transform.flip(self.animation.img, self.flip, False), self.pos[0] - offset[0] + self.animOffset[0], self.pos[1] - offset[1] + self.animOffset[1])
+        
+        # original render 
+        # pygame.transform.flip(self.animation.img, self.flip, False)
+        # replaced self.game.assets['player'] because this is
+        # more versatile for every entity not just player
+        # pygame.transform.flip() checks if entity needs to be flip
+        # then does all of the positioning
+        # there is an addional + self.animOffset[] now because the
+        # player sprits are cut off when rendered into the world
+        #surf.blit(self.game.assets['player'], (self.pos[0] - offset[0], self.pos[1] - offset[1]))
         
