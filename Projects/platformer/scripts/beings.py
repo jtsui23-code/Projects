@@ -28,13 +28,13 @@ class physicsBeing:
         if action != self.action:
             self.action = action
             # this holds the frame/image of the character that is being 
-            # animated. self.e_type refers to which character sprite that 
+            # animated. self.type refers to which character sprite that 
             # is being animated the '/' is for directory with 
             # self.action which is a string that will specifty which 
             # image/animation to choose 
             # .copy() makes sure each entity has their own animation
             # and are not just sharing the same frame
-            self.animation = self.assets[self.e_type + '/' + self.action].copy()
+            self.animation = self.game.assets[self.type + '/' + self.action].copy()
             
     def rect(self):
         #self.pos[0] and self.pos[1] are the top left of the rectangle
@@ -111,4 +111,8 @@ class physicsBeing:
         # there is an addional + self.animOffset[] now because the
         # player sprits are cut off when rendered into the world
         #surf.blit(self.game.assets['player'], (self.pos[0] - offset[0], self.pos[1] - offset[1]))
-        
+
+class player(physicsBeing):
+    def __init__(self, game, pos, size):
+        # does init for physicsBeing class
+        super().__init__(game, 'player', pos, size)
