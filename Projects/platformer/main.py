@@ -1,6 +1,6 @@
 import sys
 import pygame
-from scripts.beings import physicsBeing
+from scripts.beings import physicsBeing, player
 from scripts.util import loadImage, loadImages, animation
 from scripts.tilemap import tilemap
 from scripts.clouds import cloudz
@@ -44,7 +44,8 @@ class game:
         }
 
         self.clouds = cloudz(self.assets['clouds'], count=16)
-        self.player = physicsBeing(self, 'player', (100,20), (10, 14))
+        
+        self.player = player(self, (100,20), (10, 14))
 
         self.tilemap = tilemap(self, tilesize=16)
 

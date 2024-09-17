@@ -132,6 +132,8 @@ class player(physicsBeing):
         # if the player is in the air for 
         # 4 frames then go into the jump animatino
         # for the player
+        # jump animation has higher priorty than run
+        # since don't want to be running in the air
         if self.airTime == 4:
             self.setAction('jump')
         
@@ -139,3 +141,8 @@ class player(physicsBeing):
         # horizontally, then toggle running animation
         elif self.movement[0] != 0:
             self.setAction('run')
+        
+        # if not jumping or running then make player 
+        # do the idle animatino
+        else:
+            self.setAction('idle')
