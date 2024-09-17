@@ -123,10 +123,12 @@ class player(physicsBeing):
         # but uses the values specific to the player
         super().update(tilemap, movement=movement)
 
-        
+        # checks if the player is on the ground
         if self.collision['down']:
             self.airTime = 0
 
+        # if the player is moving/jumping then 
+        # toggle jumping animation
         if self.velocity[1] < 0:
             self.setAction('jump')
             self.airTime += 1
