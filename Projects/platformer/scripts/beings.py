@@ -68,9 +68,17 @@ class physicsBeing:
                 # only works with int
                 self.pos[0] = beingRect.x
 
+        # if the entity is moving right don't flip the sprit
+        if movement[0] > 0:
+            self.flip = False
+        # if the entity is moving left flip the sprit
+        if movement[0] < 0:
+            self.flip = True
+
         #movement for y
         self.pos[1] += framerMovement[1]
         beingRect = self.rect()
+
         for rect in tilemap.physicsRectAround(self.pos):
             if beingRect.colliderect(rect):
                 if framerMovement[1] > 0:
@@ -87,6 +95,8 @@ class physicsBeing:
         # rests the velocity of falling when touch ground or platform
         if self.collision['down'] or self.collision['up']:
             self.velocity[1] = 0
+
+        self.animation.update()
     
     def render(self, surf, offset=(0,0)):
         # pygame.transform.flip([thing want to flip], flip on x, flip on y)
