@@ -126,7 +126,8 @@ class player(physicsBeing):
         # counts how long player has been in the 
         # air to see if the player needs to be in
         # jump animation
-        self.airTime += 1
+        if movement[1] != 0:
+            self.airTime += 1
 
         if self.collision['down']:
             self.airTime = 0
@@ -135,7 +136,7 @@ class player(physicsBeing):
         # for the player
         # jump animation has higher priorty than run
         # since don't want to be running in the air
-        if self.airTime == 4:
+        if self.airTime == 2:
             self.setAction('jump')
         
         # if the player is not standing still
