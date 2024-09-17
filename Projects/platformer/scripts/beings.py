@@ -100,7 +100,7 @@ class physicsBeing:
     
     def render(self, surf, offset=(0,0)):
         # pygame.transform.flip([thing want to flip], flip on x, flip on y)
-        surf.blit(pygame.transform.flip(self.animation.img, self.flip, False), self.pos[0] - offset[0] + self.animOffset[0], self.pos[1] - offset[1] + self.animOffset[1])
+        surf.blit(pygame.transform.flip(self.animation.img(), self.flip, False), (self.pos[0] - offset[0] + self.animOffset[0], self.pos[1] - offset[1] + self.animOffset[1]))
         
         # original render 
         # pygame.transform.flip(self.animation.img, self.flip, False)
@@ -116,6 +116,7 @@ class player(physicsBeing):
     def __init__(self, game, pos, size):
         # does init for physicsBeing class
         super().__init__(game, 'player', pos, size)
+        self.airTime = 0
 
     def update(self, tilemap, movement=(0,0)):
         # uses movement method from physicsBeing 
@@ -127,7 +128,7 @@ class player(physicsBeing):
         # jump animation
         self.airTime += 1
 
-        if self.colision['down']:
+        if self.collision['down']:
             self.airTime = 0
         # if the player is in the air for 
         # 4 frames then go into the jump animatino
@@ -139,7 +140,7 @@ class player(physicsBeing):
         
         # if the player is not standing still
         # horizontally, then toggle running animation
-        elif self.movement[0] != 0:
+        elif movement[0] != 0:
             self.setAction('run')
         
         # if not jumping or running then make player 

@@ -35,7 +35,7 @@ class animation():
     # will conserve memory since self.images is passed by reference
     # so there are not many copies of self.image list/array
     def copy(self):
-        return animation(self.images, self.imageDur,self.loop)
+        return animation(self.images, self.imgDur,self.loop)
     
     def update(self):
         if self.loop:
