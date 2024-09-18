@@ -50,6 +50,15 @@ class editor:
         while True:
             self.display.fill((0,0,0))
 
+            # self.tileList is an array that stores all of 
+            # the keys inside of self.assets. 
+            # self.tileGroup stores the indexes of each key
+            # so the value self.tileGroup = 1 would be
+            # 'grass'
+            # so by doing self.assets[self.tileList[self.tileGroup]]
+            # you are picking which tile type you want from the dictionary
+            # assets then you add [self.tileVar] to specify which variant 
+            # of the tile you want like a different grass tile
             currentTileImg = self.assets[self.tileList[self.tileGroup]][self.tileVar].copy()
 
             # this makes the currently selected tile transparent
