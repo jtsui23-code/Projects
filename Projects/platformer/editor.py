@@ -43,10 +43,22 @@ class editor:
         # creates a selection of tiles to choose from for 
         # lvl editor
         self.tileList = list(self.assets)
+        self.tileGroup = 0
+        self.tileVar = 0
 
     def run(self):
         while True:
             self.display.fill((0,0,0))
+
+            currentTileImg = self.assets[self.tileList[self.tileGroup]][self.tileVar].copy()
+
+            # this makes the currently selected tile transparent
+            # 0 is completely transparent
+            # 255 is zero transparency
+            currentTileImg.set_alpha(100)
+
+            # .blit([what you want to render], [where you want to render])
+            self.display.blit(currentTileImg, (5,5))
 
             # pygame.event.get() gets the user's input
             for event in pygame.event.get():
