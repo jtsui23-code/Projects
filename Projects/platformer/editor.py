@@ -40,6 +40,10 @@ class editor:
 
         self.scroll = [0,0]
 
+        # creates a selection of tiles to choose from for 
+        # lvl editor
+        self.tileList = list(self.assets)
+
     def run(self):
         while True:
             self.display.fill((0,0,0))
