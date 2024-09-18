@@ -116,22 +116,22 @@ class player(physicsBeing):
     def __init__(self, game, pos, size):
         # does init for physicsBeing class
         super().__init__(game, 'player', pos, size)
-        self.airTime = 0
+        # self.airTime = 0
 
     def update(self, tilemap, movement=(0,0)):
         # uses movement method from physicsBeing 
         # but uses the values specific to the player
         super().update(tilemap, movement=movement)
 
-        # checks if the player is on the ground
-        if self.collision['down']:
-            self.airTime = 0
+        # # checks if the player is on the ground
+        # if self.collision['down']:
+        #     self.airTime = 0
 
         # if the player is moving/jumping then 
         # toggle jumping animation
         if self.velocity[1] < 0:
             self.setAction('jump')
-            self.airTime += 1
+            # self.airTime += 1
 
         
         
