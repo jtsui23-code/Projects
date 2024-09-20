@@ -90,6 +90,8 @@ class editor:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
                         self.leftClick = True
+                    if event.button == 5:
+                        pass
                     if event.button == 3:
                         self.rightClick = True
                     if event.button == 4:
