@@ -45,6 +45,8 @@ class editor:
         self.tileList = list(self.assets)
         self.tileGroup = 0
         self.tileVar = 0
+        self.leftClick = False
+        self.rightClick = False
 
     def run(self):
         while True:
@@ -69,6 +71,7 @@ class editor:
             # .blit([what you want to render], [where you want to render])
             self.display.blit(currentTileImg, (5,5))
 
+
             # pygame.event.get() gets the user's input
             for event in pygame.event.get():
                 #checks if the user pressed x button on top right
@@ -79,10 +82,19 @@ class editor:
                     sys.exit()
 
                 # button 1 is left click on mouse
+                # button 2 is mouse wheel
+                # button 3 is right click
+                # button 4 is scroll up 
+                # button 5 is scroll down
                 # checks if keys are being pressed
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
-                        click = True
+                        self.leftClick = True
+                    if event.button == 3:
+                        self.rightClick = True
+                    if event.button == 4:
+                        self.tileGroup = (self.tileGroup -1) % len(self.tileList)
+                    
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_w:
                         self.movement[2] = True
