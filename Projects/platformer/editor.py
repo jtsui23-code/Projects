@@ -78,7 +78,11 @@ class editor:
                     #closes out of systems
                     sys.exit()
 
+                # button 1 is left click on mouse
                 # checks if keys are being pressed
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if event.button == 1:
+                        click = True
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_w:
                         self.movement[2] = True
