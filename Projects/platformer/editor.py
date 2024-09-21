@@ -90,9 +90,14 @@ class editor:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
                         self.leftClick = True
+                    # button 5 is scroll down
+                    # self.tileGroup + 1 goes down the list of tiles
                     if event.button == 5:
                         self.tileGroup = (self.tileGroup +1) % len(self.tileList)
                     if event.button == 3:
+                    
+                    # button 4 is scroll up
+                    # self.tileGroup -1 goes up the list of tiles
                         self.rightClick = True
                     if event.button == 4:
                         self.tileGroup = (self.tileGroup -1) % len(self.tileList)
