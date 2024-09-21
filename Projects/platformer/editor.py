@@ -45,8 +45,11 @@ class editor:
         self.tileList = list(self.assets)
         self.tileGroup = 0
         self.tileVar = 0
+
         self.leftClick = False
         self.rightClick = False
+
+        self.shift = False
 
     def run(self):
         while True:
@@ -119,6 +122,9 @@ class editor:
                         self.movement[3] = True
                     if event.key == pygame.K.s:
                         self.movement[3] = True
+                    
+                    if event.key == pygame.K_LSHIFT:
+                        self.shift = True
                 
                 # if you let go of the key
                 if event.type == pygame.KEYUP:
@@ -138,6 +144,9 @@ class editor:
                         self.movement[3] = False
                     if event.key == pygame.K_DOWN:
                         self.movement[3] = False
+                    
+                    if event.key == pygame.K_LSHIFT:
+                        self.shift = False
 
             # rendering the display(small sreen) at 0,0
             # rescales the screen so like zooms in so player is not tiny
