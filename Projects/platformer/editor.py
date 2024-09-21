@@ -102,6 +102,15 @@ class editor:
                         # button 5 is scroll down
                         # self.tileGroup + 1 goes down the list of tiles
                         if event.button == 5:
+                            # self.assets[self.tileList[self.tileGroup]]
+                            # gives you the specific tile variant 
+                            # self.tileList holds all of the keys for each of the tile
+                            # variant while self.tileGroup holds the index of the variant
+                            # so by doing self.assets[self.tileList[self.tileGroup]]
+                            # you are choosing a specific tile variant
+                            # and doing the len() of that gives the size of the dictionary
+                            # containing the tile variants allowing you to 
+                            # loop through all of the tile variants using modulo
                             self.tileVar = (self.tileGroup +1) % len(self.assets[self.tileList[self.tileGroup]])
                         if event.button == 4:
                             self.tileVar = (self.tileGroup -1) % len(self.assets[self.tileList[self.tileGroup]])
