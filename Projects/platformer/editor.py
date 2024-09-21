@@ -102,9 +102,9 @@ class editor:
                         # button 5 is scroll down
                         # self.tileGroup + 1 goes down the list of tiles
                         if event.button == 5:
-                            self.tileVar = (self.tileGroup +1) % len(self.tileList)
+                            self.tileVar = (self.tileGroup +1) % len(self.assets[self.tileList[self.tileGroup]])
                         if event.button == 4:
-                            self.tileVar = (self.tileGroup -1) % len(self.tileList)
+                            self.tileVar = (self.tileGroup -1) % len(self.assets[self.tileList[self.tileGroup]])
                     else:
                         if event.button == 5:
                             self.tileGroup = (self.tileGroup + 1) % len(self.tileList)
