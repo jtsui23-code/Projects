@@ -117,8 +117,11 @@ class editor:
                     else:
                         if event.button == 5:
                             self.tileGroup = (self.tileGroup + 1) % len(self.tileList)
+                            # ensures looking at the defualt variant of tile
+                            self.tileVar = 0
                         if event.button == 4:
                             self.tileGroup = (self.tileGroup - 1) % len(self.tileList)
+                            self.tileVar = 0
                         
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_w:
