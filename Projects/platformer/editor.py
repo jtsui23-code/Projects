@@ -126,7 +126,7 @@ class editor:
                         self.movement[1] = True
                     if event.key == pygame.K_DOWN:
                         self.movement[3] = True
-                    if event.key == pygame.K.s:
+                    if event.key == pygame.K_s:
                         self.movement[3] = True
                     
                     if event.key == pygame.K_LSHIFT:
