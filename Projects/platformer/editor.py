@@ -122,6 +122,12 @@ class editor:
                         if event.button == 4:
                             self.tileGroup = (self.tileGroup - 1) % len(self.tileList)
                             self.tileVar = 0
+                if event.type == pygame.MOUSEBUTTONUP:
+                    if event.type == 1:
+                        self.leftClick = False
+                    if event.type == 3: 
+                        self.rightClick = False
+                    
                         
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_w:
