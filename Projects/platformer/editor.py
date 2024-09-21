@@ -91,7 +91,7 @@ class editor:
                     if event.button == 1:
                         self.leftClick = True
                     if event.button == 5:
-                        self.tileGroup = (self.tileGroup -1) % len(self.tileList)
+                        self.tileGroup = (self.tileGroup +1) % len(self.tileList)
                     if event.button == 3:
                         self.rightClick = True
                     if event.button == 4:
