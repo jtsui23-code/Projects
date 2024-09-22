@@ -86,6 +86,8 @@ class editor:
             # .blit([what you want to render], [where you want to render])
             self.display.blit(currentTileImg, (5,5))
 
+            tilePos = (int((mousePos[0] + self.scroll[0]) // self.tilemap.tileSize), int((mousePos[1] + self.scroll[1]) // self.tilemap.tileSize))
+
 
             # pygame.event.get() gets the user's input
             for event in pygame.event.get():
