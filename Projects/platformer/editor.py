@@ -95,6 +95,8 @@ class editor:
             # the tile unit 
             tilePos = (int((mousePos[0] + self.scroll[0]) // self.tilemap.tileSize), int((mousePos[1] + self.scroll[1]) // self.tilemap.tileSize))
 
+            if self.leftClick:
+                self.tilemap.tilemap[str(tilePos[0]) + ';' + str(tilePos[1])] = {'type': self.tileList[self.tileGroup], 'variant': self.tileVar, 'pos':tilePos}
 
             # pygame.event.get() gets the user's input
             for event in pygame.event.get():
