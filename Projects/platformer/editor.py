@@ -96,6 +96,12 @@ class editor:
             tilePos = (int((mousePos[0] + self.scroll[0]) // self.tilemap.tileSize), int((mousePos[1] + self.scroll[1]) // self.tilemap.tileSize))
 
             if self.leftClick:
+
+                # self.tilemap.tilemap[] is the index of the array/list
+                # that of the tilemaps
+                # then the stuff behind the equal sign are the elements in 
+                # the specific index of the array
+                # this allows to place down tiles on the screen
                 self.tilemap.tilemap[str(tilePos[0]) + ';' + str(tilePos[1])] = {'type': self.tileList[self.tileGroup], 'variant': self.tileVar, 'pos':tilePos}
 
             # pygame.event.get() gets the user's input
