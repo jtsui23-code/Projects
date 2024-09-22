@@ -55,6 +55,10 @@ class editor:
         while True:
             self.display.fill((0,0,0))
 
+            renderScroll = (int(self.scroll[0]), int(self.scroll[1]))
+
+            self.tilemap.render(self.display, offset=renderScroll)
+
             # self.tileList is an array that stores all of 
             # the keys inside of self.assets. 
             # self.tileGroup stores the indexes of each key
