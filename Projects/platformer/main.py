@@ -20,7 +20,7 @@ class game:
         self.clock = pygame.time.Clock()
 
         # makes a small display ontop of the screen 
-        self.display = pygame.Surface((3200, 120))
+        self.display = pygame.Surface((320, 120))
 
         # up is bound to [0] down is bound to [1] 
         self.movement = [False, False]
