@@ -80,12 +80,19 @@ class editor:
             mousePos = pygame.mouse.get_pos()
 
             # current position/pixel is scaled up so would
-            # give wrong cordinates so have to convert back
+            # give wrong cordinates so have to convert back normal pixels
             mousePos = (mousePos[0] / renderScroll, mousePos[1] / renderScroll)
 
             # .blit([what you want to render], [where you want to render])
             self.display.blit(currentTileImg, (5,5))
 
+            # mousePos[] is added with self.scroll[] because 
+            # depending on the scroll will change tile/asset 
+            # so the mouse position will be offseted a little bit
+            # then the sum of the mouse position and scroll
+            # is divided by self.tilemap.tileSize to convert
+            # the readjusted pixels cordinates to 
+            # the tile unit 
             tilePos = (int((mousePos[0] + self.scroll[0]) // self.tilemap.tileSize), int((mousePos[1] + self.scroll[1]) // self.tilemap.tileSize))
 
 
