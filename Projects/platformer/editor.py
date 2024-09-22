@@ -75,6 +75,10 @@ class editor:
             # 255 is zero transparency
             currentTileImg.set_alpha(100)
 
+            # stores position of mouse 
+            # using pygame cordinates
+            mousePos = pygame.mouse.get_pos()
+
             # .blit([what you want to render], [where you want to render])
             self.display.blit(currentTileImg, (5,5))
 
