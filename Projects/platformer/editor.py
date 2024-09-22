@@ -113,6 +113,12 @@ class editor:
                     #closes out of systems
                     sys.exit()
 
+                if event.type == pygame.MOUSEBUTTONUP:
+                    if event.type == 1:
+                        self.leftClick = False
+                    if event.type == 3: 
+                        self.rightClick = False
+
                 # button 1 is left click on mouse
                 # button 2 is mouse wheel
                 # button 3 is right click
@@ -151,11 +157,7 @@ class editor:
                         if event.button == 4:
                             self.tileGroup = (self.tileGroup - 1) % len(self.tileList)
                             self.tileVar = 0
-                if event.type == pygame.MOUSEBUTTONUP:
-                    if event.type == 1:
-                        self.leftClick = False
-                    if event.type == 3: 
-                        self.rightClick = False
+                
                     
                         
                 if event.type == pygame.KEYDOWN:
