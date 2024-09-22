@@ -79,6 +79,10 @@ class editor:
             # using pygame cordinates
             mousePos = pygame.mouse.get_pos()
 
+            # current position/pixel is scaled up so would
+            # give wrong cordinates so have to convert back
+            mousePos = (mousePos[0] / renderScroll, mousePos[1] / renderScroll)
+
             # .blit([what you want to render], [where you want to render])
             self.display.blit(currentTileImg, (5,5))
 
