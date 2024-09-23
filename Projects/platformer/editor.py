@@ -84,8 +84,7 @@ class editor:
             mousePos = (mousePos[0] / RENDERSCALE, 
                         mousePos[1] / RENDERSCALE)
 
-            # .blit([what you want to render], [where you want to render])
-            self.display.blit(currentTileImg, (5,5))
+            
 
             # mousePos[] is added with self.scroll[] because 
             # depending on the scroll will change tile/asset 
@@ -106,6 +105,12 @@ class editor:
                 # this allows to place down tiles on the screen
                 self.tilemap.tilemap[str(tilePos[0]) + ';' + str(tilePos[1])] = {'type': self.tileList[self.tileGroup], 'variant': self.tileVar, 'pos':tilePos}
 
+
+
+            # .blit([what you want to render], [where you want to render])
+            self.display.blit(currentTileImg, (5,5))
+
+            
             # pygame.event.get() gets the user's input
             for event in pygame.event.get():
                 #checks if the user pressed x button on top right
