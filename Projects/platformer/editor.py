@@ -102,6 +102,7 @@ class editor:
                 # the specific index of the array
                 # this allows to place down tiles on the screen
                 self.tilemap.tilemap[str(tilePos[0]) + ';' + str(tilePos[1])] = {'type': self.tileList[self.tileGroup], 'variant': self.tileVar, 'pos':tilePos}
+                pygame.draw.rect(self.display, (255,0,0), (tilePos[0] * self.tileSize - self.scroll[0], tilePos[1] * self.tileSize - self.scroll[1], self.tileSize, self.tileSize),1)
 
 
 
