@@ -114,9 +114,9 @@ class editor:
                     sys.exit()
 
                 if event.type == pygame.MOUSEBUTTONUP:
-                    if event.type == 1:
+                    if event.button == 1:
                         self.leftClick = False
-                    if event.type == 3: 
+                    if event.button == 3: 
                         self.rightClick = False
 
                 # button 1 is left click on mouse
