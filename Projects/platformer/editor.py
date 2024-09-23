@@ -105,7 +105,7 @@ class editor:
                 
                 # pygame.draw.rect([where to draw], [color of rect], [ position and size of rect], draw outline of rect)
                 # 1 for draw outline of rect and 0 for no outline
-                pygame.draw.rect(self.display, (255,0,0), (tilePos[0] * self.tilemap.tileSize - self.scroll[0], tilePos[1] * self.tilemap.tileSize - self.scroll[1], self.tileSize, self.tileSize),1)
+                pygame.draw.rect(self.display, (255,0,0), (tilePos[0] * self.tilemap.tileSize - self.scroll[0], tilePos[1] * self.tilemap.tileSize - self.scroll[1], self.tilemap.tileSize, self.tilemap.tileSize),1)
 
 
 
