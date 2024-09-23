@@ -81,8 +81,8 @@ class editor:
 
             # current position/pixel is scaled up so would
             # give wrong cordinates so have to convert back normal pixels
-            mousePos = (mousePos[0] / (self.screen.get_height() * self.screen.get_width()), 
-                        mousePos[1] / (self.screen.get_height() * self.screen.get_width()))
+            mousePos = (mousePos[0] / RENDERSCALE, 
+                        mousePos[1] / RENDERSCALE)
 
             # .blit([what you want to render], [where you want to render])
             self.display.blit(currentTileImg, (5,5))
