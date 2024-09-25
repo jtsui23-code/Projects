@@ -1,4 +1,5 @@
 from PIL import Image
+import os
 
 def resolution(path, newPath, newW, newH):
     image = Image.open(path)
@@ -9,4 +10,13 @@ def resolution(path, newPath, newW, newH):
 
 
 if __name__ == "__main__":
-    imgPath = "C:\Users\Natck\Downloads\reiFla.jpeg"
+
+    fileName = str(input("What is the name of the picture include file type extension:"))
+
+    # Gives home path of user i.e C:Users\Natck\
+    homePath = os.path.expanduser("~")
+
+    imgPath = os.path.join(homePath, "Downloads", fileName)
+
+    newPath = os.path.join(homePath, "OneDrive", "Pictures", "Saved Pictures")
+
