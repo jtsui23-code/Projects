@@ -22,7 +22,7 @@ if __name__ == "__main__":
     imgPath = os.path.join(homePath, "Downloads", fileName)
 
     resizedImg = f"resized{fileName}"
-    newPath = os.path.join(homePath, "OneDrive", "Pictures", resizedImg)
+    newPath = os.path.join(homePath, "OneDrive", "Pictures", "Saved Pictures", resizedImg)
 
     resolution(imgPath, newPath, width, height)
 
