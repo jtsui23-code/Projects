@@ -4,6 +4,8 @@ import os
 def resolution(path, newPath, newW, newH):
     image = Image.open(path)
 
+    image = image.transpose(Image.FLIP_LEFT_RIGHT)
+
     newImg = image.resize((newW, newH))
 
     newImg.save(newPath)
