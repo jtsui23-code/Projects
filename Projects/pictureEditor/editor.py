@@ -23,5 +23,5 @@ if __name__ == "__main__":
 
     newPath = os.path.join(homePath, "OneDrive", "Pictures", "Saved Pictures")
 
-    resolution()
+    resolution(imgPath, newPath, width, height)
 
