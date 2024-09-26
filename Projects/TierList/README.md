@@ -11,7 +11,7 @@ This program uses web scrapping to extract the ranking of characters in a gaming
 
 ### Instructions:
 
-- Compile the program
+- Run the program
 - Pick a game listed on the prompt
 - Enter the name of the character
 
