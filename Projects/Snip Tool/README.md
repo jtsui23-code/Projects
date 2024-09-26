@@ -11,8 +11,8 @@ This program allows the user to capture and manipulate screen snippets. Then the
 
 ### Instructions:
 
-- Compile the program
+- Run the program
 - Click on the snip button on the GUI
 - Left Click on the mouse then drag the cursor around the desired area
-- Release left click on mouse to finish snipping and for snippets to be saved
+- Release left click on the mouse to finish snipping and for snippets to be saved
 
