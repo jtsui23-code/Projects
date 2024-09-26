@@ -1,4 +1,4 @@
-## P01 - Tier List Web Scrapper
+## Tier List Web Scrapper
 
 ### Description:
 This program uses web scrapping to extract the ranking of characters in a gaming tier list website. The user is prompted to pick a game and a character. Then the rank of the corresponding character is printed.
