@@ -1,18 +1,17 @@
-## Snip tool
+## Picture Editor
 
 ### Description:
-This program allows the user to capture and manipulate screen snippets. Then the snippets are saved in the computer for further editing.
+This program allows the user to change the resolution of an image. The user is prompted to name the image file inside of the download folder. Then the user is prompted to enter the new desired resolution of the image.
 
 ### Files:
 |   #   | File            | Description                                        |
 | :---: | --------------- | -------------------------------------------------- |
-|   1   | [main.py](https://github.com/jtsui23-code/Projects/blob/main/Projects/Snip%20Tool/main.py)        | This is the main script for the snip tool.      |
+|   1   | [editor.py](https://github.com/jtsui23-code/Projects/blob/main/Projects/pictureEditor/editor.py)        | This is the main script for the Picture Editor.      |
 
 
 ### Instructions:
 
 - Run the program
-- Click on the snip button on the GUI
-- Left Click on the mouse then drag the cursor around the desired area
-- Release left click on the mouse to finish snipping and for snippets to be saved
+- Enter the name of the image with the file extension in the download folder.
+- Enter the desired new width and height of the selected image.
 
