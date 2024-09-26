@@ -1,4 +1,4 @@
-## P01 - OCR (Optical Character Recognition)
+## OCR (Optical Character Recognition)
 
 ### Description:
 This program extracts text from an image. The image is selected using the program's OCR GUI and cropping a portion on the user's screen. The program supports extracting English and Japanese text.
