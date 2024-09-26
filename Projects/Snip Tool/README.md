@@ -1,4 +1,4 @@
-## P01 - Snip tool
+## Snip tool
 
 ### Description:
 This program allows the user to capture and manipulate screen snippets. Then the snippets are saved in the computer for further editing.
