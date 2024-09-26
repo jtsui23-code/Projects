@@ -12,7 +12,7 @@ This program displays a simple GUI for the user to load a song. The song can be 
 
 ### Instructions:
 
-- Compile the program
+- Run the program
 - Click on the Load button to load a .mp3 song file
 - Then click on the Play button to start playing the song
 - The Pause button will pause the song
