@@ -11,7 +11,7 @@ This program extracts text from an image. The image is selected using the progra
 
 ### Instructions:
 
-- Compile the program
+- Run the program
 - Crop a portion of the screen by clicking the OCR button on the GUI
 - The cropped screen will then have all of the text on it extract and pasted into the user's clipboard
   
