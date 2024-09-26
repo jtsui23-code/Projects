@@ -1,4 +1,4 @@
-## P01 - Music Player
+## Music Player
 
 ### Description:
 This program displays a simple GUI for the user to load a song. The song can be played, paused, and ended using the GUI.
