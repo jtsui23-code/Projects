@@ -6,7 +6,7 @@ This program allows the user to capture and manipulate screen snippets. Then the
 ### Files:
 |   #   | File            | Description                                        |
 | :---: | --------------- | -------------------------------------------------- |
-|   1   | [main.cpp](https://github.com/jtsui23-code/Projects/blob/main/Projects/Snip%20Tool/main.py)        | This is the main script for the snip tool.      |
+|   1   | [main.py](https://github.com/jtsui23-code/Projects/blob/main/Projects/Snip%20Tool/main.py)        | This is the main script for the snip tool.      |
 
 
 ### Instructions:
