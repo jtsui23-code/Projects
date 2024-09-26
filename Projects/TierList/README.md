@@ -6,7 +6,7 @@ This program uses web scrapping to extract the ranking of characters in a gaming
 ### Files:
 |   #   | File            | Description                                        |
 | :---: | --------------- | -------------------------------------------------- |
-|   1   | [main.cpp](https://github.com/jtsui23-code/Projects/blob/main/Projects/TierList/main.py)        | This is the main script for the Tier List Web Scrapper.      |
+|   1   | [main.py](https://github.com/jtsui23-code/Projects/blob/main/Projects/TierList/main.py)        | This is the main script for the Tier List Web Scrapper.      |
 
 
 ### Instructions:
