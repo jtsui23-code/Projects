@@ -83,6 +83,7 @@ class editor:
             # give wrong cordinates so have to convert back normal pixels
             mousePos = ((mousePos[0] / RENDERSCALE) + self.scroll[0], 
                         (mousePos[1] / RENDERSCALE) + self.scroll[1])
+            
 
             # mousePos[] is added with self.scroll[] because 
             # depending on the scroll will change tile/asset 
@@ -101,7 +102,8 @@ class editor:
                 # then the stuff behind the equal sign are the elements in 
                 # the specific index of the array
                 # this allows to place down tiles on the screen
-                self.tilemap.tilemap[str(tilePos[0]) + ';' + str(tilePos[1])] = {'type': self.tileList[self.tileGroup], 'variant': self.tileVar, 'pos':tilePos}
+                tileKey = f"{tilePos[0]};{tilePos[1]}"
+                self.tilemap.tilemap[tileKey] = {'type': self.tileList[self.tileGroup], 'variant': self.tileVar, 'pos':tilePos}
                 
                 # pygame.draw.rect([where to draw], [color of rect], [ position and size of rect], draw outline of rect)
                 # 1 for draw outline of rect and 0 for no outline
