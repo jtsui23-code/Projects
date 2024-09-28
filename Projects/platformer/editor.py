@@ -91,8 +91,8 @@ class editor:
             # is divided by self.tilemap.tileSize to convert
             # the readjusted pixels cordinates to 
             # the tile unit 
-            tilePos = (int((mousePos[0] + self.scroll[0]) // self.tilemap.tileSize), 
-                       int((mousePos[1] + self.scroll[1]) // self.tilemap.tileSize))
+            tilePos = (int((mousePos[0] + self.scroll[0]/ RENDERSCALE) // self.tilemap.tileSize), 
+                       int((mousePos[1] + self.scroll[1] / RENDERSCALE) // self.tilemap.tileSize))
 
             if self.leftClick:
 
