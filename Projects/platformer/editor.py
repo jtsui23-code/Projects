@@ -81,8 +81,8 @@ class editor:
 
             # current position/pixel is scaled up so would
             # give wrong cordinates so have to convert back normal pixels
-            mousePos = (mousePos[0] / RENDERSCALE, 
-                        mousePos[1] / RENDERSCALE)
+            mousePos = ((mousePos[0] / RENDERSCALE) + self.scroll[0], 
+                        (mousePos[1] / RENDERSCALE) + self.scroll[1])
 
             # mousePos[] is added with self.scroll[] because 
             # depending on the scroll will change tile/asset 
@@ -91,8 +91,8 @@ class editor:
             # is divided by self.tilemap.tileSize to convert
             # the readjusted pixels cordinates to 
             # the tile unit 
-            tilePos = (int((mousePos[0] + self.scroll[0]) // self.tilemap.tileSize), 
-                       int((mousePos[1] + self.scroll[1]) // self.tilemap.tileSize))
+            tilePos = (int((mousePos[0]) // self.tilemap.tileSize), 
+                       int((mousePos[1]) // self.tilemap.tileSize))
 
             if self.leftClick:
 
