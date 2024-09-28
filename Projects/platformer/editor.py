@@ -81,8 +81,8 @@ class editor:
 
             # current position/pixel is scaled up so would
             # give wrong cordinates so have to convert back normal pixels
-            mousePos = (mousePos[0] // RENDERSCALE, 
-                        mousePos[1] // RENDERSCALE)
+            mousePos = (mousePos[0] / RENDERSCALE, 
+                        mousePos[1] / RENDERSCALE)
 
             # mousePos[] is added with self.scroll[] because 
             # depending on the scroll will change tile/asset 
