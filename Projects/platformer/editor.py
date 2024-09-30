@@ -20,7 +20,7 @@ class editor:
         self.clock = pygame.time.Clock()
 
         # makes a small display ontop of the screen 
-        self.display = pygame.Surface((3200, 200))
+        self.display = pygame.Surface((320, 200))
 
         # up is bound to [0] down is bound to [1] 
 
