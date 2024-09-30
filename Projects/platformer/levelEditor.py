@@ -1,18 +1,18 @@
 import sys
 import pygame
-from scripts.beings import physicsBeing, player
-from scripts.util import loadImage, loadImages, animation
+from scripts.util import loadImages
 from scripts.tilemap import tilemap
-from scripts.clouds import cloudz
 
-class game:
+RENDERSCALE = 2.0
+
+class editor:
 
     def __init__(self):
         
         # initiates pygame
         pygame.init()
 
-        pygame.display.set_caption("祝福")
+        pygame.display.set_caption("Editor")
         # create screen object
         self.screen = pygame.display.set_mode((640,480))
 
@@ -32,15 +32,7 @@ class game:
             'grass' : loadImages('tiles/grass'),
             'large_decor' : loadImages('tiles/large_decor'),
             'stone' : loadImages('tiles/stone'),
-            # uses function from util script
-            'player': loadImage('entities/player.png'),
-            'background': loadImage('background.png'),
-            'clouds': loadImages('clouds/'),
-            'player/idle': animation(loadImages('entities/player/idle'), imgDur=6),
-            'player/run': animation(loadImages('entities/player/run'),imgDur=4),
-            'player/jump': animation(loadImages('entities/player/jump')),
-            'player/slide': animation(loadImages('entities/player/slide')),
-            'player/wallSlide':animation(loadImages("entities/player/wall_slide"))
+           
         }
 
         self.clouds = cloudz(self.assets['clouds'], count=16)
@@ -134,4 +126,4 @@ class game:
 
 
 # creates game object and uses run method
-game().run()
+editor().run()
