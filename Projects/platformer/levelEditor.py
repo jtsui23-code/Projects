@@ -55,6 +55,15 @@ class editor:
         while True:
             self.display.fill((0,0,0))
 
+            # the self.tileList has all of the keys to self.assets map
+            # so doing self.tileList[self.tileGroup] specifies which 
+            # tile is being selected in self.assets 
+            # then the additional [self.tileVar] dictates which 
+            # version/variant of the tile is being selected
+            # the reason for the .copy() is efficiency when rendering
+            # no reason to not have the .copy() at the end
+            currentTileImg = self.assets[self.tileList[self.tileGroup]][self.tileVar].copy()
+
             
             # pygame.event.get() gets the user's input
             for event in pygame.event.get():
