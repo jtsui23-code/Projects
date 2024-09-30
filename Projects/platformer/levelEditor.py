@@ -22,8 +22,6 @@ class editor:
         # makes a small display ontop of the screen 
         self.display = pygame.Surface((320, 200))
 
-        # up is bound to [0] down is bound to [1] 
-        self.movement = [False, False]
 
         # dictionary for assets
         self.assets = {
@@ -35,9 +33,8 @@ class editor:
            
         }
 
-        self.clouds = cloudz(self.assets['clouds'], count=16)
-        
-        self.player = player(self, (100,20), (8, 15))
+        # up is bound to [0] down is bound to [1] 
+        self.movement = [False, False, False, False]
 
         self.tilemap = tilemap(self, tilesize=16)
 
@@ -45,40 +42,9 @@ class editor:
 
     def run(self):
         while True:
-            self.display.blit(self.assets['background'], (0,0))
+            self.display.fill((0,0,0))
 
-            # if you set scroll to just the player's center
-            # then the player will be set to the top left 
-            # since the scroll is initially at the top left corner
-            # if you only subtract with the width/heigh of display 
-            # then the player will be stuck on the right instead
-            # (self.player.rect().centerx - self.display.get_width()/2) is 
-            # essentially the location where we want the camera to be and 
-            # the - self.scroll[0] in
-            # (self.player.rect().centerx - self.display.get_width()/2 - self.scroll[0])
-            # is where the camera is currently located so by adding the distance of 
-            # where how far away we want the camera is to where we want it to be
-            # we get a moving camera that is centered at the player's position
-            # the /30 at the end makes the camera move faster as the player is farther 
-            # away because the larger the distance between player and camera
-            # the greater the quiotient making the camera movement faster
-            self.scroll[0] += (self.player.rect().centerx - self.display.get_width() /2 - self.scroll[0])/30
-            self.scroll[1] += (self.player.rect().centery - self.display.get_height() /2 - self.scroll[1])/30
-
-            # since the scroll and player position are floats
-            # the camera centering is inconsistant because of rounding
-            # therefore need to turn camera positioning into int
-            renderScroll = (int(self.scroll[0]), int(self.scroll[1]))
-
-            self.clouds.update()
-            self.clouds.render(self.display, renderScroll)
-
-            self.tilemap.render(self.display,offset=renderScroll)
-            # this updates the player's movement on the x axis
-            self.player.update(self.tilemap,(self.movement[1] - self.movement[0],0))
-
-            # updates the screen
-            self.player.render(self.display, offset=renderScroll)
+            
             # pygame.event.get() gets the user's input
             for event in pygame.event.get():
                 #checks if the user pressed x button on top right
@@ -90,10 +56,14 @@ class editor:
 
                 # checks if keys are being pressed
                 if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_s:
+                        self.movement[3] = True
                     if event.key == pygame.K_w:
-                        self.player.velocity[1] = -3
+                        self.movement[2] = True
                     if event.key == pygame.K_UP:
-                        self.player.velocity[1] = -3
+                        self.movement[2] = True
+                    if event.key == pygame.K_DOWN:
+                        self.movement[3] = True
                     if event.key == pygame.K_a:
                         self.movement[0] = True
                     if event.key == pygame.K_d:
@@ -105,6 +75,10 @@ class editor:
                 
                 # if you let go of the key
                 if event.type == pygame.KEYUP:
+                    if event.key == pygame.K_w:
+                        self.movement[2] = False
+                    if event.key == pygame.K_s:
+                        self.movement[3] = False
                     if event.key == pygame.K_a:
                         self.movement[0] = False
                     if event.key == pygame.K_d:
@@ -113,6 +87,10 @@ class editor:
                         self.movement[0] = False
                     if event.key == pygame.K_RIGHT:
                         self.movement[1] = False
+                    if event.key == pygame.K_UP:
+                        self.movement[2] = False
+                    if event.key == pygame.K_DOWN:
+                        self.movement[3] = False
 
             # rendering the display(small sreen) at 0,0
             # rescales the screen so like zooms in so player is not tiny
