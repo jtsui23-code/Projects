@@ -38,6 +38,10 @@ class editor:
 
         self.tilemap = tilemap(self, tilesize=16)
 
+        # this creates a list of the keys inside the 
+        # assets map to each tile/asset
+        self.tileList = list(self.assets)
+
         self.scroll = [0,0]
 
     def run(self):
