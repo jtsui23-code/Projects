@@ -64,7 +64,13 @@ class editor:
             # no reason to not have the .copy() at the end
             currentTileImg = self.assets[self.tileList[self.tileGroup]][self.tileVar].copy()
 
-            
+            # alpha is transparacy of image that is being drag and 
+            # selected on the editor screen
+            # the number passed inside of .set_alpha dictates how
+            # transparent the image will be 
+            # 0 is fully transparent 255 is NOT transparent at all
+            currentTileImg.set_alpha(100)
+
             # pygame.event.get() gets the user's input
             for event in pygame.event.get():
                 #checks if the user pressed x button on top right
