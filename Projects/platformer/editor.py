@@ -1,3 +1,10 @@
+
+try:
+    from ctypes import windll
+    windll.shcore.setProcessDPIAwareness(1)
+except:
+    pass
+    
 import sys
 import pygame
 from scripts.util import loadImages
