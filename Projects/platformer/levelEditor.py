@@ -42,6 +42,13 @@ class editor:
         # assets map to each tile/asset
         self.tileList = list(self.assets)
 
+        # self.tileGroup will serve as a variable 
+        # of the index for self.tileList
+        # so if self.tileGroup is 1 then the tile that 
+        # is being selected is 'grass'
+        self.tileGroup = 0
+        self.tileVar = 0
+
         self.scroll = [0,0]
 
     def run(self):
