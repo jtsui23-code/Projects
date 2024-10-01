@@ -52,6 +52,7 @@ class editor:
         self.scroll = [0,0]
 
         self.leftClick = False
+        self.rightClick = False
 
     def run(self):
         while True:
@@ -85,10 +86,23 @@ class editor:
                     sys.exit()
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     # button 1 is left click on mouse
-                    # button 2 is scroll wheel
+                    # button 2 is pressing scroll wheel
                     # button 3 is right click
+                    # button 4 is scroll up 
+                    # button 5 is scroll down
                     if event.button == 1:
                         self.leftClick = True
+                    if event.button == 3:
+                        self.rightClick = True
+                    if event.button == 4:
+                        # self.tileGroup - 1 goes to backwards in the list
+                        # since Python allows for -1 to represent back of list
+                        # % len(self.tileList) makes sure that this operation 
+                        # loops within the index of the self.tileList
+                        self.tileGroup = (self.tileGroup - 1) % len(self.tileList)
+                        self.scroll[0] = True
+                    if event.button == 5:
+                        self.tileGroup = (self.tileGroup + 1) % len(self.tilList)
                 # checks if keys are being pressed
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_s:
