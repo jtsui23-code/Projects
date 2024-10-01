@@ -76,7 +76,7 @@ class editor:
             print(self.tileList[self.tileGroup])
             print(self.tileVar)
 
-            self.display.pygame.blit(currentTileImg, (5,5))
+            self.display.blit(currentTileImg, (5,5))
 
             # pygame.event.get() gets the user's input
             for event in pygame.event.get():
