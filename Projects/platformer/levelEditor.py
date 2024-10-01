@@ -20,7 +20,7 @@ class editor:
         self.clock = pygame.time.Clock()
 
         # makes a small display ontop of the screen 
-        self.display = pygame.Surface((320, 200))
+        self.display = pygame.Surface((320, 240))
 
 
         # dictionary for assets
