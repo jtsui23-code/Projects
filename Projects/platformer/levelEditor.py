@@ -71,11 +71,6 @@ class editor:
             # 0 is fully transparent 255 is NOT transparent at all
             currentTileImg.set_alpha(100)
 
-            print(self.tileList)
-            print(self.tileGroup)
-            print(self.tileList[self.tileGroup])
-            print(self.tileVar)
-
             self.display.blit(currentTileImg, (5,5))
 
             # pygame.event.get() gets the user's input
