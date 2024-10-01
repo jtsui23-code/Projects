@@ -77,6 +77,8 @@ class editor:
 
             self.display.blit(currentTileImg, (5,5))
 
+            print(self.assets[self.tileList[self.tileGroup]])
+
             # pygame.event.get() gets the user's input
             for event in pygame.event.get():
                 #checks if the user pressed x button on top right
@@ -95,6 +97,16 @@ class editor:
                         self.leftClick = True
                     if event.button == 3:
                         self.rightClick = True
+                    
+                    if self.shift:
+                        if event.button == 4:
+                            # if left shift is being held then scroll through the 
+                            # variants of the tiles instead 
+                            # self.assets[self.tileList[self.tileGroup]] gets to 
+                            # the list of variants 
+                            self.tileVar = (self.tielVar - 1) % (self.assets[self.tileList[self.tileGroup]])
+                        if event.button == 5:
+                            self.tileVar = (self.tileVar + 1) % (self.assets[self.tileList[self.tileGroup]])
                     if event.button == 4:
                         # self.tileGroup - 1 goes to backwards in the list
                         # since Python allows for -1 to represent back of list
