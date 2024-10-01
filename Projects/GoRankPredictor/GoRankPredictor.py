@@ -115,8 +115,8 @@ for i in range(numSyntheticData):
 
     data['winHi'].append(winHi)
     data['winLo'].append(winLo)
-    data['losHi'].append(losHi)
-    data['losLo'].append(losLo)
+    data['lostHi'].append(losHi)
+    data['lostLo'].append(losLo)
 
 print(len(data['winHi']))
 print(len(data['lostHi']))
