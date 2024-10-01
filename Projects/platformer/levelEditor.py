@@ -53,6 +53,7 @@ class editor:
 
         self.leftClick = False
         self.rightClick = False
+        self.shift = False
 
     def run(self):
         while True:
@@ -104,6 +105,7 @@ class editor:
                     if event.button == 5:
                         # moves the through the index forward when scrolling down
                         self.tileGroup = (self.tileGroup + 1) % len(self.tileList)
+
                 # checks if keys are being pressed
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_s:
@@ -122,6 +124,8 @@ class editor:
                         self.movement[0] = True
                     if event.key == pygame.K_RIGHT:
                         self.movement[1] = True
+                    if event.key == pygame.K_LSHIFT:
+                        self.shift = True
                 
                 # if you let go of the key
                 if event.type == pygame.KEYUP:
@@ -141,6 +145,8 @@ class editor:
                         self.movement[2] = False
                     if event.key == pygame.K_DOWN:
                         self.movement[3] = False
+                    if event.key == pygame.K_LSHIFT:
+                        self.shift = False
 
             # rendering the display(small sreen) at 0,0
             # rescales the screen so like zooms in so player is not tiny
