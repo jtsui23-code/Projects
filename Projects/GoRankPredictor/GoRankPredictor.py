@@ -25,6 +25,10 @@ from sklearn.tree import DecisionTreeClassifier
 # regressor or continuous data
 from sklearn.metrics import accuracy_score
 
+# set number of synthetic data
+numSyntheticData = 1000
+# creates range of [-25, -1] U [1, 9]
+rankRange = list(range(-25, 0)) + list(range(1, 10))
 
 data ={
 # here are individual lists 
