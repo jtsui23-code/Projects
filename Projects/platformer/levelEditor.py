@@ -89,7 +89,7 @@ class editor:
                 self.tilemap.tilemap[str(tilePos[0]) + ';' + str(tilePos[1])] = {
                     'type': self.tileList[self.tileGroup], 'variant': self.tileVar, 'pos': tilePos
                 }
-            self.display.blit(currentTileImg, (5,5))
+            self.display.blit(currentTileImg, (mousePos[0] - self.scroll[0] , mousePos[1]))
 
             # pygame.event.get() gets the user's input
             for event in pygame.event.get():
