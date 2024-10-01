@@ -104,7 +104,7 @@ class editor:
                             # variants of the tiles instead 
                             # self.assets[self.tileList[self.tileGroup]] gets to 
                             # the list of variants 
-                            self.tileVar = (self.tielVar - 1) % len(self.assets[self.tileList[self.tileGroup]])
+                            self.tileVar = (self.tileVar - 1) % len(self.assets[self.tileList[self.tileGroup]])
                         if event.button == 5:
                             self.tileVar = (self.tileVar + 1) % len(self.assets[self.tileList[self.tileGroup]])
                     if event.button == 4:
