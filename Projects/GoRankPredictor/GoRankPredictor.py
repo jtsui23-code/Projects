@@ -118,10 +118,10 @@ for i in range(numSyntheticData):
     data['winLo'].append(winLo)
     data['lostHi'].append(losHi)
     data['lostLo'].append(losLo)
+    data['rank'].append(rank)
 
 print(len(data['winHi']))
 print(len(data['lostHi']))
 print(len(data['winLo']))
 print(len(data['lostLo']))
 print(len(data['rank']))
-
