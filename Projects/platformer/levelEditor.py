@@ -77,7 +77,6 @@ class editor:
 
             self.display.blit(currentTileImg, (5,5))
 
-            print(self.assets[self.tileList[self.tileGroup]])
 
             # pygame.event.get() gets the user's input
             for event in pygame.event.get():
@@ -107,16 +106,17 @@ class editor:
                             self.tileVar = (self.tileVar - 1) % len(self.assets[self.tileList[self.tileGroup]])
                         if event.button == 5:
                             self.tileVar = (self.tileVar + 1) % len(self.assets[self.tileList[self.tileGroup]])
-                    if event.button == 4:
-                        # self.tileGroup - 1 goes to backwards in the list
-                        # since Python allows for -1 to represent back of list
-                        # % len(self.tileList) makes sure that this operation 
-                        # loops within the index of the self.tileList
-                        self.tileGroup = (self.tileGroup - 1) % len(self.tileList)
-                        self.scroll[0] = True
-                    if event.button == 5:
-                        # moves the through the index forward when scrolling down
-                        self.tileGroup = (self.tileGroup + 1) % len(self.tileList)
+                    else:
+                        if event.button == 4:
+                            # self.tileGroup - 1 goes to backwards in the list
+                            # since Python allows for -1 to represent back of list
+                            # % len(self.tileList) makes sure that this operation 
+                            # loops within the index of the self.tileList
+                            self.tileGroup = (self.tileGroup - 1) % len(self.tileList)
+                            self.scroll[0] = True
+                        if event.button == 5:
+                            # moves the through the index forward when scrolling down
+                            self.tileGroup = (self.tileGroup + 1) % len(self.tileList)
 
                 # checks if keys are being pressed
                 if event.type == pygame.KEYDOWN:
