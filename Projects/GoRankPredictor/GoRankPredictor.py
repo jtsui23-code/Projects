@@ -94,6 +94,30 @@ data ={
          4,5,4,-2,-11,-13,-18,]
 }
 
+def generateSynthetic(rank):
+    if rank > 0:
+        winHi = np.random.randint(5, 300)
+        winLo = np.random.randint(100, 1000)
+        losHi = np.random.randint(1, 100)
+        losLo = np.random.randint(1, 50)
+    else:
+        winHi = np.random.randint(1, 100)
+        winLo = np.random.randint(5, 300)
+        losHi = np.random.randint(100, 1000)
+        losLow = np.random.randint(1, 100)
+
+        return winHi, winLo, losHi, losLo
+
+for i in range(numSyntheticData):
+    rank = np.random.choice(rankRange)
+
+    winHi, winLo, losHi, losLo = generateSynthetic(rank)
+
+    data['winHi'].append(winHi)
+    data['winLo'].append(winLo)
+    data['losHi'].append(losLo)
+    data['losLo'].append(losLo)
+
 print(len(data['winHi']))
 print(len(data['lostHi']))
 print(len(data['winLo']))
