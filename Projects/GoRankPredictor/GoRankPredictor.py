@@ -104,7 +104,7 @@ def generateSynthetic(rank):
         winHi = np.random.randint(1, 100)
         winLo = np.random.randint(5, 300)
         losHi = np.random.randint(100, 1000)
-        losLow = np.random.randint(1, 100)
+        losLo = np.random.randint(1, 100)
 
         return winHi, winLo, losHi, losLo
 
@@ -115,7 +115,7 @@ for i in range(numSyntheticData):
 
     data['winHi'].append(winHi)
     data['winLo'].append(winLo)
-    data['losHi'].append(losLo)
+    data['losHi'].append(losHi)
     data['losLo'].append(losLo)
 
 print(len(data['winHi']))
