@@ -83,14 +83,17 @@ class editor:
             mousePos = pygame.mouse.get_pos()
             mousePos = (mousePos[0] / RENDERSCALE, mousePos[1] / RENDERSCALE)
 
-            tilePos = (int(mousePos[0] + self.scroll[0]) // self.tilemap.tileSize, int(mousePos[1] + self.scroll[1]) // self.tilemap.tileSize)
+            tilePosX = (int((mousePos[0] + self.scroll[0]) / self.tilemap.tileSize))
+            tilePosY = (int((mousePos[1]) / self.tilemap.tileSize))
+
+            tilePos = (tilePosX, tilePosY)
             
             if self.leftClick:
                 self.tilemap.tilemap[str(tilePos[0]) + ';' + str(tilePos[1])] = {
                     'type': self.tileList[self.tileGroup], 'variant': self.tileVar, 'pos': tilePos
                 }
             print(f"Mouse Y:{mousePos[1]}, Scroll Y: {self.scroll[1]}, Tile Y: {tilePos[1]}")
-            self.display.blit(currentTileImg, (tilePos[0] * self.tilemap.tileSize -self.scroll[0] , tilePos[1] * self.tilemap.tileSize - self.scroll[1]))
+            self.display.blit(currentTileImg, (tilePosX * self.tilemap.tileSize -self.scroll[0] , tilePosY * self.tilemap.tileSize - self.scroll[1]))
 
             # pygame.event.get() gets the user's input
             for event in pygame.event.get():
