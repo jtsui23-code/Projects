@@ -59,6 +59,10 @@ class editor:
         while True:
             self.display.fill((0,0,0))
 
+            renderScroll = (int(self.scroll[0]), int(self.scroll[1]))
+
+            self.tilemap.render(self.display, offset=renderScroll)
+
             # the self.tileList has all of the keys to self.assets map
             # so doing self.tileList[self.tileGroup] specifies which 
             # tile is being selected in self.assets 
@@ -74,6 +78,11 @@ class editor:
             # transparent the image will be 
             # 0 is fully transparent 255 is NOT transparent at all
             currentTileImg.set_alpha(100)
+
+            # gets pixal coordinates of mouse 
+            mousePos = pygame.mouse.get_pos()
+
+            mousePos = (mousePos[0] / RENDERSCALE, mousePos[1] / RENDERSCALE)
 
             self.display.blit(currentTileImg, (5,5))
 
