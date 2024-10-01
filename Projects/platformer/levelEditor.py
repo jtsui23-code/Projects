@@ -102,6 +102,7 @@ class editor:
                         self.tileGroup = (self.tileGroup - 1) % len(self.tileList)
                         self.scroll[0] = True
                     if event.button == 5:
+                        # moves the through the index forward when scrolling down
                         self.tileGroup = (self.tileGroup + 1) % len(self.tilList)
                 # checks if keys are being pressed
                 if event.type == pygame.KEYDOWN:
