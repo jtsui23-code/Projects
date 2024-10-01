@@ -81,11 +81,15 @@ class editor:
 
             # gets pixal coordinates of mouse 
             mousePos = pygame.mouse.get_pos()
-
             mousePos = (mousePos[0] / RENDERSCALE, mousePos[1] / RENDERSCALE)
 
+            tilePos = (int(mousePos[0] + self.scroll[0]) // self.tilemap.tileSize, int(mousePos[1] + self.scroll[1]) // self.tilemap.tileSize)
+            
+            if self.leftClick:
+                self.tilemap.tilemap[str(tilePos[0]) + ';' + str(tilePos[1])] = {
+                    'type': self.tileList[self.tileGroup], 'variant': self.tileVar, 'pos': tilePos
+                }
             self.display.blit(currentTileImg, (5,5))
-
 
             # pygame.event.get() gets the user's input
             for event in pygame.event.get():
