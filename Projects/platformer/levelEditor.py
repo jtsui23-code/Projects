@@ -51,6 +51,8 @@ class editor:
 
         self.scroll = [0,0]
 
+        self.leftClick = False
+
     def run(self):
         while True:
             self.display.fill((0,0,0))
@@ -81,7 +83,12 @@ class editor:
                     pygame.quit()
                     #closes out of systems
                     sys.exit()
-
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    # button 1 is left click on mouse
+                    # button 2 is scroll wheel
+                    # button 3 is right click
+                    if event.button == 1:
+                        self.leftClick = True
                 # checks if keys are being pressed
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_s:
