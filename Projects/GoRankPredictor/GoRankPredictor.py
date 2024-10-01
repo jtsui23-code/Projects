@@ -105,8 +105,9 @@ def generateSynthetic(rank):
         winLo = np.random.randint(5, 300)
         losHi = np.random.randint(100, 1000)
         losLo = np.random.randint(1, 100)
+    
 
-        return winHi, winLo, losHi, losLo
+    return winHi, winLo, losHi, losLo
 
 for i in range(numSyntheticData):
     rank = np.random.choice(rankRange)
