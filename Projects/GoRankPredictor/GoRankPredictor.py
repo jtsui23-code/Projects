@@ -189,4 +189,4 @@ thePredictedRank = predictRank(wH, lH, wL,lL)
 if thePredictedRank > 0:
     print(f'Their rank is {thePredictedRank} dan')
 else:
-    print(f'Their rank is {thePredictedRank} kyu')
+    print(f'Their rank is {abs(thePredictedRank)} kyu')
