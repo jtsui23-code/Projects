@@ -94,6 +94,10 @@ data ={
          4,5,4,-2,-11,-13,-18,]
 }
 
+# this function recieves an int as the rank of the player
+# and returns a synthetic win/lost ratio according to the
+# player rank
+
 def generateSynthetic(rank):
     if rank > 0:
         winHi = np.random.randint(5, 300)
@@ -109,7 +113,8 @@ def generateSynthetic(rank):
 
     return winHi, winLo, losHi, losLo
 
-for i in range(numSyntheticData):
+# generates synthetic data 
+#for i in range(numSyntheticData):
     rank = np.random.choice(rankRange)
 
     winHi, winLo, losHi, losLo = generateSynthetic(rank)
@@ -119,6 +124,15 @@ for i in range(numSyntheticData):
     data['lostHi'].append(losHi)
     data['lostLo'].append(losLo)
     data['rank'].append(rank)
+
+# converts data map of player ranks and win/lost ratio
+# to panda dataframe
+dataFrame = pd.DataFrame(data)
+
+# creating dependent and independent varaible for graph
+x = dataFrame[['winHi', 'lostHi', 'winLo', 'lostLo']]
+y = dataFrame['rank']
+
 
 print(len(data['winHi']))
 print(len(data['lostHi']))
