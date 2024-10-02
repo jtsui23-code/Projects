@@ -140,6 +140,19 @@ y = dataFrame['rank']
 # for debugging problems
 xTrain, xTest, yTrain, yTest = train_test_split(x, y, test_size=0.2, random_state=42)
 
+# creates model using the specific split seed 42
+model = DecisionTreeClassifier(random_state=42)
+
+# trains the model
+model.fit(xTrain, yTrain)
+
+# predicts the go player's rank according to test data on win/lost
+predictedRank = model.predict(xTest)
+
+# computes the accuracy of the prediction through
+# comparison with the actual go player's rank
+accuracy = accuracy_score(yTest, predictedRank)
+
 print(len(data['winHi']))
 print(len(data['lostHi']))
 print(len(data['winLo']))
