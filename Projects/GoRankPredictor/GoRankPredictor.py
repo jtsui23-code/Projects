@@ -153,7 +153,7 @@ yPred = model.predict(xTest)
 # comparison with the actual go player's rank
 accuracy = accuracy_score(yTest, yPred)
 
-print(f'Accuracy: {accuracy * 100:.2f}%')
+# print(f'Accuracy: {accuracy * 100:.2f}%')
 
 def predictRank(winHi, lostHi, winLo, lostLo):
     # this creates a 2D array using numPy 
@@ -172,11 +172,11 @@ def predictRank(winHi, lostHi, winLo, lostLo):
     return predictedRank[0]
 
 
-print(len(data['winHi']))
-print(len(data['lostHi']))
-print(len(data['winLo']))
-print(len(data['lostLo']))
-print(len(data['rank']))
+# print(len(data['winHi']))
+# print(len(data['lostHi']))
+# print(len(data['winLo']))
+# print(len(data['lostLo']))
+# print(len(data['rank']))
 
 wH = int(input("How many wins does this player have against higher rank players:"))
 lH = int(input("How many losses does this player have against higher rank players:"))
