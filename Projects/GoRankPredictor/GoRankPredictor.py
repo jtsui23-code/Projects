@@ -147,11 +147,30 @@ model = DecisionTreeClassifier(random_state=42)
 model.fit(xTrain, yTrain)
 
 # predicts the go player's rank according to test data on win/lost
-predictedRank = model.predict(xTest)
+yPred = model.predict(xTest)
 
 # computes the accuracy of the prediction through
 # comparison with the actual go player's rank
-accuracy = accuracy_score(yTest, predictedRank)
+accuracy = accuracy_score(yTest, yPred)
+
+print(f'Accuracy: {accuracy * 100:.2f}%')
+
+def predictRank(winHi, lostHi, winLo, lostLo):
+    # this creates a 2D array using numPy 
+    # a 2D array is needed because there are many
+    # x/dependent variables that influence what 
+    # the rank of the player will be predicted as
+    # in this case there is four
+    data = np.array([[winHi, lostHi, winLo, lostLo]])
+    # uses the trained model to guess the rank of the 
+    # go player given their win/lost ratio that is 
+    # passed into the model in .predict()
+    predictedRank = model.predict(data)
+
+    # predictedRank is an array of ranks that 
+    # the model assumes the player is likey to be
+    return predictedRank[0]
+
 
 print(len(data['winHi']))
 print(len(data['lostHi']))
