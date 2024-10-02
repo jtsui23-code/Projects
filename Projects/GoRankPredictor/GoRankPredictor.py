@@ -114,7 +114,7 @@ def generateSynthetic(rank):
     return winHi, winLo, losHi, losLo
 
 # generates synthetic data 
-#for i in range(numSyntheticData):
+for i in range(numSyntheticData):
     rank = np.random.choice(rankRange)
 
     winHi, winLo, losHi, losLo = generateSynthetic(rank)
