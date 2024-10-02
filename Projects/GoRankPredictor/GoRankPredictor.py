@@ -179,9 +179,9 @@ print(len(data['lostLo']))
 print(len(data['rank']))
 
 wH = int(input("How many wins does this player have against higher rank players:"))
-lH = int(input("How many losts does this player have against higher rank players:"))
+lH = int(input("How many losses does this player have against higher rank players:"))
 wL = int(input("How many wins does this player have against lower rank players:"))
-lL = int(input("How many losts does this player have against higher rank players:"))
+lL = int(input("How many losses does this player have against higher rank players:"))
 
 
 thePredictedRank = predictRank(wH, lH, wL,lL)
