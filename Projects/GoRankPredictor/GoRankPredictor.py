@@ -184,5 +184,9 @@ wL = int(input("How many wins does this player have against lower rank players:"
 lL = int(input("How many losts does this player have against higher rank players:"))
 
 
-print(predictRank(wH, lH, wL,lL)
-)
+thePredictedRank = predictRank(wH, lH, wL,lL)
+
+if thePredictedRank > 0:
+    print(f'Their rank is {thePredictedRank} dan')
+else:
+    print(f'Their rank is {thePredictedRank} kyu')
