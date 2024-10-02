@@ -161,7 +161,7 @@ def predictRank(winHi, lostHi, winLo, lostLo):
     # x/dependent variables that influence what 
     # the rank of the player will be predicted as
     # in this case there is four
-    data = np.array([[winHi, lostHi, winLo, lostLo]])
+    data = pd.DataFrame([[winHi, lostHi, winLo, lostLo]], columns=['winHi', 'lostHi', 'winLo', 'lostLo'])
     # uses the trained model to guess the rank of the 
     # go player given their win/lost ratio that is 
     # passed into the model in .predict()
