@@ -133,6 +133,12 @@ dataFrame = pd.DataFrame(data)
 x = dataFrame[['winHi', 'lostHi', 'winLo', 'lostLo']]
 y = dataFrame['rank']
 
+# test_size is how much of the data will be left over for testing 
+# the performance of the program so in this case 0.2 means
+# 20% of the data is for testing and 80% is for training
+# random_test is a seed for this exact split which is useful 
+# for debugging problems
+xTrain, xTest, yTrain, yTest = train_test_split(x, y, test_size=0.2, random_state=42)
 
 print(len(data['winHi']))
 print(len(data['lostHi']))
