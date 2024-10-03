@@ -26,7 +26,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score
 
 # set number of synthetic data
-numSyntheticData = 1000
+numSyntheticData = 0
 # creates range of [-25, -1] U [1, 9]
 rankRange = list(range(-25, 0)) + list(range(1, 10))
 
@@ -100,21 +100,21 @@ data ={
 
 def generateSynthetic(rank):
     if rank > 0:
-        winHi = np.random.randint(5, 300)
-        winLo = np.random.randint(100, 1000)
-        losHi = np.random.randint(1, 100)
-        losLo = np.random.randint(1, 50)
+        winHi = np.random.randint(100, 500)
+        winLo = np.random.randint(500, 1500)
+        losHi = np.random.randint(0, 50)
+        losLo = np.random.randint(0, 100)
     else:
-        winHi = np.random.randint(1, 100)
-        winLo = np.random.randint(5, 300)
+        winHi = np.random.randint(0, 50)
+        winLo = np.random.randint(50, 300)
         losHi = np.random.randint(100, 1000)
-        losLo = np.random.randint(1, 100)
+        losLo = np.random.randint(50, 300)
     
 
     return winHi, winLo, losHi, losLo
 
 # generates synthetic data 
-#for i in range(numSyntheticData):
+for i in range(numSyntheticData):
     rank = np.random.choice(rankRange)
 
     winHi, winLo, losHi, losLo = generateSynthetic(rank)
@@ -138,7 +138,7 @@ y = dataFrame['rank']
 # 20% of the data is for testing and 80% is for training
 # random_test is a seed for this exact split which is useful 
 # for debugging problems
-xTrain, xTest, yTrain, yTest = train_test_split(x, y, test_size=0.2, random_state=42)
+xTrain, xTest, yTrain, yTest = train_test_split(x, y, test_size=0.01, random_state=42)
 
 # creates model using the specific split seed 42
 model = DecisionTreeClassifier(random_state=42)
@@ -171,22 +171,15 @@ def predictRank(winHi, lostHi, winLo, lostLo):
     # the model assumes the player is likey to be
     return predictedRank[0]
 
-
-print(len(data['winHi']))
-print(len(data['lostHi']))
-print(len(data['winLo']))
-print(len(data['lostLo']))
-print(len(data['rank']))
-
-wH = int(input("How many wins does this player have against higher rank players:"))
-lH = int(input("How many losts does this player have against higher rank players:"))
-wL = int(input("How many wins does this player have against lower rank players:"))
-lL = int(input("How many losts does this player have against higher rank players:"))
+# wH = int(input("How many wins does this player have against higher rank players:"))
+# lH = int(input("How many losts does this player have against higher rank players:"))
+# wL = int(input("How many wins does this player have against lower rank players:"))
+# lL = int(input("How many losts does this player have against higher rank players:"))
 
 
-thePredictedRank = predictRank(wH, lH, wL,lL)
+# thePredictedRank = predictRank(wH, lH, wL,lL)
 
-if thePredictedRank > 0:
-    print(f'Their rank is {thePredictedRank} dan')
-else:
-    print(f'Their rank is {abs(thePredictedRank)} kyu')
+# if thePredictedRank > 0:
+#     print(f'Their rank is {thePredictedRank} dan')
+# else:
+#     print(f'Their rank is {abs(thePredictedRank)} kyu')
