@@ -4,6 +4,8 @@
 #numpy is a library used for effectivly dealing with arrays
 import numpy as np 
 
+import csv
+
 #panda is used for data analysis 
 import pandas as pd
 
@@ -25,6 +27,9 @@ from sklearn.tree import DecisionTreeClassifier
 # there is another library called Mean Squared Error which is used with 
 # regressor or continuous data
 from sklearn.metrics import accuracy_score
+
+
+
 
 # set number of synthetic data
 numSyntheticData = 0
@@ -94,6 +99,18 @@ data ={
          -16,-15,-16,-15,-19,-23,-1,2, -4,-6,-5,-8,-7,
          4,5,4,-2,-11,-13,-18,]
 }
+
+try:
+    with open('parsedData.csv', mode='r') as file:
+        reader = csv.reader(file)
+        for row in reader:
+            data['winHi'].append(int(row[0]))
+            data['lostHi'].append(int(row[1]))
+            data['winLo'].append(int(row[2]))
+            data['lostLo'].append(int(row[3]))
+            data['rank'].append(int(row[4]))
+except:
+    print('There is no file to read data in from.')
 
 
 

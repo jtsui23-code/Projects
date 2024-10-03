@@ -72,6 +72,8 @@ def checkClipBoard():
 
             print("Updated OCR Data", ocrData)
 
+            saveData()
+
         # makes the loop pause to decrease lag
         time.sleep(1)
 
