@@ -6,7 +6,8 @@ This program predicts the rank of the Go Player according to the input win and l
 ### Files:
 |   #   | File            | Description                                        |
 | :---: | --------------- | -------------------------------------------------- |
-|   1   | [GoRankPredictor.py](https://github.com/jtsui23-code/Projects/blob/main/Projects/GoRankPredictor/GoRankPredictor.py)        | This is the main script for the Go Rank Predictor.|| 2 | [parser.py](https://github.com/jtsui23-code/Projects/blob/main/Projects/GoRankPredictor/parser.py) | This script parses through the contents of an ocr to streamline inputting data making it significantly faster |
+|   1   | [GoRankPredictor.py](https://github.com/jtsui23-code/Projects/blob/main/Projects/GoRankPredictor/GoRankPredictor.py)        | This is the main script for the Go Rank Predictor.|
+| 2 | [parser.py](https://github.com/jtsui23-code/Projects/blob/main/Projects/GoRankPredictor/parser.py) | This script parses through the contents of an ocr to streamline inputting data making it significantly faster |
 
 
 
