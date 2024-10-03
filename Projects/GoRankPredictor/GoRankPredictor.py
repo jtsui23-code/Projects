@@ -100,10 +100,21 @@ data ={
          4,5,4,-2,-11,-13,-18,]
 }
 
+# attemps to read in parsed data from csv file.
 try:
+    # looks for a csv file called parsedData.csv
+    # enters reading mode with mode='r'
+    # file is an object
     with open('parsedData.csv', mode='r') as file:
+        # creates reader object using csv library
         reader = csv.reader(file)
+        # reads in each row in the csv file
+        # each row is a different Go Player's win/lost ratio and rank
         for row in reader:
+            # row[0] is the first element in the current row that 
+            # the for loop is looking at 
+            # ex of row) 37 100 58 91 9dan
+            # so row[3] would be 91 in this example
             data['winHi'].append(int(row[0]))
             data['lostHi'].append(int(row[1]))
             data['winLo'].append(int(row[2]))
