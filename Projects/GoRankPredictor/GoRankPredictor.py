@@ -1,4 +1,4 @@
-#This program will predict the rank of the Go player when given their win/lost ratio
+ #This program will predict the rank of the Go player when given their win/lost ratio
 # against higher and lower rank players
 
 #numpy is a library used for effectivly dealing with arrays
@@ -41,9 +41,7 @@ data ={
             339,699,63,193,465,6,117,12,22,19,31,7,58,
             80,32,587,547,270,126,346,26,1,6,15,42,
             864,4,632,2,12,1059,156,56,71,15,187,426,
-            741,290,381,14,8,335,41,823,182,218,241,
-            164, 395,981,204,144,248,333,9,153,16,
-            115,2,123,936,88,981,13,5,83,16,],
+            741,290,381,14,8,335,41,823,182,218,],
 
 'lostHi':[3, 5, 468, 158, 1158, 155, 273, 1411, 707,
           136, 42, 314, 228, 17, 42, 385,593,8, 988, 265,
@@ -55,9 +53,7 @@ data ={
           127,58,1182,1053,421,111,539,60,6,13,5, 107,
           1956,21,1877,16,39,1821,265,116,130,23,356,
           828,1525,714,939,37,31,236,154,1798,582,521,
-          708, 492,874,970,576,509,792,696,12,
-          504,27,191,7,284,1470,183,970,
-          41,17,145,44,],
+          ],
 
 'winLo':[117, 130, 799, 354, 2250,234, 501, 23, 2403,
          26, 26, 208, 196, 6, 50, 324,495,68, 1142, 1776,
@@ -69,9 +65,7 @@ data ={
            78,69,523,2444,3416,1918,3091,169,53,58,31,
            160,884,20,982,11,20,1381,134,145,247,373,
            249,356,1863,253,612,80,157,3797,659,1631,
-           252,172, 957, 386,1426,565,443,106,1859,251,
-           1233,1443,30,159,6,121,830,177,565,
-           28,17,178,52,],
+           252,172,],
 
 'lostLo':[12, 10, 438, 185, 1005,87, 187, 3, 1094,
           21, 6, 97, 89, 3, 16, 107, 211,49, 617, 635,
@@ -82,8 +76,7 @@ data ={
             381,6,55,11,22,4,22,47,45,28,11,223,956,893,
             387,1024,58,16,19,2,52,369,4,343,1,7,739,
             88,35,101,101,110,167,871,106,298,18,25,632,123,
-            748,101,79, 286, 109, 697,51,142,50,483,108,
-            364,412,15,73,4,46,550,69, 51,7,9,69,12,],
+            748,101,79,],
 
 # to differienciate dan and kyu 
 # dan is positive so 7 dan = 7
@@ -98,9 +91,7 @@ data ={
          -4, -5,-8, -13,-14,-13,-19,-17,-22,-25,-25,-25,
          -22,-23,-16,-17,-13,-4,-3,3,2,4,6,5,9,4,-14,-23,
          -16,-15,-16,-15,-19,-23,-1,2, -4,-6,-5,-8,-7,
-         4,5,4,-2,-11,-13,-18,-2, -6, -3,-20,-24,-18,1,
-         2,4,2,-9,-12,-11,-12,-9,-9,-20,-23,-22,-19,
-         -17,]
+         4,5,4,-2,-11,-13,-18,]
 }
 
 # this function recieves an int as the rank of the player
@@ -162,7 +153,7 @@ yPred = model.predict(xTest)
 # comparison with the actual go player's rank
 accuracy = accuracy_score(yTest, yPred)
 
-# print(f'Accuracy: {accuracy * 100:.2f}%')
+print(f'Accuracy: {accuracy * 100:.2f}%')
 
 def predictRank(winHi, lostHi, winLo, lostLo):
     # this creates a 2D array using numPy 
@@ -180,21 +171,22 @@ def predictRank(winHi, lostHi, winLo, lostLo):
     # the model assumes the player is likey to be
     return predictedRank[0]
 
-print(len(data['lostHi']))
-print(len(data['lostLo']))
+
 print(len(data['winHi']))
+print(len(data['lostHi']))
 print(len(data['winLo']))
+print(len(data['lostLo']))
 print(len(data['rank']))
 
-# wH = int(input("How many wins does this player have against higher rank players:"))
-# lH = int(input("How many losses does this player have against higher rank players:"))
-# wL = int(input("How many wins does this player have against lower rank players:"))
-# lL = int(input("How many losses does this player have against higher rank players:"))
+wH = int(input("How many wins does this player have against higher rank players:"))
+lH = int(input("How many losts does this player have against higher rank players:"))
+wL = int(input("How many wins does this player have against lower rank players:"))
+lL = int(input("How many losts does this player have against higher rank players:"))
 
 
-# thePredictedRank = predictRank(wH, lH, wL,lL)
+thePredictedRank = predictRank(wH, lH, wL,lL)
 
-# if thePredictedRank > 0:
-#     print(f'Their rank is {thePredictedRank} dan')
-# else:
-#     print(f'Their rank is {abs(thePredictedRank)} kyu')
+if thePredictedRank > 0:
+    print(f'Their rank is {thePredictedRank} dan')
+else:
+    print(f'Their rank is {abs(thePredictedRank)} kyu')
