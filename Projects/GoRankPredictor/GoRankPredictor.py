@@ -168,11 +168,12 @@ y = dataFrame['rank']
 # the performance of the program so in this case 0.2 means
 # 20% of the data is for testing and 80% is for training
 # random_test is a seed for this exact split which is useful 
-# for debugging problems                                               #85
+# for debugging problems                                          #best seed is 85
 xTrain, xTest, yTrain, yTest = train_test_split(x, y, test_size=0.1, random_state=85)
 
-# creates model using the specific split seed 42
-model = DecisionTreeClassifier(random_state=42)
+# creates model using the specific split seed 49
+model = DecisionTreeClassifier(random_state=49)
+
 
 # trains the model
 model.fit(xTrain, yTrain)
@@ -183,8 +184,6 @@ yPred = model.predict(xTest)
 # computes the accuracy of the prediction through
 # comparison with the actual go player's rank
 accuracy = accuracy_score(yTest, yPred)
-
-print(f'Accuracy: {accuracy * 100:.2f}%')
 
 def predictRank(winHi, lostHi, winLo, lostLo):
     # this creates a 2D array using numPy 
@@ -202,15 +201,15 @@ def predictRank(winHi, lostHi, winLo, lostLo):
     # the model assumes the player is likey to be
     return predictedRank[0]
 
-# wH = int(input("How many wins does this player have against higher rank players:"))
-# lH = int(input("How many losts does this player have against higher rank players:"))
-# wL = int(input("How many wins does this player have against lower rank players:"))
-# lL = int(input("How many losts does this player have against higher rank players:"))
+wH = int(input("How many wins does this player have against higher rank players:"))
+lH = int(input("How many losts does this player have against higher rank players:"))
+wL = int(input("How many wins does this player have against lower rank players:"))
+lL = int(input("How many losts does this player have against higher rank players:"))
 
 
-# thePredictedRank = predictRank(wH, lH, wL,lL)
+thePredictedRank = predictRank(wH, lH, wL,lL)
 
-# if thePredictedRank > 0:
-#     print(f'Their rank is {thePredictedRank} dan')
-# else:
-#     print(f'Their rank is {abs(thePredictedRank)} kyu')
+if thePredictedRank > 0:
+    print(f'Their rank is {thePredictedRank} dan')
+else:
+    print(f'Their rank is {abs(thePredictedRank)} kyu')
