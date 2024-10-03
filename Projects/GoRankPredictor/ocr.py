@@ -87,6 +87,17 @@ def parseData(text):
     # followed by a 段 or 級
     rankPattern = r'(\w+)\s*\[([\d]+段|[\d]+級)\]'
 
+    Match = re.findall(winLostPattern, text)
+    for match in Match:
+        if "上位プレーヤーに対する勝ち" in match[0]:
+            ocrData['winHi'] = int(match[1])
+        elif "上位プレーヤーに対する負け" in match[0]:
+            ocrData['lostHi'] = int(match[1])
+        elif "下位プレーヤーに対する勝ち" in match[0]:
+            ocrData['winLo'] = int(match[1])
+        elif "下位プレーヤーに対する負け" in match[0]:
+            ocrData['lostLo'] = int(match[1])
+
 
 #This is a function that will be used for snipping images used in the OCR
 def ocr():
