@@ -114,7 +114,7 @@ def generateSynthetic(rank):
     return winHi, winLo, losHi, losLo
 
 # generates synthetic data 
-for i in range(numSyntheticData):
+#for i in range(numSyntheticData):
     rank = np.random.choice(rankRange)
 
     winHi, winLo, losHi, losLo = generateSynthetic(rank)
@@ -171,22 +171,21 @@ def predictRank(winHi, lostHi, winLo, lostLo):
     # the model assumes the player is likey to be
     return predictedRank[0]
 
+print(len(data['lostHi']))
+print(len(data['lostLo']))
+print(len(data['winHi']))
+print(len(data['winLo']))
+print(len(data['rank']))
 
-# print(len(data['winHi']))
-# print(len(data['lostHi']))
-# print(len(data['winLo']))
-# print(len(data['lostLo']))
-# print(len(data['rank']))
-
-wH = int(input("How many wins does this player have against higher rank players:"))
-lH = int(input("How many losses does this player have against higher rank players:"))
-wL = int(input("How many wins does this player have against lower rank players:"))
-lL = int(input("How many losses does this player have against higher rank players:"))
+# wH = int(input("How many wins does this player have against higher rank players:"))
+# lH = int(input("How many losses does this player have against higher rank players:"))
+# wL = int(input("How many wins does this player have against lower rank players:"))
+# lL = int(input("How many losses does this player have against higher rank players:"))
 
 
-thePredictedRank = predictRank(wH, lH, wL,lL)
+# thePredictedRank = predictRank(wH, lH, wL,lL)
 
-if thePredictedRank > 0:
-    print(f'Their rank is {thePredictedRank} dan')
-else:
-    print(f'Their rank is {abs(thePredictedRank)} kyu')
+# if thePredictedRank > 0:
+#     print(f'Their rank is {thePredictedRank} dan')
+# else:
+#     print(f'Their rank is {abs(thePredictedRank)} kyu')

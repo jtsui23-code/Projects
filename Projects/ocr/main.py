@@ -59,7 +59,7 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\Users\Natck\AppData\Local\Programs\
 from tkinter import simpledialog, messagebox
 
 #This is a function that will be used for snipping images used in the OCR
-def snipImage():
+def ocr():
 
     #root is the GUI interface for the snip tool
     # adding .withdraw() to root hides the interface while the user is snipping an image
@@ -251,8 +251,8 @@ root.title("OCR")
 #this creates a button using the Button function in tkinter on the root interface
 #The button as the word Snip on it
 # The functionality of the button is determined by whatever comes after command= 
-# so in this case whenever the button is pressed the snipImage function is called
-button = ttk.Button(root, text="OCR", command=snipImage)
+# so in this case whenever the button is pressed the ocr function is called
+button = ttk.Button(root, text="OCR", command=ocr)
 
 #This positions the button to be correctly sized on the root GUI
 button.pack()
