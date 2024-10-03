@@ -1,3 +1,6 @@
+# this library allows to save the parsered data
+import csv
+
 # This library allows to parse through strings using pattern
 # recongition
 import re
@@ -71,6 +74,21 @@ def checkClipBoard():
 
         # makes the loop pause to decrease lag
         time.sleep(1)
+
+def saveData():
+    # creates/opens parsedData.csv file and starts appending data
+    # file is an object from csv
+    with open('parsedData.csv', mode = 'a', newline='') as file:
+        writer = csv.writer(file)
+        # loops through each item in the 'winHi' list
+        for i in range(len(ocrData['winHi'])):
+            #writes the elements in each of the list to the csv file
+            writer.writerow([
+                ocrData['winHi'][i],
+                ocrData['lostHi'][i],
+                ocrData['winLo'][i],
+                ocrData['lostLo'][i]
+            ])
 
 # checks if script is being run in itself
 if __name__ == "__main__":
