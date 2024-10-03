@@ -21,23 +21,21 @@ ocrData = {
 def parseData(text):
     # r' means raw string
     # (\d+) represents an integer
-    # \d+ means any of these digits 0-9
-    # ^\d+ means this is not a number in (^\d+)
-    # so ([^\d+]) is the string or stuff infront of the win/lost 
-    # integer
-    winLostPattern = r'([^\d+])(\d+)'
-
-    # (\w+) means any letter so for recongizing the name of player
-    # \s* recongize any white spaces between string/int
+    # the reset is what is possibily in front of the int
+    winLostPattern = r'(上位プレーヤーに対する勝ち|上位プレーヤーに対する負け|下位プレーヤーに対する勝ち|下位プレーヤーに対する負け)(\d+)'
 
     # \d means int
     # +段 means an in followed by 段(dan)
     # then there is an | meaning that the number could be 
     # followed by a 段 or 級
-    rankPattern = r'(\w+)\s*\[([\d]+段|[\d]+級)\]'
+    rankPattern = r'\[(\d+段|\d+級)\]'  # Matches [number段] or [number級]
+
 
     # extracts win/lost stat and appends ocrData map
     Match = re.findall(winLostPattern, text)
+    # outcome = match[0]
+    # value = match[1]
+
     for match in Match:
         if "上位プレーヤーに対する勝ち" in match[0]:
             ocrData['winHi'].append(int(match[1]))
@@ -51,9 +49,10 @@ def parseData(text):
     rankMatch = re.findall(rankPattern, text)
     if rankMatch:
         rankValue = int(rankMatch[0][0])
-        if '級' in rankMatch[0][1]:
+        if rankMatch[0][1] == '級':
             ocrData['rank'].append(- (rankValue))
-        ocrData['rank'].append(rankValue)
+        elif rankMatch[0][1] == '段':
+            ocrData['rank'].append(rankValue)
 
 def checkClipBoard():
     previousText = ""

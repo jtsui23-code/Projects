@@ -1,14 +1,12 @@
  #This program will predict the rank of the Go player when given their win/lost ratio
 # against higher and lower rank players
 
-# imports a copy of the ocr script made previously
-from ocr import ocr
-
 #numpy is a library used for effectivly dealing with arrays
 import numpy as np 
 
 #panda is used for data analysis 
 import pandas as pd
+
 
 # sk is a machine learning library
 # train_test_split is specifically being used from the sk library 
@@ -97,6 +95,8 @@ data ={
          4,5,4,-2,-11,-13,-18,]
 }
 
+
+
 # this function recieves an int as the rank of the player
 # and returns a synthetic win/lost ratio according to the
 # player rank
@@ -117,7 +117,7 @@ def generateSynthetic(rank):
     return winHi, winLo, losHi, losLo
 
 # generates synthetic data 
-for i in range(numSyntheticData):
+# for i in range(numSyntheticData):
     rank = np.random.choice(rankRange)
 
     winHi, winLo, losHi, losLo = generateSynthetic(rank)
@@ -155,8 +155,6 @@ yPred = model.predict(xTest)
 # computes the accuracy of the prediction through
 # comparison with the actual go player's rank
 accuracy = accuracy_score(yTest, yPred)
-
-#print(f'Accuracy: {accuracy * 100:.2f}%')
 
 def predictRank(winHi, lostHi, winLo, lostLo):
     # this creates a 2D array using numPy 
