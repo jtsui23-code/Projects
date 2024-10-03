@@ -1,6 +1,9 @@
  #This program will predict the rank of the Go player when given their win/lost ratio
 # against higher and lower rank players
 
+# imports a copy of the ocr script made previously
+from ocr import ocr
+
 #numpy is a library used for effectivly dealing with arrays
 import numpy as np 
 
