@@ -19,6 +19,12 @@ ocrData = {
     'lostLo':[],
     'rank':[]
 }
+def clearOcrData():
+    ocrData['winHi'].clear()
+    ocrData['lostHi'].clear()
+    ocrData['winLo'].clear()
+    ocrData['lostLo'].clear()
+    ocrData['rank'].clear()
 
 
 def parseData(text):
@@ -74,6 +80,8 @@ def checkClipBoard():
 
             saveData()
 
+        clearOcrData()
+
         # makes the loop pause to decrease lag
         time.sleep(1)
 
@@ -97,5 +105,6 @@ def saveData():
 
 # checks if script is being run in itself
 if __name__ == "__main__":
+    clearOcrData()
     checkClipBoard()
 

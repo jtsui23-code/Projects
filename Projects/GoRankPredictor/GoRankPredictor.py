@@ -168,8 +168,8 @@ y = dataFrame['rank']
 # the performance of the program so in this case 0.2 means
 # 20% of the data is for testing and 80% is for training
 # random_test is a seed for this exact split which is useful 
-# for debugging problems
-xTrain, xTest, yTrain, yTest = train_test_split(x, y, test_size=0.1, random_state=42)
+# for debugging problems                                               #85
+xTrain, xTest, yTrain, yTest = train_test_split(x, y, test_size=0.1, random_state=85)
 
 # creates model using the specific split seed 42
 model = DecisionTreeClassifier(random_state=42)
@@ -183,6 +183,8 @@ yPred = model.predict(xTest)
 # computes the accuracy of the prediction through
 # comparison with the actual go player's rank
 accuracy = accuracy_score(yTest, yPred)
+
+print(f'Accuracy: {accuracy * 100:.2f}%')
 
 def predictRank(winHi, lostHi, winLo, lostLo):
     # this creates a 2D array using numPy 
@@ -199,12 +201,6 @@ def predictRank(winHi, lostHi, winLo, lostLo):
     # predictedRank is an array of ranks that 
     # the model assumes the player is likey to be
     return predictedRank[0]
-
-print(len(data['winHi']))
-print(len(data['winLo']))
-print(len(data['lostHi']))
-print(len(data['lostLo']))
-print(len(data['rank']))
 
 # wH = int(input("How many wins does this player have against higher rank players:"))
 # lH = int(input("How many losts does this player have against higher rank players:"))
