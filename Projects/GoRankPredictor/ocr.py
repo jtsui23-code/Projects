@@ -95,7 +95,7 @@ def parseData(text):
         elif "上位プレーヤーに対する負け" in match[0]:
             ocrData['lostHi'].append(int(match[1]))
         elif "下位プレーヤーに対する勝ち" in match[0]:
-            ocrData['winLo'].apend(int(match[1]))
+            ocrData['winLo'].append(int(match[1]))
         elif "下位プレーヤーに対する負け" in match[0]:
             ocrData['lostLo'].append(int(match[1]))
         
@@ -104,7 +104,7 @@ def parseData(text):
         rankValue = int(rankMatch[0][0])
         if '級' in rankMatch[0][1]:
             ocrData['rank'].append(- (rankValue))
-        ocrData['rank'].appned(rankValue)
+        ocrData['rank'].append(rankValue)
     
 
 
@@ -236,7 +236,7 @@ def ocr():
         contrastedImage = conTrasting(screenshot)
 
         #this shows the contents of the screenshot
-        contrastedImage.show()
+        #contrastedImage.show()
 
 
 
@@ -262,8 +262,13 @@ def ocr():
 
         pyperclip.copy(jpText)
 
-        #HEREHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
         parseData(jpText)
+
+        print("Extracted wins (high):", ocrData['winHi'])
+        print("Extracted losses (high):", ocrData['lostHi'])
+        print("Extracted wins (low):", ocrData['winLo'])
+        print("Extracted losses (low):", ocrData['lostLo'])
+        print("Extracted ranks:", ocrData['rank'])
 
         print("Text was extracted from snip")
 
@@ -309,6 +314,8 @@ button = ttk.Button(root, text="OCR", command=ocr)
 
 #This positions the button to be correctly sized on the root GUI
 button.pack()
+
+
 
 #This makes the snip tool wait for interaction or until the program is closed
 root.mainloop()
