@@ -153,7 +153,7 @@ yPred = model.predict(xTest)
 # comparison with the actual go player's rank
 accuracy = accuracy_score(yTest, yPred)
 
-print(f'Accuracy: {accuracy * 100:.2f}%')
+#print(f'Accuracy: {accuracy * 100:.2f}%')
 
 def predictRank(winHi, lostHi, winLo, lostLo):
     # this creates a 2D array using numPy 
