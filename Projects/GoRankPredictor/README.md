@@ -16,4 +16,5 @@ This program predicts the rank of the Go Player according to the input win and l
 - Run the program
 - Enter the numbers of wins and losses as prompted
 - Then the predicted rank of the Go player will be printed on the terminal
+- The parsedData.csv is a file for storing Go Player data making it easier to input additional player data using the parser script and ocr tool.
 
