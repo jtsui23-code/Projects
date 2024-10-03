@@ -62,11 +62,11 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\Users\Natck\AppData\Local\Programs\
 from tkinter import simpledialog, messagebox
 
 ocrData = {
-    'winHi': 0,
-    'winLo':0,
-    'lostHi':0,
-    'lostLo':0,
-    'rank':''
+    'winHi': [],
+    'winLo':[],
+    'lostHi':[],
+    'lostLo':[],
+    'rank':[]
 }
 
 def parseData(text):
@@ -91,20 +91,20 @@ def parseData(text):
     Match = re.findall(winLostPattern, text)
     for match in Match:
         if "上位プレーヤーに対する勝ち" in match[0]:
-            ocrData['winHi'] = int(match[1])
+            ocrData['winHi'].append(int(match[1]))
         elif "上位プレーヤーに対する負け" in match[0]:
-            ocrData['lostHi'] = int(match[1])
+            ocrData['lostHi'].append(int(match[1]))
         elif "下位プレーヤーに対する勝ち" in match[0]:
-            ocrData['winLo'] = int(match[1])
+            ocrData['winLo'].apend(int(match[1]))
         elif "下位プレーヤーに対する負け" in match[0]:
-            ocrData['lostLo'] = int(match[1])
+            ocrData['lostLo'].append(int(match[1]))
         
     rankMatch = re.findall(rankPattern, text)
     if rankMatch:
         rankValue = int(rankMatch[0][0])
         if '級' in rankMatch[0][1]:
-            ocrData['rank'] = - (rankValue)
-        ocrData['rank'] = rankValue
+            ocrData['rank'].append(- (rankValue))
+        ocrData['rank'].appned(rankValue)
     
 
 
@@ -263,11 +263,7 @@ def ocr():
         pyperclip.copy(jpText)
 
         #HEREHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
-        #HEREHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
-        #HEREHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
-        #HEREHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
-        #HEREHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
-        #HEREHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+        parseData(jpText)
 
         print("Text was extracted from snip")
 
