@@ -69,8 +69,23 @@ ocrData = {
     'rank':''
 }
 
-def addData(text):
-    pass
+def parseData(text):
+    # r' means raw string
+    # (\d+) represents an integer
+    # \d+ means any of these digits 0-9
+    # ^\d+ means this is not a number in (^\d+)
+    # so ([^\d+]) is the string or stuff infront of the win/lost 
+    # integer
+    winLostPattern = r'([^\d+])(\d+)'
+
+    # (\w+) means any letter so for recongizing the name of player
+    # \s* recongize any white spaces between string/int
+
+    # \d means int
+    # +段 means an in followed by 段(dan)
+    # then there is an | meaning that the number could be 
+    # followed by a 段 or 級
+    rankPattern = r'(\w+)\s*\[([\d]+段|[\d]+級)\]'
 
 
 #This is a function that will be used for snipping images used in the OCR
