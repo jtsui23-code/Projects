@@ -138,7 +138,7 @@ y = dataFrame['rank']
 # 20% of the data is for testing and 80% is for training
 # random_test is a seed for this exact split which is useful 
 # for debugging problems
-xTrain, xTest, yTrain, yTest = train_test_split(x, y, test_size=0.01, random_state=42)
+xTrain, xTest, yTrain, yTest = train_test_split(x, y, test_size=0.1, random_state=42)
 
 # creates model using the specific split seed 42
 model = DecisionTreeClassifier(random_state=42)
@@ -171,15 +171,15 @@ def predictRank(winHi, lostHi, winLo, lostLo):
     # the model assumes the player is likey to be
     return predictedRank[0]
 
-# wH = int(input("How many wins does this player have against higher rank players:"))
-# lH = int(input("How many losts does this player have against higher rank players:"))
-# wL = int(input("How many wins does this player have against lower rank players:"))
-# lL = int(input("How many losts does this player have against higher rank players:"))
+wH = int(input("How many wins does this player have against higher rank players:"))
+lH = int(input("How many losts does this player have against higher rank players:"))
+wL = int(input("How many wins does this player have against lower rank players:"))
+lL = int(input("How many losts does this player have against higher rank players:"))
 
 
-# thePredictedRank = predictRank(wH, lH, wL,lL)
+thePredictedRank = predictRank(wH, lH, wL,lL)
 
-# if thePredictedRank > 0:
-#     print(f'Their rank is {thePredictedRank} dan')
-# else:
-#     print(f'Their rank is {abs(thePredictedRank)} kyu')
+if thePredictedRank > 0:
+    print(f'Their rank is {thePredictedRank} dan')
+else:
+    print(f'Their rank is {abs(thePredictedRank)} kyu')
