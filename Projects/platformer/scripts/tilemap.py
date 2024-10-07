@@ -18,11 +18,6 @@ class tilemap:
         self.tilemap = {}
         self.offGridT = []
 
-        for i in range(10):
-            # self.tilemap[index of dictionary] = [contents that is being stored at index]
-            self.tilemap[str(3 + i) + ';10'] = {'type': 'grass', 'variant': 1, 'pos':(3 + i, 10)}  
-            self.tilemap['10;' + str(5 + i)] = {'type': 'stone', 'variant':1,'pos':(10, 5 + i)}
-    
     # this function returns all of the tiles that are around the player
     def tilesAround(self, pos):
         tile = []
