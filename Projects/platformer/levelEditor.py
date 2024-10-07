@@ -90,7 +90,6 @@ class editor:
                 self.tilemap.tilemap[str(tilePos[0]) + ';' + str(tilePos[1])] = {
                     'type': self.tileList[self.tileGroup], 'variant': self.tileVar, 'pos': tilePos
                 }
-            print(f"Mouse Y:{mousePos[1]}, Scroll Y: {self.scroll[1]}, Tile Y: {tilePos[1]}")
             self.display.blit(currentTileImg, (5,5))
 
             # pygame.event.get() gets the user's input
