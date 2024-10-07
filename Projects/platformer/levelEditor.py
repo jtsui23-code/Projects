@@ -85,6 +85,8 @@ class editor:
 
             tilePos = (int((mousePos[0] + self.scroll[0]) / self.tilemap.tileSize), (int((mousePos[1]) / self.tilemap.tileSize)))
 
+            # dispay the tile before actually placing it down.
+            self.display.blit(currentTileImg, (tilePos[0] * self.tilemap.tileSize - self.scroll[0], tilePos[1] * self.tilemap.tileSize - self.scroll[1]))
             
             if self.leftClick:
                 self.tilemap.tilemap[str(tilePos[0]) + ';' + str(tilePos[1])] = {
@@ -98,7 +100,7 @@ class editor:
                 # delete it when right clicking on mouse.
                 if tileLoc in self.tilemap.tilemap:
                     del self.tilemap.tilemap[tileLoc]
-                    
+
             self.display.blit(currentTileImg, (5,5))
 
             # pygame.event.get() gets the user's input
