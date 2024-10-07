@@ -6,7 +6,9 @@ This program predicts the rank of the Go Player according to the input win and l
 ### Files:
 |   #   | File            | Description                                        |
 | :---: | --------------- | -------------------------------------------------- |
-|   1   | [GoRankPredictor.py](https://github.com/jtsui23-code/Projects/blob/main/Projects/GoRankPredictor/GoRankPredictor.py)        | This is the main script for the Go Rank Predictor.      |
+|   1   | [GoRankPredictor.py](https://github.com/jtsui23-code/Projects/blob/main/Projects/GoRankPredictor/GoRankPredictor.py)        | This is the main script for the Go Rank Predictor.|
+| 2 | [parser.py](https://github.com/jtsui23-code/Projects/blob/main/Projects/GoRankPredictor/parser.py) | This script parses through the contents of an ocr to streamline inputting data making it significantly faster |
+
 
 
 ### Instructions:
@@ -14,4 +16,5 @@ This program predicts the rank of the Go Player according to the input win and l
 - Run the program
 - Enter the numbers of wins and losses as prompted
 - Then the predicted rank of the Go player will be printed on the terminal
+- The parsedData.csv is a file for storing Go Player data making it easier to input additional player data using the parser script and ocr tool.
 
