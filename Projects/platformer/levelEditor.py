@@ -97,7 +97,8 @@ class editor:
                 # if there is a tile at the tile position,
                 # delete it when right clicking on mouse.
                 if tileLoc in self.tilemap.tilemap:
-                    del self.tilemap[tileLoc]
+                    del self.tilemap.tilemap[tileLoc]
+                    
             self.display.blit(currentTileImg, (5,5))
 
             # pygame.event.get() gets the user's input
