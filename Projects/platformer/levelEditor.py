@@ -90,6 +90,10 @@ class editor:
                 self.tilemap.tilemap[str(tilePos[0]) + ';' + str(tilePos[1])] = {
                     'type': self.tileList[self.tileGroup], 'variant': self.tileVar, 'pos': tilePos
                 }
+            if self.rightClick:
+                tileLoc = str(tilePos[0]) + ';' + str(tilePos[1])
+                if tileLoc in self.tilemap.tilemap:
+                    pass
             self.display.blit(currentTileImg, (5,5))
 
             # pygame.event.get() gets the user's input
