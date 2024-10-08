@@ -38,7 +38,12 @@ class tilemap:
         self.tileSize = mapData['tileSize']
         self.offGridT = mapData['offgrid']
 
-        
+    def autoTile(self):
+        for loc in self.tilemap:
+            tile = self.tilemap[loc]
+            neighborSet = set()
+            for shift in [(1,0), (-1,0), (0,-1), (0,1)]:
+                checkLocation = str(tile['pos'][0] + shift[0]) + ';' + str(tile['pos'][1] + shift[1])
     # this function returns all of the tiles that are around the player
     def tilesAround(self, pos):
         tile = []
