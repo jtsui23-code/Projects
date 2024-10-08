@@ -96,7 +96,7 @@ class editor:
             else: 
                 self.display.blit(currentTileImg, mousePos)
                 
-            if self.leftClick:
+            if self.leftClick and self.ongrid:
                 self.tilemap.tilemap[str(tilePos[0]) + ';' + str(tilePos[1])] = {
                     'type': self.tileList[self.tileGroup], 'variant': self.tileVar, 'pos': tilePos
                 }
@@ -126,7 +126,9 @@ class editor:
                     # button 4 is scroll up 
                     # button 5 is scroll down
                     if event.button == 1:
-                        self.leftClick = True
+                            self.leftClick = True
+                            if not self.ongrid:
+                                self.tilemap.offGridT.append({'type': self.tileList[self.tileGroup], 'variant': self.tileVar, 'pos': (mousePos[0] + self.scroll[0], mousePos[1] + self.scroll[1])})
                     if event.button == 3:
                         self.rightClick = True
                     
