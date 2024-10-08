@@ -18,7 +18,7 @@ class tilemap:
         # two islands far apart from each other
         self.tilemap = {}
         self.offGridT = []
-    def saveTile(self,path):
+    def save(self,path):
         # open the file
         f = (open, 'w')
         # dump the map into the file as json
