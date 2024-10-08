@@ -82,10 +82,13 @@ class game:
             self.clouds.render(self.display, renderScroll)
 
             self.tilemap.render(self.display,offset=renderScroll)
+
+            self.tilemap.load('levels/map.json')
+
             # this updates the player's movement on the x axis
             self.player.update(self.tilemap,(self.movement[1] - self.movement[0],0))
 
-            # updates the screen
+            # updates the screen    
             self.player.render(self.display, offset=renderScroll)
             # pygame.event.get() gets the user's input
             for event in pygame.event.get():
