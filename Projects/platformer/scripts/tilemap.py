@@ -43,6 +43,10 @@ class tilemap:
         # dump the map into the file as json
         json.dump({'tilemap':self.tilemap, 'tileSize': self.tileSize, 'offgrid':self.offGridT},f)
         f.close()
+
+    
+    def extract(self, idPair, keep=False):
+        pass
     
     def load(self,path):
         # open file in path and read it in
