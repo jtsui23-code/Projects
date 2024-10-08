@@ -20,7 +20,7 @@ class tilemap:
         self.offGridT = []
     def save(self,path):
         # open the file
-        f = (open, 'w')
+        f = open(path, 'w') 
         # dump the map into the file as json
         json.dump({'tilemap':self.tilemap, 'tileSize': self.tileSize, 'offgrid':self.offGridT},f)
         f.close()
