@@ -95,7 +95,9 @@ class editor:
                 self.display.blit(currentTileImg, (tilePos[0] * self.tilemap.tileSize - self.scroll[0], tilePos[1] * self.tilemap.tileSize - self.scroll[1]))
             else: 
                 self.display.blit(currentTileImg, mousePos)
-                
+            
+            # will only place down tile ongrid
+            #  if left clicking and is ongrid
             if self.leftClick and self.ongrid:
                 self.tilemap.tilemap[str(tilePos[0]) + ';' + str(tilePos[1])] = {
                     'type': self.tileList[self.tileGroup], 'variant': self.tileVar, 'pos': tilePos
@@ -108,7 +110,10 @@ class editor:
                 # delete it when right clicking on mouse.
                 if tileLoc in self.tilemap.tilemap:
                     del self.tilemap.tilemap[tileLoc]
-
+                # makes a copy so don't mess up the offgrid tiles if 
+                # deleted
+                for tile in self.tilemap.offGridT.copy():
+                    pass
             self.display.blit(currentTileImg, (5,5))
 
             # pygame.event.get() gets the user's input
