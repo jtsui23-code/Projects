@@ -52,6 +52,11 @@ class editor:
         self.scroll = [0,0]
 
         self.leftClick = False
+        try:
+            self.tilemap.load('map.json')
+        except FileNotFoundError:
+            pass
+        
         self.rightClick = False
         self.shift = False
         self.ongrid = True
