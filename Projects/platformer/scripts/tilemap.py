@@ -20,10 +20,23 @@ class tilemap:
         self.offGridT = []
     def save(self,path):
         # open the file
+        # 'w' stands for write in the file
         f = open(path, 'w') 
         # dump the map into the file as json
         json.dump({'tilemap':self.tilemap, 'tileSize': self.tileSize, 'offgrid':self.offGridT},f)
         f.close()
+    
+    def load(self,path):
+        # open file in path and read it in
+        # 'r' stands for read
+        f = open(path, 'r')
+
+        # stores map data
+        mapdata = json.load(f)
+        f.close()
+
+        
+        
     # this function returns all of the tiles that are around the player
     def tilesAround(self, pos):
         tile = []
