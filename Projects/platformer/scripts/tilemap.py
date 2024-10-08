@@ -73,14 +73,14 @@ class tilemap:
                     # then add the position to the neighborSet set
                     if self.tilemap[checkLocation]['type'] == tile['type']:
                         neighborSet.add(shift)
-                neighborSet = tuple(sorted(neighborSet))
-                # if the tile at hand is one of the auto tile type 
-                # and the tile at hand is in the correct position in the 
-                # auto tile map. 
-                # set to the specific tile variant depending on where the 
-                # neighboring tiles is in respect to the tile posiiton at hand
-                if (tile['type'] in autoTileType) and (neighborSet in autoTileMap):
-                    tile['variant'] = autoTileMap[neighborSet]
+            neighborSet = tuple(sorted(neighborSet))
+            # if the tile at hand is one of the auto tile type 
+            # and the tile at hand is in the correct position in the 
+            # auto tile map. 
+            # set to the specific tile variant depending on where the 
+            # neighboring tiles is in respect to the tile posiiton at hand
+            if (tile['type'] in autoTileType) and (neighborSet in autoTileMap):
+                tile['variant'] = autoTileMap[neighborSet]
     # this function returns all of the tiles that are around the player
     def tilesAround(self, pos):
         tile = []
