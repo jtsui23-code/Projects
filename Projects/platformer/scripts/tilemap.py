@@ -32,10 +32,12 @@ class tilemap:
         f = open(path, 'r')
 
         # stores map data
-        mapdata = json.load(f)
+        mapData = json.load(f)
         f.close()
+        self.tilemap = mapData['tilemap']
+        self.tileSize = mapData['tileSize']
+        self.offGridT = mapData['offgrid']
 
-        
         
     # this function returns all of the tiles that are around the player
     def tilesAround(self, pos):
