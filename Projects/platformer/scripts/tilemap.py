@@ -22,7 +22,7 @@ class tilemap:
         # open the file
         f = (open, 'w')
         # dump the map into the file as json
-        json.dump({'tilemap':self.tilemap, 'tileSize': self.tileSize, 'offgrid':self.offGridT, f})
+        json.dump({'tilemap':self.tilemap, 'tileSize': self.tileSize, 'offgrid':self.offGridT},f)
         f.close()
     # this function returns all of the tiles that are around the player
     def tilesAround(self, pos):
