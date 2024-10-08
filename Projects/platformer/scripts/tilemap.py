@@ -79,7 +79,7 @@ class tilemap:
                 # auto tile map. 
                 # set to the specific tile variant depending on where the 
                 # neighboring tiles is in respect to the tile posiiton at hand
-                if (tile['type'] in autoTileType) and (neighborSet in autoTileMap)
+                if (tile['type'] in autoTileType) and (neighborSet in autoTileMap):
                     tile['variant'] = autoTileMap[neighborSet]
     # this function returns all of the tiles that are around the player
     def tilesAround(self, pos):

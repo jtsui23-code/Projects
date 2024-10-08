@@ -175,6 +175,8 @@ class editor:
 
                 # checks if keys are being pressed
                 if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_t:
+                        self.tilemap.autoTile()
                     if event.key == pygame.K_g:
                         self.ongrid = not self.ongrid
                     if event.key == pygame.K_s:
