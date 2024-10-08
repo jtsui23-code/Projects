@@ -113,7 +113,10 @@ class editor:
                 # makes a copy so don't mess up the offgrid tiles if 
                 # deleted
                 for tile in self.tilemap.offGridT.copy():
-                    pass
+                    tileImg = self.assets[tile['type']][tile['variant']]
+                    tileR = pygame.Rect(tile['pos'][0] - self.scroll[0], tile['pos'][1] - self.scroll[1], tileImg.getWidth(), tileImg.getHeight())
+                    if tileR.collisdepoint(mousePos):
+                        self.tilemap.offGridT.remove(tile)
             self.display.blit(currentTileImg, (5,5))
 
             # pygame.event.get() gets the user's input
