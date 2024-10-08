@@ -89,7 +89,7 @@ class editor:
 
             tilePos = (int((mousePos[0] + self.scroll[0]) / self.tilemap.tileSize), (int((mousePos[1]) / self.tilemap.tileSize)))
 
-            if self.ongrif:
+            if self.ongrid:
 
                 # dispay the tile before actually placing it down.
                 self.display.blit(currentTileImg, (tilePos[0] * self.tilemap.tileSize - self.scroll[0], tilePos[1] * self.tilemap.tileSize - self.scroll[1]))
