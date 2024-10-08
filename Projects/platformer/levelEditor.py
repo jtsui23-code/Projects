@@ -114,8 +114,8 @@ class editor:
                 # deleted
                 for tile in self.tilemap.offGridT.copy():
                     tileImg = self.assets[tile['type']][tile['variant']]
-                    tileR = pygame.Rect(tile['pos'][0] - self.scroll[0], tile['pos'][1] - self.scroll[1], tileImg.getWidth(), tileImg.getHeight())
-                    if tileR.collisdepoint(mousePos):
+                    tileR = pygame.Rect(tile['pos'][0] - self.scroll[0], tile['pos'][1] - self.scroll[1], tileImg.get_width(), tileImg.get_height())
+                    if tileR.collidepoint(mousePos):
                         self.tilemap.offGridT.remove(tile)
             self.display.blit(currentTileImg, (5,5))
 
