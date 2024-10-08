@@ -54,6 +54,7 @@ class editor:
         self.leftClick = False
         self.rightClick = False
         self.shift = False
+        self.ongrid = True
 
     def run(self):
         while True:
@@ -155,6 +156,8 @@ class editor:
 
                 # checks if keys are being pressed
                 if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_g:
+                        self.ongrid = not self.ongrid
                     if event.key == pygame.K_s:
                         self.movement[3] = True
                     if event.key == pygame.K_w:
