@@ -180,6 +180,8 @@ class editor:
                         self.movement[2] = True
                     if event.key == pygame.K_DOWN:
                         self.movement[3] = True
+                    if event.key == pygame.K_o:
+                        self.tilemap.save('map.json')
                     if event.key == pygame.K_a:
                         self.movement[0] = True
                     if event.key == pygame.K_d:
