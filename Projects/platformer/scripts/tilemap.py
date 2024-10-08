@@ -25,7 +25,7 @@ neighborOffSet = [(-1,0), (-1,-1), (0,-1), (1,-1), (1,0),(0,0), (-1,1),(0,1),(1,
 # This is a set since there is no labling
 # sets are faster than list and ordering doesn't matter
 physicTiles = {'grass','stone'}
-autoTile = {'grass', 'stone'}
+autoTileType = {'grass', 'stone'}
 
 class tilemap:
     def __init__ (self, game, tilesize=16):
@@ -69,7 +69,18 @@ class tilemap:
                 checkLocation = str(tile['pos'][0] + shift[0]) + ';' + str(tile['pos'][1] + shift[1])
                 # checks if surrounding position exists 
                 if checkLocation in self.tilemap:
-                    pass
+                    # if the surround tile is the same as the tile itself
+                    # then add the position to the neighborSet set
+                    if self.tilemap[checkLocation]['type'] == tile['type']:
+                        neighborSet.add(shift)
+                neighborSet = tuple(sorted(neighborSet))
+                # if the tile at hand is one of the auto tile type 
+                # and the tile at hand is in the correct position in the 
+                # auto tile map. 
+                # set to the specific tile variant depending on where the 
+                # neighboring tiles is in respect to the tile posiiton at hand
+                if (tile['type'] in autoTileType) and (neighborSet in autoTileMap)
+                    tile['variant'] = autoTileMap[neighborSet]
     # this function returns all of the tiles that are around the player
     def tilesAround(self, pos):
         tile = []
