@@ -38,12 +38,19 @@ class tilemap:
         self.tileSize = mapData['tileSize']
         self.offGridT = mapData['offgrid']
 
+    # method for autotiling based on surround tiles in editor
     def autoTile(self):
+        # checks if the location of the tile exist
         for loc in self.tilemap:
+            # stores the position on the location of the tile
             tile = self.tilemap[loc]
             neighborSet = set()
+            # looks at surround positions to the tile
             for shift in [(1,0), (-1,0), (0,-1), (0,1)]:
+                # stores the surrounding position
                 checkLocation = str(tile['pos'][0] + shift[0]) + ';' + str(tile['pos'][1] + shift[1])
+                # checks if surrounding position exists 
+                if checkLocation in self.tilemap:
     # this function returns all of the tiles that are around the player
     def tilesAround(self, pos):
         tile = []
