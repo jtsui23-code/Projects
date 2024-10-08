@@ -56,7 +56,11 @@ class tilemap:
         self.tileSize = mapData['tileSize']
         self.offGridT = mapData['offgrid']
 
-    # method for autotiling based on surround tiles in editor
+    # this method will check every single tile in the tilemap
+    # and the tile's surrounding. if the the surrounding tile is 
+    # the same variant then will proceed to checking which variant 
+    # of that tile it should be changed to through checking with the 
+    # autoTileMap container
     def autoTile(self):
         # checks if the location of the tile exist
         for loc in self.tilemap:
@@ -67,12 +71,16 @@ class tilemap:
             for shift in [(1,0), (-1,0), (0,-1), (0,1)]:
                 # stores the surrounding position
                 checkLocation = str(tile['pos'][0] + shift[0]) + ';' + str(tile['pos'][1] + shift[1])
-                # checks if surrounding position exists 
+                # checks if surrounding position has a tile there 
                 if checkLocation in self.tilemap:
-                    # if the surround tile is the same as the tile itself
-                    # then add the position to the neighborSet set
+                    # if the surround tile has the same variant 
+                    # as the tile being looked at hand 
+                    # put that surrounding tile's coordinate into the 
+                    # neighbor set
                     if self.tilemap[checkLocation]['type'] == tile['type']:
                         neighborSet.add(shift)
+
+            # sort the coordinate in order
             neighborSet = tuple(sorted(neighborSet))
             # if the tile at hand is one of the auto tile type 
             # and the tile at hand is in the correct position in the 
