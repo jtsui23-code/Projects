@@ -1,6 +1,16 @@
 import json
 import pygame
 
+# the key is a sorted array to ensure that no matter what the 
+# order of coordinates used it will be matched with the same thing
+# also the sorted list is converted to a tuple because 
+# an array can't be a key for a map while a tuple can
+autoTileMap = {
+    # position    variant of tile
+    tuple(sorted([(1,0), (0,1)])): 0,
+    tuple(sorted([(1,0), (0,-1)])): 1,
+
+}
 # this list contains all the possible offset of coordinates
 # around a pixal
 neighborOffSet = [(-1,0), (-1,-1), (0,-1), (1,-1), (1,0),(0,0), (-1,1),(0,1),(1,1)]
@@ -8,6 +18,7 @@ neighborOffSet = [(-1,0), (-1,-1), (0,-1), (1,-1), (1,0),(0,0), (-1,1),(0,1),(1,
 # This is a set since there is no labling
 # sets are faster than list and ordering doesn't matter
 physicTiles = {'grass','stone'}
+autoTile = {'grass', 'stone'}
 
 class tilemap:
     def __init__ (self, game, tilesize=16):
@@ -51,6 +62,7 @@ class tilemap:
                 checkLocation = str(tile['pos'][0] + shift[0]) + ';' + str(tile['pos'][1] + shift[1])
                 # checks if surrounding position exists 
                 if checkLocation in self.tilemap:
+                    pass
     # this function returns all of the tiles that are around the player
     def tilesAround(self, pos):
         tile = []
