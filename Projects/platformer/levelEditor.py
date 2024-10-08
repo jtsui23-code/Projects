@@ -53,7 +53,7 @@ class editor:
 
         self.leftClick = False
         try:
-            self.tilemap.load('map.json')
+            self.tilemap.load('levels/map.json')
         except FileNotFoundError:
             pass
         
