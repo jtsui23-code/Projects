@@ -89,9 +89,13 @@ class editor:
 
             tilePos = (int((mousePos[0] + self.scroll[0]) / self.tilemap.tileSize), (int((mousePos[1]) / self.tilemap.tileSize)))
 
-            # dispay the tile before actually placing it down.
-            self.display.blit(currentTileImg, (tilePos[0] * self.tilemap.tileSize - self.scroll[0], tilePos[1] * self.tilemap.tileSize - self.scroll[1]))
-            
+            if self.ongrif:
+
+                # dispay the tile before actually placing it down.
+                self.display.blit(currentTileImg, (tilePos[0] * self.tilemap.tileSize - self.scroll[0], tilePos[1] * self.tilemap.tileSize - self.scroll[1]))
+            else: 
+                self.display.blit(currentTileImg, mousePos)
+                
             if self.leftClick:
                 self.tilemap.tilemap[str(tilePos[0]) + ';' + str(tilePos[1])] = {
                     'type': self.tileList[self.tileGroup], 'variant': self.tileVar, 'pos': tilePos
