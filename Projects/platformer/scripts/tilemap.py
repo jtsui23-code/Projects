@@ -46,7 +46,13 @@ class tilemap:
 
     
     def extract(self, idPair, keep=False):
-        pass
+        match = []
+        # make a copy because might want to remove the 
+        # tile from the list later so don't want to actually delete
+        # the tile 
+        for tile in self.offGridT.copy():
+            if (tile['type'], tile['variant']) in idPair:
+                match.append(tile.copy())
     
     def load(self,path):
         # open file in path and read it in
