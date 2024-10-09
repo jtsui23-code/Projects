@@ -53,6 +53,12 @@ class tilemap:
         for tile in self.offGridT.copy():
             if (tile['type'], tile['variant']) in idPair:
                 match.append(tile.copy())
+                if not keep:
+                    self.offGridT.remove(tile)
+        for loc in self.tilemap:
+            tile = self.tilemap[loc]
+            if (tile['type'], tile['variant']) in idPair:
+                match.append(tile.copy())
     
     def load(self,path):
         # open file in path and read it in
