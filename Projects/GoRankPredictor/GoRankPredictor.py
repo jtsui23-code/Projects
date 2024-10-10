@@ -102,10 +102,10 @@ data ={
 
 # attemps to read in parsed data from csv file.
 try:
-    # looks for a csv file called parsedData.csv
+    # looks for a csv file called playerData.csv
     # enters reading mode with mode='r'
     # file is an object
-    with open('parsedData.csv', mode='r') as file:
+    with open('playerData.csv', mode='r') as file:
         # creates reader object using csv library
         reader = csv.reader(file)
         # reads in each row in the csv file

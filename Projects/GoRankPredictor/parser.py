@@ -89,9 +89,9 @@ def saveData():
 
     dataLength = min(len(ocrData['winHi']), len(ocrData['lostHi']), len(ocrData['winLo']), len(ocrData['lostLo']))
 
-    # creates/opens parsedData.csv file and starts appending data
+    # creates/opens playerData.csv file and starts appending data
     # file is an object from csv
-    with open('parsedData.csv', mode = 'a', newline='') as file:
+    with open('playerData.csv', mode = 'a', newline='') as file:
         writer = csv.writer(file)
         # loops through each item in the 'winHi' list
         for i in range(dataLength):
