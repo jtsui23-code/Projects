@@ -59,6 +59,15 @@ class tilemap:
             tile = self.tilemap[loc]
             if (tile['type'], tile['variant']) in idPair:
                 match.append(tile.copy())
+                # made a deep copy of tile data and 
+                # converted to pixal coordinates
+                match[-1]['pos'] = match[-1]['pos'].copy()
+                match[-1]['pos'][0] *= self.tileSize
+                match[-1]['pos'][1] *= self.tileSize
+                if not keep:
+                    del self.tilemap[loc]
+
+        return match
     
     def load(self,path):
         # open file in path and read it in
