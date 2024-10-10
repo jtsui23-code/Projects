@@ -44,7 +44,11 @@ class tilemap:
         json.dump({'tilemap':self.tilemap, 'tileSize': self.tileSize, 'offgrid':self.offGridT},f)
         f.close()
 
-    
+    # This method will find all of the tiles in the level that have the same
+    # id Pair as then one passed into the function 
+    # so if you called extract and passed in large_decor as the id pair
+    # then this method will find all of the large_decor tiles in the map 
+    # and make a copy of all of them in a list called matches and return it 
     def extract(self, idPair, keep=False):
         match = []
         # make a copy because might want to remove the 

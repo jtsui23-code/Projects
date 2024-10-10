@@ -85,6 +85,8 @@ class game:
 
             self.tilemap.load('levels/map.json')
 
+            print(self.tilemap.extract([('large_decor', 2)], keep=True))
+
             # this updates the player's movement on the x axis
             self.player.update(self.tilemap,(self.movement[1] - self.movement[0],0))
 
