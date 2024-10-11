@@ -94,6 +94,8 @@ class game:
                 # from where the tree actually is
                 self.leafSpawner.append(pygame.Rect(4 + tree['pos'][0], 4 + tree['pos'][1], 23, 13))
 
+            print(self.leafSpawner)
+            
             # this updates the player's movement on the x axis
             self.player.update(self.tilemap,(self.movement[1] - self.movement[0],0))
 
