@@ -1,5 +1,5 @@
 class Particle:
-    def _init_(self, game, pType, pos, velocity=[0,0], frame=0):
+    def __init__(self, game, pType, pos, velocity=[0.0,0.0], frame=0):
         self.game = game
         self.type = pType
         self.pos = list(pos)

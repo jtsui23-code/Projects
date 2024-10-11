@@ -103,9 +103,9 @@ class game:
                 # spawned in at every frame so the larger the number
                 # the less frequent the leaves spawn
                 if random.random() * 49999 < rect.width * rect.height:
-                    pos = (rect.x + random.random() * rect.width, rect.y + random.random() * rect.height())
+                    pos = (rect.x + random.random() * rect.width, rect.y + random.random() * rect.height)
                     self.particles.append(Particle(self, 'leaf', pos, velocity=[-0.1, 0.3], frame=random.randint(0,20)))
-                    
+
             self.clouds.update()
             self.clouds.render(self.display, renderScroll)
 
