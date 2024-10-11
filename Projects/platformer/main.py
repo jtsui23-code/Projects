@@ -139,9 +139,9 @@ class game:
                 # checks if keys are being pressed
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_w:
-                        self.player.velocity[1] = -3
+                        self.player.jump()
                     if event.key == pygame.K_UP:
-                        self.player.velocity[1] = -3
+                        self.player.jump()
                     if event.key == pygame.K_a:
                         self.movement[0] = True
                     if event.key == pygame.K_d:
