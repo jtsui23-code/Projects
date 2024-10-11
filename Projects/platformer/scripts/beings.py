@@ -152,4 +152,4 @@ class player(physicsBeing):
     def jump(self):
         if self.jumps:
             self.velocity[1] = -3
-            self.jump -= 1
+            self.jumps -= 1
