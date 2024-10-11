@@ -96,6 +96,9 @@ class physicsBeing:
         if self.collision['down'] or self.collision['up']:
             self.velocity[1] = 0
 
+        if self.collision['down']:
+            self.jumps = 1
+
         self.animation.update()
     
     def render(self, surf, offset=(0,0)):
@@ -117,6 +120,8 @@ class player(physicsBeing):
         # does init for physicsBeing class
         super().__init__(game, 'player', pos, size)
         # self.airTime = 0
+
+        self.jumps = 1
 
     def update(self, tilemap, movement=(0,0)):
         # uses movement method from physicsBeing 
@@ -144,3 +149,7 @@ class player(physicsBeing):
         # do the idle animatino
         else:
             self.setAction('idle')
+    def jump(self):
+        if self.jumps:
+            self.velocity[1] = -3
+            self.jump -= 1
