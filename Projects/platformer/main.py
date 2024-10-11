@@ -93,6 +93,10 @@ class game:
             renderScroll = (int(self.scroll[0]), int(self.scroll[1]))
 
             for rect in self.leafSpawner:
+                # multiplying random.radnom() by a big number 
+                # makes it to where the leaf particles are not 
+                # spawned in at every frame so the larger the number
+                # the less frequent the leaves spawn
                 if random.random() * 49999 < rect.width * rect.height:
                     pass
             self.clouds.update()
