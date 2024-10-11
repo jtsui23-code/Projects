@@ -92,13 +92,20 @@ class game:
             # therefore need to turn camera positioning into int
             renderScroll = (int(self.scroll[0]), int(self.scroll[1]))
 
+
+            # spawns in particles at random
+            # the particle type is leaf
+            # the range of the velocity is -0.1
+            # to 0.3 and can spawn in frame 0 to 20
             for rect in self.leafSpawner:
                 # multiplying random.radnom() by a big number 
                 # makes it to where the leaf particles are not 
                 # spawned in at every frame so the larger the number
                 # the less frequent the leaves spawn
                 if random.random() * 49999 < rect.width * rect.height:
-                    pass
+                    pos = (rect.x + random.random() * rect.width, rect.y + random.random() * rect.height())
+                    self.particles.append(Particle(self, 'leaf', pos, velocity=[-0.1, 0.3], frame=random.randint(0,20)))
+                    
             self.clouds.update()
             self.clouds.render(self.display, renderScroll)
 
