@@ -1,3 +1,5 @@
+import random
+from scripts.particle import Particle
 import sys
 import pygame
 from scripts.beings import physicsBeing, player
@@ -40,7 +42,8 @@ class game:
             'player/run': animation(loadImages('entities/player/run'),imgDur=4),
             'player/jump': animation(loadImages('entities/player/jump')),
             'player/slide': animation(loadImages('entities/player/slide')),
-            'player/wallSlide':animation(loadImages("entities/player/wall_slide"))
+            'player/wallSlide':animation(loadImages("entities/player/wall_slide")),
+            'particle/leaf': animation(loadImages('particles/leaf'))
         }
 
         self.clouds = cloudz(self.assets['clouds'], count=16)
@@ -48,8 +51,17 @@ class game:
         self.player = player(self, (100,20), (8, 15))
 
         self.tilemap = tilemap(self, tilesize=16)
+        self.tilemap.load('levels/map.json')
 
+        self.leafSpawner = []
+        for tree in self.tilemap.extract([('large_decor', 2)], keep=True):
+            # This looks at every tree so it can determine where to 
+            # spawn in the leaves. The leaves will be offsetted a bit 
+            # from where the tree actually is
+            self.leafSpawner.append(pygame.Rect(4 + tree['pos'][0], 4 + tree['pos'][1], 23, 13))
 
+        self.particles = []
+        print(self.leafSpawner)
 
         self.scroll = [0,0]
 
@@ -80,27 +92,27 @@ class game:
             # therefore need to turn camera positioning into int
             renderScroll = (int(self.scroll[0]), int(self.scroll[1]))
 
+            for rect in self.leafSpawner:
+                if random.random() * 49999 < rect.width * rect.height:
+                    pass
             self.clouds.update()
             self.clouds.render(self.display, renderScroll)
 
             self.tilemap.render(self.display,offset=renderScroll)
 
-            self.tilemap.load('levels/map.json')
 
-            self.leafSpawner = []
-            for tree in self.tilemap.extract([('large_decor', 2)], keep=True):
-                # This looks at every tree so it can determine where to 
-                # spawn in the leaves. The leaves will be offsetted a bit 
-                # from where the tree actually is
-                self.leafSpawner.append(pygame.Rect(4 + tree['pos'][0], 4 + tree['pos'][1], 23, 13))
-
-            print(self.leafSpawner)
-            
             # this updates the player's movement on the x axis
             self.player.update(self.tilemap,(self.movement[1] - self.movement[0],0))
 
             # updates the screen    
             self.player.render(self.display, offset=renderScroll)
+
+            for particle in self.particles.copy():
+                kill = particle.update()
+                particle.render(self.display, offset=renderScroll)
+                if kill:
+                    self.particles.remove(particle)
+
             # pygame.event.get() gets the user's input
             for event in pygame.event.get():
                 #checks if the user pressed x button on top right
