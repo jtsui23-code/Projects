@@ -42,7 +42,7 @@ class animation():
             self.frame = (self.frame + 1) % (self.imgDur * len(self.images))
         else:
             self.frame = min(self.frame+1, self.imgDur * len(self.images) -1)
-            if self.frame >= self.imgDur * len(self.imgDur)-1:
+            if self.frame >= self.imgDur * len(self.images)-1:
                 self.done = True
     
     def img(self):
