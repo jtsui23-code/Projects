@@ -49,6 +49,8 @@ class game:
 
         self.tilemap = tilemap(self, tilesize=16)
 
+
+
         self.scroll = [0,0]
 
     def run(self):
@@ -85,7 +87,12 @@ class game:
 
             self.tilemap.load('levels/map.json')
 
-            print(self.tilemap.extract([('large_decor', 2)], keep=True))
+            self.leafSpawner = []
+            for tree in self.tilemap.extract([('large_decor', 2)], keep=True):
+                # This looks at every tree so it can determine where to 
+                # spawn in the leaves. The leaves will be offsetted a bit 
+                # from where the tree actually is
+                self.leafSpawner.append(pygame.Rect(4 + tree['pos'][0], 4 + tree['pos'][1], 23, 13))
 
             # this updates the player's movement on the x axis
             self.player.update(self.tilemap,(self.movement[1] - self.movement[0],0))

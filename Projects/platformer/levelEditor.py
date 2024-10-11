@@ -35,7 +35,7 @@ class editor:
 
         # up is bound to [0] down is bound to [1] 
         self.movement = [False, False, False, False]
-
+        
         self.tilemap = tilemap(self, tilesize=16)
 
         # this creates a list of the keys inside the 
