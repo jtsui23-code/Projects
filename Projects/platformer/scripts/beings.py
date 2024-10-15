@@ -164,7 +164,8 @@ class player(physicsBeing):
                 self.setAction('idle')
     def jump(self):
         if self.wallSlide:
-            pass
+            if self.flip and self.lastMovement[0] < 0:
+                pass
         elif self.jumps > 0:
             self.velocity[1] = -3
             self.jumps -= 1
