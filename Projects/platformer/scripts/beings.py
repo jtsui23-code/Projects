@@ -148,6 +148,15 @@ class player(physicsBeing):
             self.dashing = max(0, self.dashing - 1)
         if self.dashing < 0:
             self.dashing = min(0, self.dashing +1)
+        # for the first 10 frames of the dashing
+        # change the velocity by a magnitube of 8
+        # since abs(self.dashing)/ self.dashing 
+        # will just be 1 or -1 then 
+        # that product is * by 8 so the x - axis 
+        # velocity is initialize to the + or - 8
+        # of the first 10 frames
+        if abs(self.dashing) > 50:
+            self.velocity[0] = abs(self.dashing)/ self.dashing * 8
 
         if not self.wallSlide:
             # # checks if the player is on the ground
