@@ -144,6 +144,10 @@ class player(physicsBeing):
             else: 
                 self.flip = True
             self.setAction('wallSlide')
+        if self.dashing > 0:
+            self.dashing = max(0, self.dashing - 1)
+        if self.dashing < 0:
+            self.dashing = min(0, self.dashing +1)
 
         if not self.wallSlide:
             # # checks if the player is on the ground
