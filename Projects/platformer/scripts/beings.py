@@ -133,6 +133,8 @@ class player(physicsBeing):
         # air then go into the wall jump animation
         if (self.collision['right'] or self.collision['left']) and (self.velocity[1] > 0):
             self.wallJump = True
+            # caps the vertical velocity at 0.5
+            self.velocity[1] = min(self.velocity[1], 0.5)
 
         # # checks if the player is on the ground
         # if self.collision['down']:
