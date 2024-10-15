@@ -164,8 +164,24 @@ class player(physicsBeing):
                 self.setAction('idle')
     def jump(self):
         if self.wallSlide:
+            # if the player is moving from
+            # the left then walljump to then wall jump to
+            # the left 
             if self.flip and self.lastMovement[0] < 0:
-                pass
+                self.velocity[0] = 3.5
+                self.velocity[1] = 2.5
+                # decrements number of jumps by 1
+                # lets player jump even if used all of jumps
+                self.jumps = max(0, self.jumps - 1)
+                return True
+            # if the player is wall jumping from the left then 
+            # wall jump to the right 
+            elif not self.flip and self.lastMovement[0] > 0:
+                self.velocity[0] = -3.5
+                self.velocity[1] = 2.5
+                self.jumps = max(0, self.jumps - 1)
+                return True
         elif self.jumps > 0:
             self.velocity[1] = -3
             self.jumps -= 1
+            return True
