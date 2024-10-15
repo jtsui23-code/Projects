@@ -128,6 +128,12 @@ class player(physicsBeing):
         # but uses the values specific to the player
         super().update(tilemap, movement=movement)
 
+        self.wallJump = False
+        # If player is touching the wall from the right or left and in the 
+        # air then go into the wall jump animation
+        if (self.collision['right'] or self.collision['left']) and (self.velocity[1] > 0):
+            self.wallJump = True
+
         # # checks if the player is on the ground
         # if self.collision['down']:
         #     self.airTime = 0
