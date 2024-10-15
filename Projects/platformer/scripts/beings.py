@@ -200,9 +200,10 @@ class player(physicsBeing):
         if not self.dashing:
             # if the player is facing left 
             # make dashing -60
+            # |60| is how long dash will last for 
             if self.flip:
                 self.dashing = -60
-            if not self.flip:
+            else:
             # if player is facing right then 
             # make dash 60
                 self.dashing = 60
