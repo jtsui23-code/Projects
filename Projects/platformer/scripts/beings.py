@@ -60,9 +60,11 @@ class physicsBeing:
                 if framerMovement[0] >0:    # if collision coming from right
                     beingRect.right = rect.left
                     self.collision['right'] = True
+                    self.jumps += 1
                 if framerMovement[0] < 0:
                     beingRect.left = rect.right #if collision coming from leftside
                     self.collision['left'] = True
+                    self.jumps += 1
                 #sets postion of rect
                 # using pos[0] because Rect()
                 # only works with int
