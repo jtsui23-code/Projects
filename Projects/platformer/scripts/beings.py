@@ -157,7 +157,13 @@ class player(physicsBeing):
         # of the first 10 frames
         if abs(self.dashing) > 50:
             self.velocity[0] = abs(self.dashing)/ self.dashing * 8
-
+            # slows down the velocity of the dash 
+            # at the end of the 10 frames of the dash
+            # the rest of the 50 for the self.dashing 
+            # works as a cooldown of 50 frames for the dashing
+            if abs(self.dashing) == 51:
+                self.velocity[0] *= 0.1
+            
         if not self.wallSlide:
             # # checks if the player is on the ground
             # if self.collision['down']:
