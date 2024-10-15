@@ -139,7 +139,7 @@ class player(physicsBeing):
                 self.flip = False
             else: 
                 self.flip = True
-            self.setAction('wall_slide')
+            self.setAction('wallSlide')
 
 
         if not self.wallSlide:
