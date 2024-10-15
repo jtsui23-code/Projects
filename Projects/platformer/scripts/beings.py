@@ -121,7 +121,7 @@ class player(physicsBeing):
         super().__init__(game, 'player', pos, size)
         # self.airTime = 0
 
-        self.jumps = 1
+        self.jumps = 2
 
     def update(self, tilemap, movement=(0,0)):
         # uses movement method from physicsBeing 
