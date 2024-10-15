@@ -161,9 +161,14 @@ class player(physicsBeing):
             # do the idle animatino
             else:
                 self.setAction('idle')
+        # slows down the x - axis velocity depending
+        # on which direction the player is moving right or left
         if self.velocity[0] > 0:
             self.velocity[0] = max(self.velocity[0] - 0.1, 0)
-            
+        else:
+            self.velocity[0] = min(self.velocity[0] + 0.1, 0)
+        
+
     def jump(self):
         if self.wallSlide:
             # if the player is moving from
