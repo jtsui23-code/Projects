@@ -143,6 +143,8 @@ class game:
                         self.player.jump()
                     if event.key == pygame.K_UP:
                         self.player.jump()
+                    if event.key == pygame.K_SPACE:
+                        self.player.dash()
                     if event.key == pygame.K_a:
                         self.movement[0] = True
                     if event.key == pygame.K_d:

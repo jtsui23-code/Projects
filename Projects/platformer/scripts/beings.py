@@ -125,6 +125,7 @@ class player(physicsBeing):
         # self.airTime = 0
 
         self.jumps = 2
+        self.dashing = 0
 
     def update(self, tilemap, movement=(0,0)):
         # uses movement method from physicsBeing 
@@ -175,7 +176,7 @@ class player(physicsBeing):
     def jump(self):
         if self.wallSlide:
             # if the player is moving from
-            # the left then walljump to then wall jump to
+            # the right then walljump to then wall jump to
             # the left 
             if self.flip and self.lastMovement[0] < 0:
                 self.velocity[0] = 3.5
@@ -184,8 +185,8 @@ class player(physicsBeing):
                 # lets player jump even if used all of jumps
                 self.jumps = max(0, self.jumps - 1)
                 return True
-            # if the player is wall jumping from the left then 
-            # wall jump to the right 
+            # if the player is wall jumping from the right then 
+            # wall jump to the left 
             elif not self.flip and self.lastMovement[0] > 0:
                 self.velocity[0] = -3.5
                 self.velocity[1] = -2.5
@@ -195,3 +196,13 @@ class player(physicsBeing):
             self.velocity[1] = -3
             self.jumps -= 1
             return True
+    def dash(self):
+        if not self.dashing:
+            # if the player is facing left 
+            # make dashing -60
+            if self.flip:
+                self.dashing = -60
+            if not self.flip:
+            # if player is facing right then 
+            # make dash 60
+                self.dashing = 60
