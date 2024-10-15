@@ -97,7 +97,7 @@ class physicsBeing:
             self.velocity[1] = 0
 
         if self.collision['down']:
-            self.jumps = 1
+            self.jumps = 2
 
         self.animation.update()
     
@@ -150,6 +150,6 @@ class player(physicsBeing):
         else:
             self.setAction('idle')
     def jump(self):
-        if self.jumps:
+        if self.jumps > 0:
             self.velocity[1] = -3
             self.jumps -= 1
