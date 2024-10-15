@@ -128,39 +128,40 @@ class player(physicsBeing):
         # but uses the values specific to the player
         super().update(tilemap, movement=movement)
 
-        self.wallJump = False
+        self.wallSlide = False
         # If player is touching the wall from the right or left and in the 
         # air then go into the wall jump animation
         if (self.collision['right'] or self.collision['left']) and (self.velocity[1] > 0):
-            self.wallJump = True
+            self.wallSlide = True
             # caps the vertical velocity at 0.5
             self.velocity[1] = min(self.velocity[1], 0.5)
             if self.collision['right']:
                 self.flip = False
             else: 
                 self.flip = True
+            self.setAction('wall_slide')
 
-        # # checks if the player is on the ground
-        # if self.collision['down']:
-        #     self.airTime = 0
 
-        # if the player is moving/jumping then 
-        # toggle jumping animation
-        if self.velocity[1] < 0:
-            self.setAction('jump')
-            # self.airTime += 1
+        if not self.wallSlide:
+            # # checks if the player is on the ground
+            # if self.collision['down']:
+            #     self.airTime = 0
 
-        
-        
-        # if the player is not standing still
-        # horizontally, then toggle running animation
-        elif movement[0] != 0:
-            self.setAction('run')
+            # if the player is moving/jumping then 
+            # toggle jumping animation
+            if self.velocity[1] < 0:
+                self.setAction('jump')
+                # self.airTime += 1
 
-        # if not jumping or running then make player 
-        # do the idle animatino
-        else:
-            self.setAction('idle')
+            # if the player is not standing still
+            # horizontally, then toggle running animation
+            elif movement[0] != 0:
+                self.setAction('run')
+
+            # if not jumping or running then make player 
+            # do the idle animatino
+            else:
+                self.setAction('idle')
     def jump(self):
         if self.jumps > 0:
             self.velocity[1] = -3
