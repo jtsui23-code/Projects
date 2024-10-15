@@ -135,6 +135,10 @@ class player(physicsBeing):
             self.wallJump = True
             # caps the vertical velocity at 0.5
             self.velocity[1] = min(self.velocity[1], 0.5)
+            if self.collision['right']:
+                self.flip = False
+            else: 
+                self.flip = True
 
         # # checks if the player is on the ground
         # if self.collision['down']:
