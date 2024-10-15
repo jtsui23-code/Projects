@@ -22,6 +22,7 @@ class physicsBeing:
         # lets player look left or right
         self.flip = False
         self.setAction('idle')
+        self.lastMovement = [0,0]
         
     def setAction(self,action):
         #checks if the current action is up to date
@@ -74,6 +75,8 @@ class physicsBeing:
         # if the entity is moving left flip the sprit
         if movement[0] < 0:
             self.flip = True
+
+        self.lastMovement = movement
 
         #movement for y
         self.pos[1] += framerMovement[1]
@@ -176,7 +179,7 @@ class player(physicsBeing):
             # the left 
             if self.flip and self.lastMovement[0] < 0:
                 self.velocity[0] = 3.5
-                self.velocity[1] = 2.5
+                self.velocity[1] = -2.5
                 # decrements number of jumps by 1
                 # lets player jump even if used all of jumps
                 self.jumps = max(0, self.jumps - 1)
@@ -185,7 +188,7 @@ class player(physicsBeing):
             # wall jump to the right 
             elif not self.flip and self.lastMovement[0] > 0:
                 self.velocity[0] = -3.5
-                self.velocity[1] = 2.5
+                self.velocity[1] = -2.5
                 self.jumps = max(0, self.jumps - 1)
                 return True
         elif self.jumps > 0:
