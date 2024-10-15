@@ -141,7 +141,6 @@ class player(physicsBeing):
                 self.flip = True
             self.setAction('wallSlide')
 
-
         if not self.wallSlide:
             # # checks if the player is on the ground
             # if self.collision['down']:
@@ -162,6 +161,9 @@ class player(physicsBeing):
             # do the idle animatino
             else:
                 self.setAction('idle')
+        if self.velocity[0] > 0:
+            self.velocity[0] = max(self.velocity[0] - 0.1, 0)
+            
     def jump(self):
         if self.wallSlide:
             # if the player is moving from
