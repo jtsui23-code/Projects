@@ -166,10 +166,11 @@ class player(physicsBeing):
             # works as a cooldown of 50 frames for the dashing
             if abs(self.dashing) == 51:
                 self.velocity[0] *= 0.1
+
             # this makes the x - axis particle velocity be from 
             # [-3, 3] and the y-axis particle velocity zero
             particleVelocity = [abs(self.dashing)/self.dashing * random.random() * 3, 0]
-            self.game.particle.append(Particle(self.game, 'particle', self.rect().center, velocity=particleVelocity, frame=random.randint(0,7)))
+            self.game.particles.append(Particle(self.game, 'particle', self.rect().center, velocity=particleVelocity, frame=random.randint(0,7)))
         # generates 20 bursts of particles for the first 
         # 10 frames of the dash
         if (self.dashing) in {60, 50}:
@@ -180,7 +181,7 @@ class player(physicsBeing):
                 # generates random random particle velocity 
                 # based of random angles & speed of (cos, sin)
                 particleVelocity = [math.cos(angle) * speed, math.sin(angle) * speed]
-                self.game.particle.append(Particle(self.game, 'particle', self.rect().center, velocity=particleVelocity, frame=random.randint(0,7)))
+                self.game.particles.append(Particle(self.game, 'particle', self.rect().center, velocity=particleVelocity, frame=random.randint(0,7)))
                 
         if not self.wallSlide:
             # # checks if the player is on the ground
