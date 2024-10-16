@@ -166,9 +166,11 @@ class player(physicsBeing):
             # works as a cooldown of 50 frames for the dashing
             if abs(self.dashing) == 51:
                 self.velocity[0] *= 0.1
+            # generates a random angle from 0 to 2pi
             angle = random.random() * math.pi * 2
             speed = random.random() * 0.5 + 0.5
-            self.game.particle.append(Particle(self.game, 'particle', self.rect().center, frame=random.randint(0,7) ))
+            particleVelocity = [math.cos(angle) * speed, math.sin(angle) * speed]
+            self.game.particle.append(Particle(self.game, 'particle', self.rect().center, velocity=particleVelocity frame=random.randint(0,7) ))
             
         if not self.wallSlide:
             # # checks if the player is on the ground
