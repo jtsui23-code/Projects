@@ -44,7 +44,7 @@ class game:
             'player/jump': animation(loadImages('entities/player/jump')),
             'player/slide': animation(loadImages('entities/player/slide')),
             'player/wallSlide':animation(loadImages("entities/player/wall_slide")),
-            'particle/leaf': animation(loadImages('particles/particle'), imgDur=20, loop=False),
+            'particle/leaf': animation(loadImages('particles/leaf'), imgDur=20, loop=False),
             'particle/particle': animation(loadImages('particles/particle'), imgDur=6, loop=False)
         }
 
