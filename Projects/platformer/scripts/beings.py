@@ -1,4 +1,6 @@
 import pygame
+import math
+from scripts.particle import Particle
 
 class physicsBeing:
     def __init__(self, game, btype, pos, size):
@@ -163,6 +165,7 @@ class player(physicsBeing):
             # works as a cooldown of 50 frames for the dashing
             if abs(self.dashing) == 51:
                 self.velocity[0] *= 0.1
+            self.game.particle.append()
             
         if not self.wallSlide:
             # # checks if the player is on the ground
