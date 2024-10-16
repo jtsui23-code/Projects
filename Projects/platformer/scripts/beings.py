@@ -190,7 +190,15 @@ class player(physicsBeing):
             self.velocity[0] = max(self.velocity[0] - 0.1, 0)
         else:
             self.velocity[0] = min(self.velocity[0] + 0.1, 0)
-        
+    
+    # this overrides the render method in the parent class 
+    # physicBeings with the player child class's render method
+    # after the first 10 frames of the dash call the render
+    # method of the parent class and pass in the 
+    # parameters from the player's render method 
+    def render(self, surf, offset=(0,0)):
+        if abs(self.dashing) <= 50:
+            super().render(surf, offset)
 
     def jump(self):
         if self.wallSlide:
