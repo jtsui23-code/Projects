@@ -62,6 +62,9 @@ class game:
             # from where the tree actually is
             self.leafSpawner.append(pygame.Rect(4 + tree['pos'][0], 4 + tree['pos'][1], 23, 13))
 
+        for spawner in self.tilemap.extract([('spawners', 0), ('spawner',1)]):
+            pass
+        
         self.particles = []
         print(self.leafSpawner)
 
