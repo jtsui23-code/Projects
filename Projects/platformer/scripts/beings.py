@@ -147,6 +147,19 @@ class player(physicsBeing):
             else: 
                 self.flip = True
             self.setAction('wallSlide')
+        
+        # generates 20 bursts of particles for the first 
+        # 10 frames of the dash
+        if (self.dashing) in {60, 50}:
+            for i in range(20):
+                # generates a random angle from 0 to 2pi
+                angle = random.random() * math.pi * 2
+                speed = random.random() * 0.5 + 0.5
+                # generates random random particle velocity 
+                # based of random angles & speed of (cos, sin)
+                particleVelocity = [math.cos(angle) * speed, math.sin(angle) * speed]
+                self.game.particles.append(Particle(self.game, 'particle', self.rect().center, velocity=particleVelocity, frame=random.randint(0,7)))
+                
         if self.dashing > 0:
             self.dashing = max(0, self.dashing - 1)
         if self.dashing < 0:
@@ -171,18 +184,7 @@ class player(physicsBeing):
             # [-3, 3] and the y-axis particle velocity zero
             particleVelocity = [abs(self.dashing)/self.dashing * random.random() * 3, 0]
             self.game.particles.append(Particle(self.game, 'particle', self.rect().center, velocity=particleVelocity, frame=random.randint(0,7)))
-        # generates 20 bursts of particles for the first 
-        # 10 frames of the dash
-        if (self.dashing) in {60, 50}:
-            for i in range(20):
-                # generates a random angle from 0 to 2pi
-                angle = random.random() * math.pi * 2
-                speed = random.random() * 0.5 + 0.5
-                # generates random random particle velocity 
-                # based of random angles & speed of (cos, sin)
-                particleVelocity = [math.cos(angle) * speed, math.sin(angle) * speed]
-                self.game.particles.append(Particle(self.game, 'particle', self.rect().center, velocity=particleVelocity, frame=random.randint(0,7)))
-                
+        
         if not self.wallSlide:
             # # checks if the player is on the ground
             # if self.collision['down']:
