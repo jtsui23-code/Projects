@@ -63,10 +63,13 @@ class game:
             self.leafSpawner.append(pygame.Rect(4 + tree['pos'][0], 4 + tree['pos'][1], 23, 13))
 
         # gets the enemy assets from the spawner's folder containing them
-        # 'spawners', 0 is the variant so
-        # 'spawners', 1 is a different enemy
+        # 'spawners', 0 is for spawning player
+        # 'spawners', 1 is for spawning enemy
         for spawner in self.tilemap.extract([('spawners', 0), ('spawner',1)]):
-            pass
+            if spawner['variant'] == 0:
+                self.player.pos = spawner['pos']
+            else:
+                print('Enemy Position: ' + spawner['pos'])
         
         self.particles = []
 
