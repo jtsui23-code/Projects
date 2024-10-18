@@ -62,6 +62,9 @@ class game:
             # from where the tree actually is
             self.leafSpawner.append(pygame.Rect(4 + tree['pos'][0], 4 + tree['pos'][1], 23, 13))
 
+        # gets the enemy assets from the spawner's folder containing them
+        # 'spawners', 0 is the variant so
+        # 'spawners', 1 is a different enemy
         for spawner in self.tilemap.extract([('spawners', 0), ('spawner',1)]):
             pass
         
