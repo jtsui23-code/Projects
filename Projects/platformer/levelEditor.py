@@ -30,6 +30,7 @@ class editor:
             'grass' : loadImages('tiles/grass'),
             'large_decor' : loadImages('tiles/large_decor'),
             'stone' : loadImages('tiles/stone'),
+            'spawners': loadImages('tiles/spawners')
            
         }
 
