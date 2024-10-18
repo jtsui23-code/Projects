@@ -66,7 +66,6 @@ class game:
             pass
         
         self.particles = []
-        print(self.leafSpawner)
 
         self.scroll = [0,0]
 
