@@ -36,6 +36,8 @@ class game:
             'large_decor' : loadImages('tiles/large_decor'),
             'stone' : loadImages('tiles/stone'),
             # uses function from util script
+            'enemy/idle': animation(loadImages('entities/enemy/idle'), imgDur=6),
+            'enemy/run': animation(loadImages('entities/enemy/run'), imgDur=4),
             'player': loadImage('entities/player.png'),
             'background': loadImage('background.png'),
             'clouds': loadImages('clouds/'),

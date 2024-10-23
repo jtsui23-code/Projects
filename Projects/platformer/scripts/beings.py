@@ -122,8 +122,8 @@ class physicsBeing:
         #surf.blit(self.game.assets['player'], (self.pos[0] - offset[0], self.pos[1] - offset[1]))
 class Enemy(physicsBeing):
     def __init__(self, game, pos, size):
-        pass
-    
+        super().__init__(game, 'enemy', pos, size)
+
 class Player(physicsBeing):
     def __init__(self, game, pos, size):
         # does init for physicsBeing class
