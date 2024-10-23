@@ -3,7 +3,7 @@ import math
 from scripts.particle import Particle
 import sys
 import pygame
-from scripts.beings import physicsBeing, Player
+from scripts.beings import physicsBeing, Player, Enemy
 from scripts.util import loadImage, loadImages, animation
 from scripts.tilemap import tilemap
 from scripts.clouds import cloudz
@@ -73,7 +73,7 @@ class game:
             self.player.pos = player['pos']
 
         for spawner in list(self.tilemap.extract([('spawners', 1)])):
-            print(spawner['pos'])
+            Enemy(self, spawner['pos'], (100,100))
 
 
         self.particles = []
