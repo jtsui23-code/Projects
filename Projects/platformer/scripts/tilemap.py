@@ -59,7 +59,7 @@ class tilemap:
                 match.append(tile.copy())
                 if not keep:
                     self.offGridT.remove(tile)
-        for loc in self.tilemap:
+        for loc in list(self.tilemap):
             tile = self.tilemap[loc]
             if (tile['type'], tile['variant']) in idPair:
                 match.append(tile.copy())

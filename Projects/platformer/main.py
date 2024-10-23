@@ -3,7 +3,7 @@ import math
 from scripts.particle import Particle
 import sys
 import pygame
-from scripts.beings import physicsBeing, player
+from scripts.beings import physicsBeing, Player
 from scripts.util import loadImage, loadImages, animation
 from scripts.tilemap import tilemap
 from scripts.clouds import cloudz
@@ -50,7 +50,7 @@ class game:
 
         self.clouds = cloudz(self.assets['clouds'], count=16)
         
-        self.player = player(self, (50,50), (8, 15))
+        self.player = Player(self, (50,50), (8, 15))
 
         self.tilemap = tilemap(self, tilesize=16)
         self.tilemap.load('levels/map.json')
@@ -65,11 +65,12 @@ class game:
         # gets the enemy assets from the spawner's folder containing them
         # 'spawners', 0 is for spawning player
         # 'spawners', 1 is for spawning enemy
-        for spawner in self.tilemap.extract([('spawners', 0), ('spawners', 1)]):
-            if spawner['variant'] == 0:
-                self.player.pos = spawner['pos']
-            else:
-                print(spawner['pos'])
+        for player in list(self.tilemap.extract([('spawners',0)])):
+            self.player.position = player['pos']
+
+        for spawner in list(self.tilemap.extract([('spawners', 1)])):
+            print(spawner['pos'])
+
 
         self.particles = []
         self.scroll = [0,0]

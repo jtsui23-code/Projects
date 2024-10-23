@@ -121,7 +121,7 @@ class physicsBeing:
         # player sprits are cut off when rendered into the world
         #surf.blit(self.game.assets['player'], (self.pos[0] - offset[0], self.pos[1] - offset[1]))
 
-class player(physicsBeing):
+class Player(physicsBeing):
     def __init__(self, game, pos, size):
         # does init for physicsBeing class
         super().__init__(game, 'player', pos, size)
