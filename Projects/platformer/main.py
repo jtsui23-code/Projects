@@ -65,6 +65,8 @@ class game:
         # gets the enemy assets from the spawner's folder containing them
         # 'spawners', 0 is for spawning player
         # 'spawners', 1 is for spawning enemy
+        # made a copy of the spawners so don't disrupt ths 
+        # size of the dictionary while running 
         for player in list(self.tilemap.extract([('spawners',0)])):
             self.player.position = player['pos']
 

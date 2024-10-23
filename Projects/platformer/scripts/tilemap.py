@@ -59,6 +59,9 @@ class tilemap:
                 match.append(tile.copy())
                 if not keep:
                     self.offGridT.remove(tile)
+    
+        # made a copy of the spawners so don't disrupt ths 
+        # size of the dictionary while running 
         for loc in list(self.tilemap):
             tile = self.tilemap[loc]
             if (tile['type'], tile['variant']) in idPair:
