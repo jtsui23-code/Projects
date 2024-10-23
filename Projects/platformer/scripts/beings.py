@@ -120,7 +120,10 @@ class physicsBeing:
         # there is an addional + self.animOffset[] now because the
         # player sprits are cut off when rendered into the world
         #surf.blit(self.game.assets['player'], (self.pos[0] - offset[0], self.pos[1] - offset[1]))
-
+class Enemy(physicsBeing):
+    def __init__(self, game, pos, size):
+        pass
+    
 class Player(physicsBeing):
     def __init__(self, game, pos, size):
         # does init for physicsBeing class
