@@ -123,6 +123,19 @@ class physicsBeing:
 class Enemy(physicsBeing):
     def __init__(self, game, pos, size):
         super().__init__(game, 'enemy', pos, size)
+        # timer
+        self.walking = 0
+
+    def update(self, tilemap,movement=(0,0)):
+        if self.walking:
+            pass
+        # if there is no self.walking value
+        # then every 1 in a 100 chances 
+        # set the value of walking to a number [30,120]
+        # randomizes when walking occurs
+        elif random.random() < 0.01:
+            self.walking = random.randint(30,120)
+        super().update(tilemap,movement=movement)
 
 class Player(physicsBeing):
     def __init__(self, game, pos, size):
