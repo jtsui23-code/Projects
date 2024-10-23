@@ -69,7 +69,7 @@ class game:
             if spawner['variant'] == 0:
                 self.player.pos = spawner['pos']
             else:
-                print(spawner['pos'])
+                print(spawner['pos'], 'enemy')
 
         self.particles = []
         self.scroll = [0,0]
