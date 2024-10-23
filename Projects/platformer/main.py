@@ -67,9 +67,10 @@ class game:
         # 'spawners', 1 is for spawning enemy
         
         for spawner in self.tilemap.extract([('spawner', 0), ('spawner',1)]):
-            pass       
-        self.particles = []
+            if spawner['variant'] == 0:
+                self.player.pos = spawner['pos']
 
+        self.particles = []
         self.scroll = [0,0]
 
     def run(self):
