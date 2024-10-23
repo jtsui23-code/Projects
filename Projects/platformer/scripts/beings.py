@@ -128,7 +128,9 @@ class Enemy(physicsBeing):
 
     def update(self, tilemap,movement=(0,0)):
         if self.walking:
-            pass
+            # walk left if the enemy is flipped
+            # walk right if the enemy is facing rightward
+            movement = (movement[0] - 0.5 if self.flip else 0.5, movement[1])
         # if there is no self.walking value
         # then every 1 in a 100 chances 
         # set the value of walking to a number [30,120]
