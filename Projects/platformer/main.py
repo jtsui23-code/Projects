@@ -68,7 +68,7 @@ class game:
         # 'spawners', 0 is for spawning player
         # 'spawners', 1 is for spawning enemy
         self.enemies = []
-        for spawner in self.tilemap.extract([('spawners', 0), ('spawners',1)]):
+        for spawner in self.tilemap.extract([('spawner', 0), ('spawner',1)]):
             if spawner['variant'] == 0:
                 self.player.pos = spawner['pos']
             else:
