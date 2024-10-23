@@ -68,7 +68,7 @@ class game:
         # made a copy of the spawners so don't disrupt ths 
         # size of the dictionary while running 
         for player in list(self.tilemap.extract([('spawners',0)])):
-            self.player.position = player['pos']
+            self.player.pos = player['pos']
 
         for spawner in list(self.tilemap.extract([('spawners', 1)])):
             print(spawner['pos'])
