@@ -64,6 +64,7 @@ class game:
             # from where the tree actually is
             self.leafSpawner.append(pygame.Rect(4 + tree['pos'][0], 4 + tree['pos'][1], 23, 13))
 
+        self.enemies = []
         # gets the enemy assets from the spawner's folder containing them
         # 'spawners', 0 is for spawning player
         # 'spawners', 1 is for spawning enemy
@@ -73,7 +74,7 @@ class game:
             self.player.pos = player['pos']
 
         for spawner in list(self.tilemap.extract([('spawners', 1)])):
-            Enemy(self, spawner['pos'], (100,100))
+            self.enemies.append(Enemy(self, spawner['pos'], (100,100)))
 
 
         self.particles = []
@@ -125,6 +126,10 @@ class game:
 
             self.tilemap.render(self.display,offset=renderScroll)
 
+            for enemy in self.enemies.copy():
+                # giving enemy a default movement of 0
+                enemy.update(self.tilemap, (0,0))
+                enemy.render(self.display, offset=renderScroll)
 
             # this updates the player's movement on the x axis
             self.player.update(self.tilemap,(self.movement[1] - self.movement[0],0))
