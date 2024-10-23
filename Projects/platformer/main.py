@@ -67,6 +67,7 @@ class game:
         # gets the enemy assets from the spawner's folder containing them
         # 'spawners', 0 is for spawning player
         # 'spawners', 1 is for spawning enemy
+        self.enemies = []
         for spawner in self.tilemap.extract([('spawners', 0), ('spawners',1)]):
             if spawner['variant'] == 0:
                 self.player.pos = spawner['pos']
