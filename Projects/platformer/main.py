@@ -46,8 +46,6 @@ class game:
             'player/wallSlide':animation(loadImages("entities/player/wall_slide")),
             'particle/leaf': animation(loadImages('particles/leaf'), imgDur=20, loop=False),
             'particle/particle': animation(loadImages('particles/particle'), imgDur=6, loop=False),
-            'spawners': loadImages('tiles/spawners'),
-
         }
 
         self.clouds = cloudz(self.assets['clouds'], count=16)
@@ -67,12 +65,7 @@ class game:
         # gets the enemy assets from the spawner's folder containing them
         # 'spawners', 0 is for spawning player
         # 'spawners', 1 is for spawning enemy
-        self.enemies = []
-        for spawner in self.tilemap.extract([('spawner', 0), ('spawner',1)]):
-            if spawner['variant'] == 0:
-                self.player.pos = spawner['pos']
-            else:
-                print(f'Enemy Position: {spawner['pos']}')
+        
         
         self.particles = []
 
