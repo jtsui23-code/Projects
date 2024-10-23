@@ -131,6 +131,9 @@ class Enemy(physicsBeing):
             # walk left if the enemy is flipped
             # walk right if the enemy is facing rightward
             movement = (movement[0] - 0.5 if self.flip else 0.5, movement[1])
+            # decrements counter caps at 0 i.e self.walking can't be 
+            # negative
+            self.walking = max(0, self.walking - 1)
         # if there is no self.walking value
         # then every 1 in a 100 chances 
         # set the value of walking to a number [30,120]
