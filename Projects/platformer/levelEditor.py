@@ -30,7 +30,7 @@ class editor:
             'grass' : loadImages('tiles/grass'),
             'large_decor' : loadImages('tiles/large_decor'),
             'stone' : loadImages('tiles/stone'),
-            'spawners': loadImages('tiles/spawners'),
+            'spawners':loadImages('tiles/spawners'),
         }
 
         # up is bound to [0] down is bound to [1] 
