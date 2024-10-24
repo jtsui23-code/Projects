@@ -144,6 +144,9 @@ class Enemy(physicsBeing):
         if not self.collision['down']:
             # creates gravity if enemy is free falling.
             movement[1] = max(1, movement[1] - 0.1)
+        if self.collision['down']:
+            movement[1] = 0
+
         super().update(tilemap,movement=movement)
 
 class Player(physicsBeing):
