@@ -78,7 +78,7 @@ class game:
         for spawner in list(self.tilemap.extract([('spawners', 1)])):
             self.enemies.append(Enemy(self, spawner['pos'], (8,15)))
 
-
+        self.projectiles = []
         self.particles = []
         self.scroll = [0,0]
 
@@ -139,6 +139,16 @@ class game:
             # updates the screen    
             self.player.render(self.display, offset=renderScroll)
 
+            # projectile is a list of a list of attributes pertaining
+            # to a projectile
+            # [ [(x,y), direction, timer]]
+            # coordinate is the first item [0]
+            # direction of projectile is second item [1]
+            for projectile in self.projectiles:
+                # giving movement to the projectile
+                # according to its direction
+                projectile[0][0] += projectile[1]
+                
             for particle in self.particles.copy():
                 kill = particle.update()
                 particle.render(self.display, offset=renderScroll)
