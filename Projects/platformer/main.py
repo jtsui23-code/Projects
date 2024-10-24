@@ -57,8 +57,8 @@ class game:
         self.player = Player(self, (50,50), (8, 15))
 
         self.tilemap = tilemap(self, tilesize=16)
-        self.tilemap.load('levels/map.json')
-
+        
+        self.loadMap(0)
     # this method loads in a map/level
     # this method recieves the name of the level/map that is 
     # being desired to be loaded 
@@ -86,7 +86,7 @@ class game:
         self.projectiles = []
         self.particles = []
         self.scroll = [0,0]
-        
+
     def run(self):
         while True:
             self.display.blit(self.assets['background'], (0,0))
