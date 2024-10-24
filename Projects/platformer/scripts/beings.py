@@ -153,13 +153,13 @@ class Enemy(physicsBeing):
                         # the -1.5 is the direction/speed of the projectile
                         # and the 0 is the timer for which the projectile has been 
                         # existing
-                        self.game.projectiles.append([[self.rect().centerx - 7, self.rect().centery, ]], -1.5, 0)
+                        self.game.projectiles.append([[self.rect().centerx - 7, self.rect().centery, ], -1.5, 0])
                     
                     # checks if the player is to the right of the enmy and fires 
                     # in the right direction if there is a player in range in the 
                     # right directionn
                     if not self.flip and distance[0] > 0:
-                        self.game.projectiles.append([[self.rect().centerx + 7, self.rect().centery]], 1.5, 0)
+                        self.game.projectiles.append([[self.rect().centerx + 7, self.rect().centery], 1.5, 0])
         # if there is no self.walking value
         # then every 1 in a 100 chances 
         # set the value of walking to a number [30,120]
