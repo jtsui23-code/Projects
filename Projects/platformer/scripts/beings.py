@@ -146,7 +146,13 @@ class Enemy(physicsBeing):
 
             if not self.walking:
                 distance = (self.game.player.pos[0] - self.pos[0], self.game.player.pos[1] - self.pos[1])
-                
+                if abs(distance[1]) < 16:
+                    # if the player is to the right of the 
+                    # enemy
+                    if self.flip and distance[0] < 0:
+                        pass
+                    if not self.flip and distance[0] > 0:
+                        pass
         # if there is no self.walking value
         # then every 1 in a 100 chances 
         # set the value of walking to a number [30,120]
