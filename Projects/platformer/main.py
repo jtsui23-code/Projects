@@ -82,6 +82,10 @@ class game:
         self.particles = []
         self.scroll = [0,0]
 
+    # this method loads in a map/level
+    def loadMap(self, id):
+        self.tilemap.load()
+
     def run(self):
         while True:
             self.display.blit(self.assets['background'], (0,0))
@@ -166,6 +170,7 @@ class game:
                 elif abs(self.player.dashing) < 50:
                     if self.player.rect().collidepoint(projectile[0]):
                         self.projectiles.remove(projectile)
+                
                     
             for particle in self.particles.copy():
                 kill = particle.update()
