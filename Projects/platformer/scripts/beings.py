@@ -147,12 +147,19 @@ class Enemy(physicsBeing):
             if not self.walking:
                 distance = (self.game.player.pos[0] - self.pos[0], self.game.player.pos[1] - self.pos[1])
                 if abs(distance[1]) < 16:
-                    # if the player is to the right of the 
+                    # if the player is to the left of the 
                     # enemy
-                    if self.flip and distance[0] < 0:
-                        pass
+                    if self.flip and distance[0] < 0: # offset the projectile from the gun
+                        # the -1.5 is the direction/speed of the projectile
+                        # and the 0 is the timer for which the projectile has been 
+                        # existing
+                        self.game.projectiles.append([[self.rect().centerx - 7, self.rect().centery, ]], -1.5, 0)
+                    
+                    # checks if the player is to the right of the enmy and fires 
+                    # in the right direction if there is a player in range in the 
+                    # right directionn
                     if not self.flip and distance[0] > 0:
-                        pass
+                        self.game.projectiles.append([[self.rect().centerx + 7, self.rect().centery]], 1.5, 0)
         # if there is no self.walking value
         # then every 1 in a 100 chances 
         # set the value of walking to a number [30,120]
