@@ -88,6 +88,9 @@ class tilemap:
         self.tileSize = mapData['tileSize']
         self.offGridT = mapData['offgrid']
 
+    # this method returns a bool 
+    # if there is a surface tile at the position passed into the 
+    # method
     def surfCheck(self, pos):
         # gives the converted tile location based on the passed in 
         # tile position
