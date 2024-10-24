@@ -85,7 +85,7 @@ class tilemap:
         mapData = json.load(f)
         f.close()
         self.tilemap = mapData['tilemap']
-        self.tileSize = mapData['tileSize']
+        #self.tileSize = mapData['tileSize']
         self.offGridT = mapData['offgrid']
 
     # this method returns a bool 
