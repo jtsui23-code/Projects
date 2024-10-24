@@ -74,7 +74,7 @@ class game:
             self.player.pos = player['pos']
 
         for spawner in list(self.tilemap.extract([('spawners', 1)])):
-            self.enemies.append(Enemy(self, spawner['pos'], (100,100)))
+            self.enemies.append(Enemy(self, spawner['pos'], (8,15)))
 
 
         self.particles = []
