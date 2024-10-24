@@ -148,7 +148,15 @@ class game:
                 # giving movement to the projectile
                 # according to its direction
                 projectile[0][0] += projectile[1]
-                
+
+                # increments counter for the projectile
+                projectile[2] +=1
+
+                img = self.assets['projectile']
+                # (projectile[0][0] - img.get_width()) // 2
+                # centers the image of the projectile
+                self.display.blit(img, (projectile[0][0] - img.get_width())//2)
+
             for particle in self.particles.copy():
                 kill = particle.update()
                 particle.render(self.display, offset=renderScroll)
