@@ -140,6 +140,10 @@ class Enemy(physicsBeing):
         # randomizes when walking occurs
         elif random.random() < 0.01:
             self.walking = random.randint(30,120)
+        
+        if not self.collision['down']:
+            # creates gravity if enemy is free falling.
+            movement[1] = max(1, movement[1] - 0.1)
         super().update(tilemap,movement=movement)
 
 class Player(physicsBeing):
