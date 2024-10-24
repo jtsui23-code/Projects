@@ -159,8 +159,14 @@ class game:
                 # checks if the projectile is hiting a solid thing
                 if self.tilemap.solidCheck(projectile[0]):
                     self.projectiles.remove(projectile)
-                
-
+                # if the tile has existed 360 frames or 6 seconds
+                # delete it 
+                elif projectile[2] > 360:
+                    self.projectiles.remove(projectile)
+                elif abs(self.player.dashing) < 50:
+                    if self.player.rect().collidepoint(projectile[0]):
+                        self.projectiles.remove(projectile)
+                    
             for particle in self.particles.copy():
                 kill = particle.update()
                 particle.render(self.display, offset=renderScroll)
