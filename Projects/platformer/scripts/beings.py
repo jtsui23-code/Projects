@@ -163,9 +163,13 @@ class Enemy(physicsBeing):
         super().render(surf, offset=offset)
 
         if self.flip:
-            pass
+            # flips the gun assets on the x - axis only
+            # offset the gun by 4 pixals 
+            self.blit(pygame.transform.flip(self.game.assets['gun'], True, False), (self.rect().centerx - 4 - self.game.assets['gun'].get_width() - offset[0], self.rect().centery - offset[1]))
         else:
-            pass
+            # self.blit(thiing want render, (where to render))
+            self.blit(self.game.assets['gun'], (self.rect().centerx + 4 - offset[0] , self.rect().centery - offset[1]))
+            
         
 class Player(physicsBeing):
     def __init__(self, game, pos, size):
