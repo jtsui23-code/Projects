@@ -57,7 +57,7 @@ class game:
         self.player = Player(self, (50,50), (8, 15))
 
         self.tilemap = tilemap(self, tilesize=16)
-        
+
         self.loadMap(0)
     # this method loads in a map/level
     # this method recieves the name of the level/map that is 
@@ -86,6 +86,7 @@ class game:
         self.projectiles = []
         self.particles = []
         self.scroll = [0,0]
+        self.sparks = []
 
     def run(self):
         while True:
@@ -171,7 +172,9 @@ class game:
                 elif abs(self.player.dashing) < 50:
                     if self.player.rect().collidepoint(projectile[0]):
                         self.projectiles.remove(projectile)
-                
+            
+            for spark in self.sparks:
+                pass
                     
             for particle in self.particles.copy():
                 kill = particle.update()
