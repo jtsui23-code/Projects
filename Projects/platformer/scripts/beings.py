@@ -131,10 +131,13 @@ class Enemy(physicsBeing):
             # checks if there is a tile infron to of the enemy before walking
             # in both right and left direction
             if tilemap.surfCheck((self.rect().centerx + (- 7 if self.flip else 7),self.pos[1] + 23)):
-                
-                # walk left if the enemy is flipped
-                # walk right if the enemy is facing rightward
-                movement = (movement[0] - 0.5 if self.flip else 0.5, movement[1])
+                # flips the enemy if they hit a wall
+                if (self.collision['right'] or self.collision['left']):
+                    self.flip = not self.flip
+                else:
+                    # walk left if the enemy is flipped
+                    # walk right if the enemy is facing rightward
+                    movement = (movement[0] - 0.5 if self.flip else 0.5, movement[1])
             else:
                 self.flip = not self.flip
             # decrements counter caps at 0 i.e self.walking can't be 
