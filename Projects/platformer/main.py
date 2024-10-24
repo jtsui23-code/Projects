@@ -155,7 +155,7 @@ class game:
                 img = self.assets['projectile']
                 # (projectile[0][0] - img.get_width()) / 2
                 # centers the image of the projectile
-                self.display.blit(img, (projectile[0][0] - img.get_width()) /2 - renderScroll[0], (projectile[0][1] - img.get_height()) / 2 - renderScroll[1])
+                self.display.blit(img, (projectile[0][0] - img.get_width() / 2 - renderScroll[0], projectile[0][1] - img.get_height() / 2 - renderScroll[1]))
                 # checks if the projectile is hiting a solid thing
                 if self.tilemap.solidCheck(projectile[0]):
                     self.projectiles.remove(projectile)
