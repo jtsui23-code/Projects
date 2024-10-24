@@ -153,6 +153,13 @@ class Enemy(physicsBeing):
 
         super().update(tilemap,movement=movement)
 
+        # set animation for running and idling for 
+        # enemy
+        if movement[0] != 0:
+            self.setAction('run')
+        else:
+            self.setAction('idle')
+        
 class Player(physicsBeing):
     def __init__(self, game, pos, size):
         # does init for physicsBeing class
