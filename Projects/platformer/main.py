@@ -153,9 +153,11 @@ class game:
                 projectile[2] +=1
 
                 img = self.assets['projectile']
-                # (projectile[0][0] - img.get_width()) // 2
+                # (projectile[0][0] - img.get_width()) / 2
                 # centers the image of the projectile
-                self.display.blit(img, (projectile[0][0] - img.get_width())//2)
+                self.display.blit(img, (projectile[0][0] - img.get_width()) /2 - renderScroll[0], (projectile[0][1] - img.get_height()) / 2 - renderScroll[1])
+                if self.tilemap.solidCheck():
+                    pass
 
             for particle in self.particles.copy():
                 kill = particle.update()
