@@ -59,6 +59,11 @@ class game:
         self.tilemap = tilemap(self, tilesize=16)
         self.tilemap.load('levels/map.json')
 
+    # this method loads in a map/level
+    # this method recieves the name of the level/map that is 
+    # being desired to be loaded 
+    def loadMap(self, mapName):
+        self.tilemap.load('data/maps/' + str(mapName) + '.json')
         self.leafSpawner = []
         for tree in self.tilemap.extract([('large_decor', 2)], keep=True):
             # This looks at every tree so it can determine where to 
@@ -81,11 +86,7 @@ class game:
         self.projectiles = []
         self.particles = []
         self.scroll = [0,0]
-
-    # this method loads in a map/level
-    def loadMap(self, id):
-        self.tilemap.load()
-
+        
     def run(self):
         while True:
             self.display.blit(self.assets['background'], (0,0))
