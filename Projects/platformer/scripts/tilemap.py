@@ -88,7 +88,10 @@ class tilemap:
         self.tileSize = mapData['tileSize']
         self.offGridT = mapData['offgrid']
 
-    def surfCheck(self):
+    def surfCheck(self, pos):
+        # gives the converted tile location based on the passed in 
+        # tile position
+        tileLoc = str(int(pos[0]// self.tilSize)) + ';' + str(int(pos[1] //self.tileSize))
         pass
     # this method will check every single tile in the tilemap
     # and the tile's surrounding. if the the surrounding tile is 
