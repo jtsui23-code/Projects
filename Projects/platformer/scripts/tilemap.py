@@ -88,6 +88,8 @@ class tilemap:
         self.tileSize = mapData['tileSize']
         self.offGridT = mapData['offgrid']
 
+    def surfCheck(self):
+        pass
     # this method will check every single tile in the tilemap
     # and the tile's surrounding. if the the surrounding tile is 
     # the same variant then will proceed to checking which variant 
