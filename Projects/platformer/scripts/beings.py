@@ -159,6 +159,13 @@ class Enemy(physicsBeing):
             self.setAction('run')
         else:
             self.setAction('idle')
+    def render(self, surf, offset=(0,0)):
+        super().render(surf, offset=offset)
+
+        if self.flip:
+            pass
+        else:
+            pass
         
 class Player(physicsBeing):
     def __init__(self, game, pos, size):
