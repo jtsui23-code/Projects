@@ -143,6 +143,10 @@ class Enemy(physicsBeing):
             # decrements counter caps at 0 i.e self.walking can't be 
             # negative
             self.walking = max(0, self.walking - 1)
+
+            if not self.walking:
+                distance = (self.game.player.pos[0] - self.pos[0], self.game.player.pos[1] - self.pos[1])
+                
         # if there is no self.walking value
         # then every 1 in a 100 chances 
         # set the value of walking to a number [30,120]
