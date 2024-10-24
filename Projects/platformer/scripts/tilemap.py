@@ -94,7 +94,7 @@ class tilemap:
     def surfCheck(self, pos):
         # gives the converted tile location based on the passed in 
         # tile position
-        tileLoc = str(int(pos[0]// self.tilSize)) + ';' + str(int(pos[1] //self.tileSize))
+        tileLoc = str(int(pos[0]// self.tileSize)) + ';' + str(int(pos[1] //self.tileSize))
         # if this tile exist and is a tile with physics return the 
         # tile
         if tileLoc in self.tilemap:
