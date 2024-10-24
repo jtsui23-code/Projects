@@ -92,7 +92,12 @@ class tilemap:
         # gives the converted tile location based on the passed in 
         # tile position
         tileLoc = str(int(pos[0]// self.tilSize)) + ';' + str(int(pos[1] //self.tileSize))
-        pass
+        # if this tile exist and is a tile with physics return the 
+        # tile
+        if tileLoc in self.tilemap:
+            if self.tilemap[tileLoc]['type'] in physicTiles:
+                return self.tilemap[tileLoc]
+            
     # this method will check every single tile in the tilemap
     # and the tile's surrounding. if the the surrounding tile is 
     # the same variant then will proceed to checking which variant 
