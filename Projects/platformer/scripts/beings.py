@@ -162,7 +162,7 @@ class Enemy(physicsBeing):
                             # go in the left because of the plus 180 degrees
                             # along with a random speed to the spark effect of the projectile
                                                                     # random num from [-0.5, 0.5] + pi
-                            self.game.sparks.append(Spark(self.projectile[-1][0], random.random() - 0.5 + math.pi, 2 + random.random()))
+                            self.game.sparks.append(Spark(self.game.projectile[-1][0], random.random() - 0.5 + math.pi, 2 + random.random()))
 
                     # checks if the player is to the right of the enmy and fires 
                     # in the right direction if there is a player in range in the 
@@ -171,7 +171,7 @@ class Enemy(physicsBeing):
                         self.game.projectiles.append([[self.rect().centerx + 7, self.rect().centery], 1.5, 0])
                         
                         for i in range(4):
-                            self.game.sparks.append(Spark(self.projectile[1][0], random.random() - 0.5, 2 + random.random()))
+                            self.game.sparks.append(Spark(self.game.projectile[1][0], random.random() - 0.5, 2 + random.random()))
         # if there is no self.walking value
         # then every 1 in a 100 chances 
         # set the value of walking to a number [30,120]
