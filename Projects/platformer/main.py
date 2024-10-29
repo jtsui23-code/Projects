@@ -177,6 +177,11 @@ class game:
                 elif abs(self.player.dashing) < 50:
                     if self.player.rect().collidepoint(projectile[0]):
                         self.projectiles.remove(projectile)
+                        for i in range(30):
+                            # gives random angle in 360 degree circle
+                            angle = random.random() * math.pi * 2
+                            speed = random.random() * 5
+                            self.sparks.append(Spark(self.player.rect().center, angle, 2 + random.random()))
             
             for spark in self.sparks.copy():
                 kill = spark.update()
