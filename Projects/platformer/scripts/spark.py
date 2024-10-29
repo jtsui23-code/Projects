@@ -18,6 +18,9 @@ class Spark:
         renderPoints = [
             # this is the spark effect for infront of the sprite
             (self.pos[0] + math.cos(self.angle) * self.speed * 3 - offset[0], self.pos[1] + math.sin(self.angle) * self.speed * 3 - offset[1]),
-            (self.pos[0] + math.cos(self.angle + math.pi * 0.5) * self.speed * 3 - offset[0], self.pos[1] + math.sin(self.angle + math.pi * 0.5) * 3 - offset[1])
+            # this is the spark effect up 90 degrees
+            (self.pos[0] + math.cos(self.angle + math.pi * 0.5) * self.speed * 0.5 - offset[0], self.pos[1] + math.sin(self.angle + math.pi * 0.5) * 0.5 - offset[1]),
+            # this is the spark effect 180 degrees 
+
         ]
         pygame.draw.polygon(surf, (255, 255, 255), renderPoints)
