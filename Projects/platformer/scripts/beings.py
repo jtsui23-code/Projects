@@ -157,7 +157,9 @@ class Enemy(physicsBeing):
                         self.game.projectiles.append([[self.rect().centerx - 7, self.rect().centery, ], -1.5, 0])
                         
                         for i in range(4):              
-                            # this gives the last created projectile a spark effect in a random direction in 360 degree
+                            # this gives the last created projectile a spark effect in a random direction in the left
+                            # the math.pi in random.random() -0.5 offsets the direction to make it 
+                            # go in the left because of the plus 180 degrees
                             # along with a random speed to the spark effect of the projectile
                                                                     # random num from [-0.5, 0.5] + pi
                             self.sparks.append(Spark(self.projectile[-1][0], random.random() - 0.5 + math.pi, 2 + random.random()))
@@ -167,6 +169,9 @@ class Enemy(physicsBeing):
                     # right directionn
                     if not self.flip and distance[0] > 0:
                         self.game.projectiles.append([[self.rect().centerx + 7, self.rect().centery], 1.5, 0])
+                        
+                        for i in range(4):
+                            self.sparks.append(Spark(self.projectile[1][0], random.random() - 0.5, 2 + random.random()))
         # if there is no self.walking value
         # then every 1 in a 100 chances 
         # set the value of walking to a number [30,120]
