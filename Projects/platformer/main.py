@@ -180,9 +180,12 @@ class game:
                         for i in range(30):
                             # gives random angle in 360 degree circle
                             angle = random.random() * math.pi * 2
+                            # random speed 
                             speed = random.random() * 5
-                            self.sparks.append(Spark(self.player.rect().center, angle, 2 + random.random()))
-            
+                            # creates spark effects when hitting the player
+                            self.sparks.append(Spark(self.player.rect().center, angle, 2 + random.random()))                    
+                            # makes a particle effect that goes off in opposite direction to spark when hiting the player    # + math.pi makes the particle shoot off in different direction to the spark     
+                            self.particles.append(Particle(self.game, 'particle', self.player.rect().center, velocity=[math.cos(angle + math.pi) * speed * 0.5, math.sin(angle + math.pi) * speed * 0.5]))
             for spark in self.sparks.copy():
                 kill = spark.update()
                 spark.render(self.display, offset=renderScroll)
