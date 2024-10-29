@@ -171,7 +171,7 @@ class Enemy(physicsBeing):
                         self.game.projectiles.append([[self.rect().centerx + 7, self.rect().centery], 1.5, 0])
                         
                         for i in range(4):
-                            self.game.sparks.append(Spark(self.game.projectiles[1][0], random.random() - 0.5, 2 + random.random()))
+                            self.game.sparks.append(Spark(self.game.projectiles[-1][0], random.random() - 0.5, 2 + random.random()))
         # if there is no self.walking value
         # then every 1 in a 100 chances 
         # set the value of walking to a number [30,120]
