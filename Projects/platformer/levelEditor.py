@@ -5,6 +5,7 @@ from scripts.tilemap import tilemap
 
 RENDERSCALE = 2.0
 
+
 class editor:
 
     def __init__(self):
