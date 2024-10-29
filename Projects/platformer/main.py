@@ -7,6 +7,7 @@ from scripts.beings import physicsBeing, Player, Enemy
 from scripts.util import loadImage, loadImages, animation
 from scripts.tilemap import tilemap
 from scripts.clouds import cloudz
+from scripts.spark import Spark
 
 class game:
 
@@ -165,6 +166,10 @@ class game:
                 # checks if the projectile is hiting a solid thing
                 if self.tilemap.surfCheck(projectile[0]):
                     self.projectiles.remove(projectile)
+                    for i in range(4):                  # projectile[1] is direction so the spark effects go left if projectile moves right making an bouncing effect 
+                                                                                            # random.random() range of [0,1] so 2 + random.random() is [2,3]
+                        self.sparks.append(Spark(projectile[0], random.random() - 0.5 + (math.pi if projectile[1] > 0 else 0), 2 + random.random()))
+
                 # if the tile has existed 360 frames or 6 seconds
                 # delete it 
                 elif projectile[2] > 360:
