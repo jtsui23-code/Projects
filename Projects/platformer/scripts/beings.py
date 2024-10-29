@@ -1,4 +1,5 @@
 import random
+from scripts.spark import Spark
 import pygame
 import math
 from scripts.particle import Particle
@@ -154,7 +155,13 @@ class Enemy(physicsBeing):
                         # and the 0 is the timer for which the projectile has been 
                         # existing
                         self.game.projectiles.append([[self.rect().centerx - 7, self.rect().centery, ], -1.5, 0])
-                    
+                        
+                        for i in range(4):              
+                            # this gives the last created projectile a spark effect in a random direction in 360 degree
+                            # along with a random speed to the spark effect of the projectile
+                                                                    # random num from [-0.5, 0.5] + pi
+                            self.sparks.append(Spark(self.projectile[-1][0], random.random() - 0.5 + math.pi, 2 + random.random()))
+
                     # checks if the player is to the right of the enmy and fires 
                     # in the right direction if there is a player in range in the 
                     # right directionn
