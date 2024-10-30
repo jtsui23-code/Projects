@@ -188,6 +188,10 @@ class Enemy(physicsBeing):
             self.setAction('run')
         else:
             self.setAction('idle')
+
+        # this checks if the player is currently dashing
+        if abs(self.game.player.dashing) > 50:
+            
     def render(self, surf, offset=(0,0)):
         super().render(surf, offset=offset)
 
