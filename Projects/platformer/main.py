@@ -137,9 +137,10 @@ class game:
 
             for enemy in self.enemies.copy():
                 # giving enemy a default movement of 0
-                enemy.update(self.tilemap, (0,0))
+                kill = enemy.update(self.tilemap, (0,0))
                 enemy.render(self.display, offset=renderScroll)
-
+                if kill:
+                    self.enemeies.remove(enemy)
             # this updates the player's movement on the x axis
             self.player.update(self.tilemap,(self.movement[1] - self.movement[0],0))
 
