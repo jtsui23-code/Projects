@@ -190,7 +190,7 @@ class Enemy(physicsBeing):
             self.setAction('idle')
 
         # this checks if the player is currently dashing
-        if abs(self.game.player.dashing) > 0:
+        if abs(self.game.player.dashing) > 50:
             # this checks if the player is colliding the the 
             # enemy while in the dash
             if self.rect().colliderect(self.game.player.rect()):
