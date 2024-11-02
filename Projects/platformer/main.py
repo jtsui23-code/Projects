@@ -88,6 +88,7 @@ class game:
         self.particles = []
         self.scroll = [0,0]
         self.sparks = []
+        self.dead = 0
 
     def run(self):
         while True:
