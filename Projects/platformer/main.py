@@ -95,7 +95,8 @@ class game:
             self.display.blit(self.assets['background'], (0,0))
 
             # checks if the player has been hit by a projectile
-            # 
+            # Then after 40 frames the player will
+            # respawn in the first stage
             if self.dead:
                 self.dead += 1
                 if self.dead == 40:
