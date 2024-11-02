@@ -299,7 +299,7 @@ class Player(physicsBeing):
                 self.airTimeThreshold = 0
 
 
-            if self.airTime >= 3:
+            if self.airTime >= 10:
                 self.game.dead += 1
                 
             # if the player is not standing still
@@ -329,6 +329,7 @@ class Player(physicsBeing):
 
     def jump(self):
         if self.wallSlide:
+            self.airTime = 0
             self.airTimeThreshold = 0
             # if the player is moving from
             # the right then walljump to then wall jump to

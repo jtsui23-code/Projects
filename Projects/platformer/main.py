@@ -80,6 +80,8 @@ class game:
         # size of the dictionary while running 
         for player in list(self.tilemap.extract([('spawners',0)])):
             self.player.pos = player['pos']
+            self.player.airTime = 0
+            self.player.airTimeThreshold = 0
 
         for spawner in list(self.tilemap.extract([('spawners', 1)])):
             self.enemies.append(Enemy(self, spawner['pos'], (8,15)))
