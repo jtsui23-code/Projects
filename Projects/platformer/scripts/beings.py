@@ -285,7 +285,7 @@ class Player(physicsBeing):
                 self.setAction('jump')
             
             if self.velocity[1] != 0:
-                if pygame.time.get_ticks() >= 60:
+                if pygame.time.get_ticks() >= 720 * 5:
                     self.airTime += 1
             
             if self.airTime >= 10:
