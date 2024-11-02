@@ -106,6 +106,7 @@ class physicsBeing:
         if self.collision['down']:
             self.jumps = 2
             self.airTime = 0
+            self.airTimeThreshold = 0
 
         self.animation.update()
     
@@ -215,6 +216,7 @@ class Player(physicsBeing):
         # does init for physicsBeing class
         super().__init__(game, 'player', pos, size)
         self.airTime = 0
+        self.airTimeThreshold = 0
 
         self.jumps = 2
         self.dashing = 0
@@ -284,24 +286,20 @@ class Player(physicsBeing):
             if self.velocity[1] < 0:
                 self.setAction('jump')
 
+            if self.velocity[1] != 0:
+                self.airTimeThreshold += 1
+                if self.airTimeThreshold >= 30:
+                    self.airTime += 1
+                    self.airTimeThreshold = 0
+
             # sets the air timer to zero if player is not 
             # in the air
             if self.velocity[1] == 0:
                 self.airTime = 0
+                self.airTimeThreshold = 0
 
-            # if the player is in the air 
-            # increment the airtime counter every once a while
-            # according to the frame rate constraint so 
-            # the airtime counter doesn't go up at a crazy 
-            # rate
-            if self.velocity[1] != 0:
-                frameCounter = pygame.time.get_ticks()
-                if  frameCounter >= 720 * 5:
-                    self.airTime += 1
-                    frameCounter = 0
 
-            
-            if self.airTime >= 10:
+            if self.airTime >= 5:
                 self.game.dead += 1
                 
             # if the player is not standing still
@@ -331,6 +329,7 @@ class Player(physicsBeing):
 
     def jump(self):
         if self.wallSlide:
+            self.airTimeThreshold = 0
             # if the player is moving from
             # the right then walljump to then wall jump to
             # the left 
