@@ -299,7 +299,7 @@ class Player(physicsBeing):
                 self.airTimeThreshold = 0
 
 
-            if self.airTime >= 5:
+            if self.airTime >= 3:
                 self.game.dead += 1
                 
             # if the player is not standing still
