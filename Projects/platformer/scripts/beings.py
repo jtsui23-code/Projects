@@ -282,9 +282,12 @@ class Player(physicsBeing):
             # toggle jumping animation
             if self.velocity[1] < 0:
                 self.setAction('jump')
+                
+            # checks if the player is falling 
+            if self.velocity[1] > 0:
                 self.airTime += 1
 
-            if self.airTime > 5:
+            if self.airTime > 10:
                 self.game.dead += 1
             # if the player is not standing still
             # horizontally, then toggle running animation
