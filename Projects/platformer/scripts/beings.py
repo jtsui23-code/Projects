@@ -286,13 +286,22 @@ class Player(physicsBeing):
             if self.velocity[1] < 0:
                 self.setAction('jump')
 
+            # when the player is in the air 
+            # the air time threshold counter increments
+            # until the threshold is met and the air time
+            # counter increments
+            # there is a air time threshold to prevent the 
+            # air time counter from incrementing too quickly 
+            # and respawning the player when the player just 
+            # barely jumped at all
             if self.velocity[1] != 0:
                 self.airTimeThreshold += 1
                 if self.airTimeThreshold >= 27:
                     self.airTime += 1
                     self.airTimeThreshold = 0
 
-            # sets the air timer to zero if player is not 
+            # sets the air timer and the
+            # threshold to zero if player is not 
             # in the air
             if self.velocity[1] == 0:
                 self.airTime = 0
