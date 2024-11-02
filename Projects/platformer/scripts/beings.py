@@ -283,10 +283,23 @@ class Player(physicsBeing):
             # toggle jumping animation
             if self.velocity[1] < 0:
                 self.setAction('jump')
-            
+
+            # sets the air timer to zero if player is not 
+            # in the air
+            if self.velocity[1] == 0:
+                self.airTime = 0
+
+            # if the player is in the air 
+            # increment the airtime counter every once a while
+            # according to the frame rate constraint so 
+            # the airtime counter doesn't go up at a crazy 
+            # rate
             if self.velocity[1] != 0:
-                if pygame.time.get_ticks() >= 720 * 7:
+                frameCounter = pygame.time.get_ticks()
+                if  frameCounter >= 720 * 7:
                     self.airTime += 1
+                    frameCounter = 0
+
             
             if self.airTime >= 10:
                 self.game.dead += 1
