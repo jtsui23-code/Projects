@@ -105,6 +105,7 @@ class physicsBeing:
 
         if self.collision['down']:
             self.jumps = 2
+            self.airTime = 0
 
         self.animation.update()
     
@@ -282,9 +283,6 @@ class Player(physicsBeing):
             # toggle jumping animation
             if self.velocity[1] < 0:
                 self.setAction('jump')
-                
-            # checks if the player is falling 
-            if self.velocity[1] > 0:
                 self.airTime += 1
 
             if self.airTime > 10:
