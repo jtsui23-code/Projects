@@ -213,7 +213,7 @@ class Player(physicsBeing):
     def __init__(self, game, pos, size):
         # does init for physicsBeing class
         super().__init__(game, 'player', pos, size)
-        # self.airTime = 0
+        self.airTime = 0
 
         self.jumps = 2
         self.dashing = 0
@@ -282,9 +282,9 @@ class Player(physicsBeing):
             # toggle jumping animation
             if self.velocity[1] < 0:
                 self.setAction('jump')
-                # self.airTime += 1
+                self.airTime += 1
 
-            if self.velocity[1] < -10:
+            if self.airTime > 5:
                 self.game.dead += 1
             # if the player is not standing still
             # horizontally, then toggle running animation
