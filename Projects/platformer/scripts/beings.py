@@ -296,7 +296,7 @@ class Player(physicsBeing):
             # rate
             if self.velocity[1] != 0:
                 frameCounter = pygame.time.get_ticks()
-                if  frameCounter >= 720 * 7:
+                if  frameCounter >= 720 * 5:
                     self.airTime += 1
                     frameCounter = 0
 
