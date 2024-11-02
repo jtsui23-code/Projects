@@ -150,11 +150,16 @@ class game:
                 enemy.render(self.display, offset=renderScroll)
                 if kill:
                     self.enemies.remove(enemy)
-            # this updates the player's movement on the x axis
-            self.player.update(self.tilemap,(self.movement[1] - self.movement[0],0))
 
-            # updates the screen    
-            self.player.render(self.display, offset=renderScroll)
+            # this respawns the player in the map if the player
+            # is has not died yet or if the player is respawning 
+            # after being hit by a projectile
+            if not self.dead:
+                # this updates the player's movement on the x axis
+                self.player.update(self.tilemap,(self.movement[1] - self.movement[0],0))
+
+                # updates the screen    
+                self.player.render(self.display, offset=renderScroll)
 
             # projectile is a list of a list of attributes pertaining
             # to a projectile
