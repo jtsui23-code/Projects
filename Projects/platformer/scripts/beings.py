@@ -288,7 +288,7 @@ class Player(physicsBeing):
 
             if self.velocity[1] != 0:
                 self.airTimeThreshold += 1
-                if self.airTimeThreshold >= 30:
+                if self.airTimeThreshold >= 27:
                     self.airTime += 1
                     self.airTimeThreshold = 0
 
