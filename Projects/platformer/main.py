@@ -94,6 +94,13 @@ class game:
         while True:
             self.display.blit(self.assets['background'], (0,0))
 
+            # checks if the player has been hit by a projectile
+            # 
+            if self.dead:
+                self.dead += 1
+                if self.dead == 40:
+                    self.loadMap(0)
+
             # if you set scroll to just the player's center
             # then the player will be set to the top left 
             # since the scroll is initially at the top left corner
@@ -179,6 +186,7 @@ class game:
                 elif abs(self.player.dashing) < 50:
                     if self.player.rect().collidepoint(projectile[0]):
                         self.projectiles.remove(projectile)
+                        self.dead += 1
                         for i in range(30):
                             # gives random angle in 360 degree circle
                             angle = random.random() * math.pi * 2
