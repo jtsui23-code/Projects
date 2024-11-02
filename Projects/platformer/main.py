@@ -140,7 +140,7 @@ class game:
                 kill = enemy.update(self.tilemap, (0,0))
                 enemy.render(self.display, offset=renderScroll)
                 if kill:
-                    self.enemeies.remove(enemy)
+                    self.enemies.remove(enemy)
             # this updates the player's movement on the x axis
             self.player.update(self.tilemap,(self.movement[1] - self.movement[0],0))
 
