@@ -309,7 +309,8 @@ class Player(physicsBeing):
                 if self.airTimeThreshold >= 27:
                     self.airTime += 1
                     self.airTimeThreshold = 0
-                    self.game.screenshake = max(16, self.game.screenshake)
+                    if not self.game.dead:
+                        self.game.screenshake = max(16, self.game.screenshake)
 
             # sets the air timer and the
             # threshold to zero if player is not 
