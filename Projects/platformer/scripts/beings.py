@@ -104,7 +104,7 @@ class physicsBeing:
             self.velocity[1] = 0
 
         if self.collision['down']:
-            self.jumps = 2
+            self.jumps = 10
             self.airTime = 0
             self.airTimeThreshold = 0
 
