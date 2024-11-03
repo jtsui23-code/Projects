@@ -96,6 +96,8 @@ class game:
 
     def run(self):
         while True:
+            if len(self.enemies) == 0:
+                self.loadMap(1)
             self.display.blit(self.assets['background'], (0,0))
 
             self.screenshake = max(0, self.screenshake - 1)
@@ -278,3 +280,5 @@ class game:
 
 # creates game object and uses run method
 game().run()
+
+
