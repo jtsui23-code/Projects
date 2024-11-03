@@ -199,6 +199,7 @@ class game:
                     if self.player.rect().collidepoint(projectile[0]):
                         self.projectiles.remove(projectile)
                         self.dead += 1
+                        self.screenshake = max(16, self.screenshake)
                         for i in range(30):
                             # gives random angle in 360 degree circle
                             angle = random.random() * math.pi * 2
