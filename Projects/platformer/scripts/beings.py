@@ -193,10 +193,20 @@ class Enemy(physicsBeing):
 
         # this checks if the player is currently dashing
         if abs(self.game.player.dashing) > 50:
+
             # this checks if the player is colliding the the 
             # enemy while in the dash
             if self.rect().colliderect(self.game.player.rect()):
-                
+                # adds screenshaking whenever there the enemy is 
+                # hit by the player's dashing
+                self.game.screenshake = max(16, self.game.screenshake)
+                for i in range(30):
+                    angle = random.random() * 2 * math.pi
+                    speed = random.random() * 5
+                    self.game.sparks.append(Spark(self.player.rect().center, angle, 2 + random.random()))
+                    self.game.particles.append(Particle(self, angle, 'particle', self.player.rect().center, velocity=[math.cos(angle + math.pi) * speed * 0.5, math.sin(angle + math.pi) * speed * 0.5]))
+                self.game.sparks.append(Spark(self.rect().center, 0, 5 + random.randoma()))
+                self.game.sparks.append(Spark(self.rect().center, math.pi, 5  + random.random()))
                 return True
             
     def render(self, surf, offset=(0,0)):
