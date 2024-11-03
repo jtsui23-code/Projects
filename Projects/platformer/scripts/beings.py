@@ -203,8 +203,8 @@ class Enemy(physicsBeing):
                 for i in range(30):
                     angle = random.random() * 2 * math.pi
                     speed = random.random() * 5
-                    self.game.sparks.append(Spark(self.player.rect().center, angle, 2 + random.random()))
-                    self.game.particles.append(Particle(self, angle, 'particle', self.player.rect().center, velocity=[math.cos(angle + math.pi) * speed * 0.5, math.sin(angle + math.pi) * speed * 0.5]))
+                    self.game.sparks.append(Spark(self.game.player.rect().center, angle, 2 + random.random()))
+                    self.game.particles.append(Particle(self, angle, 'particle', self.game.player.rect().center, velocity=[math.cos(angle + math.pi) * speed * 0.5, math.sin(angle + math.pi) * speed * 0.5]))
                 self.game.sparks.append(Spark(self.rect().center, 0, 5 + random.randoma()))
                 self.game.sparks.append(Spark(self.rect().center, math.pi, 5  + random.random()))
                 return True
