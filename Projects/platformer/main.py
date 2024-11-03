@@ -93,11 +93,13 @@ class game:
         self.sparks = []
         self.dead = 0
         self.screenshake = 0
+        self.levelCounter = 0
 
     def run(self):
         while True:
             if len(self.enemies) == 0:
-                self.loadMap(1)
+                self.levelCounter += 1
+                self.loadMap(self.levelCounter)
             self.display.blit(self.assets['background'], (0,0))
 
             self.screenshake = max(0, self.screenshake - 1)
@@ -109,6 +111,7 @@ class game:
                 self.dead += 1
                 if self.dead == 40:
                     self.loadMap(0)
+                    self.levelCounter = 0
 
             # if you set scroll to just the player's center
             # then the player will be set to the top left 
