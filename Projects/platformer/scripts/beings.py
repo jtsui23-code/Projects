@@ -221,7 +221,7 @@ class Player(physicsBeing):
         self.airTime = 0
         self.airTimeThreshold = 0
 
-        self.jumps = 2
+        self.jumps = 10
         self.dashing = 0
 
     def update(self, tilemap, movement=(0,0)):
