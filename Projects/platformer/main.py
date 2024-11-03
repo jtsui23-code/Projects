@@ -59,6 +59,7 @@ class game:
 
         self.tilemap = tilemap(self, tilesize=16)
 
+
         self.loadMap(0)
     # this method loads in a map/level
     # this method recieves the name of the level/map that is 
@@ -91,10 +92,13 @@ class game:
         self.scroll = [0,0]
         self.sparks = []
         self.dead = 0
+        self.screenshake = 0
 
     def run(self):
         while True:
             self.display.blit(self.assets['background'], (0,0))
+
+            self.screenshake = max(0, self.screenshake - 1)
 
             # checks if the player has been hit by a projectile
             # Then after 40 frames the player will
@@ -256,6 +260,10 @@ class game:
                     if event.key == pygame.K_RIGHT:
                         self.movement[1] = False
 
+            # the screenOfset will be half of the self.screenshake
+            # both positive and negative 
+            # ex) self.screenshot = 100 then screenOffset = (-50,50)
+            screenOffset = (random.random() * self.screenshake - self.screenshake/2, random.random() * self.screenshake - self.screenshake/2)
             # rendering the display(small sreen) at 0,0
             # rescales the screen so like zooms in so player is not tiny
             # pygame.transform.scale([thing want to scale], [how much 
