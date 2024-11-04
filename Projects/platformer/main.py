@@ -59,7 +59,8 @@ class game:
 
         self.tilemap = tilemap(self, tilesize=16)
 
-
+        self.screenshake = 0
+        
         self.loadMap(0)
     # this method loads in a map/level
     # this method recieves the name of the level/map that is 
@@ -92,7 +93,6 @@ class game:
         self.scroll = [0,0]
         self.sparks = []
         self.dead = 0
-        self.screenshake = 0
         self.levelCounter = 0
 
     def run(self):
@@ -204,7 +204,7 @@ class game:
                     if self.player.rect().collidepoint(projectile[0]):
                         self.projectiles.remove(projectile)
                         self.dead += 1
-                        self.screenshake = max(16, self.screenshake)
+                        self.screenshake = max(30, self.screenshake)
                         for i in range(30):
                             # gives random angle in 360 degree circle
                             angle = random.random() * math.pi * 2

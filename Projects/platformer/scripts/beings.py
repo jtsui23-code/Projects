@@ -199,7 +199,7 @@ class Enemy(physicsBeing):
             if self.rect().colliderect(self.game.player.rect()):
                 # adds screenshaking whenever there the enemy is 
                 # hit by the player's dashing
-                self.game.screenshake = max(16, self.game.screenshake)
+                self.game.screenshake = max(30, self.game.screenshake)
                 return True
             
     def render(self, surf, offset=(0,0)):
@@ -303,7 +303,7 @@ class Player(physicsBeing):
                     self.airTime += 1
                     self.airTimeThreshold = 0
                     if not self.game.dead:
-                        self.game.screenshake = max(16, self.game.screenshake)
+                        self.game.screenshake = max(30, self.game.screenshake)
 
             # sets the air timer and the
             # threshold to zero if player is not 
