@@ -60,7 +60,7 @@ class game:
         self.tilemap = tilemap(self, tilesize=16)
 
         self.screenshake = 0
-
+        self.levelCounter = 0
         self.loadMap(0)
     # this method loads in a map/level
     # this method recieves the name of the level/map that is 
@@ -93,7 +93,6 @@ class game:
         self.scroll = [0,0]
         self.sparks = []
         self.dead = 0
-        self.levelCounter = 0
 
     def run(self):
         while True:
