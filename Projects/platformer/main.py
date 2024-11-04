@@ -99,11 +99,17 @@ class game:
         while True:
             if len(self.enemies) == 0:
                 self.transition += 1
-                self.levelCounter += 1
-                if self.levelCounter > 3:
-                    pygame.quit()
-                    print("\nCongratulations, You beated the game!\n")
-                self.loadMap(self.levelCounter)
+
+                if self.transition > 30:
+                    self.levelCounter += 1
+                    if self.levelCounter > 3:
+                        pygame.quit()
+                        print("\nCongratulations, You beated the game!\n")
+                    self.loadMap(self.levelCounter)
+
+            if self.transition < 0:
+                self.transition += 1
+
             self.display.blit(self.assets['background'], (0,0))
 
             self.screenshake = max(0, self.screenshake - 1)
@@ -269,6 +275,20 @@ class game:
                         self.movement[0] = False
                     if event.key == pygame.K_RIGHT:
                         self.movement[1] = False
+
+            # inplementing level transition animation
+
+            if self.transition:
+                # pygame.Surface(self.display.get_size())
+                # makes a black surface overlay over the game screen
+                
+                transitionSurf = pygame.Surface(self.display.get_size())
+                
+                # this draws a circle over the black transition surface
+                # to create the level transition effect/animation
+                # the circle will be white and be positioned in the 
+                # middle of the screen
+                pygame.draw.circle(transitionSurf, (255,255,255), (self.display.get_width()//2, self.display.get_height()//2))
 
             # the screenOfset will be half of the self.screenshake
             # both positive and negative 
