@@ -66,7 +66,7 @@ class game:
     # this method recieves the name of the level/map that is 
     # being desired to be loaded 
     def loadMap(self, mapName):
-        self.tilemap.load('data/maps/' + str(mapName) + '.json')
+        self.tilemap.load('levels/' + str(mapName) + '.json')
         self.leafSpawner = []
         for tree in self.tilemap.extract([('large_decor', 2)], keep=True):
             # This looks at every tree so it can determine where to 
