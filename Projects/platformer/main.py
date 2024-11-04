@@ -98,6 +98,9 @@ class game:
         while True:
             if len(self.enemies) == 0:
                 self.levelCounter += 1
+                if self.levelCounter > 3:
+                    pygame.quit()
+                    print("\nCongratulations, You beated the game!\n")
                 self.loadMap(self.levelCounter)
             self.display.blit(self.assets['background'], (0,0))
 
