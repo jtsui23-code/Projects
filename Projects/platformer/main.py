@@ -61,7 +61,7 @@ class game:
 
         self.screenshake = 0
         self.levelCounter = 0
-        self.loadMap(self.levelCounter)
+        self.loadMap(0)
     # this method loads in a map/level
     # this method recieves the name of the level/map that is 
     # being desired to be loaded 
@@ -99,8 +99,7 @@ class game:
         while True:
             if len(self.enemies) == 0:
                 self.transition += 1
-
-                if self.transition > 30:
+                if self.transition >= 1:
                     self.levelCounter += 1
                     if self.levelCounter > 3:
                         pygame.quit()
@@ -287,8 +286,14 @@ class game:
                 # this draws a circle over the black transition surface
                 # to create the level transition effect/animation
                 # the circle will be white and be positioned in the 
-                # middle of the screen
-                pygame.draw.circle(transitionSurf, (255,255,255), (self.display.get_width()//2, self.display.get_height()//2))
+                # middle of the screen                                                          # 30 comes from the selected self.transtion = 30 
+                pygame.draw.circle(transitionSurf, (255,255,255), (self.display.get_width()//2, self.display.get_height()//2), (30 - abs(self.transition)) * 8)
+                
+                # the color key makes it to where the specificed 
+                # color will be transparent on the surface/display
+                # meaning the circle will be transparent
+                transitionSurf.set_colorkey((255,255,255))
+                self.display.blit(transitionSurf, (0,0))
 
             # the screenOfset will be half of the self.screenshake
             # both positive and negative 
