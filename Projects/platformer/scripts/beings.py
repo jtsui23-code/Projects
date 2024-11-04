@@ -302,9 +302,7 @@ class Player(physicsBeing):
                 if self.airTimeThreshold >= 27:
                     self.airTime += 1
                     self.airTimeThreshold = 0
-                    if not self.game.dead:
-                        self.game.screenshake = max(25, self.game.screenshake)
-
+                   
             # sets the air timer and the
             # threshold to zero if player is not 
             # in the air
@@ -315,7 +313,8 @@ class Player(physicsBeing):
 
             if self.airTime >= 5:
                 self.game.dead += 1
-                
+                self.game.screenshake = max(25, self.game.screenshake)
+
             # if the player is not standing still
             # horizontally, then toggle running animation
             elif movement[0] != 0:
