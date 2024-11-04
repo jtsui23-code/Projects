@@ -61,7 +61,7 @@ class game:
 
         self.screenshake = 0
         self.levelCounter = 0
-        self.loadMap(0)
+        self.loadMap(self.levelCounter)
     # this method loads in a map/level
     # this method recieves the name of the level/map that is 
     # being desired to be loaded 
@@ -92,11 +92,13 @@ class game:
         self.particles = []
         self.scroll = [0,0]
         self.sparks = []
+        self.transition = -30
         self.dead = 0
 
     def run(self):
         while True:
             if len(self.enemies) == 0:
+                self.transition += 1
                 self.levelCounter += 1
                 if self.levelCounter > 3:
                     pygame.quit()
