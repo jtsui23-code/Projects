@@ -128,7 +128,7 @@ class Enemy(physicsBeing):
         super().__init__(game, 'enemy', pos, size)
         # timer
         self.walking = 0
-
+        
     def update(self, tilemap,movement=(0,0)):
         if self.walking:
             # checks if there is a tile infron to of the enemy before walking
@@ -200,7 +200,9 @@ class Enemy(physicsBeing):
                 # adds screenshaking whenever there the enemy is 
                 # hit by the player's dashing
                 self.game.screenshake = max(25, self.game.screenshake)
+                
                 return True
+                
             
     def render(self, surf, offset=(0,0)):
         super().render(surf, offset=offset)
