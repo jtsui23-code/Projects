@@ -1,5 +1,5 @@
-## 10-P03 - Knucklebone Game In SFML
-### Jack Tsui
+## Knucklebone Game In SFML
+
 ### Description:
 This program displays a Knucklebone game window using the SFML library. Both players are prompted to enter their names.
 Once both names are entered, the window transitions from the title screen to the game screen with two boards. 
