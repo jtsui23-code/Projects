@@ -1,12 +1,7 @@
 ## Knucklebone Game In SFML
 
 ### Description:
-This program displays a Knucklebone game window using the SFML library. Both players are prompted to enter their names.
-Once both names are entered, the window transitions from the title screen to the game screen with two boards. 
-To roll, the player must press space on their respective turn. Then place their dice number on their grid which is labeled with their name. 
-Once one of the two grids is filled, the winner is displayed. Players can destroy enemy columns if they place a dice number 
-on the same column as their opponent with the same dice number. Example: If player1 rolls a 5 and places it on column 2 
-and player2 has a 5 on any cell on their own column 2, then they lose that cell number with a 5 in it.
+
 
 ### Files:
 |   #   | File            | Description                                        |
