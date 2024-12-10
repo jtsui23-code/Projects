@@ -1,11 +1,4 @@
 /*****************************************************************************
-*                    
-*  Author:           Jack Tsui
-*  Email:            jtsui1110@my.msutexas.edu
-*  Label:            10-P03
-*  Title:            Knucklebone Game
-*  Course:           2143 OOP
-*  Semester:         Fall 2024
 * 
 *  Description:
 *        This program displays a Knucklebone game window using SFMLL library.
