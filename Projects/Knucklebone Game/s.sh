@@ -7,7 +7,7 @@ SFML_LIB="/opt/homebrew/lib/"
 # Compiler and flags
 CXX="g++"
 CXXFLAGS="-std=c++17 -I${SFML_INCLUDE}"
-LDFLAGS="-L${SFML_LIB} -lsfml-graphics -lsfml-window -lsfml-system -lsfml-network"
+LDFLAGS="-L${SFML_LIB} -lsfml-graphics -lsfml-window -lsfml-system -lsfml-network -lsfml-audio"
 
 # Check if source files are provided
 if [ $# -eq 0 ]; then

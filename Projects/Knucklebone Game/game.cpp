@@ -27,11 +27,13 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
-#include "diceRoll.hpp"  // include animation for dice roll
-#include "grid.hpp"      // include grid
+#include "diceRoll.hpp"         // include animation for dice roll
+#include "grid.hpp"             // include grid
 #include<string>
 #include <map> 
 #include<vector>
+#include <SFML/Audio.hpp>
+
 
 /**
  * Player Class
@@ -197,6 +199,9 @@ class Game
     // window screen.
     int height;
     int width;
+
+    // Creates music object for playing and storing music
+    sf:: Music music;
     
 
     // This creates two Grid objects
@@ -327,7 +332,13 @@ class Game
     height = 1200;
     width = 800;
 
+    
+
     loadAssets();
+
+    music.setVolume(25.f);  // Volume (0 to 100)
+
+    
 
     // Set sthe position and color of the game tile
     titleName.setPosition(sf::Vector2f(200.f, 10.f));
@@ -437,8 +448,13 @@ class Game
 
     void loadAssets()
     {
-
+        // Loads music 
         
+        if (!music.openFromFile("media/extra/song.mp3"))
+        {
+            std::cerr << "Failed to load music file!" << std::endl;
+        }
+    
         
         if (!titleFont.loadFromFile("media/extra/titleFont.ttf")) 
         {
@@ -766,7 +782,17 @@ class Game
      */
     void updateGame()
     {
+    
+        // Plays the music on loop
+        if (music.getStatus() != sf::Music::Playing) 
+        {
+            music.setLoop(true);
+            music.play();
+        }
+            
 
+        
+        
         // This will make the game remain on the title screen or
         //  until both player has entered their 
         // names
