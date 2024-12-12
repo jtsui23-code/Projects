@@ -201,10 +201,7 @@ class Game
     int width;
 
     // Creates music object for playing and storing music
-    sf:: Sound music;
-
-    sf:: SoundBuffer buffer;
-    
+    sf:: Music music;    
 
     // This creates two Grid objects
     // that are displayed on the screen
@@ -333,13 +330,9 @@ class Game
     {
     height = 1200;
     width = 800;
-
-    
+    window->setFramerateLimit(60); // Cap the frame rate to 60
 
     loadAssets();
-
-    music.setVolume(75.f);  // Volume (0 to 100)
-
 
     // Set sthe position and color of the game tile
     titleName.setPosition(sf::Vector2f(200.f, 10.f));
@@ -451,7 +444,11 @@ class Game
     {
         // Loads music 
         
-        if (!buffer.loadFromFile("media/music/Intro.ogg"))
+        if (music.openFromFile("media/music/Intro.ogg"))
+        {
+             music.setVolume(50.f);  // Volume (0 to 100)    
+        }
+        else
         {
             std::cerr << "Failed to load music file!" << std::endl;
         }
@@ -784,12 +781,10 @@ class Game
 
     void playMusic()
     {
-        music.setBuffer(buffer);
 
         // Plays the music on loop
         if (music.getStatus() != sf::Music::Playing) 
         {
-            music.setLoop(true);
             music.play();
         }
     }
@@ -809,11 +804,10 @@ class Game
     void updateGame()
     {
     
-        
+        //Starts playing the music right away to prevent
+        // delay between loops
+        playMusic(); 
             
-
-        
-        
         // This will make the game remain on the title screen or
         //  until both player has entered their 
         // names
@@ -1120,11 +1114,6 @@ int main()
     // Main game loop
     while (window.isOpen()) 
     {
-
-        //Starts playing the music right away to prevent
-        // delay between loops
-        game.playMusic();       
-
 
 
         // Game event object used for tracking mouse input/ keyboard input
