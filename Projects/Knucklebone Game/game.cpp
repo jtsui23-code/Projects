@@ -449,7 +449,7 @@ class Game
     {
         // Loads music 
         
-        if (!music.openFromFile("media/music/Intro.mp3"))
+        if (!music.openFromFile("media/music/Intro.ogg"))
         {
             std::cerr << "Failed to load music file!" << std::endl;
         }
