@@ -336,7 +336,7 @@ class Game
 
     loadAssets();
 
-    music.setVolume(25.f);  // Volume (0 to 100)
+    music.setVolume(50.f);  // Volume (0 to 100)
 
 
     // Set sthe position and color of the game tile
@@ -1104,8 +1104,6 @@ int main()
 
     //Load the assets of the game
     game.loadAssets();
-
-    game.playMusic();       // Start playing the music
 
 
     // Seed the random number generator for the dice roll
