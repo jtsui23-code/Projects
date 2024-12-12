@@ -769,6 +769,29 @@ class Game
     }
 
     /**
+     * Public: playMusic
+     * 
+     * Description:
+     *      Starts playing the music of the game.
+     * 
+     * Parameters:
+     *      - None
+     * 
+     * Returns:
+     *      - None
+     */
+
+    void playMusic()
+    {
+        // Plays the music on loop
+        if (music.getStatus() != sf::Music::Playing) 
+        {
+            music.setLoop(true);
+            music.play();
+        }
+    }
+
+    /**
      * Public: updateGame
      * 
      * Description:
@@ -783,12 +806,7 @@ class Game
     void updateGame()
     {
     
-        // Plays the music on loop
-        if (music.getStatus() != sf::Music::Playing) 
-        {
-            music.setLoop(true);
-            music.play();
-        }
+        
             
 
         
