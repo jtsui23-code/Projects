@@ -450,7 +450,7 @@ class Game
     {
         // Loads music 
         
-        if (!music.openFromFile("media/extra/song.mp3"))
+        if (!music.openFromFile("media/music/intro.mp3"))
         {
             std::cerr << "Failed to load music file!" << std::endl;
         }
@@ -1114,6 +1114,9 @@ int main()
     // Main game loop
     while (window.isOpen()) 
     {
+        //Starts playing the music right away to prevent
+        // delay between loops
+        game.playMusic();
         // Game event object used for tracking mouse input/ keyboard input
         sf::Event event;
         while (window.pollEvent(event)) 
