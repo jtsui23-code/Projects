@@ -338,7 +338,6 @@ class Game
 
     music.setVolume(25.f);  // Volume (0 to 100)
 
-    playMusic();       // Start playing the music
 
     // Set sthe position and color of the game tile
     titleName.setPosition(sf::Vector2f(200.f, 10.f));
@@ -1106,16 +1105,26 @@ int main()
     //Load the assets of the game
     game.loadAssets();
 
+    game.playMusic();       // Start playing the music
+
+
     // Seed the random number generator for the dice roll
     // This is so every new game has a different set of dice rolls
     std::srand(static_cast<unsigned>(std::time(nullptr)));
 
 
+
+
     // Main game loop
     while (window.isOpen()) 
     {
+
         //Starts playing the music right away to prevent
         // delay between loops
+        game.playMusic();       
+
+
+
         // Game event object used for tracking mouse input/ keyboard input
         sf::Event event;
         while (window.pollEvent(event)) 
