@@ -338,7 +338,7 @@ class Game
 
     music.setVolume(25.f);  // Volume (0 to 100)
 
-    
+    playMusic();       // Start playing the music
 
     // Set sthe position and color of the game tile
     titleName.setPosition(sf::Vector2f(200.f, 10.f));
@@ -450,7 +450,7 @@ class Game
     {
         // Loads music 
         
-        if (!music.openFromFile("media/music/intro.mp3"))
+        if (!music.openFromFile("media/music/Intro.mp3"))
         {
             std::cerr << "Failed to load music file!" << std::endl;
         }
@@ -1116,7 +1116,6 @@ int main()
     {
         //Starts playing the music right away to prevent
         // delay between loops
-        game.playMusic();
         // Game event object used for tracking mouse input/ keyboard input
         sf::Event event;
         while (window.pollEvent(event)) 
