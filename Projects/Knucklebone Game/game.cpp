@@ -201,9 +201,8 @@ class Game
     int width;
 
     // Creates music object for playing and storing music
-    sf:: Sound music;    
-
-    sf:: SoundBuffer buffer;
+    sf:: Music music;    
+    
 
     // This creates two Grid objects
     // that are displayed on the screen
@@ -446,12 +445,7 @@ class Game
     {
         // Loads music 
         
-        if (buffer.loadFromFile("media/music/Intro.wav"))
-        {
-            music.setBuffer(buffer);
-             music.setVolume(25.f);  // Volume (0 to 100)    
-        }
-        else
+        if (!music.openFromFile("media/music/Intro.wav"))
         {
             std::cerr << "Failed to load music file!" << std::endl;
         }
@@ -785,8 +779,9 @@ class Game
     void playMusic()
     {
 
+        music.setVolume(25.f);
         // Plays the music on loop
-        if (music.getStatus() != sf::Sound::Playing) 
+        if (music.getStatus() != sf::Music::Playing) 
         {
             music.play();
         }
