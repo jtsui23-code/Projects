@@ -444,7 +444,7 @@ class Game
     {
         // Loads music 
         
-        if (music.openFromFile("media/music/Intro.ogg"))
+        if (music.openFromFile("media/music/Intro.wav"))
         {
              music.setVolume(50.f);  // Volume (0 to 100)    
         }
