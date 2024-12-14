@@ -15,7 +15,7 @@ class editor:
 
         pygame.display.set_caption("Editor")
         # create screen object
-        self.screen = pygame.display.set_mode((1200,800))
+        self.screen = pygame.display.set_mode((640,480))
 
         # used for fps
         self.clock = pygame.time.Clock()
