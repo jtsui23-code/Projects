@@ -6,7 +6,7 @@ pygame.init()
 screenWidth = 800
 screenHeight = 600
 
-screen = pygame.display.set_mode(screenWidth, screenHeight)
+screen = pygame.display.set_mode((screenWidth, screenHeight))
 
 pygame.display.set_caption("Rogue-Like")
 
@@ -16,7 +16,9 @@ running = True
 
 while running:
     for event in pygame.event.get():
-       if event.type() == pygame.quit():
+       if event.type == pygame.QUIT:
+          pygame.quit()
+          sys.exit()
           running = False
     
     screen.fill(backgroundColor)
@@ -24,3 +26,5 @@ while running:
     #Updates every single window might want to 
     # change to pygame.display.update() to only update one window
     pygame.display.flip()
+
+
