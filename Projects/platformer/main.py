@@ -100,7 +100,7 @@ class game:
             if len(self.enemies) == 0:
                 self.transition += 1
                 if self.transition >= 1:
-                    self.levelCounter += 1
+                    self.levelCounter += 1 
                     if self.levelCounter > 3:
                         pygame.quit()
                         print("\nCongratulations, You beated the game!\n")
@@ -294,6 +294,7 @@ class game:
                 # meaning the circle will be transparent
                 transitionSurf.set_colorkey((255,255,255))
                 self.display.blit(transitionSurf, (0,0))
+
 
             # the screenOfset will be half of the self.screenshake
             # both positive and negative 
