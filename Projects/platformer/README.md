@@ -7,7 +7,7 @@ This program displays a Pygame platformer game. To move the character, use WASD 
 |   #   | File            | Description                                        |
 | :---: | --------------- | -------------------------------------------------- |
 |   1   | [main.py](https://github.com/jtsui23-code/Projects/blob/main/Projects/platformer/main.py)        | This runs the program for platformer.      |
-|   2   | [levelEditor.py]([https://github.com/jtsui23-code/2143-OOP/blob/main/Assignments/10-P03/game](https://github.com/jtsui23-code/Projects/blob/main/Projects/platformer/levelEditor.py))          | This is runs the program for the level editor.                       |
+|   2   | [levelEditor.py]([https://github.com/jtsui23-code/2143-OOP/blob/main/Assignments/10-P03/game](https://github.com/jtsui23-code/Projects/blob/main/Projects/platformer/levelEditor.py)         | This is runs the program for the level editor.                       |
 |   3   | [data](https://github.com/jtsui23-code/Projects/tree/main/Projects/platformer/data)        | This folder contains all of the assets for the game.      |
 |   4  | [level](https://github.com/jtsui23-code/Projects/tree/main/Projects/platformer/levels)        | This folder contains all of the levels of the game in json format.      |
 |   5  | [script](https://github.com/jtsui23-code/Projects/tree/main/Projects/platformer/scripts)        | This folder contains all of the other scripts for the platformer.      |
