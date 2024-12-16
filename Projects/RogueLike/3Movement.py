@@ -32,25 +32,17 @@ player = pygame.image.load("media/Assets/Player/player.png")
 
 
 # Making player sprite smaller
-playerW = 100
-playerH = 100
-
-
+playerSize = [100,100]
 
 # .transform.scale() changes how big an image/sprite is
 # To use .transform.scale(),    .transform([object want to change size of])
-player = pygame.transform.scale(player, (playerW, playerH))
-
-
+player = pygame.transform.scale(player, (playerSize[0], playerSize[1]))
 
 # (0,0) coordinate is not at the center of the window
 # (0,0) position is at the top left of the window
 # Higher Y - coordinate means lower on the screen
 # Higher X - coordinate means further right on the screen
-playerXPos = 50
-playerYPos = 100
-
-
+playerPos = [50, 100]
 
 # New 
 ##############################################################################
@@ -162,7 +154,7 @@ while running:
    # The .blit is used as followed
    # .blit( [Object want to draw on window], (x - position of object on window, y - position of object on window) )
    # Note that the position of the object is an ordered pair (x,y) inside of .blit(player, (x,y) )
-    screen.blit(player, (playerXPos, playerYPos))
+    screen.blit(player, (playerPos[0], playerPos[1]))
 
 
    
