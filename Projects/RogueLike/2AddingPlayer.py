@@ -32,6 +32,14 @@ running = True
 # image inside of .load( [Directory/location of image] )
 player = pygame.image.load("media/Assets/Player/player.png")
 
+# Making player sprite smaller
+playerW = 100
+playerH = 100
+
+# .transform.scale() changes how big an image/sprite is
+# To use .transform.scale(),    .transform([object want to change size of])
+player = pygame.transform.scale(player, (playerW, playerH))
+
 # (0,0) coordinate is not at the center of the window
 # (0,0) position is at the top left of the window
 # Higher Y - coordinate means lower on the screen
