@@ -52,6 +52,18 @@ playerYPos = 100
 
 
 
+# New 
+##############################################################################
+#
+# This is a list of 2 booleans
+# The first boolean repsents the leftward movement
+# and the second boolean repsents rightward movement
+movement = [False, False]
+
+#
+#
+##############################################################################
+
 
 
 while running:
@@ -75,7 +87,7 @@ while running:
     if event.type == pygame.KEYDOWN:
         if event.key == pygame.K_a:
             pass
-        
+
     ##############################################################################
 
 
@@ -93,8 +105,19 @@ while running:
    # .blit( [Object want to draw on window], (x - position of object on window, y - position of object on window) )
    # Note that the position of the object is an ordered pair (x,y) inside of .blit(player, (x,y) )
     screen.blit(player, (playerXPos, playerYPos))
-   
 
+
+   
+    # New 
+    ##############################################################################
+    #
+    # Updates the player position based off of key input
+    # movement[1] is any key input to move the player righward like D key or right arrow
+    # movement[0] is any key input to move the player leftward like A key or left arrow
+    player.update(screen, (movement[1] - movement[0], 0))
+    #
+    #
+    ##############################################################################
 
     # Updates every single window might want to 
     # change to pygame.display.update() to only update one window
