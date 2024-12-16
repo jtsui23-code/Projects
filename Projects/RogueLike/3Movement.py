@@ -114,6 +114,13 @@ while running:
     # Updates the player position based off of key input
     # movement[1] is any key input to move the player righward like D key or right arrow
     # movement[0] is any key input to move the player leftward like A key or left arrow
+    #
+    # If the right key is pressed then movement[1] is equal to 1 and
+    # 1 - 0 is 1 making the player move rightward
+    # If the left key is pressed then movement[1] remains 0
+    # while movement[0] is equal to 1 and 0 - 1 is -1 making the 
+    # player move leftward 
+    # How to use .update([Where the player is moving], (x-position, y-position))
     player.update(screen, (movement[1] - movement[0], 0))
     #
     #
