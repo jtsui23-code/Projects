@@ -83,10 +83,68 @@ while running:
     # New 
     ##############################################################################
     #
-    #
+    # Checks if any keys have been pressed
+    # Making the index in the movement
+    # array equal to True indicates movement
+    # also boolean statements True and False 
+    # can be converted to numbers 
+    # 1 for True and 0 for False
     if event.type == pygame.KEYDOWN:
+
+        # If the A key or left arrow key has been pressed
+        # Change the movement array accordingly
+       
+
         if event.key == pygame.K_a:
-            pass
+            # movement[0] in the array 
+            # represents leftward movement
+            movement[0] = True
+
+        if event.key == pygame.K_LEFT:
+            # movement[0] in the array 
+            # represents leftward movement
+            movement[0] = True
+
+        if event.key == pygame.K_d:
+            # movement[1] in the array 
+            # represents righward movement
+            movement[1] = True
+
+        if event.key == pygame.K_RIGHT:
+            # movement[1] in the array 
+            # represents righward movement
+            movement[1] = True
+
+
+    # Checks if any keys have been pressed
+    # Making the index in the movement
+    # array equal to True indicates movement
+    # also boolean statements True and False 
+    # can be converted to numbers 
+    # 1 for True and 0 for False
+    if event.type == pygame.KEYUP:
+
+        # If the A key or left arrow key has been pressed
+        # Change the movement array accordingly
+        if event.key == pygame.K_a:
+            # movement[0] in the array 
+            # represents leftward movement
+            movement[0] = False 
+
+        if event.key == pygame.K_LEFT:
+            # movement[0] in the array 
+            # represents leftward movement
+            movement[0] = False
+
+        if event.key == pygame.K_d:
+            # movement[1] in the array 
+            # represents righward movement
+            movement[1] = False
+            
+        if event.key == pygame.K_RIGHT:
+            # movement[1] in the array 
+            # represents righward movement
+            movement[1] = False
 
     ##############################################################################
 
