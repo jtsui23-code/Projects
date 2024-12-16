@@ -42,6 +42,8 @@ player = pygame.transform.scale(player, (playerSize[0], playerSize[1]))
 # (0,0) position is at the top left of the window
 # Higher Y - coordinate means lower on the screen
 # Higher X - coordinate means further right on the screen
+# playerPos[0] represents x - axis movement
+# while playerPos[1] represents y - axis movement
 playerPos = [50, 100]
 
 # New 
@@ -59,6 +61,24 @@ movement = [False, False]
 
 
 while running:
+
+    # New 
+    ##############################################################################
+    #
+    # movement[1] is any key input to move the player righward like D key or right arrow
+    # movement[0] is any key input to move the player leftward like A key or left arrow
+    #
+    # If the right key is pressed then movement[1] is equal to 1 and
+    # 1 - 0 is 1 making the player move rightward
+    # If the left key is pressed then movement[1] remains 0
+    # while movement[0] is equal to 1 and 0 - 1 is -1 making the 
+    # player move leftward 
+
+    # the player position is changed depending on which key is pressed 
+    # playerPos[0] represents x - axis movement
+    # while playerPos[1] represents y - axis movement
+    playerPos[0] += (movement[1] - movement[0]) * 1
+
 
     # Checks for user input
     for event in pygame.event.get():
@@ -156,25 +176,6 @@ while running:
    # Note that the position of the object is an ordered pair (x,y) inside of .blit(player, (x,y) )
     screen.blit(player, (playerPos[0], playerPos[1]))
 
-
-   
-    # New 
-    ##############################################################################
-    #
-    # Updates the player position based off of key input
-    # movement[1] is any key input to move the player righward like D key or right arrow
-    # movement[0] is any key input to move the player leftward like A key or left arrow
-    #
-    # If the right key is pressed then movement[1] is equal to 1 and
-    # 1 - 0 is 1 making the player move rightward
-    # If the left key is pressed then movement[1] remains 0
-    # while movement[0] is equal to 1 and 0 - 1 is -1 making the 
-    # player move leftward 
-    # How to use .update([Where the player is moving], (x-position, y-position))
-    player.update(screen, (movement[1] - movement[0], 0))
-    #
-    #
-    ##############################################################################
 
     # Updates every single window might want to 
     # change to pygame.display.update() to only update one window
