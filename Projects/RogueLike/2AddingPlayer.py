@@ -24,16 +24,25 @@ backgroundColor = (0,0,0)
 running = True
 
 # New 
-###################################
+##############################################################################
 #
 #
 # player is an image
 # To load an image need to add directory or location of 
 # image inside of .load( [Directory/location of image] )
 player = pygame.image.load("media/Assets/Player/player.png")
+
+# (0,0) coordinate is not at the center of the window
+# (0,0) position is at the top left of the window
+# Higher Y - coordinate means lower on the screen
+# Higher X - coordinate means further right on the screen
+playerXPos = 50
+playerYPos = 100
 #
 #
-#######er##########################
+##############################################################################
+
+
 
 
 while running:
@@ -51,6 +60,23 @@ while running:
     
     # Fills the window with the background color otherwise
     screen.fill(backgroundColor)
+   
+
+   # New 
+   ##############################################################################
+   #
+   # .blit() draws whatever object on the window
+   # in this case screen is the main game window 
+   # create in line 15 and looks like this 
+   # screen = pygame.display.set_mode((screenWidth, screenHeight))
+   # The .blit is used as followed
+   # .blit( [Object want to draw on window], (x - position of object on window, y - position of object on window) )
+   # Note that the position of the object is an ordered pair (x,y) inside of .blit(player, (x,y) )
+    screen.blit(player, (playerXPos, playerYPos))
+   #
+   #
+   ##############################################################################
+
 
     # Updates every single window might want to 
     # change to pygame.display.update() to only update one window
