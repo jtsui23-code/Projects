@@ -57,20 +57,17 @@ playerPos = [50, 100]
 # movement[3] - Down movement
 movement = [False, False, False, False]
 
-speed = 0.5
-
-
 #
 #
 ############################################################################################################################################################
 
-
+speed = 0.5
 
 while running:
 
    
-    # movement[1] is any key input to move the player righward like D key or right arrow
-    # movement[0] is any key input to move the player leftward like A key or left arrow
+    # movement[1] - rightward movement
+    # movement[0] - leftward movement
     #
     # If the right key is pressed then movement[1] is equal to 1 and
     # 1 - 0 is 1 making the player move rightward
@@ -78,10 +75,8 @@ while running:
     # while movement[0] is equal to 1 and 0 - 1 is -1 making the 
     # player move leftward 
 
-    # the player position is changed depending on which key is pressed 
-    # playerPos[0] represents x - axis movement
-    # while playerPos[1] represents y - axis movement
-    playerPos[0] += (movement[1] - movement[0]) * speed
+    dx =  movement[1] - movement[0]
+    playerPos[0] += dx * speed
 
 
 
@@ -89,20 +84,21 @@ while running:
     ############################################################################################################################################################
     #
     #
-    # playerPos[1] is the player's y - position on the screen
     # movement[3] - Downward movement
     # movement[2] - Upward movement
+    # playerPos[1] - vertical movement
     # If the player presses Up arrow then the numbers would be
-    # (0 - 1) * 1, which is a negative number
+    # (0 - 1) , which is a negative number
     # A negative number results in an upward movement for the player because 
     # (0,0) origin is at the top left corner of the window meaning to move down the screen
     # the player's y-value must go upward/increase
     # and for the player to move down their y-value must approach 0
     # or decrease
     # If the user presses down arrow key then the 
-    # playerPos[1] += (1 - 0) * 1, which is a position increase making the player
+    # dy = (1 - 0), which is a position increase making the player
     # move downwards
-    playerPos[1] += (movement[3] - movement[2]) * speed
+    dy = movement[3] - movement[2]
+    playerPos[1] += dy
     #
     ############################################################################################################################################################
 

@@ -54,11 +54,11 @@ playerPos = [50, 100]
 # movement[0] - Left movement
 # movement[1] - Right movement
 movement = [False, False]
+speed = 0.5
 
 #
 #
 ############################################################################################################################################################
-
 
 
 while running:
@@ -66,19 +66,16 @@ while running:
     # New 
     ############################################################################################################################################################
     #
-    # movement[1] is any key input to move the player righward like D key or right arrow
-    # movement[0] is any key input to move the player leftward like A key or left arrow
-    #
+    # movement[1] - rightward movement
+    # movement[0] - leftward movement
+    # playerPos[0] - horizontal movement
     # If the right key is pressed then movement[1] is equal to 1 and
     # 1 - 0 is 1 making the player move rightward
     # If the left key is pressed then movement[1] remains 0
     # while movement[0] is equal to 1 and 0 - 1 is -1 making the 
     # player move leftward 
-
-    # the player position is changed depending on which key is pressed 
-    # playerPos[0] represents x - axis movement
-    # while playerPos[1] represents y - axis movement
-    playerPos[0] += (movement[1] - movement[0]) * 1
+    dx =  movement[1] - movement[0]
+    playerPos[0] += dx * speed
     #
     ############################################################################################################################################################
 

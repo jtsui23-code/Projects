@@ -1,5 +1,6 @@
 import pygame   # Importing Pygame library
 import sys      # Importing sys library to properly close the game
+import math     # Import for physics/movement
 
 # Starts up Pygame
 pygame.init()
@@ -60,25 +61,19 @@ speed = 0.5
 
 while running:
 
-    print(playerPos[0])
-    print(playerPos[1])
+    
 
     # New 
     ############################################################################################################################################################
     #
     #
-    if (movement[0] and movement[2]) or (movement[0] and movement[3]):
-        speed = 0.5 / 1.41
-    elif (movement[1] and movement[2]) or (movement[1] and movement[3]):
-        speed = 0.5 / 1.41
-    else:
-        speed = 0.5
+    
     #
     ############################################################################################################################################################
 
    
-    # movement[1] is any key input to move the player righward like D key or right arrow
-    # movement[0] is any key input to move the player leftward like A key or left arrow
+    # movement[1] - rightward movement
+    # movement[0] - leftward movement
     #
     # If the right key is pressed then movement[1] is equal to 1 and
     # 1 - 0 is 1 making the player move rightward
@@ -87,25 +82,35 @@ while running:
     # player move leftward 
 
     # the player position is changed depending on which key is pressed 
-    # playerPos[0] represents x - axis movement
-    # while playerPos[1] represents y - axis movement
-    playerPos[0] += min( (movement[1] - movement[0]) * speed, 0.5)
+   
+    dx =  movement[1] - movement[0]
 
     
-    # playerPos[1] is the player's y - position on the screen
     # movement[3] - Downward movement
     # movement[2] - Upward movement
+    # playerPos[1] - vertical movement
     # If the player presses Up arrow then the numbers would be
-    # (0 - 1) * 1, which is a negative number
+    # (0 - 1) , which is a negative number
     # A negative number results in an upward movement for the player because 
     # (0,0) origin is at the top left corner of the window meaning to move down the screen
     # the player's y-value must go upward/increase
     # and for the player to move down their y-value must approach 0
     # or decrease
     # If the user presses down arrow key then the 
-    # playerPos[1] += (1 - 0) * 1, which is a position increase making the player
+    # dy = (1 - 0), which is a position increase making the player
     # move downwards
-    playerPos[1] += min( (movement[3] - movement[2]) * speed, 0.5)
+    dy = movement[3] - movement[2]
+
+
+    if dx != 0 and dy != 0:
+        diagonal = math.sqrt(dx * dx + dy * dy)
+
+        dx = dx / diagonal
+        
+        dy = dy / diagonal
+
+    playerPos[0] += dx
+    playerPos[1] += dy
 
 
     
