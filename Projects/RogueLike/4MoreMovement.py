@@ -55,8 +55,7 @@ playerPos = [50, 100]
 # movement[1] - Right movement
 # movement[2] - Down movement
 # movement[3] - Up movement
-
-movement = [False, False]
+movement = [False, False, False, False]
 
 #
 #
@@ -133,6 +132,20 @@ while running:
         ##############################################################################
         #
         #
+
+        # Adding key input for upward movement of player
+        # movement[3] - Upward movement
+        if event.key == pygame.K_w:
+            movement[3] = True
+        
+        if event.key == pygame.K_UP:
+            movement[3] = True
+
+        if event.key == pygame.K_s:
+            movement[2] = True
+        
+        if event.tkey == pygame.K_DOWN:
+            movement[2] = True
         #
         #
         ##############################################################################

@@ -50,6 +50,7 @@ playerPos = [50, 100]
 ##############################################################################
 #
 # This is a list of 2 booleans
+# Arrays Start at [0]
 # movement[0] - Left movement
 # movement[1] - Right movement
 movement = [False, False]
