@@ -84,7 +84,19 @@ while running:
     ##############################################################################
     #
     #
-
+    # playerPos[1] is the player's y - position on the screen
+    # movement[3] - Downward movement
+    # movement[2] - Upward movement
+    # If the player presses Up arrow then the numbers would be
+    # (0 - 1) * 1, which is a negative number
+    # A negative number results in an upward movement for the player because 
+    # (0,0) origin is at the top left corner of the window meaning to move down the screen
+    # the player's y-value must go upward/increase
+    # and for the player to move down their y-value must approach 0
+    # or decrease
+    # If the user presses down arrow key then the 
+    # playerPos[1] += (1 - 0) * 1, which is a position increase making the player
+    # move downwards
     playerPos[1] += (movement[3] - movement[2]) * 1
     #
     ##############################################################################
