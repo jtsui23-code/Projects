@@ -63,14 +63,7 @@ while running:
 
     
 
-    # New 
-    ############################################################################################################################################################
-    #
-    #
-    
-    #
-    ############################################################################################################################################################
-
+   
    
     # movement[1] - rightward movement
     # movement[0] - leftward movement
@@ -101,16 +94,29 @@ while running:
     # move downwards
     dy = movement[3] - movement[2]
 
-
+    # New 
+    ############################################################################################################################################################
+    #
+    #
+    
+    # checks if the player is moving diagonally to
+    # slow down the diagonal movement
     if dx != 0 and dy != 0:
         diagonal = math.sqrt(dx * dx + dy * dy)
 
         dx = dx / diagonal
         dy = dy / diagonal
 
-    playerPos[0] += dx * speed
-    playerPos[1] += dy * speed
+    velocity = [0,0]
+    velocity[0] = dx * speed
+    velocity[1] = dy * speed
 
+    playerPos[0] += min(velocity[0], 1)
+    playerPos[1] += min(velocity[1], 1)
+
+
+    #
+    ############################################################################################################################################################
 
     
 
