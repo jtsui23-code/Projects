@@ -78,9 +78,9 @@ while running:
     # the player position is changed depending on which key is pressed 
     # playerPos[0] represents x - axis movement
     # while playerPos[1] represents y - axis movement
-    playerPos[0] += (movement[1] - movement[0]) * 1
+    playerPos[0] += (movement[1] - movement[0]) * 0.5
 
-     # New 
+    # New 
     ############################################################################################################################################################
     #
     #
@@ -97,7 +97,7 @@ while running:
     # If the user presses down arrow key then the 
     # playerPos[1] += (1 - 0) * 1, which is a position increase making the player
     # move downwards
-    playerPos[1] += (movement[3] - movement[2]) * 1
+    playerPos[1] += (movement[3] - movement[2]) * 0.5
     #
     ############################################################################################################################################################
 
