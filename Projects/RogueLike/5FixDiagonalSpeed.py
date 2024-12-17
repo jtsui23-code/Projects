@@ -56,14 +56,14 @@ playerPos = [50, 100]
 # movement[3] - Down movement
 movement = [False, False, False, False]
 
-speed = 0.5
+speed = 5
+
+clock = pygame.time.Clock()
 
 
 while running:
 
-    
-
-   
+    clock.tick(60)
    
     # movement[1] - rightward movement
     # movement[0] - leftward movement
@@ -105,20 +105,14 @@ while running:
         diagonal = math.sqrt(dx * dx + dy * dy)
 
         dx = dx / diagonal
-        dy = dy / diagonal
+        dy = dy / diagonal 
 
-    velocity = [0,0]
-    velocity[0] = dx * speed
-    velocity[1] = dy * speed
-
-    playerPos[0] += min(velocity[0], 1)
-    playerPos[1] += min(velocity[1], 1)
-
+    playerPos[0] += dx * speed
+    playerPos[1] += dy * speed
 
     #
     ############################################################################################################################################################
 
-    
 
 
 
