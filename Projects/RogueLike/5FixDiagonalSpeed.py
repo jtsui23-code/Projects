@@ -56,14 +56,27 @@ playerPos = [50, 100]
 # movement[3] - Down movement
 movement = [False, False, False, False]
 
+# New 
+############################################################################################################################################################
+#
 speed = 5
 
+# Set framerate for game
 clock = pygame.time.Clock()
+#
+############################################################################################################################################################
 
 
 while running:
 
+    # New
+    ############################################################################################################################################################
+    #
     clock.tick(60)
+    #
+    ############################################################################################################################################################
+
+
    
     # movement[1] - rightward movement
     # movement[0] - leftward movement
@@ -102,8 +115,23 @@ while running:
     # checks if the player is moving diagonally to
     # slow down the diagonal movement
     if dx != 0 and dy != 0:
+
+        # Ex) If player is moving diagonal with dx = 1 and dy = 1
+        # then the diagonal speed would be 
+        # srt(1 * 1 + 1 * 1) = sqrt(2) = 1.41
+        # This would mean that the player's diagonal speed is higher than 
+        # their horizontal and vertical speed
+
         diagonal = math.sqrt(dx * dx + dy * dy)
 
+        # Using the same example of dx = 1 and dy = 1 
+        # To fix the imbalance of diagonal speed
+        # divide both dx and dy by diagonal speed
+        # so the new calculation would be 
+        # sqrt(1/sqr(2) * 1/sqr(2) + 1/sqr(2) * 1/sqr(2))
+        # which simpilfies to 
+        # sqrt( 1/2 + 1/2) = 1 
+        # fixing the issue with the imbalance speed
         dx = dx / diagonal
         dy = dy / diagonal 
 
