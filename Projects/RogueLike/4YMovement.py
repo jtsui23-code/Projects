@@ -98,7 +98,7 @@ while running:
     # dy = (1 - 0), which is a position increase making the player
     # move downwards
     dy = movement[3] - movement[2]
-    playerPos[1] += dy
+    playerPos[1] += dy * speed
     #
     ############################################################################################################################################################
 

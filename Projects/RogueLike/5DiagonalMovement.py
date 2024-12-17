@@ -106,11 +106,10 @@ while running:
         diagonal = math.sqrt(dx * dx + dy * dy)
 
         dx = dx / diagonal
-        
         dy = dy / diagonal
 
-    playerPos[0] += dx
-    playerPos[1] += dy
+    playerPos[0] += dx * speed
+    playerPos[1] += dy * speed
 
 
     
