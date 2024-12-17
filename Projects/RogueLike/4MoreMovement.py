@@ -46,12 +46,16 @@ player = pygame.transform.scale(player, (playerSize[0], playerSize[1]))
 # while playerPos[1] represents y - axis movement
 playerPos = [50, 100]
 
+
 # New 
 ##############################################################################
 #
-# This is a list of 2 booleans
-# The first boolean repsents the leftward movement
-# and the second boolean repsents rightward movement
+# This is a list of 4 booleans
+# movement[0] - Left movement
+# movement[1] - Right movement
+# movement[2] - Down movement
+# movement[3] - Up movement
+
 movement = [False, False]
 
 #

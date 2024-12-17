@@ -50,8 +50,8 @@ playerPos = [50, 100]
 ##############################################################################
 #
 # This is a list of 2 booleans
-# The first boolean repsents the leftward movement
-# and the second boolean repsents rightward movement
+# movement[0] - Left movement
+# movement[1] - Right movement
 movement = [False, False]
 
 #
