@@ -57,6 +57,9 @@ playerPos = [50, 100]
 # movement[3] - Down movement
 movement = [False, False, False, False]
 
+speed = 0.5
+
+
 #
 #
 ############################################################################################################################################################
@@ -78,9 +81,9 @@ while running:
     # the player position is changed depending on which key is pressed 
     # playerPos[0] represents x - axis movement
     # while playerPos[1] represents y - axis movement
-    playerPos[0] += (movement[1] - movement[0]) * 0.5
+    playerPos[0] += (movement[1] - movement[0]) * speed
 
-    
+
 
     # New 
     ############################################################################################################################################################
@@ -99,7 +102,7 @@ while running:
     # If the user presses down arrow key then the 
     # playerPos[1] += (1 - 0) * 1, which is a position increase making the player
     # move downwards
-    playerPos[1] += (movement[3] - movement[2]) * 0.5
+    playerPos[1] += (movement[3] - movement[2]) * speed
     #
     ############################################################################################################################################################
 
@@ -108,119 +111,119 @@ while running:
     # Checks for user input
     for event in pygame.event.get():
        
-       # Checks specifically for input on the exit button 
-       # On top right of winow
-       if event.type == pygame.QUIT:
-          # Stops the game if the user clicks the exit button
-          pygame.quit()
-          sys.exit()
-          running = False
+        # Checks specifically for input on the exit button 
+        # On top right of winow
+        if event.type == pygame.QUIT:
+            # Stops the game if the user clicks the exit button
+            pygame.quit()
+            sys.exit()
+            running = False
 
 
    
-    # Checks if any keys have been pressed
-    # Making the index in the movement
-    # array equal to True indicates movement
-    # also boolean statements True and False 
-    # can be converted to numbers 
-    # 1 for True and 0 for False
-    if event.type == pygame.KEYDOWN:
+        # Checks if any keys have been pressed
+        # Making the index in the movement
+        # array equal to True indicates movement
+        # also boolean statements True and False 
+        # can be converted to numbers 
+        # 1 for True and 0 for False
+        if event.type == pygame.KEYDOWN:
 
-        # If the A key or left arrow key has been pressed
-        # Change the movement array accordingly
-       
-
-        if event.key == pygame.K_a:
-            # movement[0] in the array 
-            # represents leftward movement
-            movement[0] = True
-
-        if event.key == pygame.K_LEFT:
-            # movement[0] in the array 
-            # represents leftward movement
-            movement[0] = True
-
-        if event.key == pygame.K_d:
-            # movement[1] in the array 
-            # represents righward movement
-            movement[1] = True
-
-        if event.key == pygame.K_RIGHT:
-            # movement[1] in the array 
-            # represents righward movement
-            movement[1] = True
-
-        # New 
-        ############################################################################################################################################################
-        #
-        #
-
-        # Adding key input for upward movement of player
-        # movement[3] - Upward movement
-        if event.key == pygame.K_w:
-            movement[2] = True
+            # If the A key or left arrow key has been pressed
+            # Change the movement array accordingly
         
-        if event.key == pygame.K_UP:
-            movement[2] = True
 
-        if event.key == pygame.K_s:
-            movement[3] = True
-        
-        if event.key == pygame.K_DOWN:
-            movement[3] = True
-        #
-        #
-        ############################################################################################################################################################
+            if event.key == pygame.K_a:
+                # movement[0] in the array 
+                # represents leftward movement
+                movement[0] = True
 
+            if event.key == pygame.K_LEFT:
+                # movement[0] in the array 
+                # represents leftward movement
+                movement[0] = True
 
-    # Checks if any keys have been pressed
-    # Making the index in the movement
-    # array equal to True indicates movement
-    # also boolean statements True and False 
-    # can be converted to numbers 
-    # 1 for True and 0 for False
-    if event.type == pygame.KEYUP:
+            if event.key == pygame.K_d:
+                # movement[1] in the array 
+                # represents righward movement
+                movement[1] = True
 
-        # If the A key or left arrow key has been pressed
-        # Change the movement array accordingly
-        if event.key == pygame.K_a:
-            # movement[0] in the array 
-            # represents leftward movement
-            movement[0] = False 
+            if event.key == pygame.K_RIGHT:
+                # movement[1] in the array 
+                # represents righward movement
+                movement[1] = True
 
-        if event.key == pygame.K_LEFT:
-            # movement[0] in the array 
-            # represents leftward movement
-            movement[0] = False
+            # New 
+            ############################################################################################################################################################
+            #
+            #
 
-        if event.key == pygame.K_d:
-            # movement[1] in the array 
-            # represents righward movement
-            movement[1] = False
+            # Adding key input for upward movement of player
+            # movement[3] - Upward movement
+            if event.key == pygame.K_w:
+                movement[2] = True
             
-        if event.key == pygame.K_RIGHT:
-            # movement[1] in the array 
-            # represents righward movement
-            movement[1] = False
+            if event.key == pygame.K_UP:
+                movement[2] = True
 
-        # New 
-        ############################################################################################################################################################
-        #
-        #
-        if event.key == pygame.K_w:
-            movement[2] = False
-        
-        if event.key == pygame.K_UP:
-            movement[2] = False
+            if event.key == pygame.K_s:
+                movement[3] = True
+            
+            if event.key == pygame.K_DOWN:
+                movement[3] = True
+            #
+            #
+            ############################################################################################################################################################
 
-        if event.key == pygame.K_s:
-            movement[3] = False
-        
-        if event.key == pygame.K_DOWN:
-            movement[3] = False
-        #
-        #
-        ############################################################################################################################################################
+
+        # Checks if any keys have been pressed
+        # Making the index in the movement
+        # array equal to True indicates movement
+        # also boolean statements True and False 
+        # can be converted to numbers 
+        # 1 for True and 0 for False
+        if event.type == pygame.KEYUP:
+
+            # If the A key or left arrow key has been pressed
+            # Change the movement array accordingly
+            if event.key == pygame.K_a:
+                # movement[0] in the array 
+                # represents leftward movement
+                movement[0] = False 
+
+            if event.key == pygame.K_LEFT:
+                # movement[0] in the array 
+                # represents leftward movement
+                movement[0] = False
+
+            if event.key == pygame.K_d:
+                # movement[1] in the array 
+                # represents righward movement
+                movement[1] = False
+                
+            if event.key == pygame.K_RIGHT:
+                # movement[1] in the array 
+                # represents righward movement
+                movement[1] = False
+
+            # New 
+            ############################################################################################################################################################
+            #
+            #
+            if event.key == pygame.K_w:
+                movement[2] = False
+            
+            if event.key == pygame.K_UP:
+                movement[2] = False
+
+            if event.key == pygame.K_s:
+                movement[3] = False
+            
+            if event.key == pygame.K_DOWN:
+                movement[3] = False
+            #
+            #
+            ############################################################################################################################################################
 
 
     
