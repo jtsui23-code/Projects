@@ -53,8 +53,8 @@ playerPos = [50, 100]
 # This is a list of 4 booleans
 # movement[0] - Left movement
 # movement[1] - Right movement
-# movement[2] - Down movement
-# movement[3] - Up movement
+# movement[2] - Up movement
+# movement[3] - Down movement
 movement = [False, False, False, False]
 
 #
@@ -144,16 +144,16 @@ while running:
         # Adding key input for upward movement of player
         # movement[3] - Upward movement
         if event.key == pygame.K_w:
-            movement[3] = True
+            movement[2] = True
         
         if event.key == pygame.K_UP:
-            movement[3] = True
+            movement[2] = True
 
         if event.key == pygame.K_s:
-            movement[2] = True
+            movement[3] = True
         
-        if event.tkey == pygame.K_DOWN:
-            movement[2] = True
+        if event.key == pygame.K_DOWN:
+            movement[3] = True
         #
         #
         ##############################################################################
@@ -194,16 +194,16 @@ while running:
         #
         #
         if event.key == pygame.K_w:
-            movement[3] = False
+            movement[2] = False
         
         if event.key == pygame.K_UP:
-            movement[3] = False
+            movement[2] = False
 
         if event.key == pygame.K_s:
-            movement[2] = False
+            movement[3] = False
         
-        if event.tkey == pygame.K_DOWN:
-            movement[2] = False
+        if event.key == pygame.K_DOWN:
+            movement[3] = False
         #
         #
         ##############################################################################
