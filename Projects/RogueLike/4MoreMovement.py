@@ -65,9 +65,7 @@ movement = [False, False, False, False]
 
 while running:
 
-    # New 
-    ##############################################################################
-    #
+   
     # movement[1] is any key input to move the player righward like D key or right arrow
     # movement[0] is any key input to move the player leftward like A key or left arrow
     #
@@ -81,6 +79,16 @@ while running:
     # playerPos[0] represents x - axis movement
     # while playerPos[1] represents y - axis movement
     playerPos[0] += (movement[1] - movement[0]) * 1
+
+     # New 
+    ##############################################################################
+    #
+    #
+
+    playerPos[1] += (movement[3] - movement[2]) * 1
+    #
+    ##############################################################################
+
 
 
     # Checks for user input
@@ -185,6 +193,17 @@ while running:
         ##############################################################################
         #
         #
+        if event.key == pygame.K_w:
+            movement[3] = False
+        
+        if event.key == pygame.K_UP:
+            movement[3] = False
+
+        if event.key == pygame.K_s:
+            movement[2] = False
+        
+        if event.tkey == pygame.K_DOWN:
+            movement[2] = False
         #
         #
         ##############################################################################
