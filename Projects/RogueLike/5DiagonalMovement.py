@@ -47,9 +47,7 @@ player = pygame.transform.scale(player, (playerSize[0], playerSize[1]))
 playerPos = [50, 100]
 
 
-# New 
-##############################################################################
-#
+
 # This is a list of 4 booleans
 # movement[0] - Left movement
 # movement[1] - Right movement
@@ -57,13 +55,24 @@ playerPos = [50, 100]
 # movement[3] - Down movement
 movement = [False, False, False, False]
 
-#
-#
-##############################################################################
-
+speed = 0.5
 
 
 while running:
+
+
+    # New 
+    ############################################################################################################################################################
+    #
+    #
+    if (movement[0] and movement[2]) or (movement[0] and movement[3]):
+        speed = 0.5 / 1.41
+    elif (movement[1] and movement[2]) or (movement[1] and movement[3]):
+        speed = 0.5 / 1.41
+    else:
+        speed = 0.5
+    #
+    ############################################################################################################################################################
 
    
     # movement[1] is any key input to move the player righward like D key or right arrow
@@ -78,7 +87,7 @@ while running:
     # the player position is changed depending on which key is pressed 
     # playerPos[0] represents x - axis movement
     # while playerPos[1] represents y - axis movement
-    playerPos[0] += (movement[1] - movement[0]) * 1
+    playerPos[0] += (movement[1] - movement[0]) * speed
 
     
     # playerPos[1] is the player's y - position on the screen
@@ -94,15 +103,10 @@ while running:
     # If the user presses down arrow key then the 
     # playerPos[1] += (1 - 0) * 1, which is a position increase making the player
     # move downwards
-    playerPos[1] += (movement[3] - movement[2]) * 1
+    playerPos[1] += (movement[3] - movement[2]) * speed
 
 
-    # New 
-    ##############################################################################
-    #
-    #
-    #
-    ##############################################################################
+    
 
 
 
