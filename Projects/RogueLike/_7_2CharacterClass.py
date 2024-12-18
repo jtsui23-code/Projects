@@ -2,11 +2,6 @@ import math     # Import for physics/movement
 import pygame   # Importing Pygame library
 
 
-
-# New 
-############################################################################################################################################################
-#
-#
 class Character:
 
     # This sets up a basic character
@@ -114,6 +109,3 @@ class Player(Character):
                 self.movement[2] = False
             elif event.key in [pygame.K_s, pygame.K_DOWN]:
                 self.movement[3] = False
-#
-#
-############################################################################################################################################################
