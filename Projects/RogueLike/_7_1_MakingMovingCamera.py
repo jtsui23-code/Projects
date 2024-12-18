@@ -4,10 +4,7 @@ import math     # Import for physics/movement
 from _7_2CharacterClass import Player  # Getting the Player class from the other script
 
 
-# New 
-############################################################################################################################################################
-#
-#
+
 class Game:
 
     # Sets up the game windows, framerate, player, and other assets
@@ -38,6 +35,17 @@ class Game:
         self.player = Player()
         self.running = True
 
+
+        # New 
+        ############################################################################################################################################################
+        #
+        #
+        # List for storing how far the "camera" is away from the player
+        self.scroll = [0,0]
+        # 
+        ############################################################################################################################################################
+        
+
     # This method checks if the user has clicked the top right x button on the window
     # if so the game is closed
     def handle_events(self):
@@ -54,7 +62,24 @@ class Game:
 
     # This method updates the position of the player on the window
     def update(self):
+        
+        # self.scroll[0] - "Camera's" x - position
+        # self.scroll[1] - "Camera's" y - position
+
+        # self.player.rect().centerx - self.display.getWidth()/2
+        # is checking how far the player is from the center of the screen
+        # ( ... - self.scroll[0]/30) is see how far away the camera is from 
+        # the player via the x - coordinate and moving towards the player slowly
+        # the /30 in ( ... - self.scroll[0]/30) is to make a gradual camera moving effect 
+        # towards the player
+        self.scroll[0] += (self.player.rect().centerx - self.display.getWidth()/2 - self.scroll[0]/30)
+
+        # Doing the same for the y - coordinate the player and "Camera"
+        self.scroll[1] += (self.player.rect().centery - self.display.getHeight()/2 - self.scroll[1]/30)
+
+
         self.player.update_position()
+
 
     # This method renders the background of the game window, player on the window, and updates the window
     def render(self):
@@ -80,10 +105,8 @@ class Game:
             self.update()
             self.render()
 
+# This makes sure that this script is being ran directly and not imported to another script
 if __name__ == "__main__":
     game = Game()
     game.run()
 
-#
-#
-############################################################################################################################################################

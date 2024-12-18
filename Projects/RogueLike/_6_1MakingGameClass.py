@@ -80,6 +80,7 @@ class Game:
             self.update()
             self.render()
 
+# This makes sure that this script is being ran directly and not imported to another script
 if __name__ == "__main__":
     game = Game()
     game.run()
