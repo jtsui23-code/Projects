@@ -3,6 +3,8 @@ import pygame   # Importing Pygame library
 
 
 class Character:
+
+    # This sets up a basic character
     def __init__(self, image_path, size, initial_pos, speed):
         # player is an image
         # To load an image need to add directory or location of 
@@ -30,6 +32,7 @@ class Character:
         # movement[3] - Down movement
         self.movement = [False, False, False, False]
 
+    # This method is for updating the movement of characters on the screen
     def update_position(self):
         # movement[1] - rightward movement
         # movement[0] - leftward movement
@@ -71,6 +74,7 @@ class Character:
         self.position[0] += dx * self.speed
         self.position[1] += dy * self.speed
 
+# The Player class inherits from the Character class many of its methods/attributes
 class Player(Character):
     def __init__(self):
         super().__init__(
@@ -80,6 +84,7 @@ class Player(Character):
             5            # speed
         )
     
+    # This method handles user input to move the player
     def handle_input(self, event):
         # Checks if any keys have been pressed
         # Making the index in the movement array equal to True indicates movement

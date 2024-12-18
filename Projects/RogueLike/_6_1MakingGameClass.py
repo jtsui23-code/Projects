@@ -1,9 +1,16 @@
 import pygame   # Importing Pygame library
 import sys      # Importing sys library to properly close the game
 import math     # Import for physics/movement
-from _6_2MakingCharacterClass import Player
+from _6_2MakingCharacterClass import Player  # Getting the Player class from the other script
 
+
+# New 
+############################################################################################################################################################
+#
+#
 class Game:
+
+    # Sets up the game windows, framerate, player, and other assets
     def __init__(self):
         # Starts up Pygame
         pygame.init()
@@ -27,9 +34,12 @@ class Game:
         # Set framerate for game
         self.clock = pygame.time.Clock()
         
+        # Making a player using the Player class imported 
         self.player = Player()
         self.running = True
 
+    # This method checks if the user has clicked the top right x button on the window
+    # if so the game is closed
     def handle_events(self):
         for event in pygame.event.get():
             # Checks specifically for input on the exit button 
@@ -42,9 +52,11 @@ class Game:
             
             self.player.handle_input(event)
 
+    # This method updates the position of the player on the window
     def update(self):
         self.player.update_position()
 
+    # This method renders the background of the game window, player on the window, and updates the window
     def render(self):
         # Fills the window with the background color
         self.screen.fill(self.background_color)
@@ -60,6 +72,7 @@ class Game:
         # change to pygame.display.update() to only update one window
         pygame.display.flip()
 
+    # This method is the game loop 
     def run(self):
         while self.running:
             self.clock.tick(60)
@@ -70,3 +83,7 @@ class Game:
 if __name__ == "__main__":
     game = Game()
     game.run()
+
+#
+#
+############################################################################################################################################################
