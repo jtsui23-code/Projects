@@ -96,12 +96,14 @@ class Game:
         # Fills the window with the background color
         self.screen.fill(self.background_color)
         
-        # Updates the position of the player based off the render method in the Player class
-        # The render method in the player class repositions the player to the center of the 
-        # window slowly to create a camera moving effect
-        renderScroll = ( int(self.scroll[0]), int(self.scroll[1]) )
+        # .blit() draws whatever object on the window
+        # in this case screen is the main game window 
+        # The .blit is used as followed
+        # .blit( [Object want to draw on window], (x - position of object on window, y - position of object on window) )
+        # Note that the position of the object is an ordered pair (x,y) inside of .blit(player, (x,y) )
         
-        self.player.render(self.screen, renderScroll)
+        self.screen.blit(self.player.sprite, (self.player.position[0], self.player.position[1]))
+        
         # Updates every single window might want to 
         # change to pygame.display.update() to only update one window
         pygame.display.flip()
