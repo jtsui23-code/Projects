@@ -11,6 +11,7 @@ class Character:
         # image inside of .load( [Directory/location of image] )
         self.sprite = pygame.image.load(image_path)
         
+        self.size = list(size)
         # Making sprite smaller
         # .transform.scale() changes how big an image/sprite is
         # To use .transform.scale(), .transform([object want to change size of])
@@ -85,6 +86,14 @@ class Character:
     def render(self, surface, offset=(0,0)):
 
         surface.blit(self.sprite, ( self.position[0] - offset[0], self.position[1] - offset[1] ))
+    
+    # This method makes a rectangle based off of the size and posiiton of the character
+    # which is useful if you want to find the center location of a character
+    def rect(self):
+        
+        # Returns a Pygame rectangle based off of the player's position and width and height
+        # To use pygame.Rect([x - position of character], [y - position of character], [width of character], [height of character])
+        return pygame.Rect(self.position[0], self.position[1], self.size[0], self.size[1])
     #
     ############################################################################################################################################################
 
@@ -139,12 +148,6 @@ class Player(Character):
         # Character render method
         super().render(surface, offset)
     
-    # This method makes a rectangle based off of the size and posiiton of the character
-    # which is useful if you want to find the center location of a character
-    def rect(self):
-        
-        # Returns a Pygame rectangle based off of the player's position and width and height
-        # To use pygame.rect([x - position of character], [y - position of character], [width of character], [height of character])
-        return pygame.rect(self.position[0], self.position[1], self.size[0], self.size[1])
+    
     #
     ############################################################################################################################################################

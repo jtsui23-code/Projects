@@ -75,16 +75,16 @@ class Game:
         # the player via the x - coordinate and moving towards the player slowly
         # the /30 in ( ... - self.scroll[0]/30) is to make a gradual camera moving effect 
         # towards the player
-        self.scroll[0] += (self.player.rect().centerx - self.display.getWidth()/2 - self.scroll[0]/30)
+        self.scroll[0] += (self.player.rect().centerx - self.screen.get_width()/2 - self.scroll[0]/30)
 
         # Doing the same for the y - coordinate the player and "Camera"
-        self.scroll[1] += (self.player.rect().centery - self.display.getHeight()/2 - self.scroll[1]/30)
+        self.scroll[1] += (self.player.rect().centery - self.screen.get_height()/2 - self.scroll[1]/30)
 
         # Making the "Camera" positinos into integers because they are defaulted as floats
         # If they remained as floats then the "Camera" centering would always be inconsistent
         renderScroll = ( int(self.scroll[0]), int(self.scroll[1]) )
         
-        self.player.render(self.display, renderScroll)
+        self.player.render(self.screen, renderScroll)
         #
         #
         ############################################################################################################################################################
