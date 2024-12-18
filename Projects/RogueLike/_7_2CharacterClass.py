@@ -138,5 +138,13 @@ class Player(Character):
         # and passes in the surface and offset values that the Player's render method got to the 
         # Character render method
         super().render(surface, offset)
+    
+    # This method makes a rectangle based off of the size and posiiton of the character
+    # which is useful if you want to find the center location of a character
+    def rect(self):
+        
+        # Returns a Pygame rectangle based off of the player's position and width and height
+        # To use pygame.rect([x - position of character], [y - position of character], [width of character], [height of character])
+        return pygame.rect(self.position[0], self.position[1], self.size[0], self.size[1])
     #
     ############################################################################################################################################################
