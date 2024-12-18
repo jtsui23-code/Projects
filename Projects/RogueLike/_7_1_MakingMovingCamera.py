@@ -63,6 +63,9 @@ class Game:
     # This method updates the position of the player on the window
     def update(self):
         
+        # New 
+        ############################################################################################################################################################
+        #
         # self.scroll[0] - "Camera's" x - position
         # self.scroll[1] - "Camera's" y - position
 
@@ -77,7 +80,12 @@ class Game:
         # Doing the same for the y - coordinate the player and "Camera"
         self.scroll[1] += (self.player.rect().centery - self.display.getHeight()/2 - self.scroll[1]/30)
 
-
+        # Making the "Camera" positinos into integers because they are defaulted as floats
+        # If they remained as floats then the "Camera" centering would always be inconsistent
+        renderScroll = ( int(self.scroll[0]), int(self.scroll[1]) )
+        #
+        #
+        ############################################################################################################################################################
         self.player.update_position()
 
 
