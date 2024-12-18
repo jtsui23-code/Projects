@@ -83,6 +83,8 @@ class Game:
         # Making the "Camera" positinos into integers because they are defaulted as floats
         # If they remained as floats then the "Camera" centering would always be inconsistent
         renderScroll = ( int(self.scroll[0]), int(self.scroll[1]) )
+        
+        self.player.render(self.display, renderScroll)
         #
         #
         ############################################################################################################################################################

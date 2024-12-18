@@ -74,6 +74,21 @@ class Character:
         self.position[0] += dx * self.speed
         self.position[1] += dy * self.speed
 
+    # New 
+    ############################################################################################################################################################
+    #
+    #
+    # This slowly recenters the character to winow to create a camera moving effect
+    # offset=(0,0) is where the currently the camera is located
+    # the =(0,0) are default values in place just incase a offset is not passed into the
+    # render method 
+    def render(self, surface, offset=(0,0)):
+
+        surface.blit(self.sprite, ( self.position[0] - offset[0], self.position[1] - offset[1] ))
+    #
+    ############################################################################################################################################################
+
+
 # The Player class inherits from the Character class many of its methods/attributes
 class Player(Character):
     def __init__(self):
@@ -109,3 +124,19 @@ class Player(Character):
                 self.movement[2] = False
             elif event.key in [pygame.K_s, pygame.K_DOWN]:
                 self.movement[3] = False
+
+    # New 
+    ############################################################################################################################################################
+    #
+    #
+    # This slowly recenters the Player to winow to create a camera moving effect
+    # offset=(0,0) is where the currently the camera is located
+    # the =(0,0) are default values in place just incase a offset is not passed into the
+    # render method 
+    def render(self, surface, offset=(0,0)):
+        # This overrides the render method in the Character Class
+        # and passes in the surface and offset values that the Player's render method got to the 
+        # Character render method
+        super().render(surface, offset)
+    #
+    ############################################################################################################################################################
