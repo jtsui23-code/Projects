@@ -3,7 +3,7 @@ import sys
 import pygame
 
 from utils import load_image, load_images
-from characters import PhysicsEntity
+from character import PhysicsEntity
 from tilemap import Tilemap
 
 class Game:
@@ -79,6 +79,10 @@ class Game:
                         self.movement[1] = False
             
             
+            # .blit() draws whatever object on the window
+            # in this case screen is the main game window
+            # .blit( [Object want to draw on window], (x - position of object on window, y - position of object on window) ) 
+            # pygame.transform.scale() makes the screen zoom closer to the player
             self.screen.blit(pygame.transform.scale(self.display, self.screen.get_size()), (0, 0))
 
 

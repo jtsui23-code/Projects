@@ -8,6 +8,7 @@ class Character:
         self.pos = list(pos)
         self.size = size
         self.velocity = [0, 0]
+        
         self.collisions = {'up': False, 'down': False, 'right': False, 'left': False}
     
     def rect(self):
