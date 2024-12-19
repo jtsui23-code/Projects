@@ -46,9 +46,13 @@ class Tilemap:
         return rects
 
     def render(self, surface):
+        # Traverses through the entire offgrid tilemap in list and draws every tile on the 
+        # game window
         for tile in self.offgridTiles:
             surface.blit(self.game.assets[tile['type']][tile['variant']], tile['pos'])
             
+        # Traverses through the entire tilemap dictionary and draws every tile on the 
+        # game window
         for loc in self.tilemap:
             tile = self.tilemap[loc]
             surface.blit(self.game.assets[tile['type']][tile['variant']], (tile['pos'][0] * self.tileSize, tile['pos'][1] * self.tileSize))

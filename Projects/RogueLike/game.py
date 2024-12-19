@@ -2,8 +2,8 @@ import sys
 
 import pygame
 
-from utils import load_image, load_images
-from character import PhysicsEntity
+from utils import loadImage, loadImages
+from character import Character
 from tilemap import Tilemap
 
 class Game:
@@ -30,10 +30,10 @@ class Game:
         
         self.assets = {
             
-            'player': load_image('Player/player.png')
+            'player': loadImage('Player/player.png')
         }
         
-        self.player = PhysicsEntity(self, 'player', (50, 50), (8, 15))
+        self.player = Character(self, 'player', (50, 50), (8, 15))
         
         self.tilemap = Tilemap(self, tile_size=16)
         
