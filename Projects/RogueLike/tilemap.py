@@ -49,10 +49,23 @@ class Tilemap:
         # Traverses through the entire offgrid tilemap in list and draws every tile on the 
         # game window
         for tile in self.offgridTiles:
+
+            # Using the list of offset tiles to access the map assets in game class
+            # tile['type'] represent the key in the assets dictionary while 
+            # tile['variant'] is the paired element to the key
+            # Ex) In the context of the map it would look like so
+            # {tile['type'] : tile['variant']
             surface.blit(self.game.assets[tile['type']][tile['variant']], tile['pos'])
             
         # Traverses through the entire tilemap dictionary and draws every tile on the 
         # game window
         for loc in self.tilemap:
             tile = self.tilemap[loc]
+
+            # Uinsg the dictionary assets in the game class, the tiles will be rendered upon the game window
+            # tile['type'] represent the key in the assets dictionary while 
+            # tile['variant'] is the paired element to the key
+            # Ex) In the context of the map it would look like so
+            # {tile['type'] : tile['variant']
+            #               }
             surface.blit(self.game.assets[tile['type']][tile['variant']], (tile['pos'][0] * self.tileSize, tile['pos'][1] * self.tileSize))
