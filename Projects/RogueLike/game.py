@@ -31,12 +31,12 @@ class Game:
         self.assets = {
             'grass': loadImages('tiles/grass'),
             'stone': loadImages('tiles/stone'),
-            'player': loadImage('Player/player.png')
+            'player': pygame.transform.scale(loadImage('Player/edelgard.png'), (16, 20))  # Adjust the size to match the tiles
         }
         
-        self.player = Character(self, 'player', (50, 50), (8, 15))
+        self.player = Character(self, 'player', (50, 50), (16, 20))
         
-        self.tilemap = Tilemap(self, tileSize=16)
+        self.tilemap = Tilemap(self, tileSize=8)
         
     def run(self):
         while True:
