@@ -56,13 +56,18 @@ class Game:
             # Sets the background color based of of RGB (14, 219,248)
             # the color is black is (0,0,0)
             self.display.fill((14, 219, 248))
+
+            self.scroll[0] += (self.player.rect().centerx - self.display.get_width() / 2 - self.scroll[0]) / 30
+            self.scroll[1] += (self.player.rect().centery - self.display.get_height() / 2 - self.scroll[1]) / 30
+            
+            renderScroll = (int(self.scroll[0]), int(self.scroll[1]))
             
             # Draws the tiles on the window
-            self.tilemap.render(self.display, offset=self.scroll)
+            self.tilemap.render(self.display, offset=renderScroll)
             
             # Makes the player move on the window 
             self.player.update(self.tilemap, (self.movement[1] - self.movement[0], self.movement[3] - self.movement[2]))
-            self.player.render(self.display)
+            self.player.render(self.display, renderScroll)
             
             # Checks for user input
             for event in pygame.event.get():

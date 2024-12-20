@@ -105,4 +105,4 @@ class Tilemap:
             tile = self.tilemap[loc]
 
             # Convert grid coordinates to pixel coordinates for rendering.
-            surface.blit(self.game.assets[tile['type']][tile['variant']], (tile['pos'][0] * self.tileSize - offset[0], tile['pos'][1] * self.tileSize - offset[0]))
+            surface.blit(self.game.assets[tile['type']][tile['variant']], (tile['pos'][0] * self.tileSize - offset[0], tile['pos'][1] * self.tileSize - offset[1]))
