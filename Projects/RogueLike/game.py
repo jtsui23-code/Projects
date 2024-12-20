@@ -58,7 +58,7 @@ class Game:
             self.display.fill((14, 219, 248))
             
             # Draws the tiles on the window
-            self.tilemap.render(self.display, offsett=self.scroll)
+            self.tilemap.render(self.display, offset=self.scroll)
             
             # Makes the player move on the window 
             self.player.update(self.tilemap, (self.movement[1] - self.movement[0], self.movement[3] - self.movement[2]))

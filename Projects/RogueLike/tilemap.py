@@ -32,10 +32,11 @@ class Tilemap:
         self.offgridTiles = []
 
 
+        # Example of using tilemap system
         for i in range(20):
             for j in range (20):
                 self.tilemap[str(0 + i) + ';' + str(j)] = {'type': 'newGrass', 'variant': 1, 'pos': (0 + i, j)}
-            self.tilemap['10;' + str(5 + i)] = {'type': 'stone', 'variant': 1, 'pos': (10, 5 + i)}
+            # self.tilemap['10;' + str(5 + i)] = {'type': 'stone', 'variant': 1, 'pos': (10, 5 + i)}
 
     
 
@@ -85,7 +86,7 @@ class Tilemap:
     #
     # Args:
     #   surface: The surface (e.g., game window) to draw tiles on.
-    def render(self, surface):
+    def render(self, surface, offset=(0,0)):
 
         # Draw off-grid tiles stored in the list.
         for tile in self.offgridTiles:
@@ -95,7 +96,8 @@ class Tilemap:
             # tile['variant'] is the paired element to the key
             # Ex) In the context of the map it would look like so
             # {tile['type'] : tile['variant'] }
-            surface.blit(self.game.assets[tile['type']][tile['variant']], tile['pos'])
+            # tile['pos'][0] - offset[0] accounts for 'camera' movement
+            surface.blit(self.game.assets[tile['type']][tile['variant']], (tile['pos'][0] - offset[0], tile['pos'][1] - offset[1]))
             
             
         # Draw all grid-aligned tiles stored in the dictionary.
@@ -103,4 +105,4 @@ class Tilemap:
             tile = self.tilemap[loc]
 
             # Convert grid coordinates to pixel coordinates for rendering.
-            surface.blit(self.game.assets[tile['type']][tile['variant']], (tile['pos'][0] * self.tileSize, tile['pos'][1] * self.tileSize))
+            surface.blit(self.game.assets[tile['type']][tile['variant']], (tile['pos'][0] * self.tileSize - offset[0], tile['pos'][1] * self.tileSize - offset[0]))
