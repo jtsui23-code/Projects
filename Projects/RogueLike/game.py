@@ -29,13 +29,14 @@ class Game:
         self.movement = [False, False]
         
         self.assets = {
-            
+            'grass': loadImages('tiles/grass'),
+            'stone': loadImages('tiles/stone'),
             'player': loadImage('Player/player.png')
         }
         
         self.player = Character(self, 'player', (50, 50), (8, 15))
         
-        self.tilemap = Tilemap(self, tile_size=16)
+        self.tilemap = Tilemap(self, tileSize=16)
         
     def run(self):
         while True:
