@@ -22,7 +22,7 @@ class Character:
         self.pos[0] += frameMovement[0]
         entityRect = self.rect()
 
-        for rect in tilemap.physics_rects_around(self.pos):
+        for rect in tilemap.physicsRectsAround(self.pos):
             if entityRect.colliderect(rect):
 
                 # If the character is moving from the right 
@@ -47,7 +47,7 @@ class Character:
         self.pos[1] += frameMovement[1]
         entityRect = self.rect()
 
-        for rect in tilemap.physics_rects_around(self.pos):
+        for rect in tilemap.physicsRectsAround(self.pos):
             if entityRect.colliderect(rect):
 
                 # If the character is moving downwards
