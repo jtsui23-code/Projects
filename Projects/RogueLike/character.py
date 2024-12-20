@@ -1,4 +1,5 @@
 import pygame
+import math
 
 class Character:
 
@@ -6,6 +7,7 @@ class Character:
         self.game = game
         self.type = eType
         self.pos = list(pos)
+        self.speed = 5
         self.size = size
         self.velocity = [0, 0]
         
@@ -17,7 +19,31 @@ class Character:
     def update(self, tilemap, movement=(0, 0)):
         self.collisions = {'up': False, 'down': False, 'right': False, 'left': False}
         
-        frameMovement = (movement[0] + self.velocity[0], movement[1] + self.velocity[1])
+        frameMovement = list(movement)
+
+        frameMovement[0] * self.speed
+        frameMovement[1] * self.speed
+
+        if frameMovement[0] != 0 and frameMovement[1] != 0:
+
+                # Ex) If player is moving diagonal with frameMovement[0] = 1 and frameMovement[1] = 1
+                # then the diagonal speed would be 
+                # srt(1 * 1 + 1 * 1) = sqrt(2) = 1.41
+                # This would mean that the player's diagonal speed is higher than 
+                # their horizontal and vertical speed
+
+                diagonal = math.sqrt(frameMovement[0] * frameMovement[0] + frameMovement[1] * frameMovement[1])
+        
+                # Using the same example of frameMovement[0] = 1 and frameMovement[1] = 1 
+                # To fix the imbalance of diagonal speed
+                # divide both frameMovement[0] and frameMovement[1] by diagonal speed
+                # so the new calculation would be 
+                # sqrt(1/sqr(2) * 1/sqr(2) + 1/sqr(2) * 1/sqr(2))
+                # which simpilfies to 
+                # sqrt( 1/2 + 1/2) = 1 
+                # fixing the issue with the imbalance speed
+                frameMovement[0] = frameMovement[0] / diagonal
+                frameMovement[1] = frameMovement[1] / diagonal
         
         self.pos[0] += frameMovement[0]
         entityRect = self.rect()
@@ -67,9 +93,12 @@ class Character:
                 # Updates the position of the character based on the position of 
                 # the Rectangle
                 self.pos[1] = entityRect.y
+
+             
+
         
         # Gravity need to delete later
-        self.velocity[1] = min(5, self.velocity[1] + 0.1)
+        # self.velocity[1] = min(5, self.velocity[1] + 0.1)
         
         if self.collisions['down'] or self.collisions['up']:
             self.velocity[1] = 0

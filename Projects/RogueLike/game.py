@@ -26,7 +26,7 @@ class Game:
 
         self.clock = pygame.time.Clock()
         
-        self.movement = [False, False]
+        self.movement = [False, False, False, False]
         
         self.assets = {
             'grass': loadImages('tiles/grass'),
@@ -34,9 +34,9 @@ class Game:
             'player': pygame.transform.scale(loadImage('Player/edelgard.png'), (16, 20))  # Adjust the size to match the tiles
         }
         
-        self.player = Character(self, 'player', (50, 50), (16, 20))
+        self.player = Character(self, 'player', (50, 50), (8, 16))
         
-        self.tilemap = Tilemap(self, tileSize=8)
+        self.tilemap = Tilemap(self, tileSize=16)
         
     def run(self):
         while True:
@@ -47,7 +47,7 @@ class Game:
             
             self.tilemap.render(self.display)
             
-            self.player.update(self.tilemap, (self.movement[1] - self.movement[0], 0))
+            self.player.update(self.tilemap, (self.movement[1] - self.movement[0], self.movement[3] - self.movement[2]))
             self.player.render(self.display)
             
             # Checks for user input
@@ -66,18 +66,77 @@ class Game:
                 # can be converted to numbers 
                 # 1 for True and 0 for False
                 if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_LEFT:
+                    # If the A key or left arrow key has been pressed
+                    # Change the movement array accordingly
+                    if event.key == pygame.K_a:
+                        # movement[0] in the array 
+                        # represents leftward movement
                         self.movement[0] = True
-                    if event.key == pygame.K_RIGHT:
+
+                    if event.key == pygame.K_LEFT:
+                        # movement[0] in the array 
+                        # represents leftward movement
+                        self.movement[0] = True
+
+                    if event.key == pygame.K_d:
+                        # movement[1] in the array 
+                        # represents righward movement
                         self.movement[1] = True
+
+                    if event.key == pygame.K_RIGHT:
+                        # movement[1] in the array 
+                        # represents righward movement
+                        self.movement[1] = True
+
+                    # Adding key input for upward movement of player
+                    # movement[3] - Upward movement
+                    if event.key == pygame.K_w:
+                        self.movement[2] = True
+                    
                     if event.key == pygame.K_UP:
-                        self.player.velocity[1] = -3
+                        self.movement[2] = True
+
+                    if event.key == pygame.K_s:
+                        self.movement[3] = True
+                    
+                    if event.key == pygame.K_DOWN:
+                        self.movement[3] = True
+
 
                 if event.type == pygame.KEYUP:
+                    # If the A key or left arrow key has been pressed
+                    # Change the movement array accordingly
+                    if event.key == pygame.K_a:
+                        # movement[0] in the array 
+                        # represents leftward movement
+                        self.movement[0] = False 
+
                     if event.key == pygame.K_LEFT:
+                        # movement[0] in the array 
+                        # represents leftward movement
                         self.movement[0] = False
-                    if event.key == pygame.K_RIGHT:
+
+                    if event.key == pygame.K_d:
+                        # movement[1] in the array 
+                        # represents righward movement
                         self.movement[1] = False
+                        
+                    if event.key == pygame.K_RIGHT:
+                        # movement[1] in the array 
+                        # represents righward movement
+                        self.movement[1] = False
+
+                    if event.key == pygame.K_w:
+                        self.movement[2] = False
+            
+                    if event.key == pygame.K_UP:
+                        self.movement[2] = False
+
+                    if event.key == pygame.K_s:
+                        self.movement[3] = False
+                    
+                    if event.key == pygame.K_DOWN:
+                        self.movement[3] = False
             
             
             # .blit() draws whatever object on the window
