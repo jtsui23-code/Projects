@@ -104,4 +104,3 @@ class Character:
     
     def speedUp(self, speed=1):
         self.speed *= speed
-        print('I am running at ', self.speed)
