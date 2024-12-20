@@ -37,6 +37,7 @@ class Game:
         # Dictionary for loading assets in the game makes it more organized and 
         # accessable for the Tilemap class
         self.assets = {
+            'background':loadImage('background.png'),
             'newGrass':loadImages('tiles/newGrass'),
             'grass': loadImages('tiles/grass'),
             'stone': loadImages('tiles/stone'),
@@ -53,13 +54,12 @@ class Game:
     def run(self):
         while True:
 
-            # Sets the background color based of of RGB (14, 219,248)
-            # the color is black is (0,0,0)
-            self.display.fill((14, 219, 248))
+            # Sets the background to an image at the position (0,0)
+            self.display.blit(self.assets['background'], (0,0))
 
             self.scroll[0] += (self.player.rect().centerx - self.display.get_width() / 2 - self.scroll[0]) / 30
             self.scroll[1] += (self.player.rect().centery - self.display.get_height() / 2 - self.scroll[1]) / 30
-            
+
             renderScroll = (int(self.scroll[0]), int(self.scroll[1]))
             
             # Draws the tiles on the window
