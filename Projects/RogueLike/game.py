@@ -36,12 +36,12 @@ class Game:
         self.assets = {
             'grass': loadImages('tiles/grass'),
             'stone': loadImages('tiles/stone'),
-            'player': pygame.transform.scale(loadImage('Player/edelgard1.png'), (16, 20))  # Adjust the size to match the tiles
+            'player': pygame.transform.scale(loadImage('Player/edelgard.png'), (16, 20))  # Adjust the size to match the tiles
         }
 
         # Creating a player
         # Pass in a game, name, position and size
-        self.player = Character(self, 'player', (50, 50), (8, 16))
+        self.player = Character(self, 'player', (50, 50), (10, 17))
         
         # Creating a tilemap object with the specified tile size
         self.tilemap = Tilemap(self, tileSize=16)
@@ -76,6 +76,10 @@ class Game:
                 # can be converted to numbers 
                 # 1 for True and 0 for False
                 if event.type == pygame.KEYDOWN:
+
+                    if event.key ==pygame.K_LSHIFT:
+                        self.player.speedUp(1.5)
+
                     # If the A key or left arrow key has been pressed
                     # Change the movement array accordingly
                     if event.key == pygame.K_a:
@@ -114,6 +118,9 @@ class Game:
 
 
                 if event.type == pygame.KEYUP:
+
+                    if event.key == pygame.K_LSHIFT:
+                        self.player.speedUp(1)
                     # If the A key or left arrow key has been pressed
                     # Change the movement array accordingly
                     if event.key == pygame.K_a:

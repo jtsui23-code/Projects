@@ -11,7 +11,7 @@ class Character:
         self.game = game  # Reference to main game class for accessing shared resources
         self.type = eType  # Character type identifier (e.g., 'player', 'enemy') for behavior differentiation
         self.pos = list(pos)  # Position stored as list for mutable updates during movement
-        self.speed = 5  # Base movement speed - kept as separate value for easy balancing
+        self.speed = 2  # Base movement speed - kept as separate value for easy balancing
         self.size = size  # Character hitbox dimensions for collision detection
         self.velocity = [0, 0]  # Separate from position for physics-based movement (e.g., knockback)
         
@@ -33,9 +33,11 @@ class Character:
         # Convert movement tuple to list for modification during collision resolution
         frameMovement = list(movement)
 
+        self.speedUp()
+
         # Apply character's base speed to movement
-        frameMovement[0] * self.speed
-        frameMovement[1] * self.speed
+        frameMovement[0] *= self.speed
+        frameMovement[1] *= self.speed
 
         # Normalize diagonal movement to prevent faster diagonal speed
         if frameMovement[0] != 0 and frameMovement[1] != 0:
@@ -98,3 +100,7 @@ class Character:
         # Draws the character sprite at its current position
         # Uses the game's asset system for sprite management
         surf.blit(self.game.assets['player'], self.pos)
+    
+    def speedUp(self, speed=1):
+        self.speed *= speed
+        print('I am running at ', self.speed)
