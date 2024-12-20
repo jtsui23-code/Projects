@@ -2,108 +2,99 @@ import pygame
 import math
 
 class Character:
+    # Main character class that handles all entity movement, collision detection, and rendering
+    # Designed to be flexible enough to handle both player and NPC characters in a top-down game
 
     def __init__(self, game, eType, pos, size):
-        self.game = game
-        self.type = eType
-        self.pos = list(pos)
-        self.speed = 5
-        self.size = size
-        self.velocity = [0, 0]
+        # Initialize a new character with basic properties needed for movement and collision
+        # The game parameter allows access to global game state and resources
+        self.game = game  # Reference to main game class for accessing shared resources
+        self.type = eType  # Character type identifier (e.g., 'player', 'enemy') for behavior differentiation
+        self.pos = list(pos)  # Position stored as list for mutable updates during movement
+        self.speed = 5  # Base movement speed - kept as separate value for easy balancing
+        self.size = size  # Character hitbox dimensions for collision detection
+        self.velocity = [0, 0]  # Separate from position for physics-based movement (e.g., knockback)
         
+        # Collision flags for each direction - useful for gameplay mechanics and preventing movement
         self.collisions = {'up': False, 'down': False, 'right': False, 'left': False}
     
     def rect(self):
+        # Creates a pygame Rect for collision detection
+        # Separated into method to ensure rect always matches current position
         return pygame.Rect(self.pos[0], self.pos[1], self.size[0], self.size[1])
         
     def update(self, tilemap, movement=(0, 0)):
+        # Handles character movement and collision detection
+        # Takes desired movement and adjusts it based on collisions with the environment
+        
+        # Reset collision flags each frame to ensure accurate collision state
         self.collisions = {'up': False, 'down': False, 'right': False, 'left': False}
         
+        # Convert movement tuple to list for modification during collision resolution
         frameMovement = list(movement)
 
+        # Apply character's base speed to movement
         frameMovement[0] * self.speed
         frameMovement[1] * self.speed
 
+        # Normalize diagonal movement to prevent faster diagonal speed
         if frameMovement[0] != 0 and frameMovement[1] != 0:
-
-                # Ex) If player is moving diagonal with frameMovement[0] = 1 and frameMovement[1] = 1
-                # then the diagonal speed would be 
-                # srt(1 * 1 + 1 * 1) = sqrt(2) = 1.41
-                # This would mean that the player's diagonal speed is higher than 
-                # their horizontal and vertical speed
-
+                # Calculate the magnitude of diagonal movement vector
+                # Without this, diagonal movement would be √2 times faster than cardinal movement
                 diagonal = math.sqrt(frameMovement[0] * frameMovement[0] + frameMovement[1] * frameMovement[1])
         
-                # Using the same example of frameMovement[0] = 1 and frameMovement[1] = 1 
-                # To fix the imbalance of diagonal speed
-                # divide both frameMovement[0] and frameMovement[1] by diagonal speed
-                # so the new calculation would be 
-                # sqrt(1/sqr(2) * 1/sqr(2) + 1/sqr(2) * 1/sqr(2))
-                # which simpilfies to 
-                # sqrt( 1/2 + 1/2) = 1 
-                # fixing the issue with the imbalance speed
+                # Normalize the movement vector to maintain consistent speed in all directions
+                # This ensures diagonal movement isn't faster than cardinal movement
                 frameMovement[0] = frameMovement[0] / diagonal
                 frameMovement[1] = frameMovement[1] / diagonal
         
+        # Handle horizontal movement and collisions first
         self.pos[0] += frameMovement[0]
         entityRect = self.rect()
 
+        # Check collisions with nearby tiles for optimization
         for rect in tilemap.physicsRectsAround(self.pos):
             if entityRect.colliderect(rect):
-
-                # If the character is moving from the right 
-                # Then the character must collide with the left 
-                # side of the object with the right side of the character
+                # Right collision - Push character left to edge of obstacle
                 if frameMovement[0] > 0:
                     entityRect.right = rect.left
                     self.collisions['right'] = True
                 
-                # If the character is moving from the left 
-                # Then the character must collide with the right 
-                # side of the object the left side of the character
+                # Left collision - Push character right to edge of obstacle
                 if frameMovement[0] < 0:
                     entityRect.left = rect.right
                     self.collisions['left'] = True
                 
-                # Updates the position of the character based on the position of 
-                # the Rectangle
+                # Update position after collision resolution to prevent clipping
                 self.pos[0] = entityRect.x
         
-
+        # Handle vertical movement and collisions second
+        # Split from horizontal to handle corner cases correctly
         self.pos[1] += frameMovement[1]
         entityRect = self.rect()
 
+        # Check collisions with nearby tiles again for vertical movement
         for rect in tilemap.physicsRectsAround(self.pos):
             if entityRect.colliderect(rect):
-
-                # If the character is moving downwards
-                # Then the character must collide with the top 
-                # part of the object with the bottom side of the character
+                # Bottom collision - Push character up to edge of obstacle
                 if frameMovement[1] > 0:
                     entityRect.bottom = rect.top
                     self.collisions['down'] = True
                 
-                # If the character is moving upwards
-                # Then the character must collide with the top 
-                # part of the object with the bottom side of the character
+                # Top collision - Push character down to edge of obstacle
                 if frameMovement[1] < 0:
                     entityRect.top = rect.bottom
                     self.collisions['up'] = True
 
-                # Updates the position of the character based on the position of 
-                # the Rectangle
+                # Update position after collision resolution
                 self.pos[1] = entityRect.y
 
-             
-
-        
-        # Gravity need to delete later
-        # self.velocity[1] = min(5, self.velocity[1] + 0.1)
-        
+        # Reset vertical velocity on collision
+        # This prevents velocity from accumulating when colliding with surfaces
         if self.collisions['down'] or self.collisions['up']:
             self.velocity[1] = 0
         
-
     def render(self, surf):
+        # Draws the character sprite at its current position
+        # Uses the game's asset system for sprite management
         surf.blit(self.game.assets['player'], self.pos)
-        
