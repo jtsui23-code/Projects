@@ -33,22 +33,23 @@ class Character:
         # Convert movement tuple to list for modification during collision resolution
         frameMovement = list(movement)
 
-        self.speedUp()
-
-        # Apply character's base speed to movement
-        frameMovement[0] *= self.speed
-        frameMovement[1] *= self.speed
 
         # Normalize diagonal movement to prevent faster diagonal speed
         if frameMovement[0] != 0 and frameMovement[1] != 0:
                 # Calculate the magnitude of diagonal movement vector
                 # Without this, diagonal movement would be √2 times faster than cardinal movement
-                diagonal = math.sqrt(frameMovement[0] * frameMovement[0] + frameMovement[1] * frameMovement[1])
+                diagonal = math.sqrt(frameMovement[0] **2 + frameMovement[1] **2)
         
                 # Normalize the movement vector to maintain consistent speed in all directions
                 # This ensures diagonal movement isn't faster than cardinal movement
-                frameMovement[0] = frameMovement[0] / diagonal
-                frameMovement[1] = frameMovement[1] / diagonal
+                frameMovement[0] /= diagonal
+                frameMovement[1] /= diagonal
+
+        self.speedUp()
+
+        # Apply character's base speed to movement
+        frameMovement[0] *= self.speed
+        frameMovement[1] *= self.speed
         
         # Handle horizontal movement and collisions first
         self.pos[0] += frameMovement[0]
