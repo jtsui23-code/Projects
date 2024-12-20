@@ -1,7 +1,5 @@
 import sys
-
 import pygame
-
 from utils import loadImage, loadImages
 from character import Character
 from tilemap import Tilemap
@@ -25,17 +23,27 @@ class Game:
         self.display = pygame.Surface((320, 240))
 
         self.clock = pygame.time.Clock()
-        
+
+        # This is a list of 4 booleans
+        # movement[0] - Left movement
+        # movement[1] - Right movement
+        # movement[2] - Up movement
+        # movement[3] - Down movement
         self.movement = [False, False, False, False]
         
+        # Dictionary for loading assets in the game makes it more organized and 
+        # accessable for the Tilemap class
         self.assets = {
             'grass': loadImages('tiles/grass'),
             'stone': loadImages('tiles/stone'),
             'player': pygame.transform.scale(loadImage('Player/edelgard.png'), (16, 20))  # Adjust the size to match the tiles
         }
-        
+
+        # Creating a player
+        # Pass in a game, name, position and size
         self.player = Character(self, 'player', (50, 50), (8, 16))
         
+        # Creating a tilemap object with the specified tile size
         self.tilemap = Tilemap(self, tileSize=16)
         
     def run(self):
@@ -45,8 +53,10 @@ class Game:
             # the color is black is (0,0,0)
             self.display.fill((14, 219, 248))
             
+            # Draws the tiles on the window
             self.tilemap.render(self.display)
             
+            # Makes the player move on the window 
             self.player.update(self.tilemap, (self.movement[1] - self.movement[0], self.movement[3] - self.movement[2]))
             self.player.render(self.display)
             
