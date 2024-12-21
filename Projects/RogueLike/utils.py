@@ -32,11 +32,36 @@ def loadImages(path):
 
 class Animation:
     def __init__(self, images, imgDuration=5, loop=True):
+        # A list of every image that pretains to a specific animation.
         self.images = images
+        # The number of frames between each image in an animation.
         self.imgDuration = imgDuration
+
+        # Checks if looping through the animation is needed.
         self.loop = loop
         self.false = False
+        # Frame of the game not the individual animation.
         self.frame = 0
 
+    # This method returns a copy of the Animation object. 
+    # However, the list of images is a shallow copy meaning that 
+    # there is only one single list of images. If the list is changed for one 
+    # instance of the Animation then all of the other instances of the Animation object's list will
+    # be altered. In the context of animation, this is useful because it prevents duplicate images
+    # that will take up unnecessary storage. 
     def copy(self):
         return Animation(self.images, self.imgDuration, self.loop)
+    
+    def update(self):
+        if self.loop:
+             # Creates a looping counter for animating through images.
+            # Each image shows for imgDuration frames before moving to next image.
+            # When reaching the end (imgDuration * total images), loops back to 0.
+            # Example: With 3 images and imgDuration of 5:
+            # Frames 0-4: first image, 5-9: second image, 10-14: third image, 15: loops to 0
+            self.frame = (self.frame + 1) % (self.imgDuration * len(self.images))
+
+    # This method returns the a specific frame of the animation based off of 
+    # the frame of the game. 
+    def getFrame(self):
+        return self.images[int(self.frame / self.imgDuration)]
