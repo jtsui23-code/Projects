@@ -7,6 +7,33 @@ NEIGHBOR_OFFSETS = [(-1, 0), (-1, -1), (0, -1), (1, -1), (1, 0), (0, 0), (-1, 1)
 # Tiles that will interact with physics (e.g., collision detection).
 PHYSICS_TILES = {'grass', 'stone'}
 
+
+"""
+Tilemap
+
+Description:
+    This class represents the tilemap for a game, handling the storage, rendering, 
+    and interaction of tiles in a grid-based system. It allows for sparse tile placement 
+    and includes features for physics interaction and off-grid tile rendering.
+
+Public Methods:
+    - __init__(game, tileSize=16)                Initializes the tilemap with a reference to the game instance, 
+                                                 tile size, and an empty tile dictionary.
+    - tilesAround(pos)                           Retrieves a list of neighboring tiles around a given position.
+    - physicsRectsAround(pos)                    Retrieves physics-enabled tiles as rectangles around a given position.
+    - render(surface, offset=(0, 0))             Renders both grid-aligned and off-grid tiles onto a surface, 
+                                                 with support for camera offset.
+
+Private Methods:
+    None (all methods are public due to Python conventions).
+
+Usage:
+    - Instantiate the Tilemap class: tilemap = Tilemap(game_instance, tileSize=16)
+    - Access nearby tiles: tiles = tilemap.tilesAround(player_position)
+    - Retrieve physics rectangles for collision: rects = tilemap.physicsRectsAround(player_position)
+    - Render tiles on a surface: tilemap.render(surface, offset=(camera_x, camera_y))
+"""
+
 class Tilemap:
     # Initialize the tilemap class.
     def __init__(self, game, tileSize=16):

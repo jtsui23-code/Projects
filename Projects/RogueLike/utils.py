@@ -37,3 +37,6 @@ class Animation:
         self.loop = loop
         self.false = False
         self.frame = 0
+
+    def copy(self):
+        return Animation(self.images, self.imgDuration, self.loop)

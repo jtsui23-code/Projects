@@ -4,6 +4,28 @@ from utils import loadImage, loadImages
 from character import Character
 from tilemap import Tilemap
 
+"""
+Game
+
+Description:
+    This class represents the main game loop for a rogue-like game implemented 
+    using Pygame. It initializes the game window, assets, player, tilemap, and 
+    handles input, rendering, and game logic. The class also defines the player's 
+    movement and updates the display at a set frame rate.
+
+Public Methods:
+    - __init__()              Initializes the game, loads assets, and sets up the player and tilemap.
+    - run()                   Starts the game loop, handles user input, updates the player, 
+                              renders the game environment, and manages the frame rate.
+
+Private Methods:
+    None (all methods are public due to Python conventions).
+
+Usage:
+    - Instantiate the class: Game()
+    - Call the run() method: Game().run() to start the game.
+"""
+
 class Game:
 
     # Sets up the game windows, framerate, player, and other assets
