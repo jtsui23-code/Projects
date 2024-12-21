@@ -88,16 +88,20 @@ class Tilemap:
     #   surface: The surface (e.g., game window) to draw tiles on.
     def render(self, surface, offset=(0,0)):
 
-        # Draw off-grid tiles stored in the list.
-        for tile in self.offgridTiles:
+        # This only renders the tiles that are in the horizontal range of the screen
+        # to optimize performance instead of rendering every single tile on the window
+        for x in range(offset[0] // self.tileSize, (offset[0] + surface.get_width()) // self.tileSize + 1)
 
-            # Using the list of offset tiles to access the map assets in game class
-            # tile['type'] represent the key in the assets dictionary while 
-            # tile['variant'] is the paired element to the key
-            # Ex) In the context of the map it would look like so
-            # {tile['type'] : tile['variant'] }
-            # tile['pos'][0] - offset[0] accounts for 'camera' movement
-            surface.blit(self.game.assets[tile['type']][tile['variant']], (tile['pos'][0] - offset[0], tile['pos'][1] - offset[1]))
+        # # Draw off-grid tiles stored in the list.
+        # for tile in self.offgridTiles:
+
+        #     # Using the list of offset tiles to access the map assets in game class
+        #     # tile['type'] represent the key in the assets dictionary while 
+        #     # tile['variant'] is the paired element to the key
+        #     # Ex) In the context of the map it would look like so
+        #     # {tile['type'] : tile['variant'] }
+        #     # tile['pos'][0] - offset[0] accounts for 'camera' movement
+        #     surface.blit(self.game.assets[tile['type']][tile['variant']], (tile['pos'][0] - offset[0], tile['pos'][1] - offset[1]))
             
             
         # Draw all grid-aligned tiles stored in the dictionary.
