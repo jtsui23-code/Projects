@@ -28,3 +28,12 @@ def loadImages(path):
         # The '/' joining is used to maintain proper path format across different operating systems
         images.append(loadImage(path + '/' + imgName))
     return images
+
+
+class Animation:
+    def __init__(self, images, imgDuration=5, loop=True):
+        self.images = images
+        self.imgDuration = imgDuration
+        self.loop = loop
+        self.false = False
+        self.frame = 0
