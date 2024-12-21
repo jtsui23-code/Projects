@@ -54,12 +54,28 @@ class Animation:
     
     def update(self):
         if self.loop:
-             # Creates a looping counter for animating through images.
+
+            # Creates a looping counter for animating through images.
             # Each image shows for imgDuration frames before moving to next image.
             # When reaching the end (imgDuration * total images), loops back to 0.
             # Example: With 3 images and imgDuration of 5:
             # Frames 0-4: first image, 5-9: second image, 10-14: third image, 15: loops to 0
+            # because 15 % (self.imgDuration * len(self.images)) =>
+            # 15 % (5 * 3) => 15 % 15 = 0
             self.frame = (self.frame + 1) % (self.imgDuration * len(self.images))
+
+        else:
+            # Example: With 3 images and imgDuration of 5:
+            # Frames 0-4: first image, 5-9: second image, 10-14: third image
+            # If did not do (self.imgDuration * len(self.images) - 1, 
+            # the frame would eventually be set to 15 which does not have a 
+            # corresponding image.
+            self.frame = min(self.frame + 1, (self.imgDuration * len(self.images) - 1))
+
+            # If aniamation has gone through the last frame of the images,
+            # set the animation cycle to done.
+            if self.frame >= self.imgDuration * len(self.images):
+                self.done = True    
 
     # This method returns the a specific frame of the animation based off of 
     # the frame of the game. 
