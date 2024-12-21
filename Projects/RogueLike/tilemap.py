@@ -88,6 +88,18 @@ class Tilemap:
     #   surface: The surface (e.g., game window) to draw tiles on.
     def render(self, surface, offset=(0,0)):
 
+        # Draw off-grid tiles stored in the list.
+        for tile in self.offgridTiles:
+
+            # Using the list of offset tiles to access the map assets in game class
+            # tile['type'] represent the key in the assets dictionary while 
+            # tile['variant'] is the paired element to the key
+            # Ex) In the context of the map it would look like so
+            # {tile['type'] : tile['variant'] }
+            # tile['pos'][0] - offset[0] accounts for 'camera' movement
+            surface.blit(self.game.assets[tile['type']][tile['variant']], (tile['pos'][0] - offset[0], tile['pos'][1] - offset[1]))
+            
+
         # This only renders the tiles that are in the horizontal range of the screen
         # to optimize performance instead of rendering every single tile on the window.
         # offset[0] // self.tileSize is the farthest left side of the camera which is where the
@@ -95,23 +107,22 @@ class Tilemap:
         # (offset[0] + surface.get_width()) // self.tileSize + 1 is the farthest right side of the camera.
         # The reason for // self.tileSize is because the offset is in the units of pixels while
         # the tiles are in the units of tile size.
+        # Then the same process is repeated for the y - axis to cover both the horizontal and vertical 
+        # tiles on the camera.
         for x in range(offset[0] // self.tileSize, (offset[0] + surface.get_width()) // self.tileSize + 1):
-            pass
-        # # Draw off-grid tiles stored in the list.
-        # for tile in self.offgridTiles:
+            for y in range(offset[1] // self.tileSize, (offset[1] + surface.get_height()) // self.tileSize + 1):
+                # This checks if the tile on the screen belongs in the tilemap dictionary.
+                # If the tile does exist then it is saved in a temporary variable tile 
+                # to be rendered on the window.
+                loc = str(x) + ';' + str(y)
+                if loc in self.tilemap:
+                    tile = self.tilemap[loc]
 
-        #     # Using the list of offset tiles to access the map assets in game class
-        #     # tile['type'] represent the key in the assets dictionary while 
-        #     # tile['variant'] is the paired element to the key
-        #     # Ex) In the context of the map it would look like so
-        #     # {tile['type'] : tile['variant'] }
-        #     # tile['pos'][0] - offset[0] accounts for 'camera' movement
-        #     surface.blit(self.game.assets[tile['type']][tile['variant']], (tile['pos'][0] - offset[0], tile['pos'][1] - offset[1]))
+        
             
-            
-        # Draw all grid-aligned tiles stored in the dictionary.
-        for loc in self.tilemap:
-            tile = self.tilemap[loc]
+        # # Draw all grid-aligned tiles stored in the dictionary.
+        # for loc in self.tilemap:
+        #     tile = self.tilemap[loc]
 
-            # Convert grid coordinates to pixel coordinates for rendering.
-            surface.blit(self.game.assets[tile['type']][tile['variant']], (tile['pos'][0] * self.tileSize - offset[0], tile['pos'][1] * self.tileSize - offset[1]))
+        #     # Convert grid coordinates to pixel coordinates for rendering.
+        #     surface.blit(self.game.assets[tile['type']][tile['variant']], (tile['pos'][0] * self.tileSize - offset[0], tile['pos'][1] * self.tileSize - offset[1]))
