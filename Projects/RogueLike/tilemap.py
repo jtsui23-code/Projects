@@ -117,13 +117,7 @@ class Tilemap:
                 loc = str(x) + ';' + str(y)
                 if loc in self.tilemap:
                     tile = self.tilemap[loc]
+                    # Need to do tile['pos'][0] * self.tileSize - offset[0] 
+                    # or the tiles will be really small since they are in pixel units 
+                    # instead of tile size.
                     surface.blit(self.game.assets[tile['type']][tile['variant']], (tile['pos'][0] * self.tileSize - offset[0], tile['pos'][1] * self.tileSize - offset[1]))
-
-        
-            
-        # # Draw all grid-aligned tiles stored in the dictionary.
-        # for loc in self.tilemap:
-        #     tile = self.tilemap[loc]
-
-        #     # Convert grid coordinates to pixel coordinates for rendering.
-        #     surface.blit(self.game.assets[tile['type']][tile['variant']], (tile['pos'][0] * self.tileSize - offset[0], tile['pos'][1] * self.tileSize - offset[1]))
