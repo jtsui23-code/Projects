@@ -89,9 +89,14 @@ class Tilemap:
     def render(self, surface, offset=(0,0)):
 
         # This only renders the tiles that are in the horizontal range of the screen
-        # to optimize performance instead of rendering every single tile on the window
-        for x in range(offset[0] // self.tileSize, (offset[0] + surface.get_width()) // self.tileSize + 1)
-
+        # to optimize performance instead of rendering every single tile on the window.
+        # offset[0] // self.tileSize is the farthest left side of the camera which is where the
+        # Tiles will start to render and 
+        # (offset[0] + surface.get_width()) // self.tileSize + 1 is the farthest right side of the camera.
+        # The reason for // self.tileSize is because the offset is in the units of pixels while
+        # the tiles are in the units of tile size.
+        for x in range(offset[0] // self.tileSize, (offset[0] + surface.get_width()) // self.tileSize + 1):
+            pass
         # # Draw off-grid tiles stored in the list.
         # for tile in self.offgridTiles:
 
