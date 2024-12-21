@@ -1,5 +1,19 @@
-## Platformer Using Pygame
+# Platformer Game using Pygame
 
+### Overview
+A 2D platformer game built with Pygame, based on Pygame tutorial. I've extended the original tutorial by implementing additional features including:
+- New particle effects for enemy projectiles
+- Multiple jumps system
+- Overuse of multiple jump penalty system
+
+
+### Technical Implementation
+- Built using Python and Pygame
+- Implements sprite-based animation system
+- Features collision detection and physics
+- Uses JSON for level data storage
+- Includes particle system for visual effects
+  
 ### Description:
 This program displays a Pygame platformer game. To move the character, use WASD or arrow keys. If the user presses space then the character dashes and can defeat enemies through dashing into them. When all enemies are defeated then the player transitions to the next level. Once the player has passed the third level, then the player has won the game.
 
@@ -18,10 +32,25 @@ This program displays a Pygame platformer game. To move the character, use WASD 
 |   10  | [tilemap.py](https://github.com/jtsui23-code/Projects/blob/main/Projects/platformer/scripts/tilemap.py)        | Script for tilemapping in the game.      |
 |   11  | [utils.py](https://github.com/jtsui23-code/Projects/blob/main/Projects/platformer/scripts/util.py)        | Script for loading images and animations.      |
 
+### Controls
+- WASD/Arrow Keys: Movement
+- Spacebar: Dash Attack
+
+
+### Learning Outcomes
+- Gained experience with game development principles
+- Implemented physics and collision detection
+- Created modular code structure with separate script files
+- Designed custom game mechanics
 
 ### Instructions:
 
 - Run main.py
 - Play game
   
+
+### Future Goals
+- Plan to make other games using Pygame library with new knowledge acquired
+
+
 
