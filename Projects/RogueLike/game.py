@@ -37,7 +37,7 @@ class Game:
         # Dictionary for loading assets in the game makes it more organized and 
         # accessable for the Tilemap class
         self.assets = {
-            'background':loadImage('background.png'),
+            'background':pygame.transform.scale(loadImage('background.png'), (1240,840)),
             'newGrass':loadImages('tiles/newGrass'),
             'grass': loadImages('tiles/grass'),
             'stone': loadImages('tiles/stone'),
