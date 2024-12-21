@@ -24,9 +24,6 @@ Public Methods:
     - render(surface, offset=(0, 0))             Renders both grid-aligned and off-grid tiles onto a surface, 
                                                  with support for camera offset.
 
-Private Methods:
-    None (all methods are public due to Python conventions).
-
 Usage:
     - Instantiate the Tilemap class: tilemap = Tilemap(game_instance, tileSize=16)
     - Access nearby tiles: tiles = tilemap.tilesAround(player_position)

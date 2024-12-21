@@ -18,9 +18,6 @@ Public Methods:
     - run()                   Starts the game loop, handles user input, updates the player, 
                               renders the game environment, and manages the frame rate.
 
-Private Methods:
-    None (all methods are public due to Python conventions).
-
 Usage:
     - Instantiate the class: Game()
     - Call the run() method: Game().run() to start the game.

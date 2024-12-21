@@ -1,6 +1,32 @@
 import pygame
 import math
 
+"""
+Character
+
+Description:
+    This class represents a character in a game, providing functionality for movement, 
+    collision detection, and rendering. It is designed to be flexible, supporting both 
+    player and non-player characters (NPCs) in a top-down game. It interacts with a tilemap 
+    for collision resolution and can render its position relative to a camera offset.
+
+Public Methods:
+    - __init__(game, eType, pos, size)           Initializes the character with its type, position, size, and other 
+                                                 properties needed for movement and collision handling.
+    - rect()                                     Returns a pygame.Rect object representing the character's current position 
+                                                 and size for collision detection.
+    - update(tilemap, movement=(0, 0))          Updates the character's position based on movement and resolves collisions 
+                                                 with tiles in the provided tilemap.
+    - render(surf, offset=(0, 0))               Renders the character's sprite on a given surface, accounting for camera offset.
+    - speedUp(speed=1)                          Increases the character's speed by a multiplier.
+
+Usage:
+    - Instantiate the Character class: character = Character(game_instance, 'player', (x, y), (width, height))
+    - Update movement and collision: character.update(tilemap_instance, movement=(x_movement, y_movement))
+    - Render the character: character.render(surface, offset=(camera_x, camera_y))
+    - Adjust speed: character.speedUp(1.5)  # Example multiplier
+"""
+
 class Character:
     # Main character class that handles all entity movement, collision detection, and rendering
     # Designed to be flexible enough to handle both player and NPC characters in a top-down game
