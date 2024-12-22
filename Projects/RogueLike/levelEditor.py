@@ -45,6 +45,20 @@ class LevelEditor:
         
         # Creating a tilemap object with the specified tile size
         self.tilemap = Tilemap(self, tileSize=16)
+
+        # This is an array of the keys in the self.assets dictionary
+        # so the list would contain ['newGrass', 'grass', 'stone']
+        self.assetTypes = list(self.assets)
+
+        # This variable will be used for indexing the 
+        # keys in the self.assets or the 
+        # elements in the self.assetsType list.
+        self.indexType = 0
+
+        # While this variable will be used to index through the paired 
+        # item in self.assets or the variant of the tiles in the 
+        # self.assetTypes
+        self.indexVariant = 0
         
     def run(self):
         while True:
