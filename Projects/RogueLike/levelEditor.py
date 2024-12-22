@@ -24,6 +24,8 @@ class LevelEditor:
         # Acts as the 'Camera' position
         self.scroll = [0,0]
 
+        self.clicking = False
+
         self.clock = pygame.time.Clock()
 
 
@@ -90,6 +92,14 @@ class LevelEditor:
                 # can be converted to numbers 
                 # 1 for True and 0 for False
                 if event.type == pygame.KEYDOWN:
+
+                    # Checks for mouse left click
+                    # event.button = 1 is left click
+                    # event.button = 3 is right click
+                    # event.button = 2 is scroll
+                    if event.key == pygame.MOUSEBUTTONDOWN:
+                        if event.button == 1:
+                            self.clicking = True
 
                     # If the A key or left arrow key has been pressed
                     # Change the movement array accordingly
