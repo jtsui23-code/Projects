@@ -62,11 +62,18 @@ class LevelEditor:
         
     def run(self):
         while True:
-
-            # Sets the background to an image at the position (0,0)
-            self.display.fill((0,0,0))                    
-           
             
+            # Sets the background to an image at the position (0,0)
+            self.display.fill((0,0,0))
+
+            # Retrieves the current tile image from the assets dictionary using the type and variant indices,
+            # and creates a copy of it to avoid modifying the original image.
+            currentTileImg = self.assets[self.assetTypes[self.indexType]][self.indexVariant].copy()
+
+            # Sets the tile image to be semi - transparent 
+            # 0 is fully transparent while 255 is zero transparency 
+            currentTileImg.set_alpha(100)
+
             # Checks for user input
             for event in pygame.event.get():
 
