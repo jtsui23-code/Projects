@@ -28,6 +28,8 @@ class LevelEditor:
 
         self.rightClicking = False
 
+        self.holdShift = False
+
         self.clock = pygame.time.Clock()
 
 
@@ -78,6 +80,8 @@ class LevelEditor:
             # 0 is fully transparent while 255 is zero transparency 
             currentTileImg.set_alpha(100)
 
+            self.display.blit(currentTileImg, (100,100))
+
             # Checks for user input
             for event in pygame.event.get():
 
@@ -94,20 +98,50 @@ class LevelEditor:
                 # event.button = 3 is right click
                 # event.button = 4 is scroll up
                 # event.button = 5 is scroll up
-                if event.key == pygame.MOUSEBUTTONDOWN:
+                if event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
                         self.leftClicking = True
                     
                     if event.button == 3:
                         self.rightClicking = True
 
-                    # If you scroll up go through the list of tile types forward.
-                    if event.button == 4:
-                        self.assetsType = (self.assetsType + 1) % len(self.assetsType)
-                    
-                    # If you scroll down go through the list of tile types backwards.
-                    if event.button == 5:
-                        self.assetsType = (self.assetsType - 1) % len(self.assetsType)
+                    # If hold down left shift, then scroll through different 
+                    # variants of tiles instead.
+                    if self.holdShift:
+                         # If you scroll up go through different variants of tiles forward.
+                        if event.button == 4:
+                            # Increment the indexVariant to cycle through the list of variants for the current tile type.
+                            # The index wraps around to 0 when it exceeds the number of variants using the modulo operator (%).
+                            # - self.assetTypes[self.indexType]: Gets the key of the currently selected tile type (e.g., 'grass', 'stone').
+                            # - self.assets[self.assetTypes[self.indexType]]: Retrieves the list of variants for the current tile type.
+                            # - len(self.assets[self.assetTypes[self.indexType]]): Gets the total number of variants for the current tile type.
+                            self.indexVariant = (self.indexVariant + 1) % len(self.assets[self.assetTypes[self.indexType]])
+                        
+                         # If you scroll up go through different variants of tiles backwards.
+                        if event.button == 5:
+                            # Increment the indexVariant to cycle through the list of variants for the current tile type.
+                            # The index wraps around to 0 when it exceeds the number of variants using the modulo operator (%).
+                            # - self.assetTypes[self.indexType]: Gets the key of the currently selected tile type (e.g., 'grass', 'stone').
+                            # - self.assets[self.assetTypes[self.indexType]]: Retrieves the list of variants for the current tile type.
+                            # - len(self.assets[self.assetTypes[self.indexType]]): Gets the total number of variants for the current tile type.
+                            self.indexVariant = (self.indexVariant - 1) % len(self.assets[self.assetTypes[self.indexType]])
+
+                    else:
+                        # If you scroll up go through the list of tile types forward.
+                        if event.button == 4:
+                            # Increment the indexType to cycle through the list of tile types.
+                            # The index wraps around to 0 when it exceeds the number of tile types using the modulo operator (%).
+                            # - self.assetTypes: A list containing all the keys from the self.assets dictionary (e.g., ['newGrass', 'grass', 'stone']).
+                            # - len(self.assetTypes): Gets the total number of tile types in the assetTypes list.
+                            self.indexType = (self.indexType + 1) % len(self.assetTypes)
+                        
+                        # If you scroll down go through the list of tile types backwards.
+                        if event.button == 5:
+                            # Increment the indexType to cycle through the list of tile types.
+                            # The index wraps around to 0 when it exceeds the number of tile types using the modulo operator (%).
+                            # - self.assetTypes: A list containing all the keys from the self.assets dictionary (e.g., ['newGrass', 'grass', 'stone']).
+                            # - len(self.assetTypes): Gets the total number of tile types in the assetTypes list.
+                            self.indexType = (self.indexType - 1) % len(self.assetTypes)
 
 
                 
@@ -116,7 +150,7 @@ class LevelEditor:
                 # event.button = 3 is right click
                 # event.button = 4 is scroll up
                 # event.button = 5 is scroll up
-                if event.key == pygame.MOUSEBUTTONUP:
+                if event.type == pygame.MOUSEBUTTONUP:
                     if event.button == 1:
                         self.leftClicking = False
                     if event.button == 3:
@@ -129,6 +163,9 @@ class LevelEditor:
                 # can be converted to numbers 
                 # 1 for True and 0 for False
                 if event.type == pygame.KEYDOWN:
+
+                    if event.key == pygame.K_LSHIFT:
+                        self.holdShift = True
 
                     # If the A key or left arrow key has been pressed
                     # Change the movement array accordingly
@@ -169,7 +206,9 @@ class LevelEditor:
 
                 if event.type == pygame.KEYUP:
 
-                    if event.key == 
+                    if event.key == pygame.K_LSHIFT:
+                        self.holdShift = False
+
                     # If the A key or left arrow key has been pressed
                     # Change the movement array accordingly
                     if event.key == pygame.K_a:
