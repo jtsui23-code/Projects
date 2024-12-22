@@ -24,7 +24,9 @@ class LevelEditor:
         # Acts as the 'Camera' position
         self.scroll = [0,0]
 
-        self.clicking = False
+        self.leftClicking = False
+
+        self.rightClicking = False
 
         self.clock = pygame.time.Clock()
 
@@ -84,6 +86,41 @@ class LevelEditor:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
+
+
+                # Checks for mouse left click
+                # event.button = 1 is left click
+                # event.button = 2 is scroll wheel click
+                # event.button = 3 is right click
+                # event.button = 4 is scroll up
+                # event.button = 5 is scroll up
+                if event.key == pygame.MOUSEBUTTONDOWN:
+                    if event.button == 1:
+                        self.leftClicking = True
+                    
+                    if event.button == 3:
+                        self.rightClicking = True
+
+                    # If you scroll up go through the list of tile types forward.
+                    if event.button == 4:
+                        self.assetsType = (self.assetsType + 1) % len(self.assetsType)
+                    
+                    # If you scroll down go through the list of tile types backwards.
+                    if event.button == 5:
+                        self.assetsType = (self.assetsType - 1) % len(self.assetsType)
+
+
+                
+                # event.button = 1 is left click
+                # event.button = 2 is scroll wheel click
+                # event.button = 3 is right click
+                # event.button = 4 is scroll up
+                # event.button = 5 is scroll up
+                if event.key == pygame.MOUSEBUTTONUP:
+                    if event.button == 1:
+                        self.leftClicking = False
+                    if event.button == 3:
+                        self.rightClicking = False
                 
                 # Checks if any keys have been pressed
                 # Making the index in the movement
@@ -92,14 +129,6 @@ class LevelEditor:
                 # can be converted to numbers 
                 # 1 for True and 0 for False
                 if event.type == pygame.KEYDOWN:
-
-                    # Checks for mouse left click
-                    # event.button = 1 is left click
-                    # event.button = 3 is right click
-                    # event.button = 2 is scroll
-                    if event.key == pygame.MOUSEBUTTONDOWN:
-                        if event.button == 1:
-                            self.clicking = True
 
                     # If the A key or left arrow key has been pressed
                     # Change the movement array accordingly
@@ -139,6 +168,8 @@ class LevelEditor:
 
 
                 if event.type == pygame.KEYUP:
+
+                    if event.key == 
                     # If the A key or left arrow key has been pressed
                     # Change the movement array accordingly
                     if event.key == pygame.K_a:
