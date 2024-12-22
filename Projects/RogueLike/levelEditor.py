@@ -26,7 +26,8 @@ class LevelEditor:
 
         self.clock = pygame.time.Clock()
 
-        # This is a list of 4 booleans
+
+        # For Camera Movement
         # movement[0] - Left movement
         # movement[1] - Right movement
         # movement[2] - Up movement
@@ -36,16 +37,11 @@ class LevelEditor:
         # Dictionary for loading assets in the game makes it more organized and 
         # accessable for the Tilemap class
         self.assets = {
-            'background':pygame.transform.scale(loadImage('background.png'), (1240,840)),
             'newGrass':loadImages('tiles/newGrass'),
             'grass': loadImages('tiles/grass'),
             'stone': loadImages('tiles/stone'),
-            'player': pygame.transform.scale(loadImage('Player/edelgard.png'), (16, 20))  # Adjust the size to match the tiles
         }
 
-        # Creating a player
-        # Pass in a game, name, position and size
-        self.player = Character(self, 'player', (50, 50), (10, 17))
         
         # Creating a tilemap object with the specified tile size
         self.tilemap = Tilemap(self, tileSize=16)
@@ -54,7 +50,7 @@ class LevelEditor:
         while True:
 
             # Sets the background to an image at the position (0,0)
-            self.display.blit(self.assets['background'], (0,0))
+            self.display.fill((0,0,0))
 
             self.scroll[0] += (self.player.rect().centerx - self.display.get_width() / 2 - self.scroll[0]) / 30
             self.scroll[1] += (self.player.rect().centery - self.display.get_height() / 2 - self.scroll[1]) / 30
@@ -64,9 +60,7 @@ class LevelEditor:
             # Draws the tiles on the window
             self.tilemap.render(self.display, offset=renderScroll)
             
-            # Makes the player move on the window 
-            self.player.update(self.tilemap, (self.movement[1] - self.movement[0], self.movement[3] - self.movement[2]))
-            self.player.render(self.display, renderScroll)
+           
             
             # Checks for user input
             for event in pygame.event.get():
