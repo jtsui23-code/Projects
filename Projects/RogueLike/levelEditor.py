@@ -50,16 +50,7 @@ class LevelEditor:
         while True:
 
             # Sets the background to an image at the position (0,0)
-            self.display.fill((0,0,0))
-
-            self.scroll[0] += (self.player.rect().centerx - self.display.get_width() / 2 - self.scroll[0]) / 30
-            self.scroll[1] += (self.player.rect().centery - self.display.get_height() / 2 - self.scroll[1]) / 30
-
-            renderScroll = (int(self.scroll[0]), int(self.scroll[1]))
-            
-            # Draws the tiles on the window
-            self.tilemap.render(self.display, offset=renderScroll)
-            
+            self.display.fill((0,0,0))                    
            
             
             # Checks for user input
@@ -78,9 +69,6 @@ class LevelEditor:
                 # can be converted to numbers 
                 # 1 for True and 0 for False
                 if event.type == pygame.KEYDOWN:
-
-                    if event.key ==pygame.K_LSHIFT:
-                        self.player.speedUp(1.5)
 
                     # If the A key or left arrow key has been pressed
                     # Change the movement array accordingly
@@ -120,9 +108,6 @@ class LevelEditor:
 
 
                 if event.type == pygame.KEYUP:
-
-                    if event.key == pygame.K_LSHIFT:
-                        self.player.speedUp(1)
                     # If the A key or left arrow key has been pressed
                     # Change the movement array accordingly
                     if event.key == pygame.K_a:
