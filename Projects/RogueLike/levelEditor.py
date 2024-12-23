@@ -68,6 +68,11 @@ class LevelEditor:
         
     def run(self):
         while True:
+
+            renderScroll = ( int(self.scroll[0]), int(self.scroll[1]) )
+
+            self.tilemap(self.display,offset=renderScroll)
+
             
             # Sets the background to an image at the position (0,0)
             self.display.fill((0,0,0))
