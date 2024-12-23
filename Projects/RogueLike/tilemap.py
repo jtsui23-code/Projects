@@ -57,9 +57,9 @@ class Tilemap:
 
 
         # Example of using tilemap system
-        for i in range(20):
-            for j in range (20):
-                self.tilemap[str(0 + i) + ';' + str(j)] = {'type': 'newGrass', 'variant': 1, 'pos': (0 + i, j)}
+        # for i in range(20):
+        #     for j in range (20):
+        #         self.tilemap[str(0 + i) + ';' + str(j)] = {'type': 'newGrass', 'variant': 1, 'pos': (0 + i, j)}
             # self.tilemap['10;' + str(5 + i)] = {'type': 'stone', 'variant': 1, 'pos': (10, 5 + i)}
 
     

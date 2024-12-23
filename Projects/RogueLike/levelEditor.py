@@ -107,18 +107,26 @@ class LevelEditor:
             # small then usual. 
             tilePos = ( int(mousePos[0] + self.scroll[0]) // self.tilemap.tileSize , int(mousePos[1] + self.scroll[1]) // self.tilemap.tileSize)
 
+
+            # This makes the semi-transparent choosen tile hover along with the mouse to allow the user to see which tile and 
+            # where the tile will be placed in the level editor. 
+            # Can't just use mousePos because want the current tile image to be aligned with the grid. 
+            # tilePos is already aligned with the grid while the mousePos is not. 
+            # Have to reconvert the tilePos back to pixals and account for any camera offset that will
+            # make the tile placements off once the camera is moved.
+            self.display.blit(currentTileImg, (tilePos[0] * self.tilemap.tileSize - self.scroll[0], tilePos[1] * self.tilemap.tileSize - self.scroll[1]))
             # Once the player right clicks then that tile is placed down onto the screen and the tilemap.
             if self.leftClicking:
                 self.tilemap.tilemap[str(tilePos[0]) + ';' + str(tilePos[1])] = {'type': self.assetTypes[self.indexType], 'variant': self.indexVariant, 'pos': tilePos}
 
             # If the user right clicks and there exists a tile there, 
-            # delete that tile off the screen and the tilemap.
+            # delete that tile off the screen and the tilemap. 
             # This is needed for if the user makes a mistake while using 
             # the level editor.
             if self.rightClicking:
                 tileLoc = str(tilePos[0]) + ';' + str(tilePos[1])
                 if tileLoc in self.tilemap.tilemap:
-                    del self.tilemap[tileLoc]
+                    del self.tilemap.tilemap[tileLoc]
 
 
 
