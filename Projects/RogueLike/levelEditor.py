@@ -78,6 +78,16 @@ class LevelEditor:
 
             # Sets the background to an image at the position (0,0)
             self.display.fill((0,0,0))
+
+            # Allows the camera to be moved with the WASD or arrow keys
+            # which is important when wanting to create levels that go beyond the base
+            # window size.
+            # movement[0] - Left movement
+            # movement[1] - Right movement
+            # movement[2] - Up movement
+            # movement[3] - Down movement
+            self.scroll[0] += (self.movement[1] - self.movement[0]) * 2
+            self.scroll[1] += (self.movement[3] - self.movement[2]) * 2
             
             # Displays the tilemap onto the level editor with the camera offset.
             # The camera offset is needed to move the camera posiiton in the level editor. 
