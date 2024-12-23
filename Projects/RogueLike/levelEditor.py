@@ -134,6 +134,7 @@ class LevelEditor:
                             # - self.assetTypes: A list containing all the keys from the self.assets dictionary (e.g., ['newGrass', 'grass', 'stone']).
                             # - len(self.assetTypes): Gets the total number of tile types in the assetTypes list.
                             self.indexType = (self.indexType + 1) % len(self.assetTypes)
+                            self.indexVariant = 0
                         
                         # If you scroll down go through the list of tile types backwards.
                         if event.button == 5:
@@ -142,6 +143,7 @@ class LevelEditor:
                             # - self.assetTypes: A list containing all the keys from the self.assets dictionary (e.g., ['newGrass', 'grass', 'stone']).
                             # - len(self.assetTypes): Gets the total number of tile types in the assetTypes list.
                             self.indexType = (self.indexType - 1) % len(self.assetTypes)
+                            self.indexVariant = 0
 
 
                 
