@@ -84,9 +84,6 @@ class LevelEditor:
             renderScroll = ( int(self.scroll[0]), int(self.scroll[1]) )
             self.tilemap.render(self.display,offset=renderScroll)
 
-            
-            
-
             # Retrieves the current tile image from the assets dictionary using the type and variant indices,
             # and creates a copy of it to avoid modifying the original image.
             currentTileImg = self.assets[self.assetTypes[self.indexType]][self.indexVariant].copy()
@@ -101,7 +98,29 @@ class LevelEditor:
             # will have an incorrect offset and be inaccurate.
             mousePos = pygame.mouse.get_pos()
             
-            mousePs
+            mousePos = (mousePos[0]/ RENDERSCALE, mousePos[1] / RENDERSCALE)
+
+            # Calcuates the tile position on the window of the level editor by 
+            # account for the scroll of the camera and converting the mouse position 
+            # which is in units in pixals to tile size units.
+            # If the conversion is not done then the tiles that are placed are very 
+            # small then usual. 
+            tilePos = ( int(mousePos[0] + self.scroll[0]) // self.tilemap.tileSize , int(mousePos[1] + self.scroll[1]) // self.tilemap.tileSize)
+
+            # Once the player right clicks then that tile is placed down onto the screen and the tilemap.
+            if self.leftClicking:
+                self.tilemap.tilemap[str(tilePos[0]) + ';' + str(tilePos[1])] = {'type': self.assetTypes[self.indexType], 'variant': self.indexVariant, 'pos': tilePos}
+
+            # If the user right clicks and there exists a tile there, 
+            # delete that tile off the screen and the tilemap.
+            # This is needed for if the user makes a mistake while using 
+            # the level editor.
+            if self.rightClicking:
+                tileLoc = str(tilePos[0]) + ';' + str(tilePos[1])
+                if tileLoc in self.tilemap.tilemap:
+                    del self.tilemap[tileLoc]
+
+
 
             self.display.blit(currentTileImg, (100,100))
 
