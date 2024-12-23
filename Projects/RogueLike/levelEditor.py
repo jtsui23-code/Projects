@@ -3,6 +3,13 @@ import pygame
 from utils import loadImages
 from tilemap import Tilemap
 
+# This is how much the images are being scaled up by to the window. 
+# If the RENDERSCALE is 2.0 then the images on the window are being 
+# enlarge by a factor of 2.
+# Caution when cauculating the mouse position have to account for this 
+# RENDERSCALE as well or the tiles will not be placed where the mouse
+# clicks on the level editor.
+RENDERSCALE = 2.0
 class LevelEditor:
 
     # Sets up the game windows, framerate, player, and other assets
@@ -69,13 +76,16 @@ class LevelEditor:
     def run(self):
         while True:
 
-            renderScroll = ( int(self.scroll[0]), int(self.scroll[1]) )
-
-            self.tilemap(self.display,offset=renderScroll)
-
-            
             # Sets the background to an image at the position (0,0)
             self.display.fill((0,0,0))
+            
+            # Displays the tilemap onto the level editor with the camera offset.
+            # The camera offset is needed to move the camera posiiton in the level editor. 
+            renderScroll = ( int(self.scroll[0]), int(self.scroll[1]) )
+            self.tilemap.render(self.display,offset=renderScroll)
+
+            
+            
 
             # Retrieves the current tile image from the assets dictionary using the type and variant indices,
             # and creates a copy of it to avoid modifying the original image.
@@ -84,6 +94,14 @@ class LevelEditor:
             # Sets the tile image to be semi - transparent 
             # 0 is fully transparent while 255 is zero transparency 
             currentTileImg.set_alpha(100)
+            
+            # To correctly get the mouse position have to divide by how much the 
+            # images on the window are scaled up so if the images are scaled up by 2 
+            # then the mouse position has to be divided by 2 or the mouse position 
+            # will have an incorrect offset and be inaccurate.
+            mousePos = pygame.mouse.get_pos()
+            
+            mousePs
 
             self.display.blit(currentTileImg, (100,100))
 
