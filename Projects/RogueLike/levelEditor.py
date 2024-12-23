@@ -37,6 +37,8 @@ class LevelEditor:
 
         self.holdShift = False
 
+        self.onGrid = True
+
         self.clock = pygame.time.Clock()
 
 
@@ -117,14 +119,19 @@ class LevelEditor:
             # small then usual. 
             tilePos = ( int(mousePos[0] + self.scroll[0]) // self.tilemap.tileSize , int(mousePos[1] + self.scroll[1]) // self.tilemap.tileSize)
 
-
-            # This makes the semi-transparent choosen tile hover along with the mouse to allow the user to see which tile and 
-            # where the tile will be placed in the level editor. 
-            # Can't just use mousePos because want the current tile image to be aligned with the grid. 
-            # tilePos is already aligned with the grid while the mousePos is not. 
-            # Have to reconvert the tilePos back to pixals and account for any camera offset that will
-            # make the tile placements off once the camera is moved.
-            self.display.blit(currentTileImg, (tilePos[0] * self.tilemap.tileSize - self.scroll[0], tilePos[1] * self.tilemap.tileSize - self.scroll[1]))
+            if self.onGrid:
+                # This makes the semi-transparent choosen tile hover along with the mouse to allow the user to see which tile and 
+                # where the tile will be placed in the level editor. 
+                # Can't just use mousePos because want the current tile image to be aligned with the grid. 
+                # tilePos is already aligned with the grid while the mousePos is not. 
+                # Have to reconvert the tilePos back to pixals and account for any camera offset that will
+                # make the tile placements off once the camera is moved.
+                self.display.blit(currentTileImg, (tilePos[0] * self.tilemap.tileSize - self.scroll[0], tilePos[1] * self.tilemap.tileSize - self.scroll[1]))
+            
+            else:
+                # Displays the current image tile on the offgrid which the mouse position is in. 
+                self.display.blit(currentTileImg, mousePos)
+            
             # Once the player right clicks then that tile is placed down onto the screen and the tilemap.
             if self.leftClicking:
                 self.tilemap.tilemap[str(tilePos[0]) + ';' + str(tilePos[1])] = {'type': self.assetTypes[self.indexType], 'variant': self.indexVariant, 'pos': tilePos}
@@ -138,9 +145,6 @@ class LevelEditor:
                 if tileLoc in self.tilemap.tilemap:
                     del self.tilemap.tilemap[tileLoc]
 
-
-
-            self.display.blit(currentTileImg, (100,100))
 
             # Checks for user input
             for event in pygame.event.get():
@@ -225,6 +229,10 @@ class LevelEditor:
                 # can be converted to numbers 
                 # 1 for True and 0 for False
                 if event.type == pygame.KEYDOWN:
+
+                    # Pressing g toggles between placing tiles ongrid and off.
+                    if event.key == pygame.K_g:
+                        self.onGrid = not self.onGrid
 
                     if event.key == pygame.K_LSHIFT:
                         self.holdShift = True
