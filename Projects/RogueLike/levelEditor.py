@@ -180,7 +180,7 @@ class LevelEditor:
                         self.leftClicking = True
                         # If the on grid is not toggled, then place the tiles off the grid.
                         if not self.onGrid:
-                            self.tilemap.offgridTiles.append({'type':self.assetType[self.indexType], 'variant': self.indexVariant, 'pos': (mousePos[0] + self.scroll[0], mousePos[1] + self.scroll[1])})
+                            self.tilemap.offgridTiles.append({'type':self.assetTypes[self.indexType], 'variant': self.indexVariant, 'pos': (mousePos[0] + self.scroll[0], mousePos[1] + self.scroll[1])})
                     if event.button == 3:
                         self.rightClicking = True
 
@@ -244,6 +244,9 @@ class LevelEditor:
                 # can be converted to numbers 
                 # 1 for True and 0 for False
                 if event.type == pygame.KEYDOWN:
+
+                    if event.key == pygame.K_o:
+                        self.tilemap.save('map.json')
 
                     # Pressing g toggles between placing tiles ongrid and off.
                     if event.key == pygame.K_g:
