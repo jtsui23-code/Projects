@@ -132,8 +132,8 @@ class LevelEditor:
                 # Displays the current image tile on the offgrid which the mouse position is in. 
                 self.display.blit(currentTileImg, mousePos)
             
-            # Once the player right clicks then that tile is placed down onto the screen and the tilemap.
-            if self.leftClicking:
+            # Once the player left clicks then that tile is placed down onto the screen and the tilemap and places on the grid.
+            if self.leftClicking and self.onGrid:
                 self.tilemap.tilemap[str(tilePos[0]) + ';' + str(tilePos[1])] = {'type': self.assetTypes[self.indexType], 'variant': self.indexVariant, 'pos': tilePos}
 
             # If the user right clicks and there exists a tile there, 
@@ -165,7 +165,9 @@ class LevelEditor:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
                         self.leftClicking = True
-                    
+                        # If the on grid is not toggled, then place the tiles off the grid.
+                        if not self.onGrid:
+                            self.tilemap.offgridTiles.append({'type':self.assetType[self.indexType], 'variant': self.indexVariant, 'pos': (mousePos[0] + self.scroll[0], mousePos[1] + self.scroll[1])})
                     if event.button == 3:
                         self.rightClicking = True
 
