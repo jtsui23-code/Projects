@@ -153,6 +153,11 @@ class LevelEditor:
                     # the off grid tile deletion works.
                     tileImg = self.assets[tile['type']][tile['variant']]
 
+                    # Makes the off grid tile image a pygame rectangle for collision detection.
+                    tileRect = pygame.Rect(tile['pos'][0] - self.scroll[0], tile['pos'][1] - self.scroll[1], tileImg.get_width(), tileImg.get_height())
+                    # Checks if the off grid tile is colliding with the mouse. 
+                    if tileRect.collidepoint(mousePos):
+                        self.tilemap.offgridTiles.remove(tile)
 
             # Checks for user input
             for event in pygame.event.get():
