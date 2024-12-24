@@ -1,4 +1,5 @@
 import pygame
+import json
 
 # Offsets to check neighboring tile positions around a given tile.
 # Includes the current tile (0, 0) and its 8 surrounding tiles.
@@ -145,3 +146,9 @@ class Tilemap:
                     # or the tiles will be really small since they are in pixel units 
                     # instead of tile size.
                     surface.blit(self.game.assets[tile['type']][tile['variant']], (tile['pos'][0] * self.tileSize - offset[0], tile['pos'][1] * self.tileSize - offset[1]))
+    
+    def save(self, path):
+        # Goes to the folder/path that is given and writes a json file there with all of the 
+        # information regarding the tilemap, tile size, and off grid tiles in that json.
+        file = open(path, 'w')
+        json.dump( {'type': self.tilemap, 'tileSize': self.tileSize, 'offgrid': self.offgridTiles}, file)
