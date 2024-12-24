@@ -41,6 +41,7 @@ class Game:
 
         self.display = pygame.Surface((320, 240))
 
+
         # Acts as the 'Camera' position
         self.scroll = [0,0]
 

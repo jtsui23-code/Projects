@@ -39,6 +39,12 @@ class LevelEditor:
 
         self.onGrid = True
 
+        # Attemps the load a premade map for continuation of level editing without crashing the program.
+        try:
+            self.tilemap.load('map.json')
+        except:
+            pass
+
         self.clock = pygame.time.Clock()
 
 
