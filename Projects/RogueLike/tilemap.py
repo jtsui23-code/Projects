@@ -150,5 +150,19 @@ class Tilemap:
     def save(self, path):
         # Goes to the folder/path that is given and writes a json file there with all of the 
         # information regarding the tilemap, tile size, and off grid tiles in that json.
+        # 'w' - write to file
         file = open(path, 'w')
-        json.dump( {'type': self.tilemap, 'tileSize': self.tileSize, 'offgrid': self.offgridTiles}, file)
+        json.dump( {'tilemap': self.tilemap, 'tileSize': self.tileSize, 'offgrid': self.offgridTiles}, file)
+
+
+    def load(self, path):
+        # Goes to the folder/path that is given and reads a json file there with all of the 
+        # information regarding the tilemap, tile size, and off grid tiles in that json.
+        # 'r' - read to file
+        file = open(path, 'r')
+        mapData = json.load(file)
+        file.close()
+
+        self.tilemap = mapData['tilemap']
+        self.tileSize = mapData['tileSize']
+        self.offgridTiles = mapData['offgrid']

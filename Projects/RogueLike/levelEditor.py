@@ -39,11 +39,7 @@ class LevelEditor:
 
         self.onGrid = True
 
-        # Attemps the load a premade map for continuation of level editing without crashing the program.
-        try:
-            self.tilemap.load('map.json')
-        except:
-            pass
+       
 
         self.clock = pygame.time.Clock()
 
@@ -70,6 +66,13 @@ class LevelEditor:
         # This is an array of the keys in the self.assets dictionary
         # so the list would contain ['newGrass', 'grass', 'stone']
         self.assetTypes = list(self.assets)
+
+
+         # Attemps the load a premade map for continuation of level editing without crashing the program.
+        try:
+            self.tilemap.load('map.json')
+        except FileNotFoundError:
+            pass
 
         # This variable will be used for indexing the 
         # keys in the self.assets or the 
