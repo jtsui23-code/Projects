@@ -1,5 +1,8 @@
 import pygame
 import json
+import tkinter as tk
+from tkinter import filedialog # Needed for browsing files to load for level editor.
+
 
 # Offsets to check neighboring tile positions around a given tile.
 # Includes the current tile (0, 0) and its 8 surrounding tiles.
@@ -155,14 +158,35 @@ class Tilemap:
         json.dump( {'tilemap': self.tilemap, 'tileSize': self.tileSize, 'offgrid': self.offgridTiles}, file)
 
 
-    def load(self, path):
-        # Goes to the folder/path that is given and reads a json file there with all of the 
-        # information regarding the tilemap, tile size, and off grid tiles in that json.
-        # 'r' - read to file
-        file = open(path, 'r')
-        mapData = json.load(file)
-        file.close()
+    def load(self, path=None):
+        
+        # This allows the user of the level editor to select the level they want to 
+        # continue to work on using a UI instead of coding in the path of the level for convience.
+        if path is None:
+            # Opens the file selected in UI.
+            path = filedialog.askopenfilename( 
+                # filetypes adds a filter for json files to only appear.
+                # The format is ( "[Text displayed]", "*[Filtered file]")
+                filetypes=[("JSON files", "*.json"), ("All files", "*.*")],
 
-        self.tilemap = mapData['tilemap']
-        self.tileSize = mapData['tileSize']
-        self.offgridTiles = mapData['offgrid']
+                # This is the text that will appear on the UI of the level loader.
+                title="Load Map"
+            )
+            
+            self.load(path)
+            # If the user picked a file in the level loader UI, load all of the contents from the json
+            if path:
+                try:
+                    # Goes to the folder/path that is given and reads a json file there with all of the 
+                    # information regarding the tilemap, tile size, and off grid tiles in that json.
+                    # 'r' - read to file
+                    with open(path, 'r') as file:
+                        mapData = json.load(file)
+                        file.close()
+                        self.tilemap = mapData['tilemap']
+                        self.tileSize = mapData['tileSize']
+                        self.offgridTiles = mapData['offgrid']
+                    return True
+                except FileNotFoundError:
+                    return False
+        return False

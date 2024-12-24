@@ -3,6 +3,7 @@ import pygame
 from utils import loadImages
 from tilemap import Tilemap
 
+
 # This is how much the images are being scaled up by to the window. 
 # If the RENDERSCALE is 2.0 then the images on the window are being 
 # enlarge by a factor of 2.
@@ -70,7 +71,7 @@ class LevelEditor:
 
          # Attemps the load a premade map for continuation of level editing without crashing the program.
         try:
-            self.tilemap.load('map.json')
+            self.tilemap.load
         except FileNotFoundError:
             pass
 
