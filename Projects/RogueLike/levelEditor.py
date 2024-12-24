@@ -144,6 +144,14 @@ class LevelEditor:
                 tileLoc = str(tilePos[0]) + ';' + str(tilePos[1])
                 if tileLoc in self.tilemap.tilemap:
                     del self.tilemap.tilemap[tileLoc]
+                
+                # A copy is made of the off grid tiles because the offgrid tile that is touching the right clicked mouse is getting 
+                # deleted.
+                for tile in self.tilemap.offgridTiles.copy():
+                    # Need to get the image of the off grid tiles because 
+                    # some of the aseets will be larger then others and this will influence how 
+                    # the off grid tile deletion works.
+                    tileImg = self.assets[tile['type']][tile['variant']]
 
 
             # Checks for user input
