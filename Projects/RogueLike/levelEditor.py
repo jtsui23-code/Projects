@@ -71,7 +71,7 @@ class LevelEditor:
 
          # Attemps the load a premade map for continuation of level editing without crashing the program.
         try:
-            self.tilemap.load
+            self.tilemap.load()
         except FileNotFoundError:
             pass
 

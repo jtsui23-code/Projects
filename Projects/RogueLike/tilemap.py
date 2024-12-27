@@ -163,6 +163,12 @@ class Tilemap:
         # This allows the user of the level editor to select the level they want to 
         # continue to work on using a UI instead of coding in the path of the level for convience.
         if path is None:
+            
+            # root is a window from the tkinter library 
+            # It is used to explicitly close the window UI for loading maps 
+            # because this saves memory.
+            root = tk.Tk()
+            root.withdraw()
             # Opens the file selected in UI.
             path = filedialog.askopenfilename( 
                 # filetypes adds a filter for json files to only appear.
@@ -172,8 +178,9 @@ class Tilemap:
                 # This is the text that will appear on the UI of the level loader.
                 title="Load Map"
             )
+
+            root.destroy()
             
-            self.load(path)
             # If the user picked a file in the level loader UI, load all of the contents from the json
             if path:
                 try:
