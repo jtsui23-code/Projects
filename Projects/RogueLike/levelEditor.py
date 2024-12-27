@@ -256,7 +256,7 @@ class LevelEditor:
                 if event.type == pygame.KEYDOWN:
 
                     if event.key == pygame.K_o:
-                        self.tilemap.save('map.json')
+                        self.tilemap.save('Media/levels/map.json')
 
                     # Pressing g toggles between placing tiles ongrid and off.
                     if event.key == pygame.K_g:

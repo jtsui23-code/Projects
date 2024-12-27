@@ -73,10 +73,13 @@ class Game:
 
     def loadMap(self, path):
 
-        self.tilemap.load('Media/levels' + str(path) + '.json')
+        print('Successful map load')
+        self.tilemap.load('Media/levels/' + str(path) + '.json')
         
     def run(self):
         while True:
+
+            self.loadMap(0)
 
             # Sets the background to an image at the position (0,0)
             self.display.blit(self.assets['background'], (0,0))
@@ -199,5 +202,5 @@ class Game:
             pygame.display.update()
             self.clock.tick(60)
 
-Game().loadMap()
-Game().run()
+game = Game()
+game.run()
