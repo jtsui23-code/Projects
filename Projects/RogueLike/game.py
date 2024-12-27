@@ -70,6 +70,10 @@ class Game:
         
         # Creating a tilemap object with the specified tile size
         self.tilemap = Tilemap(self, tileSize=16)
+
+    def loadMap(self, path):
+
+        self.tilemap.load('Media/levels' + str(path) + '.json')
         
     def run(self):
         while True:
@@ -195,4 +199,5 @@ class Game:
             pygame.display.update()
             self.clock.tick(60)
 
+Game().loadMap()
 Game().run()
