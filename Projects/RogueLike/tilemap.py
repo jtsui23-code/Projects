@@ -181,19 +181,20 @@ class Tilemap:
 
             root.destroy()
             
-            # If the user picked a file in the level loader UI, load all of the contents from the json
-            if path:
-                try:
-                    # Goes to the folder/path that is given and reads a json file there with all of the 
-                    # information regarding the tilemap, tile size, and off grid tiles in that json.
-                    # 'r' - read to file
-                    with open(path, 'r') as file:
-                        mapData = json.load(file)
-                        file.close()
-                        self.tilemap = mapData['tilemap']
-                        self.tileSize = mapData['tileSize']
-                        self.offgridTiles = mapData['offgrid']
-                    return True
-                except FileNotFoundError:
-                    return False
+        # If the user picked a file in the level loader UI, load all of the contents from the json
+        if path:
+            try:
+                # Goes to the folder/path that is given and reads a json file there with all of the 
+                # information regarding the tilemap, tile size, and off grid tiles in that json.
+                # 'r' - read to file
+                with open(path, 'r') as file:
+                    mapData = json.load(file)
+                    file.close()
+                    self.tilemap = mapData['tilemap']
+                    self.tileSize = mapData['tileSize']
+                    self.offgridTiles = mapData['offgrid']
+                return True
+            except FileNotFoundError:
+                return False
+            
         return False

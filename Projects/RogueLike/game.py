@@ -66,7 +66,7 @@ class Game:
 
         # Creating a player
         # Pass in a game, name, position and size
-        self.player = Character(self, 'player', (50, 50), (10, 17))
+        self.player = Character(self, 'player', (300, 240), (10, 17))
         
         # Creating a tilemap object with the specified tile size
         self.tilemap = Tilemap(self, tileSize=16)
