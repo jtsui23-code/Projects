@@ -71,6 +71,10 @@ class Game:
         # Creating a tilemap object with the specified tile size
         self.tilemap = Tilemap(self, tileSize=16)
 
+        # Loads the first map of the game.
+        self.loadMap(0)
+
+
     def loadMap(self, path):
 
         print('Successful map load')
@@ -79,7 +83,6 @@ class Game:
     def run(self):
         while True:
 
-            self.loadMap(0)
 
             # Sets the background to an image at the position (0,0)
             self.display.blit(self.assets['background'], (0,0))
