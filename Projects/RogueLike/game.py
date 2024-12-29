@@ -58,7 +58,10 @@ class Game:
         # accessable for the Tilemap class
         self.assets = {
             'background':pygame.transform.scale(loadImage('background.png'), (1240,840)),
-            'newGrass':pygame.transform.scale(loadImages('tiles/newGrass'), (16,16)),
+
+            # The new grass tiles have to be scaled down from 40 x 40 resolution to a 16 x 16 to 
+            # fix the slow tile generation.
+            'newGrass':[pygame.transform.scale(img, (16,16)) for img in loadImages('tiles/newGrass')],
             'grass': loadImages('tiles/grass'),
             'stone': loadImages('tiles/stone'),
             'player': pygame.transform.scale(loadImage('Player/edelgard.png'), (16, 20))  # Adjust the size to match the tiles
