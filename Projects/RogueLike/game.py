@@ -58,7 +58,7 @@ class Game:
         # accessable for the Tilemap class
         self.assets = {
             'background':pygame.transform.scale(loadImage('background.png'), (1240,840)),
-            'newGrass':loadImages('tiles/newGrass'),
+            'newGrass':pygame.transform.scale(loadImages('tiles/newGrass'), (16,16)),
             'grass': loadImages('tiles/grass'),
             'stone': loadImages('tiles/stone'),
             'player': pygame.transform.scale(loadImage('Player/edelgard.png'), (16, 20))  # Adjust the size to match the tiles
