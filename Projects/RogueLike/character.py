@@ -131,3 +131,9 @@ class Character:
     
     def speedUp(self, speed=1):
         self.speed *= speed
+
+
+class Player:
+
+    def __init__(self, game, pos, size):
+        
