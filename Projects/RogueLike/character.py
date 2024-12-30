@@ -187,3 +187,45 @@ class Player(Character):
             # The sword's swing begins behind the player and arcs forward.
             if self.flip:
                 angleRadian = math.pi - angleRadian
+            
+            # offsets are for where the hitboxs should be located during the swing attack.
+            offsetX = math.cos(angleRadian) * self.attackRadius
+            offsetY = math.sin(angleRadian) * self.attackRadius
+            
+            playerRect = self.rect()
+
+            # Updates the position of the hitbox of the swing attack.
+            self.attackHitbox.centerx = playerRect.centerx + offsetX
+            self.attackHitbox.centery = playerRect.centery + offsetY
+
+            # If the attack finishes, stop attacking and go into cooldown.
+            if self.attackFrame >= self.attackDuration:
+                self.attacking = False
+                self.cooldownCounter = self.attackCooldown
+
+    
+    def update(self, tilemap, movement=(0,0)):
+
+        super().update(tilemap, movement)
+        self.updateAttack()
+
+        if movement[0] > 0:
+            self.flip = False
+        if movement[0] < 0:
+            self.flip = True
+
+    def render(self, surface, offset=(0,0)):
+
+        super().render(surface, offset)
+
+
+        if self.attacking:
+            surface.blit(self.debug_surface,
+                         (self.attackHitbox.x - offset[0], 
+                          self.attackHitbox.y - offset[1]))
+            
+        playerRect = self.rect()
+        centerX = playerRect.centerx - offset[0]
+        centerY = playerRect.centery - offset[1]
+
+        
