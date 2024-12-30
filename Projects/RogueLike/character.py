@@ -43,6 +43,8 @@ class Character:
         
         # Collision flags for each direction - useful for gameplay mechanics and preventing movement
         self.collisions = {'up': False, 'down': False, 'right': False, 'left': False}
+
+        self.flip = False
     
     def rect(self):
         # Creates a pygame Rect for collision detection
@@ -145,9 +147,43 @@ class Player(Character):
 
         # Ceiling for how long an attack lasts.
         self.attackDuration = 20
-        
+
         self.attackCooldown = 30
         self.cooldownCounter = 0
         self.attackRadius = 40
         self.attackDmg = 10
         self.attackHitbox = pygame.Rect(0,0, 20, 20)
+
+        # Debug visualization
+        self.debug_surface = pygame.Surface((20, 20))
+        self.debug_surface.fill((255, 0, 0))
+        self.debug_surface.set_alpha(128)
+
+    
+    def attack(self):
+
+        if self.cooldownCounter <= 0 and not self.attacking:
+            self.attacking = True
+            self.attackFrame = 0
+
+    def updateAttack(self):
+
+        if self.cooldownCounter > 0:
+            self.cooldownCounter -= 1
+
+        if self.attacking:
+            self.attackFrame += 1
+
+            swingProgress = self.attackFrame / self.attackDuration
+
+            # Adding -45 to have the swing pull back from the player. 
+            # This is in degrees not radians.
+            currentAngle = -45 + (90 * swingProgress)
+
+            angleRadian = math.raidans(currentAngle)
+
+            # You minus by the angleRadian instead of adding because you 
+            # want the swing to start from lower 3rd quadrant. 
+            # The sword's swing begins behind the player and arcs forward.
+            if self.flip:
+                angleRadian = math.pi - angleRadian
