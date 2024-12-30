@@ -133,7 +133,21 @@ class Character:
         self.speed *= speed
 
 
-class Player:
+class Player(Character):
 
     def __init__(self, game, pos, size):
+        super().__init__(game,'player', pos, size)
+
+        self.attacking = False
+
+        # Counter for how long an attack is continuing.
+        self.attackFrame = 0
+
+        # Ceiling for how long an attack lasts.
+        self.attackDuration = 20
         
+        self.attackCooldown = 30
+        self.cooldownCounter = 0
+        self.attackRadius = 40
+        self.attackDmg = 10
+        self.attackHitbox = pygame.Rect(0,0, 20, 20)
