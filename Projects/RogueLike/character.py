@@ -182,7 +182,7 @@ class Player(Character):
             # This is in degrees not radians.
             currentAngle = -45 + (90 * swingProgress)
 
-            angleRadian = math.raidans(currentAngle)
+            angleRadian = math.radians(currentAngle)
 
             # You minus by the angleRadian instead of adding because you 
             # want the swing to start from lower 3rd quadrant. 
@@ -239,32 +239,32 @@ class Player(Character):
         centerX = playerRect.centerx - offset[0]
         centerY = playerRect.centery - offset[1]
 
-        # Draw the debug visualization of the full swing arc
-        # Loop through angles from -45 to +45 degrees in steps of 5
-        for angle in range(-45,46,5):
+        # # Draw the debug visualization of the full swing arc
+        # # Loop through angles from -45 to +45 degrees in steps of 5
+        # for angle in range(-45,46,5):
 
-            # Convert the current angle from degrees to radians for math calculations
-            rad = math.radians(angle)
+        #     # Convert the current angle from degrees to radians for math calculations
+        #     rad = math.radians(angle)
 
-            # If player is facing right, use the angle as is
-            if not self.flip:
+        #     # If player is facing right, use the angle as is
+        #     if not self.flip:
 
-                # Calculate point on the arc using trigonometry
-                # cos(angle) * radius = x position on the circle
-                # sin(angle) * radius = y position on the circle
-                x = centerX + math.cos(rad) * self.attackRadius
-                y = centerY + math.sin(rad) * self.attackRadius
+        #         # Calculate point on the arc using trigonometry
+        #         # cos(angle) * radius = x position on the circle
+        #         # sin(angle) * radius = y position on the circle
+        #         x = centerX + math.cos(rad) * self.attackRadius
+        #         y = centerY + math.sin(rad) * self.attackRadius
 
-            # If player is facing left, mirror the arc
-            else:
+        #     # If player is facing left, mirror the arc
+        #     else:
 
-                # π - angle mirrors the arc horizontally
-                rad = math.pi - rad
+        #         # π - angle mirrors the arc horizontally
+        #         rad = math.pi - rad
                 
-                # Calculate mirrored point on the arc
-                x = centerX + math.cos(rad) * self.attackRadius
-                y = centerY + math.sin(rad) * self.attackRadius
+        #         # Calculate mirrored point on the arc
+        #         x = centerX + math.cos(rad) * self.attackRadius
+        #         y = centerY + math.sin(rad) * self.attackRadius
 
-        # Draw a small green circle at each point along the arc
-        # Points must be integers for pygame's draw function
-        pygame.draw.circle(surface, (0, 255, 0), (int(x), int(y)), 2)
+        # # Draw a small green circle at each point along the arc
+        # # Points must be integers for pygame's draw function
+        # pygame.draw.circle(surface, (0, 255, 0), (int(x), int(y)), 2)

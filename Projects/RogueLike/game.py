@@ -1,7 +1,7 @@
 import sys
 import pygame
 from utils import loadImage, loadImages
-from character import Character
+from character import Character, Player
 from tilemap import Tilemap
 
 """
@@ -66,7 +66,7 @@ class Game:
 
         # Creating a player
         # Pass in a game, name, position and size
-        self.player = Character(self, 'player', (300, 240), (10, 17))
+        self.player = Player(self, (300, 240), (10, 17))
         
         # Creating a tilemap object with the specified tile size
         self.tilemap = Tilemap(self, tileSize=16)
@@ -116,6 +116,9 @@ class Game:
                 # 1 for True and 0 for False
                 if event.type == pygame.KEYDOWN:
 
+                    if event.key == pygame.K_k:
+                        self.player.attack()
+
                     if event.key ==pygame.K_LSHIFT:
                         self.player.speedUp(1.5)
 
@@ -157,6 +160,8 @@ class Game:
 
 
                 if event.type == pygame.KEYUP:
+
+                    
 
                     if event.key == pygame.K_LSHIFT:
                         self.player.speedUp(1)
