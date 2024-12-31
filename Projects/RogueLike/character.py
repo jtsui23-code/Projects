@@ -228,4 +228,19 @@ class Player(Character):
         centerX = playerRect.centerx - offset[0]
         centerY = playerRect.centery - offset[1]
 
+        for angle in range(-45,46,5):
+            rad = math.radians(angle)
+
+            if not self.flip:
+                x = centerX + math.cos(rad) * self.attackRadius
+                y = centerY + math.sin(rad) * self.attackRadius
+
+            else:
+                rad = math.pi - rad
+
+                x = centerX + math.cos(rad) * self.attackRadius
+                y = centerY + math.sin(rad) * self.attackRadius
+
+            pygame.draw.circle(surface, (0, 255, 0), (int(x), int(y)), 2)
+
         
