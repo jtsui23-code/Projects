@@ -213,38 +213,58 @@ class Player(Character):
         super().update(tilemap, movement)
         self.updateAttack()
 
+        # Checks the direction the player is moving to flip the swing attack.
         if movement[0] > 0:
             self.flip = False
         if movement[0] < 0:
             self.flip = True
 
     def render(self, surface, offset=(0,0)):
-
+        # Call the parent (Character) class's render method to draw the player sprite
         super().render(surface, offset)
 
-
+        # Only render attack-related visuals if we're currently attacking
         if self.attacking:
+        
+            # Draw the red semi-transparent attack hitbox
+            # Offset is subtracted to account for camera movement/screen scroll
             surface.blit(self.debug_surface,
                          (self.attackHitbox.x - offset[0], 
                           self.attackHitbox.y - offset[1]))
-            
+        
+        # Get the player's rectangle for positioning calculations
         playerRect = self.rect()
+        # Calculate the center point of the player on screen
+        # Subtract offset to convert world coordinates to screen coordinates
         centerX = playerRect.centerx - offset[0]
         centerY = playerRect.centery - offset[1]
 
+        # Draw the debug visualization of the full swing arc
+        # Loop through angles from -45 to +45 degrees in steps of 5
         for angle in range(-45,46,5):
+
+            # Convert the current angle from degrees to radians for math calculations
             rad = math.radians(angle)
 
+            # If player is facing right, use the angle as is
             if not self.flip:
+
+                # Calculate point on the arc using trigonometry
+                # cos(angle) * radius = x position on the circle
+                # sin(angle) * radius = y position on the circle
                 x = centerX + math.cos(rad) * self.attackRadius
                 y = centerY + math.sin(rad) * self.attackRadius
 
+            # If player is facing left, mirror the arc
             else:
-                rad = math.pi - rad
 
+                # π - angle mirrors the arc horizontally
+                rad = math.pi - rad
+                
+                # Calculate mirrored point on the arc
                 x = centerX + math.cos(rad) * self.attackRadius
                 y = centerY + math.sin(rad) * self.attackRadius
 
-            pygame.draw.circle(surface, (0, 255, 0), (int(x), int(y)), 2)
-
-        
+        # Draw a small green circle at each point along the arc
+        # Points must be integers for pygame's draw function
+        pygame.draw.circle(surface, (0, 255, 0), (int(x), int(y)), 2)
