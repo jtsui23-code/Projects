@@ -174,6 +174,8 @@ class Player(Character):
         if self.attacking:
             self.attackFrame += 1
 
+            # This calculates the ratio of progression for the basic attack
+            # and is needed for calulating how far the swing has moved.
             swingProgress = self.attackFrame / self.attackDuration
 
             # Adding -45 to have the swing pull back from the player. 
@@ -188,10 +190,12 @@ class Player(Character):
             if self.flip:
                 angleRadian = math.pi - angleRadian
             
-            # offsets are for where the hitboxs should be located during the swing attack.
+            # offsets are for where the hitboxs should be located during the swing attack
+            # which changes dynamically.
             offsetX = math.cos(angleRadian) * self.attackRadius
             offsetY = math.sin(angleRadian) * self.attackRadius
             
+            # Need to get the rect of the player for finding the player's center position.
             playerRect = self.rect()
 
             # Updates the position of the hitbox of the swing attack.
