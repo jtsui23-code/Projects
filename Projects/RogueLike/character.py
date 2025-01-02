@@ -213,6 +213,12 @@ class Player(Character):
             self.attackHitbox.centerx = playerRect.centerx + offsetX
             self.attackHitbox.centery = playerRect.centery + offsetY
 
+
+            # Stores the current hitbox into the slashTrail so the collision for the 
+            # trail remains after the next slash is rendered. This is needed or the previous 
+            # slash images will not detect collision with enemies.
+            self.slashTrail.append(self.attackHitbox.copy())
+
             # If the attack finishes, stop attacking and go into cooldown.
             if self.attackFrame >= self.attackDuration:
                 self.attacking = False
