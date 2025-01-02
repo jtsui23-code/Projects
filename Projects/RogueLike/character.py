@@ -219,10 +219,19 @@ class Player(Character):
             # slash images will not detect collision with enemies.
             self.slashTrail.append(self.attackHitbox.copy())
 
+            # This makes the slash trail tapper off if it gets to be too long 
+            # making the slash attack shorter the longer the attack lasts.
+            if len(self.slashTrail) > self.trailLength:
+                self.slashTrail.pop(0)
+
             # If the attack finishes, stop attacking and go into cooldown.
             if self.attackFrame >= self.attackDuration:
                 self.attacking = False
                 self.cooldownCounter = self.attackCooldown
+
+                # Rests the slash trail to none or else the slash will remain on the window even after
+                # the slash attack is over.
+                self.slashTrail.clear()
 
     
     def update(self, tilemap, movement=(0,0)):
