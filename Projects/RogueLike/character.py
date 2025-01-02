@@ -154,6 +154,8 @@ class Player(Character):
         self.attackDmg = 10
         self.attackHitbox = pygame.Rect(0,0, 20, 20)
 
+        self.slashTrail = []
+
         # Debug visualization
         self.debug_surface = pygame.Surface((20, 20))
         self.debug_surface.fill((255, 0, 0))
