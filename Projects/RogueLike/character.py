@@ -174,6 +174,9 @@ class Player(Character):
             self.attacking = True
             self.attackFrame = 0
 
+            # Deletes the trails of the slash attack.
+            self.slashTrail.clear()
+
     def updateAttack(self):
 
         if self.cooldownCounter > 0:
