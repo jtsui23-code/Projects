@@ -62,6 +62,7 @@ class Game:
             'grass': loadImages('tiles/grass'),
             'stone': loadImages('tiles/stone'),
             'player': pygame.transform.scale(loadImage('Player/edelgard.png'), (16, 20))  # Adjust the size to match the tiles
+            
         }
 
         # Creating a player
