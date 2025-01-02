@@ -156,7 +156,7 @@ class Player(Character):
 
         self.slashTrail = []
 
-        self.trailLength = 10
+        self.trailLength = 30
 
 
         # Debug visualization
