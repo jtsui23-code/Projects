@@ -156,10 +156,16 @@ class Player(Character):
 
         self.slashTrail = []
 
+        self.trailLength = 5
+
+
         # Debug visualization
-        self.debug_surface = pygame.Surface((20, 20))
-        self.debug_surface.fill((255, 0, 0))
-        self.debug_surface.set_alpha(128)
+
+
+
+        self.debugSurfaces = pygame.Surface((20, 20))
+        self.debugSurfaces.fill((255, 0, 0))
+        self.debugSurfaces.set_alpha(128)
 
     
     def attack(self):
@@ -230,7 +236,7 @@ class Player(Character):
         
             # Draw the red semi-transparent attack hitbox
             # Offset is subtracted to account for camera movement/screen scroll
-            surface.blit(self.debug_surface,
+            surface.blit(self.debugSurfaces,
                          (self.attackHitbox.x - offset[0], 
                           self.attackHitbox.y - offset[1]))
         
