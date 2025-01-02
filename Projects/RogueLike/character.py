@@ -156,7 +156,7 @@ class Player(Character):
 
         self.slashTrail = []
 
-        self.trailLength = 5
+        self.trailLength = 10
 
 
         # Debug visualization
@@ -254,8 +254,8 @@ class Player(Character):
 
             for slashTrailPos in self.slashTrail:
                 surface.blit(self.debugSurfaces, 
-                             slashTrailPos.x - offset[0],
-                             slashTrailPos.y - offset[1])
+                             (slashTrailPos.x - offset[0],
+                             slashTrailPos.y - offset[1]))
         
             # Draw the red semi-transparent attack hitbox
             # Offset is subtracted to account for camera movement/screen scroll
