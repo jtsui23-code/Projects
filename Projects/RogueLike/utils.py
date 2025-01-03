@@ -8,7 +8,7 @@ BasePath = 'Media/Assets/'
 def loadImage(path):
     # Load a single image and prepare it for game use
     # Convert the image for faster rendering - critical for performance in pygame
-    img = pygame.image.load(BasePath + path).convert()
+    img = pygame.image.load(BasePath + path).convert_alpha()
     
     # Set black as the transparent color (0,0,0)
     # This ensures sprites with black backgrounds display correctly in the game
