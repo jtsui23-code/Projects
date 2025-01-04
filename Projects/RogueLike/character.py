@@ -166,15 +166,15 @@ class Player(Character):
         self.slashImgRight = self.game.assets['slashRight']
         self.slashImgLeft = self.game.assets['slashRight']
 
-        # Need width and height for proper positioning of the slash image in 
-        # respect to the player position.
-        self.slashWidth = self.slashImg.get_width()
-        self.slashHeight = self.slashing.get_height()
+        # # Need width and height for proper positioning of the slash image in 
+        # # respect to the player position.
+        # self.slashWidth = self.slashImg.get_width()
+        # self.slashHeight = self.slashing.get_height()
 
     
-        self.debugSurfaces = pygame.Surface((20, 20))
-        self.debugSurfaces.fill((255, 0, 0))
-        self.debugSurfaces.set_alpha(128)
+        # self.debugSurfaces = pygame.Surface((20, 20))
+        # self.debugSurfaces.fill((255, 0, 0))
+        # self.debugSurfaces.set_alpha(128)
 
     
     def attack(self):
