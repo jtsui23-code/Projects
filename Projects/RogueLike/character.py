@@ -164,7 +164,7 @@ class Player(Character):
 
         # There are two slash images because the slah will be directed.
         self.slashImgRight = self.game.assets['slashRight']
-        self.slashImgLeft = self.game.assets['slashRight']
+        self.slashImgLeft = self.game.assets['slashLeft']
 
         # # Need width and height for proper positioning of the slash image in 
         # # respect to the player position.
