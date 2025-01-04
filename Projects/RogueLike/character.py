@@ -162,11 +162,16 @@ class Player(Character):
         # Debug visualization
 
 
-        # There are two slash images because the slah will be rotated.
-        self.slashImg = self.game.assets['slashRight']
-        self.slashOriginal = self.game.assets['slashRight']
+        # There are two slash images because the slah will be directed.
+        self.slashImgRight = self.game.assets['slashRight']
+        self.slashImgLeft = self.game.assets['slashRight']
 
+        # Need width and height for proper positioning of the slash image in 
+        # respect to the player position.
+        self.slashWidth = self.slashImg.get_width()
+        self.slashHeight = self.slashing.get_height()
 
+    
         self.debugSurfaces = pygame.Surface((20, 20))
         self.debugSurfaces.fill((255, 0, 0))
         self.debugSurfaces.set_alpha(128)
@@ -204,6 +209,7 @@ class Player(Character):
             # The sword's swing begins behind the player and arcs forward.
             if self.flip:
                 angleRadian = math.pi - angleRadian
+
             
             # offsets are for where the hitboxs should be located during the swing attack
             # which changes dynamically.
@@ -218,10 +224,16 @@ class Player(Character):
             self.attackHitbox.centery = playerRect.centery + offsetY
 
 
-            # Stores the current hitbox into the slashTrail so the collision for the 
+            # This a temp slash varaible for appending to the slashTrail based on if the character is flipped.
+            currentSlash = self.slashImgLeft if self.flip else self.slashImgRight
+
+
+            # Stores the current hitbox and slash image into the slashTrail so the collision for the 
             # trail remains after the next slash is rendered. This is needed or the previous 
             # slash images will not detect collision with enemies.
-            self.slashTrail.append(self.attackHitbox.copy())
+
+            self.slashTrail.append( {'hitbox':self.attackHitbox.copy(),
+                                     'slash':currentSlash})
 
             # This makes the slash trail tapper off if it gets to be too long 
             # making the slash attack shorter the longer the attack lasts.
