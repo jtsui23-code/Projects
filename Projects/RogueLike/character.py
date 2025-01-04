@@ -162,7 +162,11 @@ class Player(Character):
         # Debug visualization
 
 
-        
+        # There are two slash images because the slah will be rotated.
+        self.slashImg = self.game.assets['slashRight']
+        self.slashOriginal = self.game.assets['slashRight']
+
+
         self.debugSurfaces = pygame.Surface((20, 20))
         self.debugSurfaces.fill((255, 0, 0))
         self.debugSurfaces.set_alpha(128)
