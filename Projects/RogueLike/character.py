@@ -162,7 +162,7 @@ class Player(Character):
         # Debug visualization
 
 
-
+        
         self.debugSurfaces = pygame.Surface((20, 20))
         self.debugSurfaces.fill((255, 0, 0))
         self.debugSurfaces.set_alpha(128)

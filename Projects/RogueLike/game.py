@@ -61,7 +61,9 @@ class Game:
             'newGrass': loadImages('tiles/newGrass'),
             'grass': loadImages('tiles/grass'),
             'stone': loadImages('tiles/stone'),
-            'player': pygame.transform.scale(loadImage('Player/slashCharacter.png'), (16, 20))  # Adjust the size to match the tiles
+            'player': pygame.transform.scale(loadImage('Player/slashCharacter.png'), (16, 20)),  # Adjust the size to match the tiles
+            'slashRight':loadImage('slashAttack/slashRgiht.png'),
+            'slashLeft':loadImage('slashAttack/slashLeft')
         }
 
         # Creating a player
