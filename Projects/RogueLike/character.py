@@ -269,55 +269,21 @@ class Player(Character):
         if self.attacking:
 
             for slashPos in self.slashTrail:
-
+                
+                # Gets the width and the height of each slash image 
+                # needed for positioning their hitboxes properly.
                 slashWidth = slashPos['slash'].get_width()
                 slashHeight = slashPos['slash'].get_height()
 
-                renderX = slashPos['slash'].centerx - slashWidth // 2 - offset[0]
-                renderY = slashPos['slash'].centery - slashHeight // 2 - offset[1]
+                # Positions slash image based on the center of the hit box which is 
+                # why the slash image's width is divided by 2 to get the middle of the image 
+                # and the offset is for the 'camera'.
+                renderX = slashPos['hitbox'].centerx - slashWidth // 2 - offset[0]
+                renderY = slashPos['hitbox'].centery - slashHeight // 2 - offset[1]
 
                 surface.blit(slashPos['slash'], (renderX, renderY))
                 
         
-            # Draw the red semi-transparent attack hitbox
-            # Offset is subtracted to account for camera movement/screen scroll
-            surface.blit(self.debugSurfaces,
-                         (self.attackHitbox.x - offset[0], 
-                          self.attackHitbox.y - offset[1]))
-        
-        # Get the player's rectangle for positioning calculations
-        playerRect = self.rect()
-        # Calculate the center point of the player on screen
-        # Subtract offset to convert world coordinates to screen coordinates
-        centerX = playerRect.centerx - offset[0]
-        centerY = playerRect.centery - offset[1]
+           
 
-        # # Draw the debug visualization of the full swing arc
-        # # Loop through angles from -45 to +45 degrees in steps of 5
-        # for angle in range(-45,46,5):
-
-        #     # Convert the current angle from degrees to radians for math calculations
-        #     rad = math.radians(angle)
-
-        #     # If player is facing right, use the angle as is
-        #     if not self.flip:
-
-        #         # Calculate point on the arc using trigonometry
-        #         # cos(angle) * radius = x position on the circle
-        #         # sin(angle) * radius = y position on the circle
-        #         x = centerX + math.cos(rad) * self.attackRadius
-        #         y = centerY + math.sin(rad) * self.attackRadius
-
-        #     # If player is facing left, mirror the arc
-        #     else:
-
-        #         # π - angle mirrors the arc horizontally
-        #         rad = math.pi - rad
-                
-        #         # Calculate mirrored point on the arc
-        #         x = centerX + math.cos(rad) * self.attackRadius
-        #         y = centerY + math.sin(rad) * self.attackRadius
-
-        # # Draw a small green circle at each point along the arc
-        # # Points must be integers for pygame's draw function
-        # pygame.draw.circle(surface, (0, 255, 0), (int(x), int(y)), 2)
+       
