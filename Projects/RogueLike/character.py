@@ -268,10 +268,16 @@ class Player(Character):
         # Only render attack-related visuals if we're currently attacking
         if self.attacking:
 
-            for slashTrailPos in self.slashTrail:
-                surface.blit(self.debugSurfaces, 
-                             (slashTrailPos.x - offset[0],
-                             slashTrailPos.y - offset[1]))
+            for slashPos in self.slashTrail:
+
+                slashWidth = slashPos['slash'].get_width()
+                slashHeight = slashPos['slash'].get_height()
+
+                renderX = slashPos['slash'].centerx - slashWidth // 2 - offset[0]
+                renderY = slashPos['slash'].centery - slashHeight // 2 - offset[1]
+
+                surface.blit(slashPos['slash'], (renderX, renderY))
+                
         
             # Draw the red semi-transparent attack hitbox
             # Offset is subtracted to account for camera movement/screen scroll
