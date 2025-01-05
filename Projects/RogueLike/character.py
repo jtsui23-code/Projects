@@ -200,6 +200,11 @@ class Player(Character):
             # player and the mouse position. 
             # The attack angle derived from arc tan will be where the slash attack occurs. 
             self.attackAngle = math.atan(dy/dx)
+
+            # If dx is negative, then set flip to True.
+            # If dx is positive, then set flip to False.
+            # This is because (0,0) is at the top left of the window in Pygames.
+            self.flip = dx < 0
         
 
             # Deletes the trails of the slash attack.
