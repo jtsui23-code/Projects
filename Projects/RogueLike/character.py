@@ -183,6 +183,9 @@ class Player(Character):
         if self.cooldownCounter <= 0 and not self.attacking:
             self.attacking = True
             self.attackFrame = 0
+            
+            # Need mouse posiiton to determine where the slash attack will be directed.
+            mousePos = pygame.mouse.get_pos()
 
             # Deletes the trails of the slash attack.
             self.slashTrail.clear()
