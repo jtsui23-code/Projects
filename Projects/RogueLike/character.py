@@ -166,7 +166,7 @@ class Player(Character):
         self.slashImgRight = self.game.assets['slashRight']
         self.slashImgLeft = self.game.assets['slashLeft']
         
-        self.attackAngle = 30
+        self.attackAngle = 0
         # # Need width and height for proper positioning of the slash image in 
         # # respect to the player position.
         # self.slashWidth = self.slashImg.get_width()
@@ -178,7 +178,7 @@ class Player(Character):
         # self.debugSurfaces.set_alpha(128)
 
     
-    def attack(self):
+    def attack(self,offset=(0,0)):
 
         if self.cooldownCounter <= 0 and not self.attacking:
             self.attacking = True
@@ -186,6 +186,21 @@ class Player(Character):
             
             # Need mouse posiiton to determine where the slash attack will be directed.
             mousePos = pygame.mouse.get_pos()
+            playerRect = self.rect()
+
+            # Need to account for offset because of the moving 'camera'
+            playerCenterX = playerRect.centerx - offset[0]
+            playerCenterY = playerRect.centery - offset[1]
+
+            # Calculating angle between the player and the mouse.
+            dx = mousePos[0] - playerCenterX
+            dy = mousePos[1] - playerCenterY
+
+            # Arc Tan is used because it gives you the angle opposite and adjacent distances between the 
+            # player and the mouse position. 
+            # The attack angle derived from arc tan will be where the slash attack occurs. 
+            self.attackAngle = math.atan(dy/dx)
+        
 
             # Deletes the trails of the slash attack.
             self.slashTrail.clear()
