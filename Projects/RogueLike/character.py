@@ -222,23 +222,25 @@ class Player(Character):
             # and is needed for calulating how far the swing has moved.
             swingProgress = self.attackFrame / self.attackDuration
 
-            # Adding -45 to have the swing pull back from the player. 
-            # This is in degrees not radians.
-            currentAngle = -45 + (90 * swingProgress)
 
-            angleRadian = math.radians(currentAngle)
-
-            # You minus by the angleRadian instead of adding because you 
-            # want the swing to start from lower 3rd quadrant. 
-            # The sword's swing begins behind the player and arcs forward.
-            if self.flip:
-                angleRadian = math.pi - angleRadian
-
+            # Swing arc is how large of an angle the slash is being swong
+            # which is this case it will be 90 degrees in radians since pygame uses radians.
+            swingArc = math.pi / 2
             
+            # The attack angle is the angle between the player and the mouse position whch is where the 
+            # slash attack will start.
+            # The reason the attackAngle is subtracted with (swingArc / 2) or 45 degrees is 
+            # to have the swing pull back from the player making a full swing animation.
+            # In other words, self.attackAngle - (swingArc / 2) offsets the beginning of the slash attack
+            # to create a full slash attack while (swingArc * swingProgress) increments the slash attack 
+            # based on the attack frames.
+            currentAngle = self.attackAngle - (swingArc / 2)  + (swingArc * swingProgress)
+            
+
             # offsets are for where the hitboxs should be located during the swing attack
             # which changes dynamically.
-            offsetX = math.cos(angleRadian) * self.attackRadius
-            offsetY = math.sin(angleRadian) * self.attackRadius
+            offsetX = math.cos(currentAngle) * self.attackRadius
+            offsetY = math.sin(currentAngle) * self.attackRadius
             
             # Need to get the rect of the player for finding the player's center position.
             playerRect = self.rect()
@@ -255,9 +257,10 @@ class Player(Character):
             # Stores the current hitbox and slash image into the slashTrail so the collision for the 
             # trail remains after the next slash is rendered. This is needed or the previous 
             # slash images will not detect collision with enemies.
-
+            # Need 'angle' for proper rotation of the slash attack.
             self.slashTrail.append( {'hitbox':self.attackHitbox.copy(),
-                                     'slash':currentSlash})
+                                     'slash':currentSlash,
+                                     'angle': currentAngle})
 
             # This makes the slash trail tapper off if it gets to be too long 
             # making the slash attack shorter the longer the attack lasts.
