@@ -277,7 +277,7 @@ class Player(Character):
                 self.slashTrail.clear()
 
     
-    def update(self, tilemap, movement=(0,0)):
+    def update(self, tilemap, movement=(0,0), offset=(0,0)):
 
         super().update(tilemap, movement)
         self.updateAttack()
@@ -287,8 +287,7 @@ class Player(Character):
             self.flip = False
         if movement[0] < 0:
             self.flip = True
-
-        # Flips slash attack based off of mouse position.
+        
         
 
     def render(self, surface, offset=(0,0)):
@@ -299,6 +298,8 @@ class Player(Character):
         if self.attacking:
 
             for slashPos in self.slashTrail:
+
+                slashImg = slashPos['slash']
                 
                 # Gets the width and the height of each slash image 
                 # needed for positioning their hitboxes properly.
@@ -310,6 +311,21 @@ class Player(Character):
                 # and the offset is for the 'camera'.
                 renderX = slashPos['hitbox'].centerx - slashWidth // 2 - offset[0]
                 renderY = slashPos['hitbox'].centery - slashHeight // 2 - offset[1]
+
+                # Renders the slash image's position based on the rotated angle of the image to the player.
+                angle = math.degrees(slashPos['angle'])
+
+                # Need to rotate the image so the slash can face upwards and downwards depending on the mouse position. 
+                # Also need to account for a flipped player where the slash will be rotated to the left horizontally. 
+                rotatedSlash = pygame.transform.rotate(slashImg - angle if not self.flip else angle + 180)
+
+                # Adjust the positioning of the slashes based on the rotation or else there 
+                # will be inconsistent slash lengths based on different rotated slashes.
+                # The // 2 is there to center the position of the rotatedSlash
+                rotatedSlashWidth = rotatedSlash.get_width()
+                rotatedSlashHeight = rotatedSlash.get_height()
+                renderX -= (rotatedSlashWidth - slashWidth) // 2
+                renderY -= (rotatedSlashHeight - slashHeight)  // 2
 
                 surface.blit(slashPos['slash'], (renderX, renderY))
                 
