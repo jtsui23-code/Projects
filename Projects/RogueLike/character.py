@@ -282,11 +282,14 @@ class Player(Character):
         super().update(tilemap, movement)
         self.updateAttack()
 
-        # Checks the direction the player is moving to flip the swing attack.
+        # Flips player based off of horizontal movement.
         if movement[0] > 0:
             self.flip = False
         if movement[0] < 0:
             self.flip = True
+
+        # Flips slash attack based off of mouse position.
+        
 
     def render(self, surface, offset=(0,0)):
         # Call the parent (Character) class's render method to draw the player sprite
