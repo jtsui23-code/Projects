@@ -317,7 +317,9 @@ class Player(Character):
 
                 # Need to rotate the image so the slash can face upwards and downwards depending on the mouse position. 
                 # Also need to account for a flipped player where the slash will be rotated to the left horizontally. 
-                rotatedSlash = pygame.transform.rotate(slashImg - angle if not self.flip else angle + 180)
+                # Have to use negative angle for none flipped player because pygame's rotation is backwards. 
+                # Positive angles go clockwise in Pygame while normally in math positive angles go counterclockwise
+                rotatedSlash = pygame.transform.rotate(slashImg, -angle if not self.flip else angle + 180)
 
                 # Adjust the positioning of the slashes based on the rotation or else there 
                 # will be inconsistent slash lengths based on different rotated slashes.
