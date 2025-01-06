@@ -110,6 +110,11 @@ class Game:
                     pygame.quit()
                     sys.exit()
                 
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    
+                    if event.button == 1:
+                        self.player.attack()
+                
                 # Checks if any keys have been pressed
                 # Making the index in the movement
                 # array equal to True indicates movement
@@ -118,8 +123,6 @@ class Game:
                 # 1 for True and 0 for False
                 if event.type == pygame.KEYDOWN:
 
-                    if event.key == pygame.K_k:
-                        self.player.attack()
 
                     if event.key ==pygame.K_LSHIFT:
                         self.player.speedUp(1.5)

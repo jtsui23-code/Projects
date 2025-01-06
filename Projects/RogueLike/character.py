@@ -157,9 +157,7 @@ class Player(Character):
         self.slashTrail = []
 
         self.trailLength = 30
-
-
-        # Debug visualization
+        self.attackFlip = False
 
 
         # There are two slash images because the slah will be directed.
@@ -167,16 +165,6 @@ class Player(Character):
         self.slashImgLeft = self.game.assets['slashLeft']
         
         self.attackAngle = 0
-        # # Need width and height for proper positioning of the slash image in 
-        # # respect to the player position.
-        # self.slashWidth = self.slashImg.get_width()
-        # self.slashHeight = self.slashing.get_height()
-
-    
-        # self.debugSurfaces = pygame.Surface((20, 20))
-        # self.debugSurfaces.fill((255, 0, 0))
-        # self.debugSurfaces.set_alpha(128)
-
     
     def attack(self,offset=(0,0)):
 
@@ -196,15 +184,20 @@ class Player(Character):
             dx = mousePos[0] - playerCenterX
             dy = mousePos[1] - playerCenterY
 
-            # Arc Tan is used because it gives you the angle opposite and adjacent distances between the 
-            # player and the mouse position. 
-            # The attack angle derived from arc tan will be where the slash attack occurs. 
-            self.attackAngle = math.atan(dy/dx)
+            if dx == 0:
+                # If the user slashes with the mouse hovering over the player, 
+                # slash up if the mouse is above the player and down if the mouse is below the player.
+                self.attackAngle = math.pi / 2 if dy > 0 else math.pi / -2 
+            else:
+                # Arc Tan2 is used because it gives you the angle opposite and adjacent distances between the 
+                # player and the mouse position. 
+                # The attack angle derived from arc tan will be where the slash attack occurs. 
+                self.attackAngle = math.atan2(dy/dx)
 
             # If dx is negative, then set flip to True.
             # If dx is positive, then set flip to False.
             # This is because (0,0) is at the top left of the window in Pygames.
-            self.flip = dx < 0
+            self.attackFlip = dx < 0
         
 
             # Deletes the trails of the slash attack.
@@ -319,7 +312,7 @@ class Player(Character):
                 # Also need to account for a flipped player where the slash will be rotated to the left horizontally. 
                 # Have to use negative angle for none flipped player because pygame's rotation is backwards. 
                 # Positive angles go clockwise in Pygame while normally in math positive angles go counterclockwise
-                rotatedSlash = pygame.transform.rotate(slashImg, -angle if not self.flip else angle + 180)
+                rotatedSlash = pygame.transform.rotate(slashImg, -angle if not self.attackFlip else angle + 180)
 
                 # Adjust the positioning of the slashes based on the rotation or else there 
                 # will be inconsistent slash lengths based on different rotated slashes.
