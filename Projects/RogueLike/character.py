@@ -156,7 +156,7 @@ class Player(Character):
 
         self.slashTrail = []
 
-        self.trailLength = 30
+        self.trailLength = 10
         self.attackFlip = False
 
 
@@ -192,12 +192,11 @@ class Player(Character):
                 # Arc Tan2 is used because it gives you the angle opposite and adjacent distances between the 
                 # player and the mouse position. 
                 # The attack angle derived from arc tan will be where the slash attack occurs. 
-                self.attackAngle = math.atan2(dy/dx)
+                self.attackAngle = math.atan2(dy, dx)
 
-            # If dx is negative, then set flip to True.
-            # If dx is positive, then set flip to False.
-            # This is because (0,0) is at the top left of the window in Pygames.
-            self.attackFlip = dx < 0
+            # The slash attack is flipped if the angle of the is in the 2nd quadrant.
+
+            self.attackFlip = abs(self.attackAngle) > math.pi / 2 
         
 
             # Deletes the trails of the slash attack.
@@ -227,8 +226,14 @@ class Player(Character):
             # In other words, self.attackAngle - (swingArc / 2) offsets the beginning of the slash attack
             # to create a full slash attack while (swingArc * swingProgress) increments the slash attack 
             # based on the attack frames.
-            currentAngle = self.attackAngle - (swingArc / 2)  + (swingArc * swingProgress)
-            
+            if not self.attackFlip:
+                currentAngle = self.attackAngle - (swingArc / 2)  + (swingArc * swingProgress)
+
+            # When the slash attack is flipped facing the left then instead of - (swingArc / 2)
+            # it's + (swingArc / 2) since it's the opposite direction.
+            else:
+                currentAngle = self.attackAngle + (swingArc / 2)  + (swingArc * swingProgress)
+
 
             # offsets are for where the hitboxs should be located during the swing attack
             # which changes dynamically.
@@ -244,7 +249,7 @@ class Player(Character):
 
 
             # This a temp slash varaible for appending to the slashTrail based on if the character is flipped.
-            currentSlash = self.slashImgLeft if self.flip else self.slashImgRight
+            currentSlash = self.slashImgLeft if self.attackFlip else self.slashImgRight
 
 
             # Stores the current hitbox and slash image into the slashTrail so the collision for the 

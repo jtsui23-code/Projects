@@ -113,7 +113,7 @@ class Game:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     
                     if event.button == 1:
-                        self.player.attack()
+                        self.player.attack(offset=renderScroll)
                 
                 # Checks if any keys have been pressed
                 # Making the index in the movement
