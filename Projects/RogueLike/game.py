@@ -99,7 +99,7 @@ class Game:
             
             # Makes the player move on the window 
             self.player.update(self.tilemap, (self.movement[1] - self.movement[0], self.movement[3] - self.movement[2]))
-            self.player.render(self.display, renderScroll)
+            self.player.render(self.display, offset=renderScroll)
             
             # Checks for user input
             for event in pygame.event.get():

@@ -229,10 +229,10 @@ class Player(Character):
             if not self.attackFlip:
                 currentAngle = self.attackAngle - (swingArc / 2)  + (swingArc * swingProgress)
 
-            # When the slash attack is flipped facing the left then instead of - (swingArc / 2)
-            # it's + (swingArc / 2) since it's the opposite direction.
+            # When the slash attack is flipped facing the left then the signs are flipped becasuse 
+            # of the slash attack is directed in the opposite direction.
             else:
-                currentAngle = self.attackAngle + (swingArc / 2)  + (swingArc * swingProgress)
+                currentAngle = self.attackAngle + (swingArc / 2)  - (swingArc * swingProgress)
 
 
             # offsets are for where the hitboxs should be located during the swing attack
@@ -275,7 +275,7 @@ class Player(Character):
                 self.slashTrail.clear()
 
     
-    def update(self, tilemap, movement=(0,0), offset=(0,0)):
+    def update(self, tilemap, movement=(0,0)):
 
         super().update(tilemap, movement)
         self.updateAttack()
