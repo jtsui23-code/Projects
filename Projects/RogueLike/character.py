@@ -190,9 +190,9 @@ class Player(Character):
             # The attack angle derived from arc tan will be where the slash attack occurs. 
             self.attackAngle = math.atan2(dy, dx)
 
-            # The slash attack is flipped if the angle of the is in the 2nd quadrant.
-
-            self.attackFlip = abs(self.attackAngle) > math.pi / 2 
+            # Determines to flip the slash attack depending on the distance between the player 
+            # and the mouse position.
+            self.attackFlip = dx < 0
         
 
             # Deletes the trails of the slash attack.
