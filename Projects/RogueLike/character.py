@@ -223,12 +223,12 @@ class Player(Character):
             # to create a full slash attack while (swingArc * swingProgress) increments the slash attack 
             # based on the attack frames.
             if not self.attackFlip:
-                currentAngle = self.attackAngle - (swingArc / 2)  + (swingArc * swingProgress)
+                currentAngle = self.attackAngle + (swingArc / 2)  - (swingArc * swingProgress)
 
             # When the slash attack is flipped facing the left then the signs are flipped becasuse 
             # of the slash attack is directed in the opposite direction.
             else:
-                currentAngle = self.attackAngle - (swingArc / 2)  - (swingArc * swingProgress)
+                currentAngle = self.attackAngle - (swingArc / 2)  + (swingArc * swingProgress)
 
 
             # offsets are for where the hitboxs should be located during the swing attack
@@ -315,7 +315,7 @@ class Player(Character):
                 # Have to use negative angle for none flipped player because pygame's rotation is backwards. 
                 # Positive angles go clockwise in Pygame while normally in math positive angles go counterclockwise
                 if self.attackFlip:
-                    rotatedSlash = pygame.transform.rotate(slashImg, angle + 180)
+                    rotatedSlash = pygame.transform.rotate(slashImg, angle)
                 else:
                     rotatedSlash = pygame.transform.rotate(slashImg, -angle)
 
