@@ -184,15 +184,11 @@ class Player(Character):
             dx = mousePos[0] - playerCenterX
             dy = mousePos[1] - playerCenterY
 
-            if dx == 0:
-                # If the user slashes with the mouse hovering over the player, 
-                # slash up if the mouse is above the player and down if the mouse is below the player.
-                self.attackAngle = math.pi / 2 if dy > 0 else math.pi / -2 
-            else:
-                # Arc Tan2 is used because it gives you the angle opposite and adjacent distances between the 
-                # player and the mouse position. 
-                # The attack angle derived from arc tan will be where the slash attack occurs. 
-                self.attackAngle = math.atan2(dy, dx)
+           
+            # Arc Tan2 is used because it gives you the angle opposite and adjacent distances between the 
+            # player and the mouse position. 
+            # The attack angle derived from arc tan will be where the slash attack occurs. 
+            self.attackAngle = math.atan2(dy, dx)
 
             # The slash attack is flipped if the angle of the is in the 2nd quadrant.
 
