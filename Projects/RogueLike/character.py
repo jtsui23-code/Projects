@@ -177,6 +177,8 @@ class Player(Character):
             playerRect = self.rect()
 
             # Account for the scaling of the screen and display in the game.
+            # If do not account for the scaling of the scrren and the display, the 
+            # slash attack will not occur for upward and leftward slashes.
             scaleFactor = self.game.screen.get_width() / self.game.display.get_width()
             # Need to account for offset because of the moving 'camera'
             playerCenterX = (playerRect.centerx - offset[0]) * scaleFactor
