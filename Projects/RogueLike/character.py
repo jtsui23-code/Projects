@@ -224,14 +224,7 @@ class Player(Character):
             # In other words, self.attackAngle - (swingArc / 2) offsets the beginning of the slash attack
             # to create a full slash attack while (swingArc * swingProgress) increments the slash attack 
             # based on the attack frames.
-            # if not self.attackFlip:
             currentAngle = self.attackAngle - (swingArc / 2)  + (swingArc * swingProgress)
-
-            # # When the slash attack is flipped facing the left then the signs are flipped becasuse 
-            # # of the slash attack is directed in the opposite direction.
-            # else:
-            #     currentAngle = self.attackAngle - (swingArc / 2)  + (swingArc * swingProgress)
-
 
             # offsets are for where the hitboxs should be located during the swing attack
             # which changes dynamically.
