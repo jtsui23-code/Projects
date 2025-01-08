@@ -176,6 +176,8 @@ class Player(Character):
             mousePos = pygame.mouse.get_pos()
             playerRect = self.rect()
 
+            # Account for the scaling of the screen and display in the game.
+            scaleFactor = self.game.screen.get_width() / self.game.display.get_width()
             # Need to account for offset because of the moving 'camera'
             playerCenterX = playerRect.centerx - offset[0]
             playerCenterY = playerRect.centery - offset[1]
@@ -228,7 +230,7 @@ class Player(Character):
             # When the slash attack is flipped facing the left then the signs are flipped becasuse 
             # of the slash attack is directed in the opposite direction.
             else:
-                currentAngle = self.attackAngle + (swingArc / 2)  - (swingArc * swingProgress)
+                currentAngle = self.attackAngle - (swingArc / 2)  + (swingArc * swingProgress)
 
 
             # offsets are for where the hitboxs should be located during the swing attack
