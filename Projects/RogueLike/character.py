@@ -179,8 +179,8 @@ class Player(Character):
             # Account for the scaling of the screen and display in the game.
             scaleFactor = self.game.screen.get_width() / self.game.display.get_width()
             # Need to account for offset because of the moving 'camera'
-            playerCenterX = playerRect.centerx - offset[0]
-            playerCenterY = playerRect.centery - offset[1]
+            playerCenterX = (playerRect.centerx - offset[0]) * scaleFactor
+            playerCenterY = (playerRect.centery - offset[1]) * scaleFactor
 
             # Calculating angle between the player and the mouse.
             dx = mousePos[0] - playerCenterX
@@ -224,13 +224,13 @@ class Player(Character):
             # In other words, self.attackAngle - (swingArc / 2) offsets the beginning of the slash attack
             # to create a full slash attack while (swingArc * swingProgress) increments the slash attack 
             # based on the attack frames.
-            if not self.attackFlip:
-                currentAngle = self.attackAngle - (swingArc / 2)  + (swingArc * swingProgress)
+            # if not self.attackFlip:
+            currentAngle = self.attackAngle - (swingArc / 2)  + (swingArc * swingProgress)
 
-            # When the slash attack is flipped facing the left then the signs are flipped becasuse 
-            # of the slash attack is directed in the opposite direction.
-            else:
-                currentAngle = self.attackAngle - (swingArc / 2)  + (swingArc * swingProgress)
+            # # When the slash attack is flipped facing the left then the signs are flipped becasuse 
+            # # of the slash attack is directed in the opposite direction.
+            # else:
+            #     currentAngle = self.attackAngle - (swingArc / 2)  + (swingArc * swingProgress)
 
 
             # offsets are for where the hitboxs should be located during the swing attack
@@ -317,7 +317,7 @@ class Player(Character):
                 # Have to use negative angle for none flipped player because pygame's rotation is backwards. 
                 # Positive angles go clockwise in Pygame while normally in math positive angles go counterclockwise
                 if self.attackFlip:
-                    rotatedSlash = pygame.transform.rotate(slashImg, angle)
+                    rotatedSlash = pygame.transform.rotate(slashImg, angle + 180)
                 else:
                     rotatedSlash = pygame.transform.rotate(slashImg, -angle)
 
