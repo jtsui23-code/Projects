@@ -159,6 +159,10 @@ class Player(Character):
         self.trailLength = 10
         self.attackFlip = False
 
+        # Storing the player starting position to maintain a consistent 
+        # slash length independent of player movement. 
+        self.playerSartPos = [0,0]
+
 
         # There are two slash images because the slah will be directed.
         self.slashImgRight = self.game.assets['slashRight']
