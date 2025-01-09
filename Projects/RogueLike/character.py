@@ -265,7 +265,12 @@ class Player(Character):
             # Need 'angle' for proper rotation of the slash attack.
             self.slashTrail.append( {'hitbox':self.attackHitbox.copy(),
                                      'slash':currentSlash,
-                                     'angle': currentAngle})
+                                     'angle': currentAngle,
+                                     # Storing offset of the player's starting position when 
+                                     # initiating slash attack. If this is not done, 
+                                     # slash lengths will differ depending on the movement of the player. 
+                                     'offset': [self.pos[0] - self.playerSartPos[0],
+                                                self.pos[1] - self.playerSartPos[1] ]})
 
             # This makes the slash trail tapper off if it gets to be too long 
             # making the slash attack shorter the longer the attack lasts.
