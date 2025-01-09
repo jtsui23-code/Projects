@@ -175,6 +175,12 @@ class Player(Character):
         if self.cooldownCounter <= 0 and not self.attacking:
             self.attacking = True
             self.attackFrame = 0
+
+            # Need to get a copy or this will only be a shallow copy.
+            # Also need the player starting position ot maintain a consistent 
+            # slash attack length no matter the player movement during the slash 
+            # attack.
+            self.playerSartPos = self.pos.copy()
             
             # Need mouse posiiton to determine where the slash attack will be directed.
             mousePos = pygame.mouse.get_pos()
