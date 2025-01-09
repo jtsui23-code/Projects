@@ -243,12 +243,16 @@ class Player(Character):
             offsetX = math.cos(currentAngle) * self.attackRadius
             offsetY = math.sin(currentAngle) * self.attackRadius
             
-            # Need to get the rect of the player for finding the player's center position.
-            playerRect = self.rect()
+            # # Need to get the rect of the player for finding the player's center position.
+            # playerRect = self.rect()
 
-            # Updates the position of the hitbox of the swing attack.
-            self.attackHitbox.centerx = playerRect.centerx + offsetX
-            self.attackHitbox.centery = playerRect.centery + offsetY
+            # Updates the position of the hitbox of the swing attack based on the 
+            # starting position of the player when doing the slash attack 
+            # to maintain a consistent slash length no matter the movement of the player.
+            #  + self.size[0]/2 serve to calcuate the center of the player
+            # since self.playerStartPos[0] is the top left of the player's x - position.
+            self.attackHitbox.centerx = self.playerSartPos[0] + self.size[0]/2 + offsetX
+            self.attackHitbox.centery = self.playerSartPos[1] + self.size[1]/2  + offsetY
 
 
             # This a temp slash varaible for appending to the slashTrail based on if the character is flipped.
