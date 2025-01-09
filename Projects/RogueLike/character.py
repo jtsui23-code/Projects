@@ -322,7 +322,7 @@ class Player(Character):
                 # Accounting for the offset of the player's starting position when initiating slash attack 
                 # and current position to prevent inconsistent slash lengths.
                 renderX = slashPos['hitbox'].centerx - slashWidth // 2 - offset[0] + slashPos['offset'][0]
-                renderY = slashPos['hitbox'].centery - slashHeight // 2 - offset[1] = slashPos['offset'][1]
+                renderY = slashPos['hitbox'].centery - slashHeight // 2 - offset[1] + slashPos['offset'][1]
 
                 # Renders the slash image's position based on the rotated angle of the image to the player.
                 angle = math.degrees(slashPos['angle'])
