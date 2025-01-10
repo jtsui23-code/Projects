@@ -236,7 +236,9 @@ class Player(Character):
             # In other words, self.attackAngle - (swingArc / 2) offsets the beginning of the slash attack
             # to create a full slash attack while (swingArc * swingProgress) increments the slash attack 
             # based on the attack frames.
-            currentAngle = self.attackAngle - (swingArc / 2)  + (swingArc * swingProgress)
+            currentAngle = (
+                self.attackAngle - (swingArc / 2)  + (swingArc * swingProgress)
+            )
 
             # offsets are for where the hitboxs should be located during the swing attack
             # which changes dynamically.
@@ -251,8 +253,12 @@ class Player(Character):
             # to maintain a consistent slash length no matter the movement of the player.
             #  + self.size[0]/2 serve to calcuate the center of the player
             # since self.playerStartPos[0] is the top left of the player's x - position.
-            self.attackHitbox.centerx = self.playerSartPos[0] + self.size[0]/2 + offsetX
-            self.attackHitbox.centery = self.playerSartPos[1] + self.size[1]/2  + offsetY
+            self.attackHitbox.centerx = (
+                self.playerSartPos[0] + self.size[0]/2 + offsetX
+            )
+            self.attackHitbox.centery = (
+                self.playerSartPos[1] + self.size[1]/2  + offsetY
+            )
 
 
             # This a temp slash varaible for appending to the slashTrail based on if the character is flipped.
