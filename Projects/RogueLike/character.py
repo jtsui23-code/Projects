@@ -161,7 +161,7 @@ class Player(Character):
 
         # Storing the player starting position to maintain a consistent 
         # slash length independent of player movement. 
-        self.playerSartPos = [0,0]
+        self.playerStartPos = [0,0]
 
 
         # There are two slash images because the slah will be directed.
@@ -180,7 +180,7 @@ class Player(Character):
             # Also need the player starting position ot maintain a consistent 
             # slash attack length no matter the player movement during the slash 
             # attack.
-            self.playerSartPos = self.pos.copy()
+            self.playerStartPos = self.pos.copy()
             
             # Need mouse posiiton to determine where the slash attack will be directed.
             mousePos = pygame.mouse.get_pos()
@@ -245,8 +245,8 @@ class Player(Character):
             # slash lengths will differ depending on the movement of the player. 
 
             playerMovementOffset = [
-                                    self.pos[0] - self.playerSartPos[0],
-                                    self.pos[1] - self.playerSartPos[1] 
+                                    self.pos[0] - self.playerStartPos[0],
+                                    self.pos[1] - self.playerStartPos[1] 
                                     ]
 
             # offsets are for where the hitboxs should be located during the swing attack
@@ -263,10 +263,10 @@ class Player(Character):
             #  + self.size[0]/2 serve to calcuate the center of the player
             # since self.playerStartPos[0] is the top left of the player's x - position.
             self.attackHitbox.centerx = (
-                self.playerSartPos[0] + self.size[0]/2 + offsetX
+                self.playerStartPos[0] + self.size[0]/2 + offsetX
             )
             self.attackHitbox.centery = (
-                self.playerSartPos[1] + self.size[1]/2  + offsetY
+                self.playerStartPos[1] + self.size[1]/2  + offsetY
             )
 
 
@@ -339,8 +339,19 @@ class Player(Character):
                 # and the offset is for the 'camera'.
                 # Accounting for the offset of the player's starting position when initiating slash attack 
                 # and current position to prevent inconsistent slash lengths.
-                renderX = slashPos['hitbox'].centerx - slashWidth // 2 - offset[0] + slashPos['offset'][0]
-                renderY = slashPos['hitbox'].centery - slashHeight // 2 - offset[1] + slashPos['offset'][1]
+
+                # renderX = slashPos['hitbox'].centerx - slashWidth // 2 - offset[0] + slashPos['offset'][0]
+                # renderY = slashPos['hitbox'].centery - slashHeight // 2 - offset[1] + slashPos['offset'][1]
+
+                renderX = (
+                    self.playerStartPos[0] + self.size[0]/ 2 +  slashPos['slashOffset'][0] + slashPos['playerOffset'][0]
+                    - offset[0] - slashWidth//2
+                )
+
+                renderY = (
+                    self.playerStartPos[1] + self.size[1]/ 2 +  slashPos['slashOffset'][1] + slashPos['playerOffset'][1]
+                    - offset[1] - slashHeight//2
+                )
 
                 # Renders the slash image's position based on the rotated angle of the image to the player.
                 angle = math.degrees(slashPos['angle'])
