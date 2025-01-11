@@ -263,10 +263,10 @@ class Player(Character):
             #  + self.size[0]/2 serve to calcuate the center of the player
             # since self.playerStartPos[0] is the top left of the player's x - position.
             self.attackHitbox.centerx = (
-                self.attackStartPos[0] + self.size[0]/2
+                self.pos[0] + self.size[0]/2
             )
             self.attackHitbox.centery = (
-                self.attackStartPos[1] + self.size[1]/2
+                self.pos[1] + self.size[1]/2
             )
 
 
@@ -339,17 +339,13 @@ class Player(Character):
                 # and the offset is for the 'camera'.
                 # Accounting for the offset of the player's starting position when initiating slash attack 
                 # and current position to prevent inconsistent slash lengths.
-
-                # renderX = slashPos['hitbox'].centerx - slashWidth // 2 - offset[0] + slashPos['offset'][0]
-                # renderY = slashPos['hitbox'].centery - slashHeight // 2 - offset[1] + slashPos['offset'][1]
-
                 renderX = (
-                    self.attackStartPos[0] + self.size[0]/ 2 +  slashPos['slashOffset'][0]
+                    self.pos[0] + self.size[0]/ 2 +  slashPos['slashOffset'][0]
                     - offset[0] - slashWidth//2
                 )
 
                 renderY = (
-                    self.attackStartPos[1] + self.size[1]/ 2 +  slashPos['slashOffset'][1]
+                    self.pos[1] + self.size[1]/ 2 +  slashPos['slashOffset'][1]
                     - offset[1] - slashHeight//2
                 )
 
