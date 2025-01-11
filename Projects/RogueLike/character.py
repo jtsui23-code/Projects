@@ -159,11 +159,6 @@ class Player(Character):
         self.trailLength = 10
         self.attackFlip = False
 
-        # Storing the player starting position to maintain a consistent 
-        # slash length independent of player movement. 
-        self.attackStartPos= [0,0]
-
-
         # There are two slash images because the slah will be directed.
         self.slashImgRight = self.game.assets['slashRight']
         self.slashImgLeft = self.game.assets['slashLeft']
@@ -176,12 +171,6 @@ class Player(Character):
             self.attacking = True
             self.attackFrame = 0
 
-            # Need to get a copy or this will only be a shallow copy.
-            # Also need the player starting position ot maintain a consistent 
-            # slash attack length no matter the player movement during the slash 
-            # attack.
-            self.attackStartPos= self.pos.copy()
-            
             # Need mouse posiiton to determine where the slash attack will be directed.
             mousePos = pygame.mouse.get_pos()
             playerRect = self.rect()
