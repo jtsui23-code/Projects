@@ -263,10 +263,10 @@ class Player(Character):
             #  + self.size[0]/2 serve to calcuate the center of the player
             # since self.playerStartPos[0] is the top left of the player's x - position.
             self.attackHitbox.centerx = (
-                self.playerStartPos[0] + self.size[0]/2
+                self.attackStartPos[0] + self.size[0]/2
             )
             self.attackHitbox.centery = (
-                self.playerStartPos[1] + self.size[1]/2
+                self.attackStartPos[1] + self.size[1]/2
             )
 
 
