@@ -258,8 +258,7 @@ class Player(Character):
             # playerRect = self.rect()
 
             # Updates the position of the hitbox of the swing attack based on the 
-            # starting position of the player when doing the slash attack 
-            # to maintain a consistent slash length no matter the movement of the player.
+            # position of the player when doing the slash attack 
             #  + self.size[0]/2 serve to calcuate the center of the player
             # since self.playerStartPos[0] is the top left of the player's x - position.
             self.attackHitbox.centerx = (
@@ -334,10 +333,11 @@ class Player(Character):
                 slashWidth = slashPos['slash'].get_width()
                 slashHeight = slashPos['slash'].get_height()
 
-                # Positions slash image based on the center of the hit box which is 
-                # why the slash image's width is divided by 2 to get the middle of the image 
-                # and the offset is for the 'camera'.
-                # Accounting for the offset of the player's starting position when initiating slash attack 
+                # Positions slash image based on the center of its hit box which is 
+                # why the slash image's width is divided by 2 to get the middle of the image.
+                # Without the addition of self.size[0]/2, the position of the slashes would be
+                # off since positions in Pygame are at the top left of objects.
+                # and the offset is for the 'camera'
                 # and current position to prevent inconsistent slash lengths.
                 renderX = (
                     self.pos[0] + self.size[0]/ 2 +  slashPos['slashOffset'][0]
