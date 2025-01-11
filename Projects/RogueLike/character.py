@@ -240,15 +240,6 @@ class Player(Character):
                 self.attackAngle - (swingArc / 2)  + (swingArc * swingProgress)
             )
 
-             # Storing offset of the player's starting position when 
-            # initiating slash attack. If this is not done, 
-            # slash lengths will differ depending on the movement of the player. 
-
-            playerMovementOffset = [
-                                    self.pos[0] - self.attackStartPos[0],
-                                    self.pos[1] - self.attackStartPos[1] 
-                                    ]
-
             # offsets are for where the hitboxs should be located during the swing attack
             # which changes dynamically.
             offsetX = math.cos(currentAngle) * self.attackRadius
@@ -280,11 +271,6 @@ class Player(Character):
             self.slashTrail.append( {'hitbox':self.attackHitbox.copy(),
                                      'slash':currentSlash,
                                      'angle': currentAngle,
-                                     # Storing offset of the player's starting position when 
-                                     # initiating slash attack. If this is not done, 
-                                     # slash lengths will differ depending on the movement of the player. 
-                                     'playerOffset': playerMovementOffset,
-                                    
                                     # Without slash offset, the slashes will not be rotated in the 
                                     # correct direction.
                                      'slashOffset': (offsetX, offsetY)})
