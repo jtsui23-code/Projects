@@ -161,7 +161,7 @@ class Player(Character):
 
         # Storing the player starting position to maintain a consistent 
         # slash length independent of player movement. 
-        self.playerStartPos = [0,0]
+        self.attackStartPos= [0,0]
 
 
         # There are two slash images because the slah will be directed.
@@ -180,7 +180,7 @@ class Player(Character):
             # Also need the player starting position ot maintain a consistent 
             # slash attack length no matter the player movement during the slash 
             # attack.
-            self.playerStartPos = self.pos.copy()
+            self.attackStartPos= self.pos.copy()
             
             # Need mouse posiiton to determine where the slash attack will be directed.
             mousePos = pygame.mouse.get_pos()
@@ -245,8 +245,8 @@ class Player(Character):
             # slash lengths will differ depending on the movement of the player. 
 
             playerMovementOffset = [
-                                    self.pos[0] - self.playerStartPos[0],
-                                    self.pos[1] - self.playerStartPos[1] 
+                                    self.pos[0] - self.attackStartPos[0],
+                                    self.pos[1] - self.attackStartPos[1] 
                                     ]
 
             # offsets are for where the hitboxs should be located during the swing attack
@@ -344,12 +344,12 @@ class Player(Character):
                 # renderY = slashPos['hitbox'].centery - slashHeight // 2 - offset[1] + slashPos['offset'][1]
 
                 renderX = (
-                    self.playerStartPos[0] + self.size[0]/ 2 +  slashPos['slashOffset'][0] + slashPos['playerOffset'][0]
+                    self.attackStartPos[0] + self.size[0]/ 2 +  slashPos['slashOffset'][0]
                     - offset[0] - slashWidth//2
                 )
 
                 renderY = (
-                    self.playerStartPos[1] + self.size[1]/ 2 +  slashPos['slashOffset'][1] + slashPos['playerOffset'][1]
+                    self.attackStartPos[1] + self.size[1]/ 2 +  slashPos['slashOffset'][1]
                     - offset[1] - slashHeight//2
                 )
 
