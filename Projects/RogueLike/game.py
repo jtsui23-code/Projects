@@ -70,8 +70,8 @@ class Game:
         }
 
         # Sets up the health bar to have a dark gray border
-        # and filled with color.
         self.assets['healthBarBorder'].fill((40,40,40))
+        # Fills the rectangle surface with red and the other one with green.
         self.assets['redHealthBar'].fill((255,0,0))
         self.assets['greenHealthBar'].fill((0,255,0))
 
