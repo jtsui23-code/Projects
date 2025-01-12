@@ -65,8 +65,15 @@ class Game:
             'slashRight':pygame.transform.scale(loadImage('slashAttack/slashRight.png').convert_alpha(), (16,20)),
             'slashLeft':pygame.transform.scale(loadImage('slashAttack/slashLeft.png').convert_alpha(), (16,20)),
             'healthBarBorder':pygame.surface((104,14)),
-            'filledHealthBar':pygame.surface((100,10))
+            'redHealthBar':pygame.surface((100,10)),
+            'greenHealthBar':pygame.surface((100,10))
         }
+
+        # Sets up the health bar to have a dark gray border
+        # and filled with color.
+        self.assets['healthBarBorder'].fill((40,40,40))
+        self.assets['redHealthBar'].fill((255,0,0))
+        self.assets['greenHealthBar'].fill((0,255,0))
 
         # Creating a player
         # Pass in a game, name, position and size
