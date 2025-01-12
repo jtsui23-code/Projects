@@ -63,7 +63,9 @@ class Game:
             'stone': loadImages('tiles/stone'),
             'player': pygame.transform.scale(loadImage('Player/slashCharacter.png'), (16, 20)),  # Adjust the size to match the tiles
             'slashRight':pygame.transform.scale(loadImage('slashAttack/slashRight.png').convert_alpha(), (16,20)),
-            'slashLeft':pygame.transform.scale(loadImage('slashAttack/slashLeft.png').convert_alpha(), (16,20))
+            'slashLeft':pygame.transform.scale(loadImage('slashAttack/slashLeft.png').convert_alpha(), (16,20)),
+            'healthBarBorder':pygame.surface((104,14)),
+            'filledHealthBar':pygame.surface((100,10))
         }
 
         # Creating a player
