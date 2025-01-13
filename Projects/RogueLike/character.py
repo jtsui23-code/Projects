@@ -174,7 +174,7 @@ class Player(Character):
         # player from taking too much damage at once.
         self.invulernable = False
         self.invulernableTimer = 0
-        self.invulernableCooldown = 1000
+        self.invulernableDuration = 1000
 
     def takeDamage(self, amount):
         
@@ -190,6 +190,8 @@ class Player(Character):
     def heal(self,amount):
         # This will allow the player to heal until their max health.
         self.currentHealth = min(self.maxHealth, self.currentHealth + amount)
+
+    
     
     def attack(self,offset=(0,0)):
 
@@ -309,6 +311,13 @@ class Player(Character):
 
         super().update(tilemap, movement)
         self.updateAttack()
+
+        # Checks if the duration of the invulernable frames are over to 
+        # prevent permant invulernability.
+        currentTime = pygame.time.get_ticks()
+        if self.invulernable:
+            if currentTime - self.invulernableTimer > self.invulernableDuration:
+                self.invulernable = False
 
         # Flips player based off of horizontal movement.
         if movement[0] > 0:
