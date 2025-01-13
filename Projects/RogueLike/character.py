@@ -140,6 +140,7 @@ class Player(Character):
     def __init__(self, game, pos, size):
         super().__init__(game,'player', pos, size)
 
+
         self.attacking = False
 
         # Counter for how long an attack is continuing.
@@ -164,6 +165,9 @@ class Player(Character):
         self.slashImgLeft = self.game.assets['slashLeft']
         
         self.attackAngle = 0
+
+        self.maxHealth = 100
+        self.currentHealth = self.maxHealth
     
     def attack(self,offset=(0,0)):
 
