@@ -168,6 +168,13 @@ class Player(Character):
 
         self.maxHealth = 100
         self.currentHealth = self.maxHealth
+
+        # Adding invulernable variable for powerups and 
+        # invulerablity frames after being hit to prevent
+        # player from taking too much damage at once.
+        self.invulernable = False
+        self.invulernableTimer = 0
+        self.invulernableCooldown = 1000
     
     def attack(self,offset=(0,0)):
 
