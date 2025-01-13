@@ -324,7 +324,17 @@ class Player(Character):
             self.flip = False
         if movement[0] < 0:
             self.flip = True
-        
+
+
+    def renderHealthBar(self, surface, offset=(0,0)):
+        barPos = (10,10)
+
+        # The order of the rendering matters because it determines what is overlayed ontop.
+        # There is a slight offset to the bar position for the healt bar colors and the 
+        # the health bar borders because the borders should be visable not overlayed.
+        surface.blit(self.game.assets['healthBarBorder'], barPos)     
+        surface.blit(self.game.assets['redHealthBar'], (barPos[0] + 2, barPos[1] + 2))   
+        surface.blit(self.game.assets['greenHealthBar'], (barPos[0] + 2, barPos[1] + 2))
         
 
     def render(self, surface, offset=(0,0)):
