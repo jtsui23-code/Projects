@@ -175,6 +175,21 @@ class Player(Character):
         self.invulernable = False
         self.invulernableTimer = 0
         self.invulernableCooldown = 1000
+
+    def takeDamage(self, amount):
+        
+        # Player will take damage then gain invulernable frames for a short period.
+        if not self.invulernable:
+            self.currentHealth = max(0, self.currentHealth - amount)
+            self.invulernable = True
+            self.invulernableTimer = pygame.time.get_ticks()
+            if self.currentHealth <=0:
+                print("Player has died")
+
+
+    def heal(self,amount):
+        # This will allow the player to heal until their max health.
+        self.currentHealth = min(self.maxHealth, self.currentHealth + amount)
     
     def attack(self,offset=(0,0)):
 
