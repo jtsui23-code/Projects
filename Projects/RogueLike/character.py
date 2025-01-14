@@ -339,6 +339,13 @@ class Player(Character):
         healthBarPercentage = self.currentHealth/ self.maxHealth
         healthBarWidth = int(100 * healthBarPercentage)
 
+        if healthBarWidth > 0:
+
+            # Creating a subsurface so it can create a shrinking and enlarging effect of the health bar.
+            # .subsurface((x-pos, y-pos, width, height))
+            greenHealthBar = self.game.assets['greenHealthBar'].subsurface((0,0, healthBarWidth, 10))
+            surface.blit(greenHealthBar, (barPos[0] + 2, barPos[1] + 2))
+
     def render(self, surface, offset=(0,0)):
         # Call the parent (Character) class's render method to draw the player sprite
         super().render(surface, offset)
