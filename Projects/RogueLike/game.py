@@ -110,6 +110,8 @@ class Game:
             self.player.update(self.tilemap, (self.movement[1] - self.movement[0], self.movement[3] - self.movement[2]))
             self.player.render(self.display, offset=renderScroll)
             
+            # Displays and updates the health bar.
+            self.player.renderHealthBar(self.display, renderScroll)
             # Checks for user input
             for event in pygame.event.get():
 
