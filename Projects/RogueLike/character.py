@@ -335,6 +335,9 @@ class Player(Character):
         surface.blit(self.game.assets['healthBarBorder'], barPos)     
         surface.blit(self.game.assets['redHealthBar'], (barPos[0] + 2, barPos[1] + 2))   
         
+        # Calculates the width of the health bar based on current health.
+        healthBarPercentage = self.currentHealth/ self.maxHealth
+        healthBarWidth = int(100 * healthBarPercentage)
 
     def render(self, surface, offset=(0,0)):
         # Call the parent (Character) class's render method to draw the player sprite
