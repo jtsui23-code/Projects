@@ -423,6 +423,18 @@ class Enemy(Character):
         self.attackCooldown = 60
         self.attackTimer = 0
         self.speed = 1
+
+    def takeDamage(self, amount):
+
+        self.currentHealth = max(0, self.currentHealth - amount)
+
+        if self.currentHealth <= 0:
+            
+            print("Enemy defeated")
+
+            return True
+        
+        return False
         
            
 
