@@ -412,8 +412,17 @@ class Player(Character):
                 
 class Enemy(Character):
 
-    def __init__(self):
-        pass
+    def __init__(self, game, pos, size):
+        super().__init__(game, 'enemy', pos, size)
+
+        self.maxHealth = 50
+        self.currentHealth = self.maxHealth
+
+        # Amount of damamge the enemy will do. 
+        self.damage = 10
+        self.attackCooldown = 60
+        self.attackTimer = 0
+        self.speed = 1
         
            
 
