@@ -410,6 +410,10 @@ class Player(Character):
 
                 surface.blit(rotatedSlash, (renderX, renderY))
                 
+class Enemy(Character):
+
+    def __init__(self):
+        pass
         
            
 
