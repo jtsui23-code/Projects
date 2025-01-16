@@ -454,6 +454,20 @@ class Enemy(Character):
         movement[0] = dx / distance
         movement[1] = dy / distance
 
+        # The enemy attacks the player only when in range
+        # to prevent enemy from attack across the map.
+        if distance < 30 and self.attackTimer <= 0:
+            player.takeDamage(self.damage)
+            self.attackTimer = self.attackCooldown
+
+        if self.attackTimer > 0:
+            self.attackTimer -= 1
+
+        # Inherits from the character class after defining how the enemy should move
+        # because the character update method handles physics not the movement AI of the 
+        # enemy.
+        super().update(tilemap, movement)
+
     def render(self, surface, offset=(0,0)):
         pass
         
