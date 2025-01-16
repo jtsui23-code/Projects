@@ -435,6 +435,9 @@ class Enemy(Character):
             return True
         
         return False
+
+    def render(self, surface, offset=(0,0)):
+        pass
         
            
 
