@@ -426,6 +426,8 @@ class Enemy(Character):
 
     def takeDamage(self, amount):
 
+        # Updates the current health according to the damaged taken 
+        # until health reaches 0.
         self.currentHealth = max(0, self.currentHealth - amount)
 
         if self.currentHealth <= 0:
@@ -435,6 +437,12 @@ class Enemy(Character):
             return True
         
         return False
+
+    def update(self, tilemap, player):
+        # Calculating distance between enemy and player so 
+        # the enemy can pursue the player.
+        dx = player.pos[0] - self.pos[0]
+        dy = player.pos[1] - self.pos[1]
 
     def render(self, surface, offset=(0,0)):
         pass
