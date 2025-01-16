@@ -444,6 +444,16 @@ class Enemy(Character):
         dx = player.pos[0] - self.pos[0]
         dy = player.pos[1] - self.pos[1]
 
+        distance = math.sqrt(dx * dx + dy * dy)
+
+        movement = [0,0]
+
+        # Have the divide by distance or the 
+        # diagonal movement of the enemy will be faster then
+        # horizontal and vertical movement.
+        movement[0] = dx / distance
+        movement[1] = dy / distance
+
     def render(self, surface, offset=(0,0)):
         pass
         
