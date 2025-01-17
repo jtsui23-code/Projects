@@ -1,8 +1,9 @@
 import sys
 import pygame
 from utils import loadImage, loadImages
-from character import Character, Player
+from character import Character, Player, Enemy
 from tilemap import Tilemap
+import random
 
 """
 Game
