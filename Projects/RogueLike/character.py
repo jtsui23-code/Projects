@@ -469,7 +469,7 @@ class Enemy(Character):
         super().update(tilemap, movement)
 
     def render(self, surface, offset=(0,0)):
-        pass
+        surface.blit(self.game.assets['Enemy'] , (self.pos[0] - offset[0], self.pos[1] - offset[1]))
         
            
 

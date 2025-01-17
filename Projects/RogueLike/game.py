@@ -66,7 +66,8 @@ class Game:
             'slashLeft':pygame.transform.scale(loadImage('slashAttack/slashLeft.png').convert_alpha(), (16,20)),
             'healthBarBorder':pygame.Surface((104,14)),
             'redHealthBar':pygame.Surface((100,10)),
-            'greenHealthBar':pygame.Surface((100,10))
+            'greenHealthBar':pygame.Surface((100,10)),
+            'enemy': loadImages('Enemy/enemy2.png')
         }
 
         # Sets up the health bar to have a dark gray border
