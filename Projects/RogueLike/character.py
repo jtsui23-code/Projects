@@ -454,6 +454,13 @@ class Enemy(Character):
         movement[0] = dx / distance
         movement[1] = dy / distance
 
+
+        if movement[0] > 0:
+            self.flip = False
+        if movement[0] < 0: 
+            self.flip = True
+
+
         # The enemy attacks the player only when in range
         # to prevent enemy from attack across the map.
         if distance < 30 and self.attackTimer <= 0:
