@@ -476,7 +476,11 @@ class Enemy(Character):
         super().update(tilemap, movement)
 
     def render(self, surface, offset=(0,0)):
-        surface.blit(self.game.assets['Enemy'] , (self.pos[0] - offset[0], self.pos[1] - offset[1]))
+
+        # Flips the enemy sprite if the enemy is moving left.
+        if self.flip:
+            enemyImg = pygame.transform.flip(self.game.assets['Enemy'], True, False)
+        surface.blit(enemyImg, (self.pos[0] - offset[0], self.pos[1] - offset[1]))
         
            
 
