@@ -68,7 +68,7 @@ class Game:
             'healthBarBorder':pygame.Surface((104,14)),
             'redHealthBar':pygame.Surface((100,10)),
             'greenHealthBar':pygame.Surface((100,10)),
-            'enemy': loadImages('Enemy/enemy2.png')
+            'enemy': loadImage('Enemy/enemy2.png')
         }
 
         # Sets up the health bar to have a dark gray border
@@ -86,6 +86,15 @@ class Game:
 
         # Loads the first map of the game.
         self.loadMap(0)
+
+        
+        # Setting up enmey spawning.
+        self.enemy = []
+        self.enemyTimer = 0
+        self.enemySpawnDelay = 180
+        self.minSpawnDistance = 150
+        self.maxSpawnDistance = 250
+        self.maxEnemy = 5
 
 
     def loadMap(self, path):
