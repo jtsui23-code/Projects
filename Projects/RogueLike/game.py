@@ -107,8 +107,13 @@ class Game:
         # Randomly generates an angle of position for the 
         # enemy to spawn around the player.
         angle = math.uniform(0, 2 * math.pi)
+        distance = random.uniform(self.minSpawnDistance, self.maxSpawnDistance)
 
+        spawnX = self.player.rect().centerx + math.cos(angle) * distance
+        spawnY = self.player.rect().centery + math.sin(angle) * distance
 
+        newEnemy = Enemy(self, (spawnX, spawnY), (16,20))
+        self.enemy.append(newEnemy)
 
     def loadMap(self, path):
 
