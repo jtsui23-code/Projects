@@ -4,6 +4,7 @@ from utils import loadImage, loadImages
 from character import Character, Player, Enemy
 from tilemap import Tilemap
 import random
+import math
 
 """
 Game
@@ -102,7 +103,12 @@ class Game:
         if len(self.enemy) > self.maxEnemy:
             return
         
-        
+
+        # Randomly generates an angle of position for the 
+        # enemy to spawn around the player.
+        angle = math.uniform(0, 2 * math.pi)
+
+
 
     def loadMap(self, path):
 
