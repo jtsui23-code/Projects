@@ -96,6 +96,13 @@ class Game:
         self.maxSpawnDistance = 250
         self.maxEnemy = 5
 
+    def spawnEnemy(self):
+
+        # Do not spawn anymore enemies if reached max enmey count
+        if len(self.enemy) > self.maxEnemy:
+            return
+        
+        
 
     def loadMap(self, path):
 
