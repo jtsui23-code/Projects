@@ -116,7 +116,13 @@ class Game:
         self.enemy.append(newEnemy)
 
     def updateEnemy(self):
-        pass
+
+        # Delays the spawning of enemies so there are not too many
+        # of them at once.
+        self.enemyTimer += 1
+        if self.enemyTimer > self.enemySpawnDelay:
+            self.spawnEnemy()
+            self.enemyTimer = 0
 
     def loadMap(self, path):
 
@@ -146,7 +152,6 @@ class Game:
             self.player.renderHealthBar(self.display, renderScroll)
             # Checks for user input
 
-            self.spawnEnemy()
 
             for event in pygame.event.get():
 
