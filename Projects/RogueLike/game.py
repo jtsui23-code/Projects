@@ -106,7 +106,7 @@ class Game:
 
         # Randomly generates an angle of position for the 
         # enemy to spawn around the player.
-        angle = math.uniform(0, 2 * math.pi)
+        angle = random.uniform(0, 2 * math.pi)
         distance = random.uniform(self.minSpawnDistance, self.maxSpawnDistance)
 
         spawnX = self.player.rect().centerx + math.cos(angle) * distance
@@ -114,6 +114,9 @@ class Game:
 
         newEnemy = Enemy(self, (spawnX, spawnY), (16,20))
         self.enemy.append(newEnemy)
+
+    def updateEnemy(self):
+        pass
 
     def loadMap(self, path):
 
@@ -144,7 +147,7 @@ class Game:
             # Checks for user input
 
             self.spawnEnemy()
-            
+
             for event in pygame.event.get():
 
                 # Checks specifically for input on the exit button 
