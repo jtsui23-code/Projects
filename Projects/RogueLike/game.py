@@ -124,6 +124,11 @@ class Game:
             self.spawnEnemy()
             self.enemyTimer = 0
 
+        # [:] creates a temporary copy of the enemies list to 
+        # iterate over the copied list because if you iterate over the 
+        # original enemy while deleting elements in the list
+        # this could cause problems since the list's length is 
+        # changing with each iteration.
         for enemy in self.enemies[:]:
             enemy.update(self.tilemap, self)
             
