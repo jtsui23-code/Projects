@@ -124,6 +124,11 @@ class Game:
             self.spawnEnemy()
             self.enemyTimer = 0
 
+        for enemy in self.enemy[:]:
+            enemy.update(self.tilemap, self)
+            
+            if enemy.
+
     def loadMap(self, path):
 
         print('Successful map load')
