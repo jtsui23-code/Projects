@@ -90,7 +90,7 @@ class Game:
 
         
         # Setting up enmey spawning.
-        self.enemy = []
+        self.enemies = []
         self.enemyTimer = 0
         self.enemySpawnDelay = 180
         self.minSpawnDistance = 150
@@ -100,7 +100,7 @@ class Game:
     def spawnEnemy(self):
 
         # Do not spawn anymore enemies if reached max enmey count
-        if len(self.enemy) > self.maxEnemy:
+        if len(self.enemies) > self.maxEnemy:
             return
         
 
@@ -113,7 +113,7 @@ class Game:
         spawnY = self.player.rect().centery + math.sin(angle) * distance
 
         newEnemy = Enemy(self, (spawnX, spawnY), (16,20))
-        self.enemy.append(newEnemy)
+        self.enemies.append(newEnemy)
 
     def updateEnemy(self):
 
@@ -124,10 +124,13 @@ class Game:
             self.spawnEnemy()
             self.enemyTimer = 0
 
-        for enemy in self.enemy[:]:
+        for enemy in self.enemies[:]:
             enemy.update(self.tilemap, self)
             
-            if enemy.
+            # Removes enemy from the map and game if their health hits zero.
+            if enemy.currentHealth <= 0:
+                self.enemies.remove(enemy)
+
 
     def loadMap(self, path):
 
