@@ -130,7 +130,7 @@ class Game:
         # this could cause problems since the list's length is 
         # changing with each iteration.
         for enemy in self.enemies[:]:
-            enemy.update(self.tilemap, self)
+            enemy.update(self.tilemap, self.player)
             
             # Removes enemy from the map and game if their health hits zero.
             if enemy.currentHealth <= 0:
@@ -164,7 +164,9 @@ class Game:
             # Displays and updates the health bar.
             self.player.renderHealthBar(self.display, renderScroll)
 
-            self.updateEnemy
+            self.updateEnemy()
+
+
 
             for enemy in self.enemies:
                 enemy.render(self.display, offset=renderScroll)
