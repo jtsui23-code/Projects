@@ -163,9 +163,12 @@ class Game:
             
             # Displays and updates the health bar.
             self.player.renderHealthBar(self.display, renderScroll)
+
+            self.updateEnemy
+
+            for enemy in self.enemies:
+                enemy.render(self.display, offset=renderScroll)
             # Checks for user input
-
-
             for event in pygame.event.get():
 
                 # Checks specifically for input on the exit button 
