@@ -69,7 +69,8 @@ class Game:
             'healthBarBorder':pygame.Surface((104,14)),
             'redHealthBar':pygame.Surface((100,10)),
             'greenHealthBar':pygame.Surface((100,10)),
-            'enemy': pygame.transform.scale(loadImage('Enemy/enemy2.png'), (16,20))
+            'enemy': pygame.transform.scale(loadImage('Enemy/enemy2.png'), (16,20)),
+            
         }
 
         # Sets up the health bar to have a dark gray border
@@ -96,6 +97,7 @@ class Game:
         self.minSpawnDistance = 150
         self.maxSpawnDistance = 250
         self.maxEnemy = 5
+
 
     def spawnEnemy(self):
 
@@ -132,6 +134,10 @@ class Game:
         for enemy in self.enemies[:]:
             enemy.update(self.tilemap, self.player)
             
+            enemyRect = enemy.rect()
+
+            if enemyRect.colliderect(self.assets['slashRight']) or enemyRect.colliderect(self.assets['slashLeft']):
+                enemy.takeDamage(25)
             # Removes enemy from the map and game if their health hits zero.
             if enemy.currentHealth <= 0:
                 self.enemies.remove(enemy)
