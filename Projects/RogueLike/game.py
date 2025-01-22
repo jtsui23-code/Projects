@@ -69,7 +69,7 @@ class Game:
             'healthBarBorder':pygame.Surface((104,14)),
             'redHealthBar':pygame.Surface((100,10)),
             'greenHealthBar':pygame.Surface((100,10)),
-            'enemy': loadImage('Enemy/enemy2.png')
+            'enemy': pygame.transform.scale(loadImage('Enemy/enemy2.png'), (16,20))
         }
 
         # Sets up the health bar to have a dark gray border
