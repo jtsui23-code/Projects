@@ -135,9 +135,12 @@ class Game:
             enemy.update(self.tilemap, self.player)
             
             enemyRect = enemy.rect()
-
-            if enemyRect.colliderect(self.assets['slashRight']) or enemyRect.colliderect(self.assets['slashLeft']):
+            slashRightRect = self.assets['slashRight'].get_rect()
+            slashLeftRect = self.assets['slashLeft'].get_rect()
+            
+            if enemyRect.colliderect(slashRightRect) or enemyRect.colliderect(slashLeftRect):
                 enemy.takeDamage(25)
+
             # Removes enemy from the map and game if their health hits zero.
             if enemy.currentHealth <= 0:
                 self.enemies.remove(enemy)
