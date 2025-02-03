@@ -51,7 +51,7 @@ print(result)
 #changes url to specific tier list page on the website
 
 
-#creates a dictionary kinda like a list 
+#creates a dictionary
 url = {
     1: "https://www.prydwen.gg/nikke/tier-list",
     2: "https://www.prydwen.gg/re1999/tier-list/",
