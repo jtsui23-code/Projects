@@ -10,7 +10,7 @@ from tilemap import Tilemap
 # Caution when cauculating the mouse position have to account for this 
 # RENDERSCALE as well or the tiles will not be placed where the mouse
 # clicks on the level editor.
-RENDERSCALE = 2.00
+RENDERSCALE = 2.009
 class LevelEditor:
 
     # Sets up the game windows, framerate, player, and other assets
